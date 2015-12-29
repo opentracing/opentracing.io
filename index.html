@@ -44,13 +44,13 @@
 <h3>
 <a id="terminology" class="anchor" href="#terminology" aria-hidden="true"><span class="octicon octicon-link"></span></a>Terminology</h3>
 
-<p>A <strong>Trace</strong> represents the potentially distributed, potentially concurrent datapath in a (potentially distributed, potentially concurrent) system.</p>
+<p>A <strong>Trace</strong> represents the potentially distributed, potentially concurrent data/execution path in a (potentially distributed, potentially concurrent) system.</p>
 
-<p>A <strong>Span</strong> represents a logical unit of work in the system that has a start time and an end time. Spans can be nested and ordered to model parent-child and casual relationships. A Trace can be thought of as a tree of Spans. Every Span has zero or more <strong>Logs</strong>, each of which being a timestamped message with an optional payload.</p>
+<p>A <strong>Span</strong> represents a logical unit of work in the system that has a start time and an end time. Spans can be nested and ordered to model parent-child and casual relationships. A Trace can be thought of as a tree of Spans. Every Span has zero or more <strong>Logs</strong>, each of which being a timestamped message with an optional payload. Every Span may also have zero or more key/value <strong>Tags</strong>, which do not have timestamps and simply annotate the spans.</p>
 
 <p>A <strong>Trace Context</strong> encapsulates the smallest amount of state needed to describe a Span's identity within a larger, potentially distributed trace, sufficient to propagate the context of a particular trace between processes.</p>
 
-<p><strong>Trace Attributes</strong> are key/value pairs stored in a Trace Context and propagated in-band to all future children Spans. Given a full-stack OpenTracing integration, Trace Attributes enable powerful functionality by transparently propagating arbitrary application data; e.g., from a mobile app all the way into the depths of a storage system. It comes with powerful <em>costs</em> as well, since the attributes are propagated in-band, alongside the application data; use Trace Attributes with care.</p>
+<p><strong>Trace Attributes</strong> are key/value pairs stored in a Trace Context and propagated <em>in-band</em> to all future children Spans. Given a full-stack OpenTracing integration, Trace Attributes enable powerful functionality by transparently propagating arbitrary application data; e.g., from a mobile app all the way into the depths of a storage system. It comes with powerful <em>costs</em> as well, since the attributes are propagated in-band, alongside the application data; use Trace Attributes with care.</p>
 
 <h3>
 <a id="language-support" class="anchor" href="#language-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Language Support</h3>
