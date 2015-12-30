@@ -52,6 +52,13 @@
 
 <p><strong>Trace Attributes</strong> are key/value pairs stored in a Trace Context and propagated <em>in-band</em> to all future children Spans. Given a full-stack OpenTracing integration, Trace Attributes enable powerful functionality by transparently propagating arbitrary application data; e.g., from a mobile app all the way into the depths of a storage system. It comes with powerful <em>costs</em> as well, since the attributes are propagated in-band, alongside the application data; use Trace Attributes with care.</p>
 
+<p><strong>Trace Attributes</strong> vs. <strong>Span Tags</strong></p>
+
+<ul>
+<li>Trace Attributes are propagated in-band across process boundaries. Span Tags are not propagated.</li>
+<li>Span Tags are recorded off-band in the tracing system's storage. Trace Attributes are not recorded.</li>
+</ul>
+
 <h3>
 <a id="language-support" class="anchor" href="#language-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Language Support</h3>
 
