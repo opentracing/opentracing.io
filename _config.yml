@@ -1,0 +1,27 @@
+# Dependencies
+markdown:         redcarpet
+highlighter:      pygments
+
+gems: [jekyll-paginate, jekyll-gist]
+#paginate_path: "page:num"
+#paginate:         5
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            The OpenTracing Project
+tagline:          'Common APIs for distributed tracing and context propagation'
+description:      'Common APIs for distributed tracing and context propagation'
+url:              http://opentracing.github.io
+baseurl:          /
+
+author:
+  name:           'The OpenTracing Authors'
+  url:            http://opentracing.github.io
+
+# Custom vars
+version:          2.1.0
+
+github:
+  repo:           https://github.com/opentracing
