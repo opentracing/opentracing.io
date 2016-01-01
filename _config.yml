@@ -9,9 +9,15 @@ markdown:         redcarpet
 highlighter:      pygments
 
 redcarpet:
-  extensions: ["autolink", "with_toc_data"]
+  extensions: 
+    - autolink
+    - with_toc_data
 
-gems: [jekyll-paginate, jekyll-gist]
+gems: 
+  - jekyll-paginate
+  - jekyll-gist
+  - jekyll-mentions
+
 #paginate_path: "page:num"
 #paginate:         5
 

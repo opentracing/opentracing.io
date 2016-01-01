@@ -11,8 +11,10 @@ See https://help.github.com/articles/using-jekyll-with-pages/
 or, as a crush course:
 
 * make sure Ruby version 2.0.0 or greater is installed
-* install Jekyll: `sudo gem install jekyll`
-* run the webserver: `jekyll serve` 
+* install Bundler: `sudo gem install bundler`
+* clone the repository and `cd` to it
+* install github-pages: `sudo bundle install`
+* run the webserver: `bundle exec jekyll serve` 
 * check results: `open http://localhost:4000`
 
 Tips:
