@@ -1,6 +1,15 @@
+# Content
+pages_list:       
+  Home: '/'
+  APIs: '/apis'
+  Terminology: '/terminology'
+
 # Dependencies
 markdown:         redcarpet
 highlighter:      pygments
+
+redcarpet:
+  extensions: ["autolink", "with_toc_data"]
 
 gems: [jekyll-paginate, jekyll-gist]
 #paginate_path: "page:num"
