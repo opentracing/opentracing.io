@@ -28,5 +28,7 @@ Please refer to the [APIs]({{ baseurl }}apis) page for the list of currently ava
 * Yuri Shkuro (@yurishkuro)
 
 ## Support or Contact
-Open an issue against one of the repositories, or start a discussion in the [Distributed Tracing](https://groups.google.com/forum/#!forum/distributed-tracing) Google group.
+* Open an issue against one of the repositories, or
+* Start a discussion in the [Distributed Tracing](https://groups.google.com/forum/#!forum/distributed-tracing) Google group, or
+* Ask a question in the chat room https://gitter.im/opentracing/public
 
