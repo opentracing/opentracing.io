@@ -8,7 +8,7 @@ Create a branch, test the change locally, then create a pull request.
 
 See https://help.github.com/articles/using-jekyll-with-pages/
 
-or, as a crush course:
+or, as a crash course:
 
 * make sure Ruby version 2.0.0 or greater is installed
 * install Bundler: `sudo gem install bundler`
