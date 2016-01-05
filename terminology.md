@@ -5,7 +5,7 @@ title: Terminology
 
 A **Trace** represents the potentially distributed, potentially concurrent data/execution path in a (potentially distributed, potentially concurrent) system.
 
-A **Span** represents a logical unit of work in the system that has a start time and an end time. Spans can be nested and ordered to model parent-child and casual relationships. A Trace can be thought of as a tree of Spans. Every Span has zero or more **Logs**, each of which being a timestamped message with an optional payload. Every Span may also have zero or more key/value **Tags**, which do not have timestamps and simply annotate the spans.
+A **Span** represents a logical unit of work in the system that has a start time and an end time. Spans can be nested and ordered to model parent-child and casual relationships. A Trace can be thought of as a tree of Spans. Every Span has zero or more **Logs**, each of which being a timestamped message with an optional structured data payload of arbitrary size. Every Span may also have zero or more key/value **Tags**, which do not have timestamps and simply annotate the spans.
 
 A **Trace Context** encapsulates the smallest amount of state needed to describe a Span's identity within a larger, potentially distributed trace, sufficient to propagate the context of a particular trace between processes.
 
