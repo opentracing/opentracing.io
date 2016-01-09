@@ -28,12 +28,12 @@ permalink:        pretty
 title:            The OpenTracing Project
 tagline:          'Common APIs for distributed tracing and context propagation'
 description:      'Common APIs for distributed tracing and context propagation'
-url:              http://opentracing.github.io
+url:              http://docs.opentracing.io
 baseurl:          /
 
 author:
   name:           'The OpenTracing Authors'
-  url:            http://opentracing.github.io
+  url:            http://docs.opentracing.io
 
 # Custom vars
 version:          2.1.0
