@@ -1,8 +1,9 @@
 # Content
 pages_list:       
   Home: '/'
-  APIs: '/apis'
+  "Platform APIs": '/apis'
   Terminology: '/terminology'
+  Contributors: '/contributors'
 
 # Dependencies
 markdown:         redcarpet
@@ -17,6 +18,7 @@ gems:
   - jekyll-paginate
   - jekyll-gist
   - jekyll-mentions
+  - jekyll-coffeescript
 
 #paginate_path: "page:num"
 #paginate:         5
@@ -26,8 +28,8 @@ permalink:        pretty
 
 # Setup
 title:            The OpenTracing Project
-tagline:          'Common APIs for distributed tracing and context propagation'
-description:      'Common APIs for distributed tracing and context propagation'
+tagline:          'Consistent and expressive APIs for distributed tracing and context propagation'
+description:      'Consistent and expressive APIs for distributed tracing and context propagation'
 url:              http://opentracing.io
 baseurl:          /
 

@@ -2,30 +2,24 @@
 layout: page
 title: Home
 ---
-<h1 class="page-title">Welcome to the OpenTracing API Project</h1>
 
-This page is unfinished; please contact the authors directly if you have questions or would like to contribute.
+## Why Tracing?
 
-### Objectives
-Numerous organizations recognize the need to propagate a trace context throughout their (distributed) polyglot systems, including web and mobile clients. Designing these instrumentation libraries is subtle, and nobody wants to absorb the front-loaded cost of adding instrumentation only to be tightly coupled to a particular tracing implementation.
+Developers and engineering organizations are trading in old, monolithic systems for modern microservice architectures, and they do so for numerous compelling reasons: system components scale independently, dev teams stay small and agile, deployments are continuous and decoupled, and so on.
 
-The OpenTracing project provides a multi-lingual standard for application-level instrumentation that's loosely coupled to any particular downstream tracing or monitoring system. In this way, adding or switching tracing implementations becomes an O(1) code change.
+That said, **once a production system contends with real concurrency or splits into many services, crucial (and formerly easy) tasks become difficult**: user-facing latency optimization, root-cause analysis of backend errors, communication about distinct pieces of a now-distributed system, etc.
 
-There is [a slightly-out-of-date initial proposal](https://paper.dropbox.com/doc/Distributed-Context-Propagation-RGvlvD1NFKYmrJG9vGCES) that led directly to OpenTracing.
+Contemporary distributed tracing systems (e.g., Zipkin, Dapper, HTrace, X-Trace, among others) aim to address these issues, but they do so via application-level instrumentation using incompatible APIs. Developers are uneasy about tightly coupling their polyglot systems to any particular distributed tracing implementation, yet the application-level instrumentation APIs for these many distinct tracing systems have remarkably similar semantics.
+
+## Why OpenTracing?
+
+Enter **OpenTracing**: by offering a single straightforward, general, well-thought-out instrumenation library for popular platforms, a developer can add (or switch) tracing implementations with an `O(1)` configuration change. OpenTracing also offers a lingua franca for OSS instrumentation and platform-specific tracing helper libraries.
 
 ### Language Support
 
-The OpenTracing project aims to provide APIs for all popular platforms. The APIs have standard semantic capabilities and must not be tightly coupled to any particular downstream tracing or monitoring system (Zipkin, etc). Our initial target languages are Go, Python, Java, and Javascript, with more to follow.
+The OpenTracing project aims to provide APIs for all popular platforms. The APIs have standard semantic capabilities and must not be tightly coupled to any particular downstream tracing or monitoring system. Initial target languages are Go, Python, Java, and Javascript, with more to follow.
 
-Please refer to the [APIs]({{ baseurl }}apis) page for the list of currently available APIs.
-
-## Authors and Contributors 
-(in alphabetical order)
-
-* Adrian Cole (@adriancole)
-* Ben Sigelman (@bensigelman)
-* Stephen Gutekanst (@slimsag)
-* Yuri Shkuro (@yurishkuro)
+Please refer to the [APIs]({{ baseurl }}apis) page for the list of currently supported platforms.
 
 ## Support or Contact
 * Open an issue against one of the repositories, or
