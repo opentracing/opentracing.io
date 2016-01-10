@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Terminology
+title: Semantic Specification and Terminology
 ---
 
 A **Trace** represents the potentially distributed, potentially concurrent data/execution path in a (potentially distributed, potentially concurrent) system.

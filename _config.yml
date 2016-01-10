@@ -1,9 +1,10 @@
 # Content
 pages_list:       
-  Home: '/'
+  "Home": '/'
   "Platform APIs": '/apis'
-  Terminology: '/terminology'
-  Contributors: '/contributors'
+  "Semantic Specification": '/spec'
+  "Implementing OpenTracing": '/implementors'
+  "Contributors": '/contributors'
 
 # Dependencies
 markdown:         redcarpet
