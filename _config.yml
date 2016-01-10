@@ -1,7 +1,7 @@
 # Content
 pages_list:       
   Home: '/'
-  APIs: '/apis'
+  "Platform APIs": '/apis'
   Terminology: '/terminology'
   Contributors: '/contributors'
 
@@ -28,8 +28,8 @@ permalink:        pretty
 
 # Setup
 title:            The OpenTracing Project
-tagline:          'Safe, general APIs for distributed tracing and context propagation'
-description:      'Safe, general APIs for distributed tracing and context propagation'
+tagline:          'Consistent and expressive APIs for distributed tracing and context propagation'
+description:      'Consistent and expressive APIs for distributed tracing and context propagation'
 url:              http://opentracing.io
 baseurl:          /
 
