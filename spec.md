@@ -5,22 +5,59 @@ title: Semantic Specification
 
 ## Concepts and Terminology
 
-A **Trace** represents the potentially distributed, potentially concurrent data/execution path in a (potentially distributed, potentially concurrent) system.
 
-A **Span** represents a logical unit of work in the system that has a start time and an end time. Spans may be nested and ordered to model parent-child and casual relationships. A Trace can be thought of as a tree of Spans.
+```
+Parentage/causal relationships for spans from a single trace
+
+        [Span A]  <--(the root span)
+            |
+     +------+------+
+     |             |
+ [Span B]      [Span C]
+     |             |
+ [Span D]      +---+-----+
+               |         |
+           [Span E]  [Span F]
+                         |
+                +--------+--------+
+                |        |        |
+            [Span G] [Span H] [Span I]
+
+```
+
+```
+Temporal relationships for spans from a single trace
+
+––|–––––––|–––––––|–––––––|–––––––|–––––––|–––––––|–––––––|–> time
+
+ [Span A···················································]
+   [Span B··············································]
+      [Span D··········································]
+    [Span C········································]
+         [Span E···········]   [Span F········]
+                                [Span G······]
+                                [Span H··]
+                                        [Span I·]
+```
+
+A **Trace** represents the potentially distributed, potentially concurrent data/execution path in a (potentially distributed, potentially concurrent) system. A Trace can be thought of as a tree of Spans. (See the ASCII diagrams above)
+
+A **Span** represents a logical unit of work in the system that has a start time and a duration. Spans may be nested and ordered to model parent-child and casual relationships. Each span has an **operation name**, a presumably human-readable string which concisely names the work done by the span (e.g., an RPC method name, a function name, or the name of a subtask within a larger computation).
 
 Every Span has zero or more **Logs**, each of which being a timestamped message with an optional structured data payload of arbitrary size.
 
 Every Span may also have zero or more key/value **Tags**, which do not have timestamps and simply annotate the spans.
 
-A **Trace Context** encapsulates the smallest amount of state needed to describe a Span's identity within a larger, potentially distributed trace, sufficient to propagate the context of a particular trace between processes.
+A **Trace Context** encapsulates the smallest amount of state needed to continue a trace across a process boundary (or, more generally, a serialization boundary). Put another way, a Span cannot be identified without a Trace Context, but a Trace Context can be (and is) serialized without a Span: Spans are identified by their Trace Context and add application-level instrumentation (logs, timing information, tags). Note that, in order to support *Trace Attributes* (see below) that propagate across a distributed trace transparently, those attributes must be represented by/within the Trace Context.
 
-**Trace Attributes** are key/value pairs stored in a Trace Context and propagated _in-band_ to all future child Spans. Given a full-stack OpenTracing integration, Trace Attributes enable powerful functionality by transparently propagating arbitrary application data: e.g., from a mobile app all the way into the depths of a storage system. Trace attributes come with powerful _costs_ as well; since the attributes are propagated in-band, if they are too large they can reduce system throughput or contribute to RPC latency. Use Trace Attributes with care.
+**Trace Attributes** are key/value pairs stored in a Trace Context and propagated _in-band_ to all future child Spans. Given a full-stack OpenTracing integration, Trace Attributes enable powerful functionality by transparently propagating arbitrary application data: for example, an end-user id may be added as a trace attribute in a mobile app, propagate (via the distributed tracing machinery) into the depths of a storage system, and recovered at the bottom of the stack to identify a particularly expensive SQL query.
+
+Trace Attributes come with powerful _costs_ as well; since the attributes are propagated in-band, if they are too large or too numerous they may reduce system throughput or contribute to RPC latency.
 
 **Trace Attributes** vs. **Span Tags**
 
-* Trace Attributes are propagated in-band across process boundaries. Span Tags are not propagated.
-* Span Tags are recorded off-band in the tracing system's storage. Trace Attributes are not recorded.
+* Trace Attributes are propagated in-band (i.e., alongside the actual application data) across process boundaries. Span Tags are not propagated since they are not inherited from parent Span to child Span.
+* Span Tags are recorded out-of-band from the application data, presumably in the tracing system's storage. Trace Attributes are not necessarily recorded here, though an implementation may elect to.
 
 ## Platform-Independent API Semantics
 
@@ -31,8 +68,8 @@ OpenTracing supports a number of different platforms, and of course the per-plat
 The `Tracer` interface must have the following capabilities:
 
 - Start a `Span` that has no parent **(py: `start_trace`, go: `StartTrace`)**
-- Start a `Span` given a parent `TraceContext` **(py: `join_trace`, go: `JoinTrace`)**
-- Start a `Span` associated with a specific `TraceContext` **(py: `start_span_with_context`, go: `StartSpanWithContext`)**
+- Start a `Span` as a descendant of a parent `TraceContext` **(py: `join_trace`, go: `JoinTrace`)**
+- Start a `Span` explicitly built around a specific `TraceContext` **(py: `Span(trace_context)`, go: `StartSpanWithContext`)**
 
 
 #### Span
@@ -49,21 +86,34 @@ The `Span` interface must have the following capabilities:
 
 #### TraceContext
 
-Every `TraceContext` must provide access to "trace attributes". A **trace attribute** is a key:value pair associated with a TraceContext **that also propagates to future TraceContext children** per TraceContext.NewChild, and that propagates across process boundaries in-band with application data.
+Every `TraceContext` must provide access to the "trace attributes". A **trace attribute** is a key:value pair associated with a TraceContext **that also propagates to future TraceContext children**, and that propagates across process boundaries in-band with the application data. (See the discussion of trace attributes in the "Concepts and Terminology" section above)
 
-Trace attributes are powerful, especially given an OpenTracing integration that extends across many layers in a distributed stack. For example, arbitrary application data from a mobile app can travel, transparently, all the way into the depths of a storage system). These powerful capabilities come with some powerful costs: use this feature with care.
-
-Also, trace attribute keys have a restricted format: implementations may wish to use them as HTTP header keys (or key suffixes), and of course HTTP headers are case insensitive.
-
-As such, trace attribute keys MUST match the regular expression `(?i:[a-z0-9][-a-z0-9]*)`, and – per the `?i:` – they are case-insensitive.  That is, the trace attribute key must start with a letter or number, and the remaining characters must be letters, numbers, or hyphens. See CanonicalizeTraceAttributeKey(). If a trace attribute key does not meet these criteria, SetTraceAttribute() results in undefined behavior.
+Also, trace attribute keys have a restricted format: implementations may wish to use them as HTTP header keys (or key suffixes), and of course HTTP headers are case insensitive. As such, trace attribute keys MUST match the regular expression `(?i:[a-z0-9][-a-z0-9]*)`, and – per the `?i:` – they are case-insensitive. That is, the trace attribute key must start with a letter or number, and the remaining characters must be letters, numbers, or hyphens.
 
 In any case, the programmatic `TraceContext` interface is deceptively simple:
 
-- Set a trace attribute, which is a simple string:string pair. Note that newly-set trace attributes are only guaranteed to propagate to *future* children of the `TraceContext` and/or its associated `Span`. **(py: `set_trace_attribute`, go: `SetTraceAttribute`)**
+- Set a trace attribute, which is a simple string:string pair. Note that newly-set trace attributes are only guaranteed to propagate to *future* children of the `Span` built around the given `TraceContext`. See the diagram below. **(py: `set_trace_attribute`, go: `SetTraceAttribute`)**
 - Get a trace attribute by key. **(py: `get_trace_attribute`, go: `TraceAttribute`)**
 
+```
+        [Span A]
+            |
+     +------+------+
+     |             |
+ [Span B]      [Span C]  <-- (1) ATTRIBUTE "X" IS SET ON SPAN C'S
+     |             |             TRACECONTEXT, BUT AFTER SPAN E
+ [Span D]      +---+-----+       ALREADY STARTED.
+               |         |
+           [Span E]  [Span F]   <-- (2) ATTRIBUTE "X" IS AVAILABLE
+                         |              FOR RETRIEVAL BY SPAN F (A
+                +--------+--------+     CHILD OF SPAN C), AS WELL
+                |        |        |     AS SPANS G, H, AND I.
+            [Span G] [Span H] [Span I]
+```
 
 #### TraceContextSource, TraceContextEncoder, TraceContextDecoder
+
+A complete `Tracer` implementation must also satisfy the requirements of the `TraceContextSource`, `TraceContextEncoder`, and `TraceContextDecoder` interfaces.
 
 Implementations create `TraceContext` instances via a `TraceContextSource` interface; it must have the following capabilities:
 
@@ -72,6 +122,8 @@ Implementations create `TraceContext` instances via a `TraceContextSource` inter
 
 
 Additionally, a `TraceContextSource` must be able to encode and decode `TraceContext`s. In its encoded form, a `TraceContext` is separated into a *pair* of values: one represents the "span identity" – for example, in Zipkin or Dapper, this would be the `trace_id` and `span_id`; and the other encoded value represents the trace attributes. This separation of encoded state enables optimizations in certain binary protocols.
+
+Note that there is no expectation that different tracing systems encode a `TraceContext` in compatible ways. Though OpenTracing is agnostic about the tracing implementation, for successful inter-process handoff it's essential that the processes on both sides use the same tracing implementation.
 
 Depending on the language, support for `TraceContext` coding may involve extending or embedding `TraceContextEncoder` and `TraceContextDecoder` interfaces with the following capabilities:
 
