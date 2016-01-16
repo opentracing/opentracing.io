@@ -76,7 +76,7 @@ The `Tracer` interface must have the following capabilities:
 
 The `Span` interface must have the following capabilities:
 
-- Create and start a new child `Span` with a given operation name **(py: `start_child`, go: `StartChild`)**
+- Create and start a new child `Span` with a given operation name. The child `Span`'s `TraceContext` must descend from the parent `Span`'s `TraceContext`, and any trace attributes must propagate through into the child's `TraceContext`. **(py: `start_child`, go: `StartChild`)**
 - Finish the (already-started) `Span`.  Finish should be the last call made to any span instance, and to do otherwise leads to undefined behavior. **(py: `finish`, go: `Finish`)**
 - Set a key:value tag on the `Span`. The key must be a `string`, and the value must be either a `string`, a `boolean`, or a numeric type. Behavior for other value types is undefined. If multiple values are set to the same key (i.e., in multiple calls), implementation behavior is also undefined. **(py: `set_tag`, go: `SetTag`)**
 - Add a new info `Log` to the `Span`, accepting a message `string` and 0 or more payload arguments. The payload arguments may be of any type and arbitrary size, though implementations are not required to retain all payload arguments (or even all parts of all payload arguments). **(py: `info`, go: `Info`)**
