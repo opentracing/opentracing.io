@@ -48,9 +48,9 @@ Every Span has zero or more **Logs**, each of which being a timestamped message 
 
 Every Span may also have zero or more key/value **Tags**, which do not have timestamps and simply annotate the spans.
 
-A **Trace Context** encapsulates the smallest amount of state needed to continue a trace across a process boundary (or, more generally, a serialization boundary). Put another way, a Span cannot be identified without a Trace Context, but a Trace Context can be (and is) serialized without a Span: Spans are identified by their Trace Context and add application-level instrumentation (logs, timing information, tags). Note that, in order to support *Trace Attributes* (see below) that propagate across a distributed trace transparently, those attributes must be represented by/within the Trace Context.
+Every Span is bound to a **Trace Context**. The Trace Context describes how the Span it's bound to fits in to the larger Trace. A Trace Context encapsulates the smallest amount of state needed to continue a Trace across a process boundary (or, more generally, a serialization boundary). Put another way, a Span cannot exist without a Trace Context, but a Trace Context can be (and is) serialized without a Span: Spans are built around their Trace Context and concern themselves with application-level instrumentation (logs, timing information, tags). Note that, in order to support *Trace Attributes* (see below) that propagate across a distributed Trace transparently, those attributes must be represented by/within the Trace Context.
 
-**Trace Attributes** are key/value pairs stored in a Trace Context and propagated _in-band_ to all future child Spans. Given a full-stack OpenTracing integration, Trace Attributes enable powerful functionality by transparently propagating arbitrary application data: for example, an end-user id may be added as a trace attribute in a mobile app, propagate (via the distributed tracing machinery) into the depths of a storage system, and recovered at the bottom of the stack to identify a particularly expensive SQL query.
+**Trace Attributes** are key/value pairs stored in a Trace Context and propagated _in-band_ to all future child Spans. Given a full-stack OpenTracing integration, Trace Attributes enable powerful functionality by transparently propagating arbitrary application data: for example, an end-user id may be added as a Trace Attribute in a mobile app, propagate (via the distributed tracing machinery) into the depths of a storage system, and recovered at the bottom of the stack to identify a particularly expensive SQL query.
 
 Trace Attributes come with powerful _costs_ as well; since the attributes are propagated in-band, if they are too large or too numerous they may reduce system throughput or contribute to RPC latency.
 
@@ -67,7 +67,7 @@ OpenTracing supports a number of different platforms, and of course the per-plat
 
 The `Tracer` interface must have the following capabilities:
 
-- Start a `Span` that has no parent **(py: `start_trace`, go: `StartTrace`)**
+- Start a `Span` that has no parent, commonly referred to as a *root* `Span` **(py: `start_trace`, go: `StartTrace`)**
 - Start a `Span` as a descendant of a parent `TraceContext` **(py: `join_trace`, go: `JoinTrace`)**
 - Start a `Span` explicitly built around a specific `TraceContext` **(py: `Span(trace_context)`, go: `StartSpanWithContext`)**
 
@@ -121,13 +121,15 @@ Implementations create `TraceContext` instances via a `TraceContextSource` inter
 - Create a new child `TraceContext` given a parent `TraceContext`. **(py: `new_child_trace_context`, go: `NewChildTraceContext`)**
 
 
-Additionally, a `TraceContextSource` must be able to encode and decode `TraceContext`s. In its encoded form, a `TraceContext` is separated into a *pair* of values: one represents the "span identity" – for example, in Zipkin or Dapper, this would be the `trace_id` and `span_id`; and the other encoded value represents the trace attributes. This separation of encoded state enables optimizations in certain binary protocols.
+Additionally, a `TraceContextSource` must be able to encode and decode `TraceContext`s. In its encoded form, a `TraceContext` is separated into a *pair* of values: one represents the "span identity" – for example, in Zipkin or Dapper, this would be the `trace_id` and `span_id`; and the other encoded value represents the trace attributes. This separation of encoded state enables optimizations in certain binary protocols. For instance, if a particular `TraceContext` has a fixed number of fixed-length "span identity" fields, then the span identity can be encoded into a fixed-length buffer (while of course the trace attributes cannot).
 
 Note that there is no expectation that different tracing systems encode a `TraceContext` in compatible ways. Though OpenTracing is agnostic about the tracing implementation, for successful inter-process handoff it's essential that the processes on both sides use the same tracing implementation.
 
 Depending on the language, support for `TraceContext` coding may involve extending or embedding `TraceContextEncoder` and `TraceContextDecoder` interfaces with the following capabilities:
 
+Encoding and decoding may involve either **"binary"** or **"text"** formats. The "binary" format is an implementation-specific byte array (as opposed to a unicode/utf8 string); it is opaque at the OpenTracing level. The "text" format is a platform-idiomatic map from (unicode) `string` to `string`.
+
 - Encoding a `TraceContext` as a pair of binary values **(py: `trace_context_to_binary`, go: `TraceContextToBinary`)**
-- Encoding a `TraceContext` as a pair of text-encoded `string->string` maps, where the keys are suitable for HTTP heders (see the notes about "trace attribute" keys above) **(py: `trace_context_to_text`, go: `TraceContextToText`)**
+- Encoding a `TraceContext` as a pair of text-encoded `string->string` maps, where the keys are suitable for HTTP headers (see the notes about "trace attribute" keys above) **(py: `trace_context_to_text`, go: `TraceContextToText`)**
 - Decoding a `TraceContext` given a pair of binary values **(py: `trace_context_from_binary`, go: `TraceContextFromBinary`)**
 - Decoding a `TraceContext` given a pair of textual `string->string` maps **(py: `trace_context_from_text`, go: `TraceContextFromText`)**
