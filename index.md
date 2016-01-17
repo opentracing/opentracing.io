@@ -13,13 +13,14 @@ Contemporary distributed tracing systems (e.g., Zipkin, Dapper, HTrace, X-Trace,
 
 ## Why OpenTracing?
 
-Enter **OpenTracing**: by offering a single straightforward, general, well-thought-out instrumenation library for popular platforms, a developer can add (or switch) tracing implementations with an `O(1)` configuration change. OpenTracing also offers a lingua franca for OSS instrumentation and platform-specific tracing helper libraries.
+Enter **OpenTracing**: by offering a single straightforward, general, well-thought-out instrumenation library for popular platforms, a developer can add (or switch) tracing implementations with an `O(1)` configuration change. OpenTracing also offers a lingua franca for OSS instrumentation and platform-specific tracing helper libraries.  Please refer to
+[Semantic Specification]({{ baseurl }}spec).
 
 ### Language Support
 
 The OpenTracing project aims to provide APIs for all popular platforms. The APIs have standard semantic capabilities and must not be tightly coupled to any particular downstream tracing or monitoring system. Initial target languages are Go, Python, Java, and Javascript, with more to follow.
 
-Please refer to the [APIs]({{ baseurl }}apis) page for the list of currently supported platforms.
+Please refer to the [Per-Platform APIs]({{ baseurl }}apis) page for the list of currently supported platforms.
 
 ## Support or Contact
 * Open an issue against one of the repositories, or
