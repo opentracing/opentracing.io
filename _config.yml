@@ -1,8 +1,8 @@
 # Content
 pages_list:       
   "Home": '/'
-  "Per-Platform APIs": '/apis'
   "Semantic Specification": '/spec'
+  "Per-Platform APIs": '/apis'
   "Implementing OpenTracing": '/implementors'
   "Contributors": '/contributors'
 

@@ -4,8 +4,8 @@ title: Per-Platform APIs
 ---
 OpenTracing APIs are available for the following platforms:
 
-* Golang - https://github.com/opentracing/api-golang
-* Python - https://github.com/opentracing/api-python
+* Golang - https://github.com/opentracing/opentracing-go
+* Python - https://github.com/opentracing/opentracing-python
 
 Please refer to the README files in the respective projects for examples of usage.
 
