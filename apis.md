@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Platform APIs
+title: Per-Platform APIs
 ---
 OpenTracing APIs are available for the following platforms:
 

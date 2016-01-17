@@ -1,9 +1,10 @@
 # Content
 pages_list:       
-  Home: '/'
-  "Platform APIs": '/apis'
-  Terminology: '/terminology'
-  Contributors: '/contributors'
+  "Home": '/'
+  "Per-Platform APIs": '/apis'
+  "Semantic Specification": '/spec'
+  "Implementing OpenTracing": '/implementors'
+  "Contributors": '/contributors'
 
 # Dependencies
 markdown:         redcarpet
@@ -28,8 +29,8 @@ permalink:        pretty
 
 # Setup
 title:            The OpenTracing Project
-tagline:          'Consistent and expressive APIs for distributed tracing and context propagation'
-description:      'Consistent and expressive APIs for distributed tracing and context propagation'
+tagline:          'Consistent, expressive, vendor-neutral APIs for distributed tracing and context propagation'
+description:      'Consistent, expressive, vendor-neutral APIs for distributed tracing and context propagation'
 url:              http://opentracing.io
 baseurl:          /
 
