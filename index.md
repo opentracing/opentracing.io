@@ -13,8 +13,7 @@ Contemporary distributed tracing systems (e.g., Zipkin, Dapper, HTrace, X-Trace,
 
 ## Why OpenTracing?
 
-Enter **OpenTracing**: by offering a single straightforward, general, well-thought-out instrumenation library for popular platforms, a developer can add (or switch) tracing implementations with an `O(1)` configuration change. OpenTracing also offers a lingua franca for OSS instrumentation and platform-specific tracing helper libraries.  Please refer to
-[Semantic Specification]({{ baseurl }}spec).
+Enter **OpenTracing**: by offering a single straightforward, general, well-thought-out instrumentation library for popular platforms, a developer can add (or switch) tracing implementations with an `O(1)` configuration change. OpenTracing also offers a lingua franca for OSS instrumentation and platform-specific tracing helper libraries.  Please refer to the [Semantic Specification]({{ baseurl }}spec).
 
 ### Language Support
 
