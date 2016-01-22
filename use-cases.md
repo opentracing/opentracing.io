@@ -129,6 +129,12 @@ We have already used `log_event_with_payload` in the client span use case. Event
     span.log_event('cache-miss') 
 ```
 
+The tracer automatically records a timestamp of the event, in contrast with tags that apply to the entire span. In the future versions of the API it will be possible to associate an externally provided timestamp with the event, e.g. see [pull request #38](https://github.com/opentracing/opentracing-go/pull/38).
+
+### Recording Spans With External Timestamps
+
+There are scenarios when it is impractical to incorporate an OpenTracing compatible tracer into a service, for various reasons. For example, a user may have a log file of what's essentially span data coming from a black-box process (e.g. HAProxy). In order to get the data into an OpenTracing-compatible system, the API needs a way to record spans with extrenally captured timestamps. The current version of API does not have that capability: see [issue #20](https://github.com/opentracing/opentracing.github.io/issues/20).
+
 ### Setting "Debug" Mode
 
 Most tracing systems apply sampling to minimize the amount of trace data sent to the system.  Sometimes developers want to have a way to ensure that a particular trace is going to be recorded (sampled) by the tracing system, e.g. by including a special parameter in the HTTP request, like `debug=true`. The OpenTracing API does not have any insight into sampling techniques used by the implementation, so there is no explicit API to force it. However, the implementations are advised to recognized the `debug` Trace Attribute and take measures to record the span. In order to pass this attribute to tracing systems that rely on pre-trace sampling, the following approach can be used:
