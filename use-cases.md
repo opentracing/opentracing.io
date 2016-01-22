@@ -8,11 +8,12 @@ This page aims to illustrate the common use cases that developers who instrument
 
 ### Tracing Server Endpoints
 
-When a server receives a request and needs to start tracing, it generally needs to go through three steps:
+When a server wants to trace execution of a request, it generally needs to go through these steps:
 
   1. Attempt to deserialize Trace Context from the incoming request, in case the trace has already been started by the client.
   1. Depending on the outcome, either start a new trace, or join the existing trace using deserialized Trace Context. This operation starts a new Span.
   1. Store the newly created span in some _request context_ that is propagated throughout the application, either by application code, or by the RPC framework.
+  1. Finally, close the span using `span.finish()` when the server has finished processing the request.
 
 #### Deserializing Trace Conext from Incoming Request
 
