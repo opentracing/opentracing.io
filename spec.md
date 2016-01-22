@@ -2,6 +2,7 @@
 layout: page
 title: Semantic Specification
 ---
+<div id="toc"></div>
 
 ## Concepts and Terminology
 
@@ -63,7 +64,7 @@ Trace Attributes come with powerful _costs_ as well; since the attributes are pr
 
 OpenTracing supports a number of different platforms, and of course the per-platform APIs try to blend in to their surroundings and do as the Romans do. That said, each platform API must model a common set of semantics for the core tracing concepts described above. In this document we attempt to describe those concepts and semantics in a language- and platform-agnostic fashion.
 
-#### Tracer
+### Tracer
 
 The `Tracer` interface must have the following capabilities:
 
@@ -72,7 +73,7 @@ The `Tracer` interface must have the following capabilities:
 - Start a `Span` explicitly built around a specific `TraceContext` **(py: `Span(trace_context)`, go: `StartSpanWithContext`)**
 
 
-#### Span
+### Span
 
 The `Span` interface must have the following capabilities:
 
@@ -84,7 +85,7 @@ The `Span` interface must have the following capabilities:
 - Access the `TraceContext` associated with the `Span`. **(py: `trace_context`, go: `TraceContext()`)**
 
 
-#### TraceContext
+### TraceContext
 
 Every `TraceContext` must provide access to the "trace attributes". A **trace attribute** is a key:value pair associated with a TraceContext **that also propagates to future TraceContext children**, and that propagates across process boundaries in-band with the application data. (See the discussion of trace attributes in the "Concepts and Terminology" section above)
 
@@ -111,7 +112,7 @@ In any case, the programmatic `TraceContext` interface is deceptively simple:
             [Span G] [Span H] [Span I]
 ```
 
-#### TraceContextSource, TraceContextEncoder, TraceContextDecoder
+### TraceContextSource, TraceContextEncoder, TraceContextDecoder
 
 A complete `Tracer` implementation must also satisfy the requirements of the `TraceContextSource`, `TraceContextEncoder`, and `TraceContextDecoder` interfaces.
 
