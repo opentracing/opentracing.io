@@ -120,8 +120,9 @@ Implementations create `TraceContext` instances via a `TraceContextSource` inter
 - Create a new parent-less ("root") `TraceContext`. **(py: `new_root_trace_context`, go: `NewRootTraceContext`)**
 - Create a new child `TraceContext` given a parent `TraceContext`. **(py: `new_child_trace_context`, go: `NewChildTraceContext`)**
 
+Additionally, a `TraceContextSource` must be able to encode and decode `TraceContext`s. These interfaces are exposed so that reusable libraries and middleware can transport trace information opaquely without binding to the implementation details of any specific tracing system.
 
-Additionally, a `TraceContextSource` must be able to encode and decode `TraceContext`s. In its encoded form, a `TraceContext` is separated into a *pair* of values: one represents the "span identity" – for example, in Zipkin or Dapper, this would be the `trace_id` and `span_id`; and the other encoded value represents the trace attributes. This separation of encoded state enables optimizations in certain binary protocols. For instance, if a particular `TraceContext` has a fixed number of fixed-length "span identity" fields, then the span identity can be encoded into a fixed-length buffer (while of course the trace attributes cannot).
+In its encoded form, a `TraceContext` is separated into a *pair* of values: one represents the "span identity" – for example, in Zipkin or Dapper, this would be the `trace_id` and `span_id`; and the other encoded value represents the trace attributes. This separation of encoded state enables optimizations in certain binary protocols. For instance, if a particular `TraceContext` has a fixed number of fixed-length "span identity" fields, then the span identity can be encoded into a fixed-length buffer (while of course the trace attributes cannot).
 
 Note that there is no expectation that different tracing systems encode a `TraceContext` in compatible ways. Though OpenTracing is agnostic about the tracing implementation, for successful inter-process handoff it's essential that the processes on both sides use the same tracing implementation.
 
