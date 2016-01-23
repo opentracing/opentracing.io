@@ -3,6 +3,7 @@ pages_list:
   "Home": '/'
   "Semantic Specification": '/spec'
   "Per-Platform APIs": '/apis'
+  "Instrumentation Use Cases": '/use-cases'
   "Implementing OpenTracing": '/implementors'
   "Contributors": '/contributors'
 
