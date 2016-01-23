@@ -4,7 +4,41 @@ title: Instrumentation for Common Use Cases
 ---
 <div id="toc"></div>
 
-This page aims to illustrate the common use cases that developers who instrument their applications with OpenTracing API need to deal with.
+This page aims to illustrate common use cases that developers who instrument their applications and libraries with OpenTracing API need to deal with.
+
+### Tracing a Function
+
+```python
+    def top_level_function():
+        span1 = tracer.start_trace('top_level_function')
+        try:
+            . . . # business logic
+        finally:
+            span1.finish()
+```
+
+As a follow-up, suppose that as part of the business logic above we call another `function2` that we also want to trace. In order to attach that function to the ongoing trace, we need a way to access `span1`. We discuss how it can be done later, for now let's assume we have a helper function `get_current_span` for that:
+
+```python
+    def function2():
+        span2 = get_current_span().start_child('function2') \
+            if get_current_span() else None
+        try:
+            . . . # business logic
+        finally:
+            if span2:
+                span2.finish()
+```
+
+We assume that for whatever reason develper does not want to start a new trace in this function if one hasn't been started by the caller already, so we account for `get_current_span` potentially returning `None`.
+
+These two examples are intentionally naive. Usually developers will not want to pollute their business functions directly with tracing code, but use other means like a [function decorator in Python](https://github.com/uber-common/opentracing-python-instrumentation/blob/master/opentracing_instrumentation/local_span.py#L59):
+
+```python
+    @traced_function
+    def top_level_function():
+        ... # business logic
+```
 
 ### Tracing Server Endpoints
 
@@ -26,7 +60,7 @@ Let's assume that we have an HTTP server, and the Trace Context is propagated fr
     )
 ```
 
-Here we set both arguments of the decoding method to the `headers` map. The Tracer object will have the knowledge which headers it needs to read in order to reconstruct Trace Context, which is comprised of a trace context ID and trace attributes.
+Here we set both arguments of the decoding method to the `headers` map. The Tracer object knows which headers it needs to read in order to reconstruct Trace Context, which comprises a trace context ID and trace attributes.
 
 #### Starting a Server-Side Span
 
