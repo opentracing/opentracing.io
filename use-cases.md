@@ -44,12 +44,12 @@ These two examples are intentionally naive. Usually developers will not want to 
 
 When a server wants to trace execution of a request, it generally needs to go through these steps:
 
-  1. Attempt to deserialize Trace Context from the incoming request, in case the trace has already been started by the client.
-  1. Depending on the outcome, either start a new trace, or join the existing trace using deserialized Trace Context. This operation starts a new Span.
+  1. Attempt to decode Trace Context from the incoming request, in case the trace has already been started by the client.
+  1. Depending on the outcome, either start a new trace, or join the existing trace using decoded Trace Context. This operation starts a new Span.
   1. Store the newly created span in some _request context_ that is propagated throughout the application, either by application code, or by the RPC framework.
   1. Finally, close the span using `span.finish()` when the server has finished processing the request.
 
-#### Deserializing Trace Conext from Incoming Request
+#### Decoding Trace Context from Incoming Request
 
 Let's assume that we have an HTTP server, and the Trace Context is propagated from the client via HTTP headers, accessible via `request.headers`:
 
@@ -120,7 +120,7 @@ The downside of explicit context propagation is that it leaks what could be cons
 
 ### Tracing Client Calls
 
-When an application acts as an RPC client, it is expected to start a new tracing Span before making an outgoing request, and serialize the new span's Trace Context into that request. The following example shows how it can be done for an HTTP request. 
+When an application acts as an RPC client, it is expected to start a new tracing Span before making an outgoing request, and encode the new span's Trace Context into that request. The following example shows how it can be done for an HTTP request. 
 
 ```python
     def traced_request(request, operation, http_client):
