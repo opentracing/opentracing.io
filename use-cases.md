@@ -84,10 +84,39 @@ The `set_tag` calls are examples of recording additional information in the span
 
 Request context propagation refers to application's ability to associate a certain _context_ with the incoming request such that this context is accessible in all other layers of the application within the same process. It can be used to provide application layers with access to request-specific values such as the identity of the end user, authorization tokens, and the request's deadline. It can also be used for transporting the current tracing Span.
 
-The methods of request context propagation are outside the scope of the OpenTracing API, but it is worth mentioning them here to better understand the following sections. There are two commonly used methods of propagation:
+Implementation of request context propagation is outside the scope of the OpenTracing API, but it is worth mentioning them here to better understand the following sections. There are two commonly used techniques of context propagation:
 
-  1. Explicit propagation - the application code is structured to pass around a certain context object. For example, see https://blog.golang.org/context.
-  1. Implicit propagation - the context is stored in platform-specific storage that allows it to be retrieved from any place in the application. Often used by RPC frameworks by utilizing such mechanisms as thread-local or continuation-local storage, or even global variables (in case of single-threaded processes).
+##### Implicit Propagation
+
+In implicit propagation techniques the context is stored in platform-specific storage that allows it to be retrieved from any place in the application. Often used by RPC frameworks by utilizing such mechanisms as thread-local or continuation-local storage, or even global variables (in case of single-threaded processes).
+
+The downside of this approach is that it almost always has a performance penalty, and in platforms like Go that do not support thread-local storage implicit propagation is nearly impossible to implement.
+
+##### Explicit Propagation
+
+In explicit propagation techniques the application code is structured to pass around a certain _context_ object:
+
+```go
+
+    func HandleHttp(w http.ResponseWriter, req *http.Request) {
+        ctx := context.Background()
+        ...
+        BusinessFunction1(ctx, arg1, ...)
+    }
+
+    func BusinessFunction1(ctx context.Context, arg1...) {
+        ...
+        BusinessFunction2(ctx, arg1, ...)
+    }
+
+    func BusinessFunction2(ctx context.Context, arg1...) {
+        span := SpanFromContext(ctx)
+        span.StartChild(...)
+        ...
+    }
+```
+
+The downside of explicit context propagation is that it leaks what could be considered an infrastructure concern into the application code. This [Go blog post](https://blog.golang.org/context) provides an in-depth overview and justification of this approach.
 
 ### Tracing Client Calls
 
@@ -103,7 +132,7 @@ When an application acts as an RPC client, it is expected to start a new tracing
             span = tracer.start_trace(operation_name=operation)
         else:
             span = parent_span.start_child(operation_name=operation)
-        span.set_tag('server.http.url', request.full_url)
+        span.set_tag('http.url', request.full_url)
 
         # encode Trace Context into HTTP request headers
         h_ctx, h_attr = tracer.trace_context_to_text(
@@ -137,7 +166,7 @@ When an application acts as an RPC client, it is expected to start a new tracing
   * The encoding function `trace_context_to_text` returns two maps, one representing the encoding of the trace context identity, the other the trace context attributes. We copy both maps into the HTTP request headers.
   * We assume the HTTP client is asynchronous, so it returns a Future, and we need to add an on-completion callback to be able to finish the current child span.
   * If HTTP client returns a future with exception, we log the exception to the span with `log_event_with_payload` method.
-  * Because the HTTP client may throw an exception even before returning a Future, we use a try/catch block to ensure that we finish the span in all circumstances.
+  * Because the HTTP client may throw an exception even before returning a Future, we use a try/catch block to finish the span in all circumstances, to ensure it is reported and avoid leaking resources.
 
 
 ### Using Distributed Context Propagation
