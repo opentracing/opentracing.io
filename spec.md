@@ -45,7 +45,7 @@ A **Trace** represents the potentially distributed, potentially concurrent data/
 
 A **Span** represents a logical unit of work in the system that has a start time and a duration. Spans may be nested and ordered to model parent-child and casual relationships. Each span has an **operation name**, a presumably human-readable string which concisely names the work done by the span (e.g., an RPC method name, a function name, or the name of a subtask within a larger computation).
 
-Every Span has zero or more **Logs**, each of which being a timestamped message with an optional structured data payload of arbitrary size.
+Every Span has zero or more **Logs**, each of which being a timestamped event name with an optional structured data payload of arbitrary size.
 
 Every Span may also have zero or more key/value **Tags**, which do not have timestamps and simply annotate the spans.
 
@@ -80,8 +80,7 @@ The `Span` interface must have the following capabilities:
 - Create and start a new child `Span` with a given operation name. The child `Span`'s `TraceContext` must descend from the parent `Span`'s `TraceContext`, and any trace attributes must propagate through into the child's `TraceContext`. **(py: `start_child`, go: `StartChild`)**
 - Finish the (already-started) `Span`.  Finish should be the last call made to any span instance, and to do otherwise leads to undefined behavior. **(py: `finish`, go: `Finish`)**
 - Set a key:value tag on the `Span`. The key must be a `string`, and the value must be either a `string`, a `boolean`, or a numeric type. Behavior for other value types is undefined. If multiple values are set to the same key (i.e., in multiple calls), implementation behavior is also undefined. **(py: `set_tag`, go: `SetTag`)**
-- Add a new info `Log` to the `Span`, accepting a message `string` and 0 or more payload arguments. The payload arguments may be of any type and arbitrary size, though implementations are not required to retain all payload arguments (or even all parts of all payload arguments). **(py: `info`, go: `Info`)**
-- Add a new error `Log` to the `Span`; analagous to adding an info log aside from the severity. **(py: `error`, go: `Error`)**
+- Add a new log event to the `Span`, accepting an event name `string` and an optional structured payload argument. If specified, the payload argument may be of any type and arbitrary size, though implementations are not required to retain all payload arguments (or even all parts of all payload arguments). **(py: `log`, go: `Log`)**
 - Access the `TraceContext` associated with the `Span`. **(py: `trace_context`, go: `TraceContext()`)**
 
 
