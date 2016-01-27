@@ -109,7 +109,7 @@ to generate Span instances that are placed appropriately in the overarching Trac
 
 The encoded form of a propagated span is divided into two components:
 
-1. The core identifying information for the Span (for example, in Dapper this would include a `trace_id`, a `span_id`, and a bitmask representing the sampling status for the given trace)
+1. The core identifying information for the Span, referred to as the "context snapshot" (for example, in Dapper this would include a `trace_id`, a `span_id`, and a bitmask representing the sampling status for the given trace)
 1. Any trace attributes (per Span's ability to set trace attributes that propagate across process boundaries)
 
 The encoded data is separated in this way for a variety of reasons; the most important is to give OpenTracing users a portable way to opt out of Trace Attribute propagation entirely if they deem it a stability risk.

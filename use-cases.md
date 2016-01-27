@@ -193,7 +193,7 @@ We have already used `log_event_with_payload` in the client Span use case. Event
     span.log_event('cache-miss') 
 ```
 
-The tracer automatically records a timestamp of the event, in contrast with tags that apply to the entire Span. In the future versions of the API it will be possible to associate an externally provided timestamp with the event, e.g. see [pull request #38](https://github.com/opentracing/opentracing-go/pull/38).
+The tracer automatically records a timestamp of the event, in contrast with tags that apply to the entire Span. It is also possible to associate an externally provided timestamp with the event, e.g. see [Log (Go)](https://github.com/opentracing/opentracing-go/blob/ca5c92cf/span.go#L53).
 
 ### Recording Spans With External Timestamps
 
