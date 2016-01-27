@@ -124,7 +124,7 @@ Note that there is no expectation that different tracing systems propagate `Span
 The `SpanPropagator` interface must have the following capabilities:
 - Propagating a Span instance by encoding it as either...
   - a pair of binary values **(py: `propagate_span_as_binary`, go: `PropagateSpanAsBinary`)**, or
-  - a pair of text-encoded `string->string` maps, where the keys are suitable for use in HTTP headers (see the notes about "trace attribute" keys above) **(py: `propagate_span_as_text`, go: `PropagateSpanAsText`)**
+  - a pair of unicode `string->string` maps, where the keys are suitable for use in HTTP headers (see the notes about "trace attribute" keys above) **(py: `propagate_span_as_text`, go: `PropagateSpanAsText`)**
 - Returning a new Span instance that joins to a Span previously propagated via either...
   - a pair of binary values **(py: `join_trace_from_binary`, go: `JoinTraceFromBinary`)**, or
-  - a pair of `string->string` maps **(py: `join_trace_from_text`, go: `JoinTraceFromText`)**
+  - a pair of unicode `string->string` maps **(py: `join_trace_from_text`, go: `JoinTraceFromText`)**
