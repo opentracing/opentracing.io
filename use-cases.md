@@ -30,7 +30,7 @@ As a follow-up, suppose that as part of the business logic above we call another
                 span2.finish()
 ```
 
-We assume that for whatever reason develper does not want to start a new trace in this function if one hasn't been started by the caller already, so we account for `get_current_span` potentially returning `None`.
+We assume that, for whatever reason, the developer does not want to start a new trace in this function if one hasn't been started by the caller already, so we account for `get_current_span` potentially returning `None`.
 
 These two examples are intentionally naive. Usually developers will not want to pollute their business functions directly with tracing code, but use other means like a [function decorator in Python](https://github.com/uber-common/opentracing-python-instrumentation/blob/master/opentracing_instrumentation/local_span.py#L59):
 
@@ -44,41 +44,43 @@ These two examples are intentionally naive. Usually developers will not want to 
 
 When a server wants to trace execution of a request, it generally needs to go through these steps:
 
-  1. Attempt to decode Trace Context from the incoming request, in case the trace has already been started by the client.
-  1. Depending on the outcome, either start a new trace, or join the existing trace using decoded Trace Context. This operation starts a new Span.
-  1. Store the newly created span in some _request context_ that is propagated throughout the application, either by application code, or by the RPC framework.
-  1. Finally, close the span using `span.finish()` when the server has finished processing the request.
+  1. Attempt to join an existing trace given a Span that's been propagated alongside the incoming request (in case the trace has already been started by the client), or create a new trace if no such propagated Span could be found.
+  1. Store the newly created Span in some _request context_ that is propagated throughout the application, either by application code, or by the RPC framework.
+  1. Finally, close the Span using `span.finish()` when the server has finished processing the request.
 
-#### Decoding Trace Context from Incoming Request
+#### Joining to a Trace from an Incoming Request
 
-Let's assume that we have an HTTP server, and the Trace Context is propagated from the client via HTTP headers, accessible via `request.headers`:
+Let's assume that we have an HTTP server, and the Span is propagated from the client via HTTP headers, accessible via `request.headers`:
 
 ```python
-    context = tracer.trace_context_from_text(
-        trace_context_id=request.headers,
+    span = tracer.join_trace_from_text(
+        operation_name=operation,
+        context_snapshot=request.headers,
         trace_attributes=request.headers
     )
 ```
 
-Here we set both arguments of the decoding method to the `headers` map. The Tracer object knows which headers it needs to read in order to reconstruct Trace Context, which comprises a trace context ID and trace attributes.
+Here we set both arguments of the decoding method to the `headers` map. The Tracer object knows which headers it needs to read in order to reconstruct the context snapshot and any Trace Attributes.
 
-#### Starting a Server-Side Span
+The `operation` above refers to the name the server wants to give to the Span. For example, if the HTTP request was a POST against `/save_user/123`, the operation name can be set to `post:/save_user/`. OpenTracing API does not dictate how applications name the spans.
 
-The `context` object above can be `None`, if the Tracer did not find relevant headers in the incoming request, either because the client did not send them, or maybe the client is running with a different tracer implementation (e.g. Zipkin vs. AppDash). In this case the server needs to start a brand new trace, otherwise it should join the existing trace:
+#### Joining to or Starting a Trace from an Incoming Request
+
+The `span` object above can be `None` if the Tracer did not find relevant headers in the incoming request: presumably because the client did not send them. In this case the server needs to start a brand new trace.
 
 ```python
-    if context is None:
+    span = tracer.join_trace_from_text(
+        operation_name=operation,
+        context_snapshot=request.headers,
+        trace_attributes=request.headers
+    )
+    if span is None:
         span = tracer.start_trace(operation_name=operation)
-    else:
-        span = tracer.join_trace(operation_name=operation,
-                                 parent_trace_context=context)
     span.set_tag('http.method', request.method)
     span.set_tag('http.url', request.full_url)
 ```
 
-The `operation` above refers to the name the server wants to give to the Span. For example, if the HTTP request was a POST against `/save_user/123`, the operation name can be set to `post:/save_user/`. OpenTracing API does not dictate how application calls the spans.
-
-The `set_tag` calls are examples of recording additional information in the span about the request.
+The `set_tag` calls are examples of recording additional information in the Span about the request.
 
 #### In-Process Request Context Propagation
 
@@ -120,7 +122,7 @@ The downside of explicit context propagation is that it leaks what could be cons
 
 ### Tracing Client Calls
 
-When an application acts as an RPC client, it is expected to start a new tracing Span before making an outgoing request, and encode the new span's Trace Context into that request. The following example shows how it can be done for an HTTP request. 
+When an application acts as an RPC client, it is expected to start a new tracing Span before making an outgoing request, and propagate the new Span along with that request. The following example shows how it can be done for an HTTP request. 
 
 ```python
     def traced_request(request, operation, http_client):
@@ -134,9 +136,8 @@ When an application acts as an RPC client, it is expected to start a new tracing
             span = parent_span.start_child(operation_name=operation)
         span.set_tag('http.url', request.full_url)
 
-        # encode Trace Context into HTTP request headers
-        h_ctx, h_attr = tracer.trace_context_to_text(
-            trace_context=span.trace_context)
+        # Propagate the Span via HTTP request headers
+        h_ctx, h_attr = tracer.propagate_span_as_text(span)
 
         for key, value in h_ctx.iteritems():
             request.add_header(key, value)
@@ -162,29 +163,29 @@ When an application acts as an RPC client, it is expected to start a new tracing
             raise
 ```
 
-  * The `get_current_span()` function is not a part of the OpenTracing API. It is meant to represent some util method of retrieving the current span from the current request context propagated implicitly (as is often the case in Python).
-  * The encoding function `trace_context_to_text` returns two maps, one representing the encoding of the trace context identity, the other the trace context attributes. We copy both maps into the HTTP request headers.
-  * We assume the HTTP client is asynchronous, so it returns a Future, and we need to add an on-completion callback to be able to finish the current child span.
-  * If HTTP client returns a future with exception, we log the exception to the span with `log_event_with_payload` method.
-  * Because the HTTP client may throw an exception even before returning a Future, we use a try/catch block to finish the span in all circumstances, to ensure it is reported and avoid leaking resources.
+  * The `get_current_span()` function is not a part of the OpenTracing API. It is meant to represent some util method of retrieving the current Span from the current request context propagated implicitly (as is often the case in Python).
+  * The encoding function `propagate_span_as_text` returns two maps, one representing a snapshot of the Span's context, and the other the Trace Attributes. We copy both maps into the HTTP request headers.
+  * We assume the HTTP client is asynchronous, so it returns a Future, and we need to add an on-completion callback to be able to finish the current child Span.
+  * If the HTTP client returns a future with exception, we log the exception to the Span with `log_event_with_payload` method.
+  * Because the HTTP client may throw an exception even before returning a Future, we use a try/catch block to finish the Span in all circumstances, to ensure it is reported and avoid leaking resources.
 
 
 ### Using Distributed Context Propagation
 
-The client and server examples above took care of propagating Trace Context on the wire, which includes any Trace Attributes.  The client may use the Trace Attributes to pass additional data to the server and any other downstream server it might call.
+The client and server examples above propagated the Span/Trace over the wire, including any Trace Attributes. The client may use the Trace Attributes to pass additional data to the server and any other downstream server it might call.
 
 ```python
 
     # client side
-    span.trace_context.set_attribute('auth-token', '.....')
+    span.set_trace_attribute('auth-token', '.....')
 
     # server side (one or more levels down from the client)
-    token = span.trace_context.get_attribute('auth-token')
+    token = span.get_trace_attribute('auth-token')
 ```
 
 ### Logging Events
 
-We have already used `log_event_with_payload` in the client span use case. Events can be logged without a payload, and not just where the span is being created / finished. For example, the application may record a cache miss event in the middle of execution, as long as it can get access to the current span from request context:
+We have already used `log_event_with_payload` in the client Span use case. Events can be logged without a payload, and not just where the Span is being created / finished. For example, the application may record a cache miss event in the middle of execution, as long as it can get access to the current Span from the request context:
 
 ```python
 
@@ -192,22 +193,24 @@ We have already used `log_event_with_payload` in the client span use case. Event
     span.log_event('cache-miss') 
 ```
 
-The tracer automatically records a timestamp of the event, in contrast with tags that apply to the entire span. In the future versions of the API it will be possible to associate an externally provided timestamp with the event, e.g. see [pull request #38](https://github.com/opentracing/opentracing-go/pull/38).
+The tracer automatically records a timestamp of the event, in contrast with tags that apply to the entire Span. It is also possible to associate an externally provided timestamp with the event, e.g. see [Log (Go)](https://github.com/opentracing/opentracing-go/blob/ca5c92cf/span.go#L53).
 
 ### Recording Spans With External Timestamps
 
-There are scenarios when it is impractical to incorporate an OpenTracing compatible tracer into a service, for various reasons. For example, a user may have a log file of what's essentially span data coming from a black-box process (e.g. HAProxy). In order to get the data into an OpenTracing-compatible system, the API needs a way to record spans with extrenally captured timestamps. The current version of API does not have that capability: see [issue #20](https://github.com/opentracing/opentracing.github.io/issues/20).
+There are scenarios when it is impractical to incorporate an OpenTracing compatible tracer into a service, for various reasons. For example, a user may have a log file of what's essentially Span data coming from a black-box process (e.g. HAProxy). In order to get the data into an OpenTracing-compatible system, the API needs a way to record spans with extrenally captured timestamps. The current version of API does not have that capability: see [issue #20](https://github.com/opentracing/opentracing.github.io/issues/20).
 
 ### Setting "Debug" Mode
 
-Most tracing systems apply sampling to minimize the amount of trace data sent to the system.  Sometimes developers want to have a way to ensure that a particular trace is going to be recorded (sampled) by the tracing system, e.g. by including a special parameter in the HTTP request, like `debug=true`. The OpenTracing API does not have any insight into sampling techniques used by the implementation, so there is no explicit API to force it. However, the implementations are advised to recognized the `debug` Trace Attribute and take measures to record the span. In order to pass this attribute to tracing systems that rely on pre-trace sampling, the following approach can be used:
+`XXX: we don't have an API for this anymore.`
 
-```python
-
-    if request.get('debug'):
-        trace_context = tracer.new_root_trace_context()
-        trace_context.set_attribute('debug', True)
-        span = tracer.start_span_with_context(
-            operation_name=operation, 
-            trace_context=trace_context)
-```
+> Most tracing systems apply sampling to minimize the amount of trace data sent to the system.  Sometimes developers want to have a way to ensure that a particular trace is going to be recorded (sampled) by the tracing system, e.g. by including a special parameter in the HTTP request, like `debug=true`. The OpenTracing API does not have any insight into sampling techniques used by the implementation, so there is no explicit API to force it. However, the implementations are advised to recognized the `debug` Trace Attribute and take measures to record the Span. In order to pass this attribute to tracing systems that rely on pre-trace sampling, the following approach can be used:
+> 
+> ```python
+> 
+>     if request.get('debug'):
+>         trace_context = tracer.new_root_trace_context()
+>         trace_context.set_attribute('debug', True)
+>         span = tracer.start_span_with_context(
+>             operation_name=operation, 
+>             trace_context=trace_context)
+> ```
