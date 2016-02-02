@@ -10,7 +10,7 @@ This page aims to illustrate common use cases that developers who instrument the
 
 ```python
     def top_level_function():
-        span1 = tracer.start_trace('top_level_function')
+        span1 = tracer.create_span('top_level_function')
         try:
             . . . # business logic
         finally:
@@ -21,13 +21,13 @@ As a follow-up, suppose that as part of the business logic above we call another
 
 ```python
     def function2():
-        span2 = get_current_span().start_child('function2') \
+        span2 = tracer.start_child('function2', get_current_span()) \
             if get_current_span() else None
         try:
             . . . # business logic
         finally:
             if span2:
-                span2.finish()
+                tracer.finish(span2)
 ```
 
 We assume that, for whatever reason, the developer does not want to start a new trace in this function if one hasn't been started by the caller already, so we account for `get_current_span` potentially returning `None`.
@@ -46,7 +46,7 @@ When a server wants to trace execution of a request, it generally needs to go th
 
   1. Attempt to join an existing trace given a Span that's been propagated alongside the incoming request (in case the trace has already been started by the client), or create a new trace if no such propagated Span could be found.
   1. Store the newly created Span in some _request context_ that is propagated throughout the application, either by application code, or by the RPC framework.
-  1. Finally, close the Span using `span.finish()` when the server has finished processing the request.
+  1. Finally, close the Span using `tracer.finish()` when the server has finished processing the request.
 
 #### Joining to a Trace from an Incoming Request
 
@@ -113,7 +113,7 @@ In explicit propagation techniques the application code is structured to pass ar
 
     func BusinessFunction2(ctx context.Context, arg1...) {
         span := SpanFromContext(ctx)
-        span.StartChild(...)
+        tracer.create_span(..., span)
         ...
     }
 ```
@@ -122,7 +122,7 @@ The downside of explicit context propagation is that it leaks what could be cons
 
 ### Tracing Client Calls
 
-When an application acts as an RPC client, it is expected to start a new tracing Span before making an outgoing request, and propagate the new Span along with that request. The following example shows how it can be done for an HTTP request. 
+When an application acts as an RPC client, it is expected to start a new tracing Span before making an outgoing request, and propagate the new Span along with that request. The following example shows how it can be done for an HTTP request.
 
 ```python
     def traced_request(request, operation, http_client):
@@ -131,9 +131,9 @@ When an application acts as an RPC client, it is expected to start a new tracing
 
         # start a new child span or a brand new trace if no parent
         if parent_span is None:
-            span = tracer.start_trace(operation_name=operation)
+            span = tracer.create_span(operation_name=operation)
         else:
-            span = parent_span.start_child(operation_name=operation)
+            span = tracer.create_span(operation_name=operation, parent_span)
         span.set_tag('http.url', request.full_url)
 
         # Propagate the Span via HTTP request headers
@@ -145,7 +145,7 @@ When an application acts as an RPC client, it is expected to start a new tracing
             for key, value in h_attr.iteritems():
                 request.add_header(key, value)
 
-        # define a callback where we can finish the span 
+        # define a callback where we can finish the span
         def on_done(future):
             if future.exception():
                 span.log_event_with_payload('exception', exception)
@@ -190,7 +190,7 @@ We have already used `log_event_with_payload` in the client Span use case. Event
 ```python
 
     span = get_current_span()
-    span.log_event('cache-miss') 
+    span.log_event('cache-miss')
 ```
 
 The tracer automatically records a timestamp of the event, in contrast with tags that apply to the entire Span. It is also possible to associate an externally provided timestamp with the event, e.g. see [Log (Go)](https://github.com/opentracing/opentracing-go/blob/ca5c92cf/span.go#L53).
@@ -204,13 +204,13 @@ There are scenarios when it is impractical to incorporate an OpenTracing compati
 `TODO: re-introduce an API for this when we tackle explicit Span timestamps.`
 
 > Most tracing systems apply sampling to minimize the amount of trace data sent to the system.  Sometimes developers want to have a way to ensure that a particular trace is going to be recorded (sampled) by the tracing system, e.g. by including a special parameter in the HTTP request, like `debug=true`. The OpenTracing API does not have any insight into sampling techniques used by the implementation, so there is no explicit API to force it. However, the implementations are advised to recognized the `debug` Trace Attribute and take measures to record the Span. In order to pass this attribute to tracing systems that rely on pre-trace sampling, the following approach can be used:
-> 
+>
 > ```python
-> 
+>
 >     if request.get('debug'):
 >         trace_context = tracer.new_root_trace_context()
 >         trace_context.set_attribute('debug', True)
 >         span = tracer.start_span_with_context(
->             operation_name=operation, 
+>             operation_name=operation,
 >             trace_context=trace_context)
 > ```
