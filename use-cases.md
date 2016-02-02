@@ -201,7 +201,7 @@ There are scenarios when it is impractical to incorporate an OpenTracing compati
 
 ### Setting "Debug" Mode
 
-`XXX: we don't have an API for this anymore.`
+`TODO: re-introduce an API for this when we tackle explicit Span timestamps.`
 
 > Most tracing systems apply sampling to minimize the amount of trace data sent to the system.  Sometimes developers want to have a way to ensure that a particular trace is going to be recorded (sampled) by the tracing system, e.g. by including a special parameter in the HTTP request, like `debug=true`. The OpenTracing API does not have any insight into sampling techniques used by the implementation, so there is no explicit API to force it. However, the implementations are advised to recognized the `debug` Trace Attribute and take measures to record the Span. In order to pass this attribute to tracing systems that rely on pre-trace sampling, the following approach can be used:
 > 
