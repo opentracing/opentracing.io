@@ -122,7 +122,7 @@ The downside of explicit context propagation is that it leaks what could be cons
 
 ### Tracing Client Calls
 
-When an application acts as an RPC client, it is expected to start a new tracing Span before making an outgoing request, and propagate the new Span along with that request. The following example shows how it can be done for an HTTP request. 
+When an application acts as an RPC client, it is expected to start a new tracing Span before making an outgoing request, and propagate the new Span along with that request. The following example shows how it can be done for an HTTP request.
 
 ```python
     def traced_request(request, operation, http_client):
@@ -145,7 +145,7 @@ When an application acts as an RPC client, it is expected to start a new tracing
             for key, value in h_attr.iteritems():
                 request.add_header(key, value)
 
-        # define a callback where we can finish the span 
+        # define a callback where we can finish the span
         def on_done(future):
             if future.exception():
                 span.log_event_with_payload('exception', exception)
@@ -180,7 +180,8 @@ The client and server examples above propagated the Span/Trace over the wire, in
     span.set_trace_attribute('auth-token', '.....')
 
     # server side (one or more levels down from the client)
-    token = span.get_trace_attribute('auth-token')
+    h_ctx, h_attr = tracer.propagate_span_as_text(span)
+    token = h_attr.get_trace_attribute('auth-token')
 ```
 
 ### Logging Events
@@ -190,7 +191,7 @@ We have already used `log_event_with_payload` in the client Span use case. Event
 ```python
 
     span = get_current_span()
-    span.log_event('cache-miss') 
+    span.log_event('cache-miss')
 ```
 
 The tracer automatically records a timestamp of the event, in contrast with tags that apply to the entire Span. It is also possible to associate an externally provided timestamp with the event, e.g. see [Log (Go)](https://github.com/opentracing/opentracing-go/blob/ca5c92cf/span.go#L53).
@@ -204,13 +205,13 @@ There are scenarios when it is impractical to incorporate an OpenTracing compati
 `XXX: we don't have an API for this anymore.`
 
 > Most tracing systems apply sampling to minimize the amount of trace data sent to the system.  Sometimes developers want to have a way to ensure that a particular trace is going to be recorded (sampled) by the tracing system, e.g. by including a special parameter in the HTTP request, like `debug=true`. The OpenTracing API does not have any insight into sampling techniques used by the implementation, so there is no explicit API to force it. However, the implementations are advised to recognized the `debug` Trace Attribute and take measures to record the Span. In order to pass this attribute to tracing systems that rely on pre-trace sampling, the following approach can be used:
-> 
+>
 > ```python
-> 
+>
 >     if request.get('debug'):
 >         trace_context = tracer.new_root_trace_context()
 >         trace_context.set_attribute('debug', True)
 >         span = tracer.start_span_with_context(
->             operation_name=operation, 
+>             operation_name=operation,
 >             trace_context=trace_context)
 > ```
