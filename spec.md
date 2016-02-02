@@ -71,8 +71,6 @@ OpenTracing supports a number of different platforms, and of course the per-plat
 
 The `Span` interface must have the following capabilities:
 
-- Create and start a new child `Span` with a given operation name. Any trace attributes must be passed through into the child. **(py: `start_child`, go: `StartChild`)**
-- Finish the (already-started) `Span`.  Finish should be the last call made to any span instance, and to do otherwise leads to undefined behavior. **(py: `finish`, go: `Finish`)**
 - Set a key:value tag on the `Span`. The key must be a `string`, and the value must be either a `string`, a `boolean`, or a numeric type. Behavior for other value types is undefined. If multiple values are set to the same key (i.e., in multiple calls), implementation behavior is also undefined. **(py: `set_tag`, go: `SetTag`)**
 - Add a new log event to the `Span`, accepting an event name `string` and an optional structured payload argument. If specified, the payload argument may be of any type and arbitrary size, though implementations are not required to retain all payload arguments (or even all parts of all payload arguments). **(py: `log_event, log_event_with_payload`, go: `LogEvent, LogEventWithPayload`)**
 - Set a trace attribute, which is a simple string:string pair. Note that newly-set trace attributes are only guaranteed to propagate to *future* children of the given `Span`. See the diagram below. **(py: `set_trace_attribute`, go: `SetTraceAttribute`)**
@@ -99,7 +97,8 @@ The `Span` interface must have the following capabilities:
 
 The `Tracer` interface must have the following capabilities:
 
-- Start a `Span` that has no parent, commonly referred to as a *root* `Span` **(py: `start_trace`, go: `StartTrace`)**
+- Start a new child `Span` with a given operation name. With no parent, commonly referred to as a *root* `Span`, no trace attributes exist. With a parent any trace attributes must be passed through into the created child. **(py: `create_span`, go: `CreateSpan`)**
+- Finish an (already-started) `Span`.  Finish should be the last call made to any span instance, to do otherwise leads to undefined behavior. The parent span is returned. **(py: `finish`, go: `Finish`)**
 - Provide some form of access to a SpanPropagator (whether that's through embedding, inheritance, containment, or something else is per-platform)
 
 ### SpanPropagator
