@@ -100,31 +100,14 @@ The `Span` interface must have the following capabilities:
 The `Tracer` interface must have the following capabilities:
 
 - Start a `Span` that has no parent, commonly referred to as a *root* `Span` **(py: `start_trace`, go: `StartTrace`)**
-- Provide some form of access to a SpanPropagator (whether that's through embedding, inheritance, containment, or something else is per-platform)
+- Provide access to a SpanInjector and SpanExtractor that's appropriate for a specified IPC system, or a helper implementation that can be delegated to. **(py: `get_span_injector, get_span_extractor`, go: `GetSpanInjector, GetSpanExtractor`)**
 
-### SpanPropagator
+### SpanInjector
 
-A SpanPropagator is responsible (a) for encoding Span instances in a manner suitable for propagation, and (b) for taking that encoded data and using it
-to generate Span instances that are placed appropriately in the overarching Trace. Typically the propagation will take place across an RPC boundary, but message queues and other IPC mechanisms are also reasonable places to use a SpanPropagator.
+The `SpanInjector` interface must have the following capabilities:
+ - inject the span into the middleware object **(py: `inject`, go: `inject`)**
 
-The encoded form of a propagated span is divided into two components:
+### SpanExtractor
 
-1. The core identifying information for the Span, referred to as the "context snapshot" (for example, in Dapper this would include a `trace_id`, a `span_id`, and a bitmask representing the sampling status for the given trace)
-1. Any trace attributes (per Span's ability to set trace attributes that propagate across process boundaries)
-
-The encoded data is separated in this way for a variety of reasons; the most important is to give OpenTracing users a portable way to opt out of Trace Attribute propagation entirely if they deem it a stability risk.
-
-The propagation and trace-joining methods come in two flavors: binary and text.
-
-- The *text* format is a platform-idiomatic map from (unicode) `string` to `string`; it is better-suited to pretty-printing and debugging
-- The *binary* format is an opaque byte array and is better-suited to compact, high-performance encoding, decoding, and transmission
-
-Note that there is no expectation that different tracing systems propagate `Spans` in compatible ways. Though OpenTracing is agnostic about the tracing implementation, for successful inter-process handoff it's essential that the processes on both sides of a propagation use the same tracing implementation.
-
-The `SpanPropagator` interface must have the following capabilities:
-- Propagating a Span instance by encoding it as either...
-  - a pair of binary values **(py: `propagate_span_as_binary`, go: `PropagateSpanAsBinary`)**, or
-  - a pair of unicode `string->string` maps, where the keys are suitable for use in HTTP headers (see the notes about "trace attribute" keys above) **(py: `propagate_span_as_text`, go: `PropagateSpanAsText`)**
-- Returning a new Span instance that joins to a Span previously propagated via either...
-  - a pair of binary values **(py: `join_trace_from_binary`, go: `JoinTraceFromBinary`)**, or
-  - a pair of unicode `string->string` maps **(py: `join_trace_from_text`, go: `JoinTraceFromText`)**
+The `SpanExtractor` interface must have the following capabilities:
+ - extract the span from the middleware object **(py: `extract`, go: `extract`)**

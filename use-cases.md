@@ -53,11 +53,7 @@ When a server wants to trace execution of a request, it generally needs to go th
 Let's assume that we have an HTTP server, and the Span is propagated from the client via HTTP headers, accessible via `request.headers`:
 
 ```python
-    span = tracer.join_trace_from_text(
-        operation_name=operation,
-        context_snapshot=request.headers,
-        trace_attributes=request.headers
-    )
+    span = tracer.get_span_extractor(request.class).extract(request)
 ```
 
 Here we set both arguments of the decoding method to the `headers` map. The Tracer object knows which headers it needs to read in order to reconstruct the context snapshot and any Trace Attributes.
@@ -69,11 +65,7 @@ The `operation` above refers to the name the server wants to give to the Span. F
 The `span` object above can be `None` if the Tracer did not find relevant headers in the incoming request: presumably because the client did not send them. In this case the server needs to start a brand new trace.
 
 ```python
-    span = tracer.join_trace_from_text(
-        operation_name=operation,
-        context_snapshot=request.headers,
-        trace_attributes=request.headers
-    )
+    span = tracer.get_span_extractor(request.class).extract(request)
     if span is None:
         span = tracer.start_trace(operation_name=operation)
     span.set_tag('http.method', request.method)
@@ -122,7 +114,7 @@ The downside of explicit context propagation is that it leaks what could be cons
 
 ### Tracing Client Calls
 
-When an application acts as an RPC client, it is expected to start a new tracing Span before making an outgoing request, and propagate the new Span along with that request. The following example shows how it can be done for an HTTP request. 
+When an application acts as an RPC client, it is expected to start a new tracing Span before making an outgoing request, and propagate the new Span along with that request. The following example shows how it can be done for an HTTP request.
 
 ```python
     def traced_request(request, operation, http_client):
@@ -137,15 +129,9 @@ When an application acts as an RPC client, it is expected to start a new tracing
         span.set_tag('http.url', request.full_url)
 
         # Propagate the Span via HTTP request headers
-        h_ctx, h_attr = tracer.propagate_span_as_text(span)
+        tracer.get_span_injector(request.class).inject(span, request)
 
-        for key, value in h_ctx.iteritems():
-            request.add_header(key, value)
-        if h_attr:
-            for key, value in h_attr.iteritems():
-                request.add_header(key, value)
-
-        # define a callback where we can finish the span 
+        # define a callback where we can finish the span
         def on_done(future):
             if future.exception():
                 span.log_event_with_payload('exception', exception)
@@ -190,7 +176,7 @@ We have already used `log_event_with_payload` in the client Span use case. Event
 ```python
 
     span = get_current_span()
-    span.log_event('cache-miss') 
+    span.log_event('cache-miss')
 ```
 
 The tracer automatically records a timestamp of the event, in contrast with tags that apply to the entire Span. It is also possible to associate an externally provided timestamp with the event, e.g. see [Log (Go)](https://github.com/opentracing/opentracing-go/blob/ca5c92cf/span.go#L53).
@@ -204,13 +190,13 @@ There are scenarios when it is impractical to incorporate an OpenTracing compati
 `XXX: we don't have an API for this anymore.`
 
 > Most tracing systems apply sampling to minimize the amount of trace data sent to the system.  Sometimes developers want to have a way to ensure that a particular trace is going to be recorded (sampled) by the tracing system, e.g. by including a special parameter in the HTTP request, like `debug=true`. The OpenTracing API does not have any insight into sampling techniques used by the implementation, so there is no explicit API to force it. However, the implementations are advised to recognized the `debug` Trace Attribute and take measures to record the Span. In order to pass this attribute to tracing systems that rely on pre-trace sampling, the following approach can be used:
-> 
+>
 > ```python
-> 
+>
 >     if request.get('debug'):
 >         trace_context = tracer.new_root_trace_context()
 >         trace_context.set_attribute('debug', True)
 >         span = tracer.start_span_with_context(
->             operation_name=operation, 
+>             operation_name=operation,
 >             trace_context=trace_context)
 > ```
