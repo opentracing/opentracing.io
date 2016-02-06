@@ -1,3 +1,5 @@
+[![Gitter chat](http://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg)](https://gitter.im/opentracing/public)
+
 This repository contains the source code for http://opentracing.github.io website, generated with [Jekyll](http://jekyllrb.com/).
 
 ## Making changes
