@@ -60,7 +60,7 @@
 .highlight .vi { color: #033 } /* Name.Variable.Instance */
 .highlight .il { color: #f60 } /* Literal.Number.Integer.Long */
 
-.highlight { margin-left: 0px; margin-right: 0px; }
+figure.highlight { margin-left: 0px; margin-right: 0px; }
 
 .css .o,
 .css .o + .nt,
