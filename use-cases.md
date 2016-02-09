@@ -8,9 +8,7 @@ This page aims to illustrate common use cases that developers who instrument the
 
 ## Stepping Back: Who is OpenTracing for?
 
-OpenTracing is a standardization layer that sits between application and
-library programmers and systems that consume tracing and causality data. Here's
-a diagram:
+OpenTracing is a thin standardization layer that sits between application/library code and various systems that consume tracing and causality data. Here is a diagram:
 
 ~~~
   +-------------+   +---------+   +----------+  +------------+
