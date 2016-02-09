@@ -8,13 +8,12 @@ pages_list:
   "Contributors": '/contributors'
 
 # Dependencies
-markdown:         redcarpet
+markdown:         kramdown
 highlighter:      pygments
 
-redcarpet:
-  extensions: 
-    - autolink
-    - with_toc_data
+kramdown:
+  input: GFM
+  hard_wrap: false
 
 gems: 
   - jekyll-paginate

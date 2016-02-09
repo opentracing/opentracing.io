@@ -5,8 +5,11 @@ title: Authors and Contributors
 
 (in alphabetical order)
 
-* Adrian Cole (@adriancole)
-* Ben Sigelman (@bensigelman)
-* Stephen Gutekanst (@slimsag)
-* Yuri Shkuro (@yurishkuro)
-
+* @adriancole (Adrian Cole)
+* @bcronin (Ben Cronin)
+* @bensigelman (Ben Sigelman)
+* @michaelsembwever (mck)
+* @slimsag (Stephen Gutekanst)
+* @tschottdorf (Tobias Schottdorf)
+* @yurishkuro (Yuri Shkuro)
+* @dkuebric (Dan Kuebrich)
