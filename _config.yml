@@ -9,10 +9,9 @@ pages_list:
 
 # Dependencies
 markdown:         kramdown
-highlighter:      pygments
+highlighter:      rouge
 
 kramdown:
-  input: GFM
   hard_wrap: false
 
 gems: 
@@ -20,9 +19,6 @@ gems:
   - jekyll-gist
   - jekyll-mentions
   - jekyll-coffeescript
-
-#paginate_path: "page:num"
-#paginate:         5
 
 # Permalinks
 permalink:        pretty
