@@ -148,8 +148,7 @@ def traced_request(request, operation, http_client):
     def on_done(future):
         if future.exception():
             span.log_event_with_payload('exception', exception)
-        else:
-            span.set_tag('http.status_code', future.result().status_code)
+        span.set_tag('http.status_code', future.result().status_code)
         span.finish()
 
     try:
