@@ -6,6 +6,50 @@ title: Instrumentation for Common Use Cases
 
 This page aims to illustrate common use cases that developers who instrument their applications and libraries with OpenTracing API need to deal with.
 
+## Stepping Back: Who is OpenTracing for?
+
+OpenTracing is a standardization layer that sits between application and
+library programmers and systems that consume tracing and causality data. Here's
+a diagram:
+
+~~~
+  +-------------+   +---------+   +----------+  +------------+
+  | Application |   | Library |   |   OSS    |  |  RPC/IPC   |
+  |    Code     |   |  Code   |   | Services |  | Frameworks |
+  +-------------+   +---------+   +----------+  +------------+
+         |               |              |             |
+         |               |              |             |
+         v               v              v             v
+      +-------------------------------------------------------+
+      | · · · · · · · · OpenTracing · · · · · · · · · · · · · |
+      +-------------------------------------------------------+
+         |                |                 |                |        
+         |                |                 |                |        
+         v                v                 v                v        
+   +-----------+   +-------------+   +-------------+   +-----------+   
+   |  Tracing  |   |   Logging   |   |   Metrics   |   |  Tracing  |   
+   | System A  |   | Framework B |   | Framework C |   | System D  |   
+   +-----------+   +-------------+   +-------------+   +-----------+   
+~~~
+
+**Application Code**: Developers writing application code can use OpenTracing to describe causality, demarcate control flow, and add fine-grained logging information along the way.
+
+**Library Code**: Similarly, libraries that take intermediate control of requests can integrate with OpenTracing for similar reasons. For instance, a web middleware library can use OpenTracing to create spans for request handling, or an ORM library can use OpenTracing to describe higher-level ORM semantics and measure execution for specific SQL queries.
+
+**OSS Services**: Beyond embedded libraries, entire OSS services may adopt OpenTracing to integrate with distributed traces initiating in – or propagating to – other processes in a larger distributed system. For instance, an HTTP load balancer may use OpenTracing to decorate requests, or a distributed key:value store may use OpenTracing to explain the performance of reads and writes.
+
+**RPC/IPC Frameworks**: Any subsystem tasked with crossing process boundaries may use OpenTracing to standardize the format of tracing state as it injects into and extracts from various wire formats and protocols.
+
+All of the above should be able to use OpenTracing to describe and propagate distributed traces **without knowledge of the underlying OpenTracing implementation**.
+
+### OpenTracing priorities
+
+Since there are many orders of magnitude more programmers and applications *above* the OpenTracing layer (rather than below it), the APIs and use cases prioritize ease-of-use in that direction. While there are certainly ample opportunities for helper libraries and other abstractions that save time and effort for OpenTracing implementors, the use cases in this document are restricted to callers (rather than callees) of OpenTracing APIs.
+
+Without further ado:
+
+## Motivating Use Cases
+
 ### Tracing a Function
 
 {% highlight python %}
