@@ -99,10 +99,10 @@ The `Span` interface must have the following capabilities:
 The `Tracer` interface must have the following capabilities:
 
 - Start a new `Span`. There must be a way for the caller to specify a parent `Span`, an explicit start timestamp (other than "now"), and an initial set of `Span` tags. **(py: `start_span`, go: `StartSpanWithOptions`)**
-- Return an `Injector` instance given a format identifier.
-- Return an `Extractor` instance given a format identifier
+- Return an `Injector` instance given a format identifier (see [Injector and Extractor](#injector-and-extractor))
+- Return an `Extractor` instance given a format identifie (see [Injector and Extractor](#injector-and-extractor))
 
-`Injector` and `Extractor` both rely on "format identifiers." The nature of the "format identifier" may vary from platform to platform, but in all cases the format identifiers should come from a global namespace. New formats must not require changes to the core OpenTracing platform APIs, though those core platform APIs should define a few basic/general formats (like string maps, binary blobs, and/or HTTP headers).
+`Injector` and `Extractor` both rely on "format identifiers." The nature of the "format identifier" may vary from platform to platform, but in all cases the format identifiers should come from a global namespace. New formats must not *require* changes to the core OpenTracing platform APIs, though those core platform APIs should define a few basic/general formats (like string maps, binary blobs, and/or HTTP headers). For example, if the maintainer of EsotericRPCFramework wanted to define an EsotericRPCFramework injection and extraction format, she or he must be able to do so without sending a PR to OpenTracing maintainers (though of course OpenTracing implementations are not required to suppor the EsotericRPCFramework format).
 
 ## Injector and Extractor
 
