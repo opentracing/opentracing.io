@@ -163,7 +163,7 @@ The downside of explicit context propagation is that it leaks what could be cons
 
 ### Tracing Client Calls
 
-When an application acts as an RPC client, it is expected to start a new tracing Span before making an outgoing request, and propagate the new Span along with that request. The following example shows how it can be done for an HTTP request. 
+When an application acts as an RPC client, it is expected to start a new tracing Span before making an outgoing request, and propagate the new Span along with that request. The following example shows how it can be done for an HTTP request.
 
 {% highlight python %}
 def traced_request(request, operation, http_client):
@@ -184,7 +184,7 @@ def traced_request(request, operation, http_client):
     # define a callback where we can finish the span 
     def on_done(future):
         if future.exception():
-            span.log_event_with_payload('rpc exception', exception)
+            span.log(event='rpc exception', payload=exception)
         span.set_tag('http.status_code', future.result().status_code)
         span.finish()
 
@@ -193,14 +193,14 @@ def traced_request(request, operation, http_client):
         future.add_done_callback(on_done)
         return future
     except Exception e:
-        span.log_event_with_payload('general exception', e)
+        span.log(event='general exception', payload=e)
         span.finish()
         raise
 {% endhighlight %}
 
   * The `get_current_span()` function is not a part of the OpenTracing API. It is meant to represent some util method of retrieving the current Span from the current request context propagated implicitly (as is often the case in Python).
   * We assume the HTTP client is asynchronous, so it returns a Future, and we need to add an on-completion callback to be able to finish the current child Span.
-  * If the HTTP client returns a future with exception, we log the exception to the Span with `log_event_with_payload` method.
+  * If the HTTP client returns a future with exception, we log the exception to the Span with `log` method.
   * Because the HTTP client may throw an exception even before returning a Future, we use a try/catch block to finish the Span in all circumstances, to ensure it is reported and avoid leaking resources.
 
 
@@ -218,11 +218,11 @@ token = span.get_trace_attribute('auth-token')
 
 ### Logging Events
 
-We have already used `log_event_with_payload` in the client Span use case. Events can be logged without a payload, and not just where the Span is being created / finished. For example, the application may record a cache miss event in the middle of execution, as long as it can get access to the current Span from the request context:
+We have already used `log` in the client Span use case. Events can be logged without a payload, and not just where the Span is being created / finished. For example, the application may record a cache miss event in the middle of execution, as long as it can get access to the current Span from the request context:
 
 {% highlight python %}
 span = get_current_span()
-span.log_event('cache-miss') 
+span.log(event='cache-miss') 
 {% endhighlight %}
 
 The tracer automatically records a timestamp of the event, in contrast with tags that apply to the entire Span. It is also possible to associate an externally provided timestamp with the event, e.g. see [Log (Go)](https://github.com/opentracing/opentracing-go/blob/ca5c92cf/span.go#L53).
