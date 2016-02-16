@@ -52,7 +52,7 @@ Without further ado:
 
 {% highlight python %}
 def top_level_function():
-    span1 = tracer.start_trace('top_level_function')
+    span1 = tracer.start_span('top_level_function')
     try:
         . . . # business logic
     finally:
@@ -117,7 +117,7 @@ span = extractor.join_trace(
     carrier=request.headers
 )
 if span is None:
-    span = tracer.start_trace(operation_name=operation)
+    span = tracer.start_span(operation_name=operation)
 span.set_tag('http.method', request.method)
 span.set_tag('http.url', request.full_url)
 {% endhighlight %}
@@ -153,8 +153,8 @@ func BusinessFunction1(ctx context.Context, arg1...) {
 }
 
 func BusinessFunction2(ctx context.Context, arg1...) {
-    span := SpanFromContext(ctx)
-    span.StartChild(...)
+    parentSpan := SpanFromContext(ctx)
+    childSpan := opentracing.StartChildSpan(parentSpan, ...)
     ...
 }
 {% endhighlight %}
@@ -174,12 +174,12 @@ def traced_request(request, operation, http_client):
     span = tracer.start_span(
         operation_name=operation,
         parent=parent_span,
-        tags={'http.url': request.full_url
+        tags={'http.url': request.full_url}
     )
 
     # propagate the Span via HTTP request headers
     injector = tracer.injector(opentracing.HTTP_HEADER_FORMAT)
-    injector.inject(span, request)
+    injector.inject(span, carrier=request.headers)
 
     # define a callback where we can finish the span 
     def on_done(future):
@@ -243,14 +243,14 @@ explicit_span.finish(
 )
 {% endhighlight %}
 
-### Setting "Debug" Mode
+### Setting Sampling Priority Before the Trace Starts
 
-Most tracing systems apply sampling to minimize the amount of trace data sent to the system.  Sometimes developers want to have a way to ensure that a particular trace is going to be recorded (sampled) by the tracing system, e.g. by including a special parameter in the HTTP request, like `debug=true`. The OpenTracing API does not have any insight into sampling techniques used by the implementation, so there is no explicit API to force it. However, the implementations are advised to recognized the `debug` Trace Attribute and take measures to record the Span. In order to pass this attribute to tracing systems that rely on pre-trace sampling, the following approach can be used:
+Most distributed tracing systems apply sampling to reduce the amount of trace data that needs to be recorded and processed. Sometimes developers want to have a way to ensure that a particular trace is going to be recorded (sampled) by the tracing system, e.g. by including a special parameter in the HTTP request, like `debug=true`. The OpenTracing API standardizes around some useful tags, and one o them is the so-called "sampling priority": exact semnatics are implementation-specific, but any values greater than zero (the default) indicates a trace of elevated importance. In order to pass this attribute to tracing systems that rely on pre-trace sampling, the following approach can be used:
 
 {% highlight python %}
 if request.get('debug'):
     span = tracer.start_span(
         operation_name=operation, 
-        tags={'debug': True}
+        tags={tags.SAMPLING_PRIORITY: 1}
     )
 {% endhighlight %}
