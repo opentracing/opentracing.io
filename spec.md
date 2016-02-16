@@ -58,14 +58,14 @@ Trace Attributes come with powerful _costs_ as well; since the attributes are pr
 **Trace Attributes** vs. **Span Tags**
 
 - Trace Attributes are propagated in-band (i.e., alongside the actual application data) across process boundaries. Span Tags are not propagated since they are not inherited from parent Span to child Span.
-- Span Tags are recorded out-of-band from the application data, presumably in the tracing system's storage. Trace Attributes are not necessarily recorded there, though an implementation may elect to.
+- Span Tags are recorded out-of-band from the application data, presumably in the tracing system's storage. Implementations may choose to also record Trace Attributes.
 
 Also, trace attribute keys have a restricted format: implementations may wish to use them as HTTP header keys (or key suffixes), and of course HTTP headers are case insensitive. As such, trace attribute keys MUST match the regular expression `(?i:[a-z0-9][-a-z0-9]*)`, and – per the `?i:` – they are case-insensitive. That is, the trace attribute key must start with a letter or number, and the remaining characters must be letters, numbers, or hyphens.
 
 
 # Platform-Independent API Semantics
 
-OpenTracing supports a number of different platforms, and of course the per-platform APIs try to blend into their surroundings and "do as the Romans do." That said, each platform API must model a common set of semantics for the core tracing concepts described above. In this document we attempt to describe those concepts and semantics in a language- and platform-agnostic fashion.
+OpenTracing supports a number of different platforms, and of course the per-platform APIs try to adhere to the idioms and conventions of their respective language and platform (i.e., they "do as the Romans do"). That said, each platform API must model a common set of semantics for the core tracing concepts described above. In this document we attempt to describe those concepts and semantics in a language- and platform-agnostic fashion.
 
 ## Span
 
