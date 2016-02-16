@@ -11,23 +11,23 @@ This page aims to illustrate common use cases that developers who instrument the
 OpenTracing is a thin standardization layer that sits between application/library code and various systems that consume tracing and causality data. Here is a diagram:
 
 ~~~
-  +-------------+   +---------+   +----------+  +------------+
-  | Application |   | Library |   |   OSS    |  |  RPC/IPC   |
-  |    Code     |   |  Code   |   | Services |  | Frameworks |
-  +-------------+   +---------+   +----------+  +------------+
-         |               |              |             |
-         |               |              |             |
-         v               v              v             v
-      +-------------------------------------------------------+
-      | · · · · · · · · OpenTracing · · · · · · · · · · · · · |
-      +-------------------------------------------------------+
-         |                |                 |                |        
-         |                |                 |                |        
-         v                v                 v                v        
-   +-----------+   +-------------+   +-------------+   +-----------+   
-   |  Tracing  |   |   Logging   |   |   Metrics   |   |  Tracing  |   
-   | System A  |   | Framework B |   | Framework C |   | System D  |   
-   +-----------+   +-------------+   +-------------+   +-----------+   
+   +-------------+  +---------+  +----------+  +------------+
+   | Application |  | Library |  |   OSS    |  |  RPC/IPC   |
+   |    Code     |  |  Code   |  | Services |  | Frameworks |
+   +-------------+  +---------+  +----------+  +------------+
+          |              |             |             |
+          |              |             |             |
+          v              v             v             v
+     +-----------------------------------------------------+
+     | · · · · · · · · · · OpenTracing · · · · · · · · · · |
+     +-----------------------------------------------------+
+       |               |                |               |        
+       |               |                |               |        
+       v               v                v               v        
+ +-----------+  +-------------+  +-------------+  +-----------+   
+ |  Tracing  |  |   Logging   |  |   Metrics   |  |  Tracing  |   
+ | System A  |  | Framework B |  | Framework C |  | System D  |   
+ +-----------+  +-------------+  +-------------+  +-----------+   
 ~~~
 
 **Application Code**: Developers writing application code can use OpenTracing to describe causality, demarcate control flow, and add fine-grained logging information along the way.
@@ -52,7 +52,7 @@ Without further ado:
 
 {% highlight python %}
 def top_level_function():
-    span1 = tracer.start_trace('top_level_function')
+    span1 = tracer.start_span('top_level_function')
     try:
         . . . # business logic
     finally:
@@ -95,10 +95,10 @@ When a server wants to trace execution of a request, it generally needs to go th
 Let's assume that we have an HTTP server, and the Span is propagated from the client via HTTP headers, accessible via `request.headers`:
 
 {% highlight python %}
-span = tracer.join_trace_from_text(
+extractor = tracer.extractor(opentracing.HTTP_HEADER_FORMAT)
+span = extractor.join_trace(
     operation_name=operation,
-    context_snapshot=request.headers,
-    trace_attributes=request.headers
+    carrier=request.headers
 )
 {% endhighlight %}
 
@@ -111,13 +111,13 @@ The `operation` above refers to the name the server wants to give to the Span. F
 The `span` object above can be `None` if the Tracer did not find relevant headers in the incoming request: presumably because the client did not send them. In this case the server needs to start a brand new trace.
 
 {% highlight python %}
-span = tracer.join_trace_from_text(
+extractor = tracer.extractor(opentracing.HTTP_HEADER_FORMAT)
+span = extractor.join_trace(
     operation_name=operation,
-    context_snapshot=request.headers,
-    trace_attributes=request.headers
+    carrier=request.headers
 )
 if span is None:
-    span = tracer.start_trace(operation_name=operation)
+    span = tracer.start_span(operation_name=operation)
 span.set_tag('http.method', request.method)
 span.set_tag('http.url', request.full_url)
 {% endhighlight %}
@@ -153,8 +153,8 @@ func BusinessFunction1(ctx context.Context, arg1...) {
 }
 
 func BusinessFunction2(ctx context.Context, arg1...) {
-    span := SpanFromContext(ctx)
-    span.StartChild(...)
+    parentSpan := SpanFromContext(ctx)
+    childSpan := opentracing.StartChildSpan(parentSpan, ...)
     ...
 }
 {% endhighlight %}
@@ -170,26 +170,21 @@ def traced_request(request, operation, http_client):
     # retrieve current span from propagated request context
     parent_span = get_current_span()
 
-    # start a new child span or a brand new trace if no parent
-    if parent_span is None:
-        span = tracer.start_trace(operation_name=operation)
-    else:
-        span = parent_span.start_child(operation_name=operation)
-    span.set_tag('http.url', request.full_url)
+    # start a new span to represent the RPC
+    span = tracer.start_span(
+        operation_name=operation,
+        parent=parent_span,
+        tags={'http.url': request.full_url}
+    )
 
-    # Propagate the Span via HTTP request headers
-    h_ctx, h_attr = tracer.propagate_span_as_text(span)
-
-    for key, value in h_ctx.iteritems():
-        request.add_header(key, value)
-    if h_attr:
-        for key, value in h_attr.iteritems():
-            request.add_header(key, value)
+    # propagate the Span via HTTP request headers
+    injector = tracer.injector(opentracing.HTTP_HEADER_FORMAT)
+    injector.inject(span, carrier=request.headers)
 
     # define a callback where we can finish the span 
     def on_done(future):
         if future.exception():
-            span.log_event_with_payload('exception', exception)
+            span.log_event_with_payload('rpc exception', exception)
         span.set_tag('http.status_code', future.result().status_code)
         span.finish()
 
@@ -198,13 +193,12 @@ def traced_request(request, operation, http_client):
         future.add_done_callback(on_done)
         return future
     except Exception e:
-        span.log_event_with_payload('exception', e)
+        span.log_event_with_payload('general exception', e)
         span.finish()
         raise
 {% endhighlight %}
 
   * The `get_current_span()` function is not a part of the OpenTracing API. It is meant to represent some util method of retrieving the current Span from the current request context propagated implicitly (as is often the case in Python).
-  * The encoding function `propagate_span_as_text` returns two maps, one representing a snapshot of the Span's context, and the other the Trace Attributes. We copy both maps into the HTTP request headers.
   * We assume the HTTP client is asynchronous, so it returns a Future, and we need to add an on-completion callback to be able to finish the current child Span.
   * If the HTTP client returns a future with exception, we log the exception to the Span with `log_event_with_payload` method.
   * Because the HTTP client may throw an exception even before returning a Future, we use a try/catch block to finish the Span in all circumstances, to ensure it is reported and avoid leaking resources.
@@ -235,17 +229,28 @@ The tracer automatically records a timestamp of the event, in contrast with tags
 
 ### Recording Spans With External Timestamps
 
-There are scenarios when it is impractical to incorporate an OpenTracing compatible tracer into a service, for various reasons. For example, a user may have a log file of what's essentially Span data coming from a black-box process (e.g. HAProxy). In order to get the data into an OpenTracing-compatible system, the API needs a way to record spans with extrenally captured timestamps. The current version of API does not have that capability: see [issue #20](https://github.com/opentracing/opentracing.github.io/issues/20).
+There are scenarios when it is impractical to incorporate an OpenTracing compatible tracer into a service, for various reasons. For example, a user may have a log file of what's essentially Span data coming from a black-box process (e.g. HAProxy). In order to get the data into an OpenTracing-compatible system, the API needs a way to record spans with externally defined timestamps.
 
-### Setting "Debug" Mode
+{% highlight python %}
+explicit_span = tracer.start_span(
+    operation_name=external_format.operation,
+    start_time=external_format.start,
+    tags=external_format.tags
+)
+explicit_span.finish(
+    finish_time=external_format.finish,
+    bulk_logs=map(..., external_format.logs)
+)
+{% endhighlight %}
 
-`TODO: re-introduce an API for this when we tackle explicit Span timestamps.`
+### Setting Sampling Priority Before the Trace Starts
 
-> Most tracing systems apply sampling to minimize the amount of trace data sent to the system.  Sometimes developers want to have a way to ensure that a particular trace is going to be recorded (sampled) by the tracing system, e.g. by including a special parameter in the HTTP request, like `debug=true`. The OpenTracing API does not have any insight into sampling techniques used by the implementation, so there is no explicit API to force it. However, the implementations are advised to recognized the `debug` Trace Attribute and take measures to record the Span. In order to pass this attribute to tracing systems that rely on pre-trace sampling, the following approach can be used:
-> 
->     if request.get('debug'):
->         trace_context = tracer.new_root_trace_context()
->         trace_context.set_attribute('debug', True)
->         span = tracer.start_span_with_context(
->             operation_name=operation, 
->             trace_context=trace_context)
+Most distributed tracing systems apply sampling to reduce the amount of trace data that needs to be recorded and processed. Sometimes developers want to have a way to ensure that a particular trace is going to be recorded (sampled) by the tracing system, e.g. by including a special parameter in the HTTP request, like `debug=true`. The OpenTracing API standardizes around some useful tags, and one o them is the so-called "sampling priority": exact semnatics are implementation-specific, but any values greater than zero (the default) indicates a trace of elevated importance. In order to pass this attribute to tracing systems that rely on pre-trace sampling, the following approach can be used:
+
+{% highlight python %}
+if request.get('debug'):
+    span = tracer.start_span(
+        operation_name=operation, 
+        tags={tags.SAMPLING_PRIORITY: 1}
+    )
+{% endhighlight %}
