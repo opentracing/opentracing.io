@@ -8,6 +8,7 @@ title: Authors and Contributors
 * @adriancole (Adrian Cole)
 * @bcronin (Ben Cronin)
 * @bensigelman (Ben Sigelman)
+* @bg451 (Brandon Gonzalez)
 * @michaelsembwever (mck)
 * @slimsag (Stephen Gutekanst)
 * @tschottdorf (Tobias Schottdorf)
