@@ -61,6 +61,7 @@
 .highlight .il { color: #f60 } /* Literal.Number.Integer.Long */
 
 figure.highlight { margin-left: 0px; margin-right: 0px; }
+.sidebar-group { margin-top: 20px; font-size: 125%; color: #2592c0; }
 
 .css .o,
 .css .o + .nt,

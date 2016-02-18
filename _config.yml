@@ -1,11 +1,15 @@
 # Content
-pages_list:       
+core_pages_list:       
   "Home": '/'
   "Semantic Specification": '/spec'
+  "Contributors": '/contributors'
+
+user_pages_list:       
   "Per-Platform APIs": '/apis'
   "Instrumentation Use Cases": '/use-cases'
+
+implementor_pages_list:       
   "Implementing OpenTracing": '/implementors'
-  "Contributors": '/contributors'
 
 # Dependencies
 markdown:         kramdown
