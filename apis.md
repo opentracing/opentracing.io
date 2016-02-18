@@ -20,6 +20,6 @@ PHP, iOS, and Ruby are next on our list, though community contributions are welc
 
 ### What does "1.0RC" mean?
 
-It means that the contributors have spent a while thinking through the APIs from above and below, prototyped bindings to several tracing systems and many calling contexts, and have settled on the scope and exposed by the various OpenTracing APIs.
+It means that the contributors have spent a while thinking through the APIs from above and below, prototyped bindings to several tracing systems and many calling contexts, and have converged on semantics for the various OpenTracing platform APIs.
 
 1.0RC means that we feel comfortable formally binding OpenTracing to production tracing systems and production application code: not just in dev branches, but in public PRs. Once those bindings have been vetted in real production environments (and any adjustments or additions made to OpenTracing as a result) we will announce OpenTracing 1.0.
