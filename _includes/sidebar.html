@@ -13,7 +13,18 @@
         `layout: page` in the front-matter. See readme for usage.
       {% endcomment %}
 
-      {% for page in site.pages_list %}
+      <div class="sidebar-group">The basics</div>
+      {% for page in site.core_pages_list %}
+        <a class="sidebar-nav-item{% if page[1] == node.url %} active{% endif %}" href="{{ page[1] }}">{{ page[0] }}</a>
+      {% endfor %}
+
+      <div class="sidebar-group">For users</div>
+      {% for page in site.user_pages_list %}
+        <a class="sidebar-nav-item{% if page[1] == node.url %} active{% endif %}" href="{{ page[1] }}">{{ page[0] }}</a>
+      {% endfor %}
+
+      <div class="sidebar-group">For implementors</div>
+      {% for page in site.implementor_pages_list %}
         <a class="sidebar-nav-item{% if page[1] == node.url %} active{% endif %}" href="{{ page[1] }}">{{ page[0] }}</a>
       {% endfor %}
 
