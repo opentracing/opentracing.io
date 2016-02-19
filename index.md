@@ -2,6 +2,9 @@
 layout: page
 title: Home
 ---
+# The OpenTracing Project
+
+<p class="lead">{{ site.description }}</p>
 
 ## Why Tracing?
 
