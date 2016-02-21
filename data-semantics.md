@@ -78,9 +78,9 @@ These tags can be provided by either client-side or server-side to describe the 
     - Remote hostname
 * `peer.ipv4` - string
     - Remote IP v4 address
-* `peer.ipv6`
+* `peer.ipv6` - string
     - Remote IP v6 address
-* `peer.port`
+* `peer.port` - integer
     - Remote port
 * `peer.service` - string
     - Remote service name
@@ -100,7 +100,7 @@ Some events are point-in-time and do not apply to an entire span; these are repo
 * Payload:
     - `type` - string
         - Low-cardinality class of exception
-    - `val` - string
+    - `message` - string
         - Details associated with particular instance of this exception
-    - `tb` - string
+    - `backtrace` - string
         - Stack trace provided at exception time
