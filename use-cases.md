@@ -102,7 +102,7 @@ span = extractor.join_trace(
 )
 {% endhighlight %}
 
-Here we set both arguments of the decoding method to the `headers` map. The Tracer object knows which headers it needs to read in order to reconstruct the context snapshot and any Trace Attributes.
+Here we set both arguments of the decoding method to the `headers` map. The Tracer object knows which headers it needs to read in order to reconstruct the tracer state and any Baggage.
 
 The `operation` above refers to the name the server wants to give to the Span. For example, if the HTTP request was a POST against `/save_user/123`, the operation name can be set to `post:/save_user/`. OpenTracing API does not dictate how applications name the spans.
 
@@ -206,14 +206,14 @@ def traced_request(request, operation, http_client):
 
 ### Using Distributed Context Propagation
 
-The client and server examples above propagated the Span/Trace over the wire, including any Trace Attributes. The client may use the Trace Attributes to pass additional data to the server and any other downstream server it might call.
+The client and server examples above propagated the Span/Trace over the wire, including any Baggage. The client may use the Baggage to pass additional data to the server and any other downstream server it might call.
 
 {% highlight python %}
 # client side
-span.set_trace_attribute('auth-token', '.....')
+span.set_baggage_item('auth-token', '.....')
 
 # server side (one or more levels down from the client)
-token = span.get_trace_attribute('auth-token')
+token = span.get_baggage_item('auth-token')
 {% endhighlight %}
 
 ### Logging Events
