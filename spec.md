@@ -51,7 +51,7 @@ Every Span may also have zero or more key/value **Tags**, which do not have time
 
 Spans may be **Injected** into and **Extracted** from objects that are used for inter-process communication (e.g., HTTP headers). In this way, Spans may propagate across process boundaries along with sufficient information to join up with the Trace in some remote process.
 
-**Baggage** is a set of key/value pairs stored in a Span and propagated _in-band_ to all future child Spans: in this way, the "Baggage" travels with the trace, hence the name. Given a full-stack OpenTracing integration, Baggage enables powerful functionality by transparently propagating arbitrary application data: for example, an end-user id may be added as Baggage in a mobile app, propagate (via the distributed tracing machinery) into the depths of a storage system, and recovered at the bottom of the stack to identify a particularly expensive SQL query.
+**Baggage** is a set of key/value pairs stored in a Span and propagated _in-band_ to all future children Spans: in this way, the "Baggage" travels with the trace, hence the name. Given a full-stack OpenTracing integration, Baggage enables powerful functionality by transparently propagating arbitrary application data: for example, an end-user id may be added as a Baggage item in a mobile app, propagate (via the distributed tracing machinery) into the depths of a storage system, and recovered at the bottom of the stack to identify a particularly expensive SQL query.
 
 Baggage comes with powerful _costs_ as well; since the Baggage is propagated in-band, if it is too large or the items too numerous it may decrease system throughput or increase RPC latencies.
 
