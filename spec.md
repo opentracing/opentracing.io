@@ -45,7 +45,7 @@ A **Trace** represents the potentially distributed, potentially concurrent data/
 
 A **Span** represents a logical unit of work in the system that has a start time and a duration. Spans may be nested and ordered to model parent-child and casual relationships. Each span has an **operation name**, a presumably human-readable string which concisely names the work done by the span (e.g., an RPC method name, a function name, or the name of a subtask within a larger computation).
 
-Every Span has zero or more **Logs**, each of which being a timestamped event name with an optional structured data payload of arbitrary size.
+Every Span has zero or more **Logs**, each of which being a timestamped event name, optionally accompanied by a structured data payload of arbitrary size. The event name should be the stable identifier for some notable moment in the lifetime of a Span. For instance, a Span representing a browser page load might add an event for each of the Performance.timing moments.  While it is not a formal requirement, event names will be most useful if they are *not* unique; rather, tracing systems should be able to use them to understand how two similar Spans relate from an internal timing perspective.
 
 Every Span may also have zero or more key/value **Tags**, which do not have timestamps and simply annotate the spans.
 
