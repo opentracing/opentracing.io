@@ -36,7 +36,7 @@ OpenTracing is a thin standardization layer that sits between application/librar
 
 **OSS Services**: Beyond embedded libraries, entire OSS services may adopt OpenTracing to integrate with distributed traces initiating in – or propagating to – other processes in a larger distributed system. For instance, an HTTP load balancer may use OpenTracing to decorate requests, or a distributed key:value store may use OpenTracing to explain the performance of reads and writes.
 
-**RPC/IPC Frameworks**: Any subsystem tasked with crossing process boundaries may use OpenTracing to standardize the format of tracing state as it injects into and extracts from various wire formats and protocols.
+**RPC/IPC Frameworks**: Any subsystem tasked with crossing process boundaries may use OpenTracing to standardize the format of tracing state as it injects into and joins from various wire formats and protocols.
 
 All of the above should be able to use OpenTracing to describe and propagate distributed traces **without knowledge of the underlying OpenTracing implementation**.
 
@@ -95,9 +95,9 @@ When a server wants to trace execution of a request, it generally needs to go th
 Let's assume that we have an HTTP server, and the Span is propagated from the client via HTTP headers, accessible via `request.headers`:
 
 {% highlight python %}
-extractor = tracer.extractor(opentracing.HTTP_HEADER_FORMAT)
-span = extractor.join_trace(
+span = tracer.join(
     operation_name=operation,
+    format=opentracing.HTTP_HEADER_FORMAT,
     carrier=request.headers
 )
 {% endhighlight %}
@@ -111,9 +111,9 @@ The `operation` above refers to the name the server wants to give to the Span. F
 The `span` object above can be `None` if the Tracer did not find relevant headers in the incoming request: presumably because the client did not send them. In this case the server needs to start a brand new trace.
 
 {% highlight python %}
-extractor = tracer.extractor(opentracing.HTTP_HEADER_FORMAT)
-span = extractor.join_trace(
+span = tracer.join(
     operation_name=operation,
+    format=opentracing.HTTP_HEADER_FORMAT,
     carrier=request.headers
 )
 if span is None:
@@ -178,8 +178,10 @@ def traced_request(request, operation, http_client):
     )
 
     # propagate the Span via HTTP request headers
-    injector = tracer.injector(opentracing.HTTP_HEADER_FORMAT)
-    injector.inject(span, carrier=request.headers)
+    tracer.inject(
+        span,
+        format=opentracing.HTTP_HEADER_FORMAT,
+        carrier=request.headers)
 
     # define a callback where we can finish the span 
     def on_done(future):
