@@ -129,10 +129,11 @@ Note that there is no expectation that different tracing systems Inject and Join
 To make the above more concrete, consider the following sequence:
 
 1. A *client* process has a `Span` instance and is about to make an RPC over a home-grown HTTP protocol
-1. That client process calls some `Tracer.Inject(...)` method, passing the active `Span` instance, a format identifier for a string map, and a string map carrier as parameters
-1. The newly-populated (opaque) string map is encoded into the homegrown HTTP protocol (e.g., as headers) by the application code
-1. Now in the server process, the application code grabs the opaque string map from the homegrown HTTP protocol
-1. The server process calls some `Tracer.Join(...)` method, passing in the desired operation name, a format identifier for a string map, and the opaque string map carrier from just above
+1. That client process calls `Tracer.Inject(...)`, passing the active `Span` instance, a format identifier for a string map, and a string map carrier as parameters
+1. `Inject` has populated the string map in the carrier; the client application encodes that map within its homegrown HTTP protocol (e.g., as headers)
+1. *The HTTP request happens and the data crosses process boundaries...*
+1. Now in the server process, the application code decodes the string map from the homegrown HTTP protocol and uses it to initialize a string map carrier
+1. The server process calls `Tracer.Join(...)`, passing in the desired operation name, a format identifier for a string map, and the carrier from above
 1. In the absence of data corruption or other errors, the *server* now has a `Span` instance that belongs to the same trace as the one in the client
 
 More concrete examples can be found among the [OpenTracing use cases](/use-cases).
