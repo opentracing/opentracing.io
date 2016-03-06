@@ -25,8 +25,7 @@ Spans carry tags, logs, and attributes, but they also have a top-level **operati
 
 ### Span Structure
 
-TODO
-
+Span structure is also important: what do spans represent, and what relationship do they have towards their parent span?  This is covered in the [Semantic Specification](/spec).
 
 
 ## Semantic Tag Use-Cases
