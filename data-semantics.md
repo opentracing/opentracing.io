@@ -28,9 +28,11 @@ Spans carry tags, logs, and attributes, but they also have a top-level **operati
 Span structure is also important: what do spans represent, and what relationship do they have towards their parent span?  This is covered in the [Semantic Specification](/spec).
 
 
-## Semantic Tag Use-Cases
+## Span Tag Use-Cases
 
 The following tags are recommended for instrumentors who are trying to represent a particular type of data. Tag names follow a general structure of namespacing; the values are determined purely on a tag-by-tag basis.
+
+The ecommended tags below are accompanied by `const` values included in an `ext` module for each opentracing implementation.  These `ext` values should be used in place of the strings below, as tracers may choose to use different underlying representations for these common concepts.
 
 Some tags mentioned below may contain values of significant size. Handling of such values is implementation-specific: it is the responsibility of the Tracer to honor, drop, or truncate these tags as appropriate. However, care should be exercised on the part of the instrumentor, as even the generation or passing of such values to the Tracer may create undesirable overhead for the application.
 
