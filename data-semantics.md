@@ -23,9 +23,6 @@ The guidelines contained describe a common ground on which instrumentors and tra
 
 Spans carry tags, logs, and attributes, but they also have a top-level **operation name**. This should be a low-cardinality string value representing the type of work being done in the span. Typically, a process, framework, library, or module name is a good guideline.
 
-For instance, a request being handled by a Flask-based application might be instrumented using a WSGI middleware. In this situation, the first span operation name might be `WSGI`. If the application subsequently makes a database query, the span name might be `SQL`.
-
-
 ### Span Structure
 
 TODO
