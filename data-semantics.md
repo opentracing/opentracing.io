@@ -62,7 +62,7 @@ These tags are recommended for spans marking entry into a HTTP-based service.
     - Case-insensitive
     - Examples:
         - `GET`, `POST`, `HEAD`
-* `http.status` - integer
+* `http.status_code` - integer
     - HTTP status code to be returned with HTTP response.
     - Examples:
         - `200`, `503`
