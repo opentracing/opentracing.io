@@ -146,3 +146,9 @@ To make the above more concrete, consider the following sequence:
 1. In the absence of data corruption or other errors, the *server* now has a `Span` instance that belongs to the same trace as the one in the client
 
 More concrete examples can be found among the [OpenTracing use cases](/use-cases).
+
+### No-op Tracer and Global Tracer
+
+OpenTracing implementations must provide a No-Op Tracer as part of their interface. The no-op tracer and spans do neither support tracing nor baggage propagation. The No-op implementation must be written in a way that it does not crash or otherwise produce side-effects/errors when being used by developers. Most notably it must provide a No-op span implementation as well, so that developers can rely on a span instance to be returned from the Tracer Span Starting and Joining functions.
+
+OpenTracing implementations should provide support for configuring (Go: `InitGlobalTracer()`, py: `opentracing.tracer = myTracer`) and retrieving (Go: `GlobalTracer()`, py: `opentracing.tracer`) a global tracer instance if this is possible from the platform perspective. This should be implemented as a static registry or with a global variable. The default global tracer must be the No-op tracer.
