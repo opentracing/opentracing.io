@@ -120,6 +120,20 @@ Note that `Inject` and `Join` are not entirely symmetrical interfaces since `Spa
 
 A note about **"format identifiers"** per the `Inject` and `Join` methods above: the nature of the "format identifier" may vary from platform to platform, but in all cases they should be drawn from a global namespace. New formats must not *require* changes to the core OpenTracing platform APIs, though those core platform APIs must define a few basic/general formats (like string maps and binary blobs). For example, if the maintainer of EsotericRPCFramework wanted to define an EsotericRPCFramework inject/join format, she or he must be able to do so without sending a PR to OpenTracing maintainers (though of course OpenTracing implementations are not required to support the EsotericRPCFramework format). There is [an end-to-end injector and extractor example below](#propagation-example) to make this more concrete.
 
+### Standardized Tags
+
+There is a number of standardized tags that should be used accross platforms and tracing implementations:
+
+- `peer.service` records the service name of the peer
+- `peer.host` records the host name of the peer
+- `peer.ipv4` records IP v4 host address of the peer
+- `peer.ipv6` records IP v6 host address of the peer
+- `peer.port`  records port number of the peer
+- `span.kind` hints at relationship between spans, e.g. values for client `c` and server `s`.
+- `component` optionally records the component that the current span belongs to.
+
+Implementations should provide constants for these tag names.
+
 ### Required Inject/Join carrier formats
 
 At a minimum, all platforms require OpenTracing implementations to support two carrier formats: the "text map" format and the "binary" format.
