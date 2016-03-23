@@ -8,18 +8,14 @@ layout: default
   {{ content }}
 </div>
 
-<div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
-    {% for post in site.related_posts limit:3 %}
-      <li>
-        <h3>
-          <a href="{{ post.url }}">
-            {{ post.title }}
-            <small>{{ post.date | date_to_string }}</small>
-          </a>
-        </h3>
-      </li>
-    {% endfor %}
-  </ul>
+<div class="page-navigation">
+  {% if page.previous.url %}
+  <a class="prev" href="{{page.previous.url}}">&laquo; {{page.previous.title}} ({{page.previous.date | date_to_string}})</a>
+  {% else %}
+  <a class="prev" href="#"></a>
+  {% endif %}
+
+  {% if page.next.url %}
+  <a class="next" href="{{page.next.url}}">{{page.next.title}}  ({{page.next.date | date_to_string}})&raquo;</a>
+  {% endif %}
 </div>

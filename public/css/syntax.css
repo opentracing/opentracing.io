@@ -66,3 +66,28 @@ figure.highlight { margin-left: 0px; margin-right: 0px; }
 .css .o,
 .css .o + .nt,
 .css .nt + .nt { color: #999; }
+
+ul.hyphen-list li { list-style-type: none; }
+ul.hyphen-list li::before { content: "–   "; }
+
+.page-navigation {
+  font-size: 75%;
+  display: block;
+  width: auto;
+  overflow: hidden;
+}
+
+.page-navigation a {
+  display: block;
+  width: 50%;
+  float: left;
+  margin: 1em 0;
+}
+
+.page-navigation .next {
+  text-align: right;
+}
+
+.page-navigation .prev {
+  text-align: left;
+}

@@ -3,6 +3,7 @@ core_pages_list:
   "Home": '/'
   "Semantic Specification": '/spec'
   "Contributors": '/contributors'
+  "News and Notes": '/updates'
 
 user_pages_list:       
   "Per-Platform APIs": '/apis'
