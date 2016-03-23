@@ -67,9 +67,6 @@ figure.highlight { margin-left: 0px; margin-right: 0px; }
 .css .o + .nt,
 .css .nt + .nt { color: #999; }
 
-ul.hyphen-list li { list-style-type: none; }
-ul.hyphen-list li::before { content: "–   "; }
-
 .page-navigation {
   font-size: 75%;
   display: block;

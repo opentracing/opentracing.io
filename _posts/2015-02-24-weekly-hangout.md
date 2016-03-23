@@ -1,6 +1,6 @@
 ---
 layout: post
-title: weekly hangout notes
+title: "weekly hangout: cassandra, inject/join, java status"
 ---
 
 Rough notes from our weekly hangout:

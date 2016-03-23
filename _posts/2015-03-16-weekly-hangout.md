@@ -1,6 +1,6 @@
 ---
 layout: post
-title: weekly hangout notes
+title: "weekly hangout: inject/join, ot-java discussion, appdash"
 ---
 
 - talking about inject/join/carrier stuff (sadly without Adrian who fell victim to US DST changes)

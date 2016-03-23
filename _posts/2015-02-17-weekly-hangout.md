@@ -1,6 +1,6 @@
 ---
 layout: post
-title: weekly hangout notes
+title: "weekly hangout: 1.0rc milestone, standardtracer, tag standardization"
 ---
 
 Very rough notes from our weekly hangout:
