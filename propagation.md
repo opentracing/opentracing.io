@@ -27,11 +27,11 @@ For `Inject` and `Join` to be useful, all of the following must be true:
 - OpenTracing implementations must not need special handlers for every known inter-process communication mechanism: that's far too much work, and it's not even well-defined
 - That said, the propagation mechanism should be extensible for optimizations
 
-## The basic approach: Carriers
+## The basic approach: Inject, Join, and Carriers
 
 Any Span in a trace may be **Injected** into what OpenTracing refers to as a Carrier. A **Carrier** is an interface or data structure useful for inter-process communication (IPC); that is, the Carrier is something that "carries" the tracing state from one process to another. The OpenTracing specification includes two [required Carrier formats](#required-carriers), though [custom Carrier formats](#custom-carriers) are possible as well.
 
-Similarly, given a Carrier, an injected trace may be **Joined**, yielding a new Span. We use the term "Join" rather than "Extract" (or similar) because Inject/Join is not a symmetric process: an OpenTracing implementation is only expected to inject the minimal amount of informatien needed to constunct a (descendant) Span in the peer and join it to the overarching trace.
+Similarly, given a Carrier, an injected trace may be **Joined**, yielding a new Span. We use the term "Join" rather than "Extract" (or similar) because Inject/Join is not a symmetric process: an OpenTracing implementation is only expected to inject the minimal amount of information needed to constunct a (descendant) Span in the peer and join it to the overarching trace. The injected state is *not* necessarily sufficient to reconstruct the entire injected Span instance, symmetrically.
 
 #### Inject pseudocode example
 
