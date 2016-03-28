@@ -27,9 +27,11 @@ For `Inject` and `Join` to be useful, all of the following must be true:
 - OpenTracing implementations must not need special handlers for every known inter-process communication mechanism: that's far too much work, and it's not even well-defined
 - That said, the propagation mechanism should be extensible for optimizations
 
-## The basic approach
+## The basic approach: Carriers
 
-Any Span in a trace may be **Injected** into a **Carrier**. Similarly, given a **Carrier**, an injected trace may be **Joined**, yielding a new Span.
+Any Span in a trace may be **Injected** into what OpenTracing refers to as a Carrier. A **Carrier** is an interface or data structure useful for inter-process communication (IPC); that is, the Carrier is something that "carries" the tracing state from one process to another. The OpenTracing specification includes two [required Carrier formats](#required-carriers), though [custom Carrier formats](#custom-carriers) are possible as well.
+
+Similarly, given a Carrier, an injected trace may be **Joined**, yielding a new Span. We use the term "Join" rather than "Extract" (or similar) because Inject/Join is not a symmetric process: an OpenTracing implementation is only expected to inject the minimal amount of informatien needed to constunct a (descendant) Span in the peer and join it to the overarching trace.
 
 #### Inject pseudocode example
 
@@ -72,24 +74,28 @@ serverSpan = tracer.join(
 
 #### Carriers have formats
 
-All carriers have a format. In some OpenTracing languages, the format must be specified explicitly as a constant or string; in others, the format is inferred from the carrier's static type information.
+All Carriers have a format. In some OpenTracing languages, the format must be specified explicitly as a constant or string; in others, the format is inferred from the Carrier's static type information.
 
 #### Not Symmetric
 
-When a Span is injected into a carrier, the OpenTracing implementation only encodes the minimum amount of information needed to join with the trace in a remote process. As such, **`Inject` and `Join` are not glorified serialization and deserialization methods:** the Span returned by `Join` is not the Span passed to `Inject`.
+When a Span is injected into a Carrier, the OpenTracing implementation only encodes the minimum amount of information needed to join with the trace in a remote process. As such, **`Inject` and `Join` are not glorified serialization and deserialization methods:** the Span returned by `Join` is not the Span passed to `Inject`.
+
+<div id="required-carriers"></div>
 
 ## Required Inject/Join Carrier formats
 
-At a minimum, all platforms require OpenTracing implementations to support two carrier formats: the "text map" format and the "binary" format.
+At a minimum, all platforms require OpenTracing implementations to support two Carrier formats: the "text map" format and the "binary" format.
 
-- The *text map* carrier format is a platform-idiomatic map from (unicode) `string` to `string`
-- The *binary* carrier format is an opaque byte array (and presumably more compact and efficient)
+- The *text map* Carrier format is a platform-idiomatic map from (unicode) `string` to `string`
+- The *binary* Carrier format is an opaque byte array (and presumably more compact and efficient)
 
-What the OpenTracing implementations choose to store in these carriers is not formally defined by the OpenTracing specification, but the presumption is that they find a way to encode "tracer state" about the propagated `Span` (e.g., in Dapper this would include a `trace_id`, a `span_id`, and a bitmask representing the sampling status for the given trace) as well as any key:value Baggage items.
+What the OpenTracing implementations choose to store in these Carriers is not formally defined by the OpenTracing specification, but the presumption is that they find a way to encode "tracer state" about the propagated `Span` (e.g., in Dapper this would include a `trace_id`, a `span_id`, and a bitmask representing the sampling status for the given trace) as well as any key:value Baggage items.
 
 ### Interoperability of OpenTracing implementations *across process boundaries*
 
 There is no expectation that different OpenTracing implementations `Inject` and `Join` Spans in compatible ways. Though OpenTracing is agnostic about the tracing implementation *across an entire distributed system*, for successful inter-process handoff it's essential that the processes on both sides of a propagation use the same tracing implementation.
+
+<div id="custom-carriers"></div>
 
 ## Custom Inject/Join Carrier formats
 
@@ -135,11 +141,11 @@ The precise representation of the "Carrier formats" may vary from platform to pl
 To make the above more concrete, consider the following sequence:
 
 1. A *client* process has a `Span` instance and is about to make an RPC over a home-grown HTTP protocol
-1. That client process calls `Tracer.Inject(...)`, passing the active `Span` instance, a format identifier for a text map, and a text map carrier as parameters
-1. `Inject` has populated the text map in the carrier; the client application encodes that map within its homegrown HTTP protocol (e.g., as headers)
+1. That client process calls `Tracer.Inject(...)`, passing the active `Span` instance, a format identifier for a text map, and a text map Carrier as parameters
+1. `Inject` has populated the text map in the Carrier; the client application encodes that map within its homegrown HTTP protocol (e.g., as headers)
 1. *The HTTP request happens and the data crosses process boundaries...*
-1. Now in the server process, the application code decodes the text map from the homegrown HTTP protocol and uses it to initialize a text map carrier
-1. The server process calls `Tracer.Join(...)`, passing in the desired operation name, a format identifier for a text map, and the carrier from above
+1. Now in the server process, the application code decodes the text map from the homegrown HTTP protocol and uses it to initialize a text map Carrier
+1. The server process calls `Tracer.Join(...)`, passing in the desired operation name, a format identifier for a text map, and the Carrier from above
 1. In the absence of data corruption or other errors, the *server* now has a `Span` instance that belongs to the same trace as the one in the client
 
 Other examples can be found in the [OpenTracing use cases](/use-cases) doc.
