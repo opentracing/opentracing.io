@@ -8,6 +8,7 @@ core_pages_list:
 user_pages_list:       
   "Per-Platform APIs": '/apis'
   "Instrumentation Use Cases": '/use-cases'
+  "Cross-Process Propagation": '/propagation'
 
 implementor_pages_list:       
   "Implementing OpenTracing": '/implementors'
