@@ -6,13 +6,13 @@ OpenTracing APIs are **available** for the following platforms:
 
 * Go ([1.0RC](#v1rc)) - [https://github.com/opentracing/opentracing-go](https://github.com/opentracing/opentracing-go)
 * Python ([1.0RC](#v1rc)) - [https://github.com/opentracing/opentracing-python](https://github.com/opentracing/opentracing-python)
+* Javascript ([1.0RC](#v1rc)) - [https://github.com/opentracing/opentracing-javascript](https://github.com/opentracing/opentracing-javascript)
+* Objective-C - ([1.0RC](#v1rc)) - https://github.com/opentracing/opentracing-objc](https://github.com/opentracing/opentracing-objc)
+* Java - ([1.0RC](#v1rc)) - [https://github.com/opentracing/opentracing-java](https://github.com/opentracing/opentracing-java)
 
 OpenTracing APIs are **in progress** for the following platforms:
 
-* Javascript - [https://github.com/opentracing/opentracing-javascript](https://github.com/opentracing/opentracing-javascript)
-* Java - [https://github.com/opentracing/opentracing-java](https://github.com/opentracing/opentracing-java)
-* Objective-C - [https://github.com/opentracing/opentracing-objc](https://github.com/opentracing/opentracing-objc)
-* C++ - link forthcoming
+* C++ - [https://github.com/lookfwd/opentracing-cpp/pull/1](https://github.com/lookfwd/opentracing-cpp/pull/1)
 * PHP - link forthcoming
 * Ruby - link forthcoming
 
