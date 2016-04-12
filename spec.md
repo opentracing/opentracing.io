@@ -116,3 +116,9 @@ The `Tracer` interface must have the following capabilities:
 
 Note that `Inject` and `Join` are not entirely symmetrical interfaces since `Span` injection is a fundamentally lossy process (most of the `Span`'s state is meant to be recorded out-of-band from the application's own communication path, whereas Inject-ed state is meant to be sent in-band along with the application data).
 
+
+### Global and No-op Tracers
+
+OpenTracing libraries must provide a no-op Tracer as part of their interface. The no-op Tracer implementation must not crash and should have no side-effects, including baggage propagation. The Tracer implementation must provide a no-op Span implementation as well; in this way, the instrumentation code that relies on Span instances returned by the Tracer does not need to change to accommodate the possibility of no-op implementations. The no-op Tracer's `Inject` method should always succeed, and `Join` should always return a "trace not found" status.
+
+OpenTracing implementations should provide support for configuring (Go: `InitGlobalTracer()`, py: `opentracing.tracer = myTracer`) and retrieving (Go: `GlobalTracer()`, py: `opentracing.tracer`) a global Tracer instance if this is possible from the platform perspective. The default global Tracer must be the no-op Tracer.
