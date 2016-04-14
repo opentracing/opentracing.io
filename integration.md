@@ -10,7 +10,7 @@ OpenTracing APIs are **available** for the following platforms:
 * Go ([1.0RC](#v1rc)) - [https://github.com/opentracing/opentracing-go](https://github.com/opentracing/opentracing-go)
 * Python ([1.0RC](#v1rc)) - [https://github.com/opentracing/opentracing-python](https://github.com/opentracing/opentracing-python)
 * Javascript ([1.0RC](#v1rc)) - [https://github.com/opentracing/opentracing-javascript](https://github.com/opentracing/opentracing-javascript)
-* Objective-C - ([1.0RC](#v1rc)) - https://github.com/opentracing/opentracing-objc](https://github.com/opentracing/opentracing-objc)
+* Objective-C - ([1.0RC](#v1rc)) - [https://github.com/opentracing/opentracing-objc](https://github.com/opentracing/opentracing-objc)
 * Java - ([1.0RC](#v1rc)) - [https://github.com/opentracing/opentracing-java](https://github.com/opentracing/opentracing-java)
 
 OpenTracing APIs are **in progress** for the following platforms:
@@ -21,7 +21,7 @@ OpenTracing APIs are **in progress** for the following platforms:
 
 Please refer to the README files in the respective per-platform repositories for usage examples.
 
-PHP, iOS, and Ruby are next on our list, though community contributions are welcome for other languages at any time.
+Community contributions are welcome for other languages at any time.
 
 <div id="v1rc"></div>
 
