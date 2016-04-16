@@ -13,4 +13,4 @@ Rough notes (not in chronological order, and not complete):
 - span errors: we need to decide on how to represent them
   - could add a span method, use some standard span tag, or infer from a log record in an error state
   - TL;DR: we will formalize a tag name+value (`"error": true`, most likely) for span errors
-- cloud sleuth: @besnigelman to talk with Marcin about future plans
+- cloud sleuth: @bensigelman to talk with Marcin about future plans
