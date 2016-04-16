@@ -12,7 +12,7 @@ A high-level understanding between the instrumentor and tracer developers adds g
 
 As an example, consider the common case of a HTTP-based application server. The URL of an incoming request that the application is handling is often useful for diagnostics, as well as the HTTP verb and the resultant status code. An instrumentor could choose to report the URL in a tag named `URL`, or perhaps named `http.url`--either would be valid from the pure API perspective. But if the Tracer wishes to add intelligence, such as indexing on the URL value or sampling proactively for requests to a particular endpoint, it must know where to look for relevant data. In short, when tag names and other instrumentor-provided values are used consistently, the tracers on the other side of the API can employ more intelligence.
 
-The guidelines contained describe a common ground on which instrumentors and tracer authors can build beyond pure data collection. Adherence to the guidelines is optional but highly recommended for instrumetors.
+The guidelines provided here describe a common ground on which instrumentors and tracer authors can build beyond pure data collection. Adherence to the guidelines is optional but highly recommended for instrumentors.
 
 
 
@@ -21,7 +21,7 @@ The guidelines contained describe a common ground on which instrumentors and tra
 
 ### Span Naming
 
-Spans carry tags, logs, and attributes, but they also have a top-level **operation name**. This should be a low-cardinality string value representing the type of work being done in the span. Typically, this is the local type of work being done. Examples include `GET` or `POST` for a HTTP span, `SELECT` or `INSERT` for a SQL span, and so on.
+Spans carry tags, logs, and baggage, but they also have a top-level **operation name**. This should be a low-cardinality string value representing the type of work being done in the span. Typically, this is the local type of work being done. Examples include an RPC or endpoint name for a HTTP span, `SELECT` or `INSERT` for a SQL span, and so on.
 
 Secondarily, an optional **component** tag can be provided to scope the operation name. Typically, a process, framework, library, or module name is a good guideline for the component tag.
 
@@ -32,7 +32,7 @@ Span structure is also important: what do spans represent, and what relationship
 
 ## Span Tag Use-Cases
 
-The following tags are recommended for instrumentors who are trying to represent a particular type of data. Tag names follow a general structure of namespacing; the values are determined purely on a tag-by-tag basis.
+The following tags are recommended for instrumentors who are trying to represent a particular type of data. Tag names follow a general structure of namespacing.
 
 The recommended tags below are accompanied by `const` values included in an `ext` module for each opentracing implementation.  These `ext` values should be used in place of the strings below, as tracers may choose to use different underlying representations for these common concepts.  The symbols are similar in each implementation: ([Go](https://github.com/opentracing/opentracing-go/blob/master/ext/tags.go), [Python](https://github.com/opentracing/opentracing-python/blob/master/opentracing/ext/tags.py), etc.)
 
@@ -42,7 +42,7 @@ It is not required that all suggested tags be used, even if one is used.
 
 ### Component Identification
 
-For any span, it can be useful to specify the type of component being instrumented. This is particularly recommended for instrumentation provided for libraries or modules, where end-users may haev a mix of custom and library-provided instrumentation.
+For any span, it can be useful to specify the type of component being instrumented. This is particularly recommended for instrumentation provided for libraries or modules, where end-users may have a mix of custom and library-provided instrumentation.
 
 * `component` - string
     - Low-cardinality identifier of the module, library, or package that is instrumented.
@@ -57,17 +57,12 @@ For any span, it can be useful to specify the type of component being instrument
 These tags are recommended for spans marking entry into a HTTP-based service.
 
 * `http.url` - string
-    - URL of the request being handled in this segment of the trace, in [standard URI format](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier), excepting query string parameters.
+    - URL of the request being handled in this segment of the trace, in [standard URI format](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier).
     - Protocol optional
     - Examples:
         - `https://domain.net/path/to?resource=here`
         - `domain.net/path/to/resource`
         - `http://user:pass@domain.org:8888`
-* `http.query` - string
-    - Query string parameters of the request being handled.
-    - Note that the preceding `?` character is not expected.
-    - Examples:
-        - `key=val&key2=val2`
 * `http.method` - string
     - HTTP method of the request being handled.
     - Case-insensitive
@@ -78,7 +73,7 @@ These tags are recommended for spans marking entry into a HTTP-based service.
     - Examples:
         - `200`, `503`
 * `span.kind` - string
-    - Value of `s` should be used to indicate that this is a server side span (see "Peer Tags")
+    - Value of `server` should be used to indicate that this is a server side span (see "<a href="#peer-tags">Peer Tags</a>")
 
 
 ### Peer Tags
@@ -96,7 +91,7 @@ These tags can be provided by either client-side or server-side to describe the 
 * `peer.service` - string
     - Remote service name
 * `span.kind` - string
-    - One of `c` or `s`, indicating if this span represents a client or server
+    - One of `client` or `server`, indicating if this span represents a client or server
 
 
 
@@ -108,7 +103,7 @@ Some events are point-in-time and do not apply to an entire span; these are repo
 ### Exception
 
 * Event: `exception`
-* Payload:
+* Payload - map
     - `type` - string
         - Low-cardinality class of exception
     - `message` - string
