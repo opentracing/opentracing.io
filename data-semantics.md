@@ -50,7 +50,8 @@ For any span, it can be useful to specify the type of component being instrument
         - `httplib` for instrumentation of Python builtin httplib functionality
         - `JDBC` for instrumentation of JDBC database connectors
         - `mongoose` for instrumentation of Ruby MongoDB client connector
-
+* `span.kind` - string
+    - One of `client` or `server`, indicating if this span represents a client or server
 
 ### HTTP Server Tags
 
@@ -73,7 +74,7 @@ These tags are recommended for spans marking entry into a HTTP-based service.
     - Examples:
         - `200`, `503`
 * `span.kind` - string
-    - Value of `server` should be used to indicate that this is a server side span (see "<a href="#peer-tags">Peer Tags</a>")
+    - Value of `server` should be used to indicate that this is a server-side span (see "<a href="#component-identification">Component Identification</a>")
 
 
 ### Peer Tags
@@ -90,8 +91,6 @@ These tags can be provided by either client-side or server-side to describe the 
     - Remote port
 * `peer.service` - string
     - Remote service name
-* `span.kind` - string
-    - One of `client` or `server`, indicating if this span represents a client or server
 
 
 
