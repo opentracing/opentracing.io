@@ -22,7 +22,7 @@ Enter **OpenTracing**: by offering consistent, expressive, vendor-neutral APIs f
 
 The OpenTracing project aims to provide APIs for all popular platforms. The APIs have standard semantic capabilities and must not be tightly coupled to any particular downstream tracing or monitoring system. Initial target languages are Go, Python, Java, and Javascript, with more to follow.
 
-Please refer to the [Per-Platform APIs]({{ baseurl }}apis) page for the list of currently supported platforms.
+Please refer to the [Per-Platform APIs]({{ baseurl }}integration) page for the list of currently supported platforms.
 
 ## Support or Contact
 * Open an issue against [one of the repositories](https://github.com/opentracing), or
