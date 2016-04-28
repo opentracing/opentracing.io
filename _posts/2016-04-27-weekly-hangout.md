@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "weekly hangout: C++ prorgess, Maven Central, go-kit"
+title: "weekly hangout: C++ progress, Maven Central, go-kit"
 ---
 
 Rough notes:
