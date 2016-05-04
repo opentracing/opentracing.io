@@ -3,10 +3,12 @@ core_pages_list:
   "Home": '/'
   "Semantic Specification": '/spec'
   "Contributors": '/contributors'
+  "News and Notes": '/updates'
 
 user_pages_list:       
-  "Per-Platform APIs": '/apis'
+  "APIs and Supported Tracers": '/integration'
   "Instrumentation Use Cases": '/use-cases'
+  "Cross-Process Propagation": '/propagation'
 
 implementor_pages_list:       
   "Implementing OpenTracing": '/implementors'
