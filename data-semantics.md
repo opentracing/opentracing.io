@@ -40,6 +40,14 @@ Some tags mentioned below may contain values of significant size. Handling of su
 
 It is not required that all suggested tags be used, even if one is used.
 
+### Errors
+
+The error state of a span instance should be represented as a tag.
+
+* `error` - bool
+    - `true` means that the span is in an error state
+    - `false` or the absence of an `error` tag means that the span is not in an error state
+
 ### Component Identification
 
 For any span, it can be useful to specify the type of component being instrumented. This is particularly recommended for instrumentation provided for libraries or modules, where end-users may have a mix of custom and library-provided instrumentation.
