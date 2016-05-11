@@ -5,7 +5,6 @@ title: "weekly hangout: July distributed-tracing workshop, example app, blog pos
 
 meeting notes
 
-- Yuri brings up July 28-29 Adrian's tracing workshop
 - Java-wise, Kike finally got the Java version working with their services
   - Thread-locals kind of nasty
   - No problems with the OpenTracing
