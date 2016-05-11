@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "weekly hangout: July distributed-tracing workshop, example app, blog posts"
+title: "weekly hangout: progress updates, example app, blog posts"
 ---
 
 meeting notes
