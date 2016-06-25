@@ -93,7 +93,7 @@ As is the case with Logs, if certain known tag key:values are used for common ap
 
 ## SpanContext
 
-Every Span must provide access to a **SpanContext**. The SpanContext represents Span state that must propagate to descendant Spans and across process boundaries (e.g., a `<trace_id, span_id, sampled>` tuple) and also encapsulates any **Baggage** (see below). SpanContext is used when propagating traces across process boundaries and when creating edges in the trace graph (e.g., parent-child relationships).
+Every Span must provide access to a **SpanContext**. The SpanContext represents Span state that must propagate to descendant Spans and across process boundaries (e.g., a `<trace_id, span_id, sampled>` tuple) and also encapsulates any **Baggage** (see below). SpanContext is used when propagating traces across process boundaries and when creating edges in the trace graph (e.g., parent-child relationships or other [references](#references)).
 
 ### Baggage
 
@@ -110,7 +110,7 @@ Also, Baggage keys have a restricted format: implementations may wish to use the
 
 ## Inject and Extract
 
-SpanContexts may be **Injected** into and **Extracted** from **Carrier** objects that are used for inter-process communication (e.g., HTTP headers). In this way, SpanContexts may propagate across process boundaries along with sufficient information to join up with the Trace in some remote process.
+SpanContexts may be **Injected** into and **Extracted** from **Carrier** objects that are used for inter-process communication (e.g., HTTP headers). In this way, SpanContexts may propagate across process boundaries along with sufficient information to reference Spans (and thus continue traces) from remote processes.
 
 # Platform-Independent API Semantics
 
