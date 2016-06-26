@@ -174,13 +174,13 @@ def traced_request(request, operation, http_client):
     # start a new span to represent the RPC
     span = tracer.start_span(
         operation_name=operation,
-        parent=parent_span.context(),
+        parent=parent_span.context,
         tags={'http.url': request.full_url}
     )
 
     # propagate the Span via HTTP request headers
     tracer.inject(
-        span.context(),
+        span.context,
         format=opentracing.HTTP_HEADER_FORMAT,
         carrier=request.headers)
 
@@ -213,10 +213,10 @@ The client and server examples above propagated the Span/Trace over the wire, in
 
 {% highlight python %}
 # client side
-span.context().set_baggage_item('auth-token', '.....')
+span.context.set_baggage_item('auth-token', '.....')
 
 # server side (one or more levels down from the client)
-token = span.context().get_baggage_item('auth-token')
+token = span.context.get_baggage_item('auth-token')
 {% endhighlight %}
 
 ### Logging Events

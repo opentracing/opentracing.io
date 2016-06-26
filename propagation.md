@@ -96,7 +96,7 @@ There is no expectation that different OpenTracing implementations `Inject` and 
 
 ## Custom Inject/Extract Carrier formats
 
-Any propagation subsystem (an RPC library, a message queue, etc) may choose to introduce their own custom Inject/Extract Carrier format; by preferring their custom format **but falling back to a required OpenTracing format as needed** they allow OpenTracing implemantations to optimize for their custom format without *needing* OpenTracing implementations to support their format.
+Any propagation subsystem (an RPC library, a message queue, etc) may choose to introduce their own custom Inject/Extract Carrier format; by preferring their custom format **but falling back to a required OpenTracing format as needed** they allow OpenTracing implementations to optimize for their custom format without *needing* OpenTracing implementations to support their format.
 
 Some pseudocode will make this less abstract. Imagine that we're the author of the (sadly fictitious) **ArrrPC pirate RPC subsystem**, and we want to add OpenTracing support to our outbound RPC requests. Minus some error handling, our pseudocode might look like this:
 

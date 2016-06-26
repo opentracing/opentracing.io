@@ -10,6 +10,7 @@ title: Semantic Specification
 ~~~
 Causal relationships for Spans in a single trace
 
+
         [Span A]  ←←←(the root span)
             |
      +------+------+
@@ -29,6 +30,7 @@ Causal relationships for Spans in a single trace
 ~~~
 Temporal relationships for all of the above
 
+
 ––|–––––––|–––––––|–––––––|–––––––|–––––––|–––––––|–––––––|–> time
 
  [Span A···················································]
@@ -40,11 +42,11 @@ Temporal relationships for all of the above
 
 ## Traces
 
-A **Trace** represents the potentially distributed, potentially concurrent data/execution path in a (potentially distributed, potentially concurrent) system. A Trace can be thought of as a DAG of Spans. (See the ASCII diagrams above)
+A **Trace** represents the potentially distributed, potentially concurrent data/execution path in a (potentially distributed, potentially concurrent) system. A Trace can be thought of as a directed acyclic graph (DAG) of Spans.
 
 ## Spans
 
-A **Span** represents a logical unit of work in the system that has a start time and a duration. Spans may be nested and ordered to model causal relationships. Each span has an **operation name**, a presumably human-readable string which concisely names the work done by the span (e.g., an RPC method name, a function name, or the name of a subtask or stage within a larger computation).
+A **Span** represents a logical unit of work in the system that has a start time and a duration. Spans may be nested and ordered to model causal relationships. Each span has an **operation name**, a presumably human-readable string which concisely represents the work done by the span (e.g., an RPC method name, a function name, or the name of a subtask or stage within a larger computation).
 
 <span id="references"></span>
 
@@ -103,7 +105,7 @@ Baggage comes with powerful _costs_ as well; since the Baggage is propagated in-
 
 ## Baggage vs. Span Tags
 
-- Baggage is propagated in-band (i.e., alongside the actual application data) across process boundaries. Span Tags are not propagated since they are not inherited from parent Span to child Span.
+- Baggage is propagated in-band (i.e., alongside the actual application data) across process boundaries. Span Tags are not propagated since they are not inherited from parent Span to descendant Span.
 - Span Tags are recorded out-of-band from the application data, presumably in the tracing system's storage. Implementations may choose to also record Baggage out-of-band, though that decision is not dictated by the OpenTracing specification.
 
 Also, Baggage keys have a restricted format: implementations may wish to use them as HTTP header keys (or key suffixes), and of course HTTP headers are case insensitive. As such, Baggage keys MUST match the regular expression `(?i:[a-z0-9][-a-z0-9]*)`, and – per the `?i:` – they are case-insensitive. That is, the Baggage key must start with a letter or number, and the remaining characters must be letters, numbers, or hyphens.
@@ -129,7 +131,7 @@ The `Span` interface must have the following capabilities:
 
 The `SpanContext` interface must have the following capabilities. The user acquires a reference to a `SpanContext` via an associated `Span` instance or via `Tracer`'s Extract capability.
 
-- **Set a Baggage item**, represented as a simple string:string pair. Note that newly-set Baggage items are only guaranteed to propagate to *future* children of the associated `Span`. See the diagram below. **(py: `set_baggage_item`, go: `SetBaggageItem`)**
+- **Set a Baggage item**, represented as a simple string:string pair. Note that newly-set Baggage items are only guaranteed to propagate to *future* descendants of the associated `Span`. See the diagram below. **(py: `set_baggage_item`, go: `SetBaggageItem`)**
 - **Get a Baggage item** by key. **(py: `get_baggage_item`, go: `BaggageItem`)**
 
 ~~~
