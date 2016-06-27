@@ -70,7 +70,7 @@ span_context = tracer.extract(opentracing.Format.TEXT_MAP, carrier)
 //     span = tracer.start_span("...", parent=span_context)
 //
 
-# (If `carrier` held trace data, `span_context` will now be ready to use.)
+# (If `carrier` held trace data, `span` will now be ready to use.)
 {% endhighlight %}
 
 #### Carriers have formats
