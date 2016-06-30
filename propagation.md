@@ -67,7 +67,7 @@ carrier = inbound_request.headers
 span_context = tracer.extract(opentracing.Format.TEXT_MAP, carrier)
 // Continue the trace given span_context. E.g.,
 //
-//     span = tracer.start_span("...", parent=span_context)
+//     span = tracer.start_span("...", belongs_to=span_context)
 //
 
 # (If `carrier` held trace data, `span` will now be ready to use.)

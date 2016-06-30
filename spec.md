@@ -15,7 +15,7 @@ Causal relationships for Spans in a single trace
             |
      +------+------+
      |             |
- [Span B]      [Span C] ←←←(Span A is Span C's parent)
+ [Span B]      [Span C] ←←←(Span C "BelongsTo" Span A)
      |             |
  [Span D]      +---+-------+
                |           |
@@ -23,7 +23,7 @@ Causal relationships for Spans in a single trace
                                        ↑
                                        ↑
                                        ↑
-              (Span F is Span G's "Sequence Predecessor")
+                           (Span G "Follows" Span F)
 
 ~~~
 
@@ -54,32 +54,30 @@ A **Span** represents a logical unit of work in the system that has a start time
 
 A Span may reference zero or more Spans that are causally related. OpenTracing presently defines two types of references:
 
-**Parent references:** A "parent" Span may create a new "child" Span. The expectation is that the parent Span has not finished by the time the new Span starts. Though it is often the case that the parent Span cannot complete successfully until the child Span does as well, this is not a semantic requirement for parent references.
+**`BelongsTo` references:** A descendant Span may "BelongTo" an ancestor Span. In a "BelongsTo" reference, the ancestor Span depends on the descendant Span in some fashion (often—but not always—the ancestor Span cannot finish until the descendant Span finishes). We sometimes refer to the "BelongsTo" ancestor as the "parent" and the descendant as the "child".
 
-A timing diagram for a parent that's blocked on a child Span:
-
-~~~
-    [-Parent Span---------]
-         [-Child Span----]
-~~~
-
-A timing diagram for a parent that's not blocked on a child Span:
+A typical timing diagram for a descendant Span that BelongsTo a ancestor Span:
 
 ~~~
-    [-Parent Span-]
-              [-Child Span-]
+    [-Ancestor (Parent) Span-----------]
+         [-Descendant (Child) Span----]
 ~~~
 
-**Sequence predecessor references:** Some Spans cannot start until a "sequence predecessor" Span finishes. For instance, chained sequence predecessor references neatly describe pipeline stages separated by queues.
+**`Follows` references:** Some ancestor Spans do not depend in any way on the result of their descendant Spans. In these cases, we say merely that the descendant Span "Follows" the ancestor Span in a causal sense. There are many distinct "Follows" reference sub-categories, and in future versions of OpenTracing they may be distinguished more formally.
 
-A sequence predecessor Span is part of the same logical trace as the descendant Span that refers to it: i.e., the descendant Span is formally caused by the work of its sequence predecessor.
-
-A timing diagram for a SequencePredecessorRef that must finish before the descendant Span can start:
+These can all be valid timing diagrams for descendants that "Follow" an ancestor.
 
 ~~~
-    [-SequencePredecessorRef Span-]  [-New Span-]
-~~~
+    [-Ancestor Span-]  [-Descendant Span-]
 
+
+    [-Ancestor Span-]
+     [-Descendant Span-]
+
+
+    [-Ancestor Span-]
+                   [-Descendant Span-]
+~~~
 
 ### Logs
 
@@ -95,7 +93,7 @@ As is the case with Logs, if certain known tag key:values are used for common ap
 
 ## SpanContext
 
-Every Span must provide access to a **SpanContext**. The SpanContext represents Span state that must propagate to descendant Spans and across process boundaries (e.g., a `<trace_id, span_id, sampled>` tuple) and also encapsulates any **Baggage** (see below). SpanContext is used when propagating traces across process boundaries and when creating edges in the trace graph (e.g., parent-child relationships or other [references](#references)).
+Every Span must provide access to a **SpanContext**. The SpanContext represents Span state that must propagate to descendant Spans and across process boundaries (e.g., a `<trace_id, span_id, sampled>` tuple) and also encapsulates any **Baggage** (see below). SpanContext is used when propagating traces across process boundaries and when creating edges in the trace graph (e.g., BelongsTo relationships or other [references](#references)).
 
 ### Baggage
 
@@ -105,7 +103,7 @@ Baggage comes with powerful _costs_ as well; since the Baggage is propagated in-
 
 ## Baggage vs. Span Tags
 
-- Baggage is propagated in-band (i.e., alongside the actual application data) across process boundaries. Span Tags are not propagated since they are not inherited from parent Span to descendant Span.
+- Baggage is propagated in-band (i.e., alongside the actual application data) across process boundaries. Span Tags are not propagated since they are not inherited by descendant Spans.
 - Span Tags are recorded out-of-band from the application data, presumably in the tracing system's storage. Implementations may choose to also record Baggage out-of-band, though that decision is not dictated by the OpenTracing specification.
 
 Also, Baggage keys have a restricted format: implementations may wish to use them as HTTP header keys (or key suffixes), and of course HTTP headers are case insensitive. As such, Baggage keys MUST match the regular expression `(?i:[a-z0-9][-a-z0-9]*)`, and – per the `?i:` – they are case-insensitive. That is, the Baggage key must start with a letter or number, and the remaining characters must be letters, numbers, or hyphens.
@@ -158,9 +156,9 @@ The `SpanContext` interface must have the following capabilities. The user acqui
 
 The `Tracer` interface must have the following capabilities:
 
-- **Start a new `Span`**. The caller can specify zero or more [`SpanContext` references](#references) (e.g., parents or sequence predecessors), an explicit start timestamp (other than "now"), and an initial set of `Span` tags. **(py: `start_span`, go: `StartSpan`)**
+- **Start a new `Span`**. The caller can specify zero or more [`SpanContext` references](#references) (e.g., `Follows` or `BelongsTo`), an explicit start timestamp (other than "now"), and an initial set of `Span` tags. **(py: `start_span`, go: `StartSpan`)**
 - <span id="inject-extract"></span>**Inject a `SpanContext`** into a "carrier" object for cross-process propagation. The type of the carrier is either determined through reflection or an explicit [format identifier](/propagation#format-identifiers). See the [end-to-end propagation example](/propagation#propagation-example) to make this more concrete.
-- **Extract a `SpanContext`** given a "carrier" object whose contents crossed a process boundary. Extract examines the carrier and tries to reconstruct the previously-Injected `SpanContext` instance. Unless there's an error, Extract returns a `SpanContext` which can be used in the host process like any other, most likely to start a new (descendant) Span. (Note that some OpenTracing implementations consider the `Span`s on either side of an RPC to have the same identity, and others consider the caller to be the parent and the receiver to be the child) The type of the carrier is either determined through language reflection or an explicit [format](/propagation#format-identifiers). See the [end-to-end propagation example](/propagation#propagation-example) to make this more concrete.
+- **Extract a `SpanContext`** given a "carrier" object whose contents crossed a process boundary. Extract examines the carrier and tries to reconstruct the previously-Injected `SpanContext` instance. Unless there's an error, Extract returns a `SpanContext` which can be used in the host process like any other, most likely to start a new (descendant) Span. (Note that some OpenTracing implementations consider the `Span`s on either side of an RPC to have the same identity, and others consider the caller to be the ancestor and the receiver to be the descendant) The type of the carrier is either determined through language reflection or an explicit [format](/propagation#format-identifiers). See the [end-to-end propagation example](/propagation#propagation-example) to make this more concrete.
 
 ### Global and No-op Tracers
 
