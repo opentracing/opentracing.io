@@ -52,7 +52,7 @@ A **Span** represents a logical unit of work in the system that has a start time
 
 ### Causal Span References
 
-A Span may reference zero or more Spans that are causally related. OpenTracing presently defines two types of references:
+A Span may reference zero or more Spans that are causally related. OpenTracing presently defines two types of references: `BelongsTo` and `Follows`. **Both reference types specifically model direct causal relationships between a descendant span and an ancestor span.** In the future, OpenTracing may also support reference types for spans with non-causal relationships (e.g., Spans that are batched together, Spans that are stuck in the same queue, etc).
 
 **`BelongsTo` references:** A descendant Span may "BelongTo" an ancestor Span. In a "BelongsTo" reference, the ancestor Span depends on the descendant Span in some fashion (often—but not always—the ancestor Span cannot finish until the descendant Span finishes). We sometimes refer to the "BelongsTo" ancestor as the "parent" and the descendant as the "child".
 
