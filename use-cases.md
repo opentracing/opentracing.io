@@ -115,7 +115,7 @@ extracted_context = tracer.extract(
 if extracted_context is None:
     span = tracer.start_span(operation_name=operation)
 else:
-    span = tracer.start_span(operation_name=operation, belongs_to=extracted_context)
+    span = tracer.start_span(operation_name=operation, child_of=extracted_context)
 span.set_tag('http.method', request.method)
 span.set_tag('http.url', request.full_url)
 {% endhighlight %}
@@ -155,7 +155,7 @@ func BusinessFunction1(ctx context.Context, arg1...) {
 func BusinessFunction2(ctx context.Context, arg1...) {
     parentSpan := opentracing.SpanFromContext(ctx)
     childSpan := opentracing.StartSpan(
-        "...", opentracing.BelongsTo(parentSpan.Context()), ...)
+        "...", opentracing.ChildOf(parentSpan.Context()), ...)
     ...
 }
 {% endhighlight %}
@@ -174,7 +174,7 @@ def traced_request(request, operation, http_client):
     # start a new span to represent the RPC
     span = tracer.start_span(
         operation_name=operation,
-        belongs_to=parent_span.context,
+        child_of=parent_span.context,
         tags={'http.url': request.full_url}
     )
 
