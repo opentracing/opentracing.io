@@ -76,7 +76,7 @@ These can all be valid timing diagrams for children that "FollowFrom" a parent.
 
 
     [-Parent Span-]
-                   [-Child Span-]
+                [-Child Span-]
 ~~~
 
 ### Logs
