@@ -54,13 +54,24 @@ A **Span** represents a logical unit of work in the system that has a start time
 
 A Span may reference zero or more Spans that are causally related. OpenTracing presently defines two types of references: `ChildOf` and `FollowsFrom`. **Both reference types specifically model direct causal relationships between a child span and a parent span.** In the future, OpenTracing may also support reference types for spans with non-causal relationships (e.g., Spans that are batched together, Spans that are stuck in the same queue, etc).
 
-**`ChildOf` references:** A Span may be the "ChildOf" a parent Span. In a "ChildOf" reference, the parent Span depends on the child Span in some fashion (often—but not always—the parent Span cannot finish until the child Span finishes).
+**`ChildOf` references:** A Span may be the "ChildOf" a parent Span. In a "ChildOf" reference, the parent Span depends on the child Span in some capacity. All of the following would constitute ChildOf relationships:
 
-A typical timing diagram for a Span that is the ChildOf a parent Span:
+- A Span representing the server side of an RPC may be the ChildOf a Span representing the client side of that RPC
+- A Span representing a SQL insert may be the ChildOf a Span representing an ORM save method
+- Many Spans doing concurrent (perhaps distributed) work may all individually be the ChildOf a single parent Span that merges the results for all children that return within a deadline
+
+These could all be valid timing diagrams for children that "FollowFrom" a parent.
 
 ~~~
     [-Parent Span---------]
          [-Child Span----]
+
+    [-Parent Span--------------]
+         [-Child Span A----]
+          [-Child Span B----]
+        [-Child Span C----]
+         [-Child Span D---------------]
+         [-Child Span E----]
 ~~~
 
 **`FollowsFrom` references:** Some parent Spans do not depend in any way on the result of their child Spans. In these cases, we say merely that the child Span "FollowsFrom" the parent Span in a causal sense. There are many distinct "FollowsFrom" reference sub-categories, and in future versions of OpenTracing they may be distinguished more formally.
@@ -162,6 +173,6 @@ The `Tracer` interface must have the following capabilities:
 
 ### Global and No-op Tracers
 
-OpenTracing libraries must provide a no-op Tracer as part of their interface. The no-op Tracer implementation must not crash and should have no side-effects, including baggage propagation. The Tracer implementation must provide a no-op Span implementation as well; in this way, the instrumentation code that relies on Span instances returned by the Tracer does not need to change to accommodate the possibility of no-op implementations. The no-op Tracer's Inject method should always succeed, and Extract should always behave as if no `SpanContext` could be found in the carrier.
+A per-platform OpenTracing API library (e.g., [opentracing-go](https://github.com/opentracing/opentracing-go), [opentracing-java](https://github.com/opentracing/opentracing-java), etc; not OpenTracing `Tracer` *implementations*) must provide a no-op Tracer as part of their interface. The no-op Tracer implementation must not crash and should have no side-effects, including baggage propagation. The Tracer implementation must provide a no-op Span implementation as well; in this way, the instrumentation code that relies on Span instances returned by the Tracer does not need to change to accommodate the possibility of no-op implementations. The no-op Tracer's Inject method should always succeed, and Extract should always behave as if no `SpanContext` could be found in the carrier.
 
-OpenTracing implementations may provide support for configuring (Go: `InitGlobalTracer()`, py: `opentracing.tracer = myTracer`) and retrieving (Go: `GlobalTracer()`, py: `opentracing.tracer`) a global/singleton Tracer instance if this is possible from the platform perspective. The default global Tracer must be the no-op Tracer.
+The per-platform OpenTracing API libraries *may* provide support for configuring (Go: `InitGlobalTracer()`, py: `opentracing.tracer = myTracer`) and retrieving (Go: `GlobalTracer()`, py: `opentracing.tracer`) a global/singleton Tracer instance. If a global Tracer is supported, the default must be the no-op Tracer.
