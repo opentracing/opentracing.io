@@ -36,7 +36,7 @@ OpenTracing is a thin standardization layer that sits between application/librar
 
 **OSS Services**: Beyond embedded libraries, entire OSS services may adopt OpenTracing to integrate with distributed traces initiating in – or propagating to – other processes in a larger distributed system. For instance, an HTTP load balancer may use OpenTracing to decorate requests, or a distributed key:value store may use OpenTracing to explain the performance of reads and writes.
 
-**RPC/IPC Frameworks**: Any subsystem tasked with crossing process boundaries may use OpenTracing to standardize the format of tracing state as it injects into and joins from various wire formats and protocols.
+**RPC/IPC Frameworks**: Any subsystem tasked with crossing process boundaries may use OpenTracing to standardize the format of tracing state as it injects into and extracts from various wire formats and protocols.
 
 All of the above should be able to use OpenTracing to describe and propagate distributed traces **without knowledge of the underlying OpenTracing implementation**.
 
@@ -86,43 +86,43 @@ def top_level_function():
 
 When a server wants to trace execution of a request, it generally needs to go through these steps:
 
-  1. Attempt to join an existing trace given a Span that's been propagated alongside the incoming request (in case the trace has already been started by the client), or create a new trace if no such propagated Span could be found.
+  1. Attempt to extract a SpanContext that's been propagated alongside the incoming request (in case the trace has already been started by the client), or start a new trace if no such propagated SpanContext could be found.
   1. Store the newly created Span in some _request context_ that is propagated throughout the application, either by application code, or by the RPC framework.
   1. Finally, close the Span using `span.finish()` when the server has finished processing the request.
 
-#### Joining to a Trace from an Incoming Request
+#### Extracting a SpanContext from an Incoming Request
 
-Let's assume that we have an HTTP server, and the Span is propagated from the client via HTTP headers, accessible via `request.headers`:
+Let's assume that we have an HTTP server, and the SpanContext is propagated from the client via HTTP headers, accessible via `request.headers`:
 
 {% highlight python %}
-span = tracer.join(
-    operation_name=operation,
+extracted_context = tracer.extract(
     format=opentracing.HTTP_HEADER_FORMAT,
     carrier=request.headers
 )
 {% endhighlight %}
 
-Here we set both arguments of the decoding method to the `headers` map. The Tracer object knows which headers it needs to read in order to reconstruct the tracer state and any Baggage.
+Here we use the `headers` map as the carrier. The Tracer object knows which headers it needs to read in order to reconstruct the tracer state and any Baggage.
 
-The `operation` above refers to the name the server wants to give to the Span. For example, if the HTTP request was a POST against `/save_user/123`, the operation name can be set to `post:/save_user/`. OpenTracing API does not dictate how applications name the spans.
+#### Continuing or Starting a Trace from an Incoming Request
 
-#### Joining to or Starting a Trace from an Incoming Request
-
-The `span` object above can be `None` if the Tracer did not find relevant headers in the incoming request: presumably because the client did not send them. In this case the server needs to start a brand new trace.
+The `extracted_context` object above can be `None` if the Tracer did not find relevant headers in the incoming request: presumably because the client did not send them. In this case the server needs to start a brand new trace.
 
 {% highlight python %}
-span = tracer.join(
-    operation_name=operation,
+extracted_context = tracer.extract(
     format=opentracing.HTTP_HEADER_FORMAT,
     carrier=request.headers
 )
-if span is None:
+if extracted_context is None:
     span = tracer.start_span(operation_name=operation)
+else:
+    span = tracer.start_span(operation_name=operation, child_of=extracted_context)
 span.set_tag('http.method', request.method)
 span.set_tag('http.url', request.full_url)
 {% endhighlight %}
 
 The `set_tag` calls are examples of recording additional information in the Span about the request.
+
+The `operation` above refers to the name the server wants to give to the Span. For example, if the HTTP request was a POST against `/save_user/123`, the operation name can be set to `post:/save_user/`. The OpenTracing API does not dictate how applications name the spans.
 
 #### In-Process Request Context Propagation
 
@@ -153,8 +153,9 @@ func BusinessFunction1(ctx context.Context, arg1...) {
 }
 
 func BusinessFunction2(ctx context.Context, arg1...) {
-    parentSpan := SpanFromContext(ctx)
-    childSpan := opentracing.StartChildSpan(parentSpan, ...)
+    parentSpan := opentracing.SpanFromContext(ctx)
+    childSpan := opentracing.StartSpan(
+        "...", opentracing.ChildOf(parentSpan.Context()), ...)
     ...
 }
 {% endhighlight %}
@@ -173,13 +174,13 @@ def traced_request(request, operation, http_client):
     # start a new span to represent the RPC
     span = tracer.start_span(
         operation_name=operation,
-        parent=parent_span,
+        child_of=parent_span.context,
         tags={'http.url': request.full_url}
     )
 
     # propagate the Span via HTTP request headers
     tracer.inject(
-        span,
+        span.context,
         format=opentracing.HTTP_HEADER_FORMAT,
         carrier=request.headers)
 
@@ -206,16 +207,16 @@ def traced_request(request, operation, http_client):
   * Because the HTTP client may throw an exception even before returning a Future, we use a try/catch block to finish the Span in all circumstances, to ensure it is reported and avoid leaking resources.
 
 
-### Using Distributed Context Propagation
+### Using Baggage / Distributed Context Propagation
 
 The client and server examples above propagated the Span/Trace over the wire, including any Baggage. The client may use the Baggage to pass additional data to the server and any other downstream server it might call.
 
 {% highlight python %}
 # client side
-span.set_baggage_item('auth-token', '.....')
+span.context.set_baggage_item('auth-token', '.....')
 
 # server side (one or more levels down from the client)
-token = span.get_baggage_item('auth-token')
+token = span.context.get_baggage_item('auth-token')
 {% endhighlight %}
 
 ### Logging Events
