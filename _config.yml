@@ -1,3 +1,6 @@
+# Google services
+google_analytics: UA-79528055-1
+
 # Content
 core_pages_list:       
   "Home": '/'
