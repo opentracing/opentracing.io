@@ -60,7 +60,7 @@ A Span may reference zero or more Spans that are causally related. OpenTracing p
 - A Span representing a SQL insert may be the ChildOf a Span representing an ORM save method
 - Many Spans doing concurrent (perhaps distributed) work may all individually be the ChildOf a single parent Span that merges the results for all children that return within a deadline
 
-These could all be valid timing diagrams for children that "FollowFrom" a parent.
+These could all be valid timing diagrams for children that are the "ChildOf" a parent.
 
 ~~~
     [-Parent Span---------]
