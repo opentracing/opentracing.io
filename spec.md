@@ -46,13 +46,25 @@ A **Trace** represents the potentially distributed, potentially concurrent data/
 
 ## Spans
 
-A **Span** represents a logical unit of work in the system that has a start time and a duration. Spans may be nested and ordered to model causal relationships. Each span has an **operation name**, a presumably human-readable string which concisely represents the work done by the span (e.g., an RPC method name, a function name, or the name of a subtask or stage within a larger computation).
+A **Span** represents a logical unit of work in the system that has a start time and a duration. Spans may be nested and ordered to model causal relationships.
+
+### Operation Names
+
+Each Span has an **operation name**, a human-readable string which concisely represents the work done by the Span (e.g., an RPC method name, a function name, or the name of a subtask or stage within a larger computation). The operation name should be **the most general (i.e., least specific) string that identifies a (statistically) interesting class of Span instances**; more specific sub-classes should be described using [Tags](#tags).
+
+For example, here are potential operation names for a Span that gets hypothetical account information:
+
+| Operation Name | Guidance |
+|:---------------|:--------|
+| `get` | Too general |
+| `get_account/792` | Too specific |
+| `get_account` | Good, and `account_id=792` would make a nice [Tag](#tags) |
 
 <span id="references"></span>
 
 ### Causal Span References
 
-A Span may reference zero or more Spans that are causally related. OpenTracing presently defines two types of references: `ChildOf` and `FollowsFrom`. **Both reference types specifically model direct causal relationships between a child span and a parent span.** In the future, OpenTracing may also support reference types for spans with non-causal relationships (e.g., Spans that are batched together, Spans that are stuck in the same queue, etc).
+A Span may reference zero or more Spans that are causally related. OpenTracing presently defines two types of references: `ChildOf` and `FollowsFrom`. **Both reference types specifically model direct causal relationships between a child Span and a parent Span.** In the future, OpenTracing may also support reference types for spans with non-causal relationships (e.g., Spans that are batched together, Spans that are stuck in the same queue, etc).
 
 **`ChildOf` references:** A Span may be the "ChildOf" a parent Span. In a "ChildOf" reference, the parent Span depends on the child Span in some capacity. All of the following would constitute ChildOf relationships:
 
@@ -95,6 +107,8 @@ These can all be valid timing diagrams for children that "FollowFrom" a parent.
 Every Span has zero or more **Logs**, each of which being a timestamped event name, optionally accompanied by a structured data payload of arbitrary size. The event name should be the stable identifier for some notable moment in the lifetime of a Span. For instance, a Span representing a browser page load might add an event for each field in [Performance.timing](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming).
 
 While it is not a formal requirement, specific event names should apply to many Span instances: tracing systems can use these event names (and timestamps) to analyze Spans in the aggregate.  For more information, see the [Data Semantics Guidelines](/data-semantics).
+
+<span id="tags"></span>
 
 ### Tags
 
