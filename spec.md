@@ -52,6 +52,14 @@ A **Span** represents a logical unit of work in the system that has a start time
 
 Each Span has an **operation name**, a human-readable string which concisely represents the work done by the Span (e.g., an RPC method name, a function name, or the name of a subtask or stage within a larger computation). The operation name should be **the most general (i.e., least specific) string that identifies a (statistically) interesting class of Span instances**; more specific sub-classes should be described using [Tags](#tags).
 
+For example, here are potential operation names for a Span that gets hypothetical account information:
+
+| Operation Name | Guidance |
+|:---------------|:--------|
+| `get` | Too general |
+| `get_account/792` | Too specific |
+| `get_account` | Good, and `account_id=792` would make a nice [Tag](#tags) |
+
 <span id="references"></span>
 
 ### Causal Span References
