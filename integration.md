@@ -57,12 +57,16 @@ func main() {
 
 For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/appdash/opentracing).
 
-
 ## Zipkin
 
-Uber has bound OpenTracing to Zipkin internally, though this work is not public. There is also an [in-progress PR](https://github.com/opentracing/opentracing-java/pull/25) which bridges [Brave](https://github.com/openzipkin/brave) (the most popular Zipkin Java instrumentation library) and OpenTracing, thus making an easy bridge from Zipkin instrumentation into other OpenTracing-compatible Tracers.
+Uber has bound OpenTracing to its Zipkin-compatible Jaeger tracing system. Bindings are available for [Go](https://github.com/uber/jaeger-client-go), [Python](https://github.com/uber/jaeger-client-python), and [Java](https://github.com/uber/jaeger-client-java).
 
+The OpenZipkin project also has its own OpenTracing-Zipkin bindings for [Go](https://github.com/openzipkin/zipkin-go-opentracing).
 
 ## LightStep
 
 [LightStep](http://lightstep.com/) runs a private beta with OpenTracing-native tracers in production environments. There are OpenTracing-compatible [LightStep Tracers](https://github.com/lightstep) available for Go, Python, Javasrcipt, Objective-C, Java, and PHP, with Ruby and C++ in-progress.
+
+## github.com/tracer
+
+The aptly-named "Tracer" tracer is a Dapper-style tracing system written in Go. The OpenTracing bindings are [here](https://github.com/tracer/tracer).
