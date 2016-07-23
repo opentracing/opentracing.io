@@ -59,7 +59,7 @@ For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/app
 
 ## Zipkin ([zipkin.io](http://zipkin.io/))
 
-Uber has bound OpenTracing to its Zipkin-compatible Jaeger tracing system. Bindings are available for [Go](https://github.com/uber/jaeger-client-go), [Python](https://github.com/uber/jaeger-client-python), and [Java](https://github.com/uber/jaeger-client-java).
+Uber has bound OpenTracing to its Zipkin-compatible tracing system, Jaeger. Tracer implementations are available for [Go](https://github.com/uber/jaeger-client-go), [Python](https://github.com/uber/jaeger-client-python), and [Java](https://github.com/uber/jaeger-client-java).
 
 The OpenZipkin project also has its own OpenTracing-Zipkin bindings for [Go](https://github.com/openzipkin/zipkin-go-opentracing).
 
