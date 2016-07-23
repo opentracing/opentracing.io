@@ -33,7 +33,7 @@ It means that the contributors have spent a while thinking through the APIs from
 
 # Supported Tracer Implementations
 
-## Appdash
+## Appdash ([github.com/sourcegraph/appdash](https://github.com/sourcegraph/appdash/blob/master/README.md))
 
 Appdash ([background reading](https://sourcegraph.com/blog/announcing-appdash-an-open-source-perf-tracing/)) is a lightweight, Golang-based distributed tracing system, originally developed and since open-sourced by [sourcegraph](https://sourcegraph.com/). There is an OpenTracing-compatible `Tracer` implementation that uses Appdash as a backend; binding Appdash to OpenTracing instrumentation is trivial:
 
@@ -57,12 +57,16 @@ func main() {
 
 For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/appdash/opentracing).
 
+## Zipkin ([zipkin.io](http://zipkin.io/))
 
-## Zipkin
+Uber has bound OpenTracing to its Zipkin-compatible tracing system, Jaeger. Tracer implementations are available for [Go](https://github.com/uber/jaeger-client-go), [Python](https://github.com/uber/jaeger-client-python), and [Java](https://github.com/uber/jaeger-client-java).
 
-Uber has bound OpenTracing to Zipkin internally, though this work is not public. There is also an [in-progress PR](https://github.com/opentracing/opentracing-java/pull/25) which bridges [Brave](https://github.com/openzipkin/brave) (the most popular Zipkin Java instrumentation library) and OpenTracing, thus making an easy bridge from Zipkin instrumentation into other OpenTracing-compatible Tracers.
+The OpenZipkin project also has its own OpenTracing-Zipkin bindings for [Go](https://github.com/openzipkin/zipkin-go-opentracing).
 
-
-## LightStep
+## LightStep ([lightstep.com](http://lightstep.com/))
 
 [LightStep](http://lightstep.com/) runs a private beta with OpenTracing-native tracers in production environments. There are OpenTracing-compatible [LightStep Tracers](https://github.com/lightstep) available for Go, Python, Javasrcipt, Objective-C, Java, and PHP, with Ruby and C++ in-progress.
+
+## Tracer ([github.com/tracer/tracer](https://github.com/tracer/tracer))
+
+The aptly-named "Tracer" tracer is a Dapper-style tracing system written in Go. The OpenTracing bindings are [here](https://github.com/tracer/tracer).
