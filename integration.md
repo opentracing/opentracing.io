@@ -33,7 +33,7 @@ It means that the contributors have spent a while thinking through the APIs from
 
 # Supported Tracer Implementations
 
-## Appdash ([https://github.com/sourcegraph/appdash/blob/master/README.md](github.com/sourcegraph/appdash))
+## Appdash ([github.com/sourcegraph/appdash](https://github.com/sourcegraph/appdash/blob/master/README.md))
 
 Appdash ([background reading](https://sourcegraph.com/blog/announcing-appdash-an-open-source-perf-tracing/)) is a lightweight, Golang-based distributed tracing system, originally developed and since open-sourced by [sourcegraph](https://sourcegraph.com/). There is an OpenTracing-compatible `Tracer` implementation that uses Appdash as a backend; binding Appdash to OpenTracing instrumentation is trivial:
 
@@ -57,16 +57,16 @@ func main() {
 
 For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/appdash/opentracing).
 
-## Zipkin ([http://zipkin.io/](zipkin.io))
+## Zipkin ([zipkin.io](http://zipkin.io/))
 
 Uber has bound OpenTracing to its Zipkin-compatible Jaeger tracing system. Bindings are available for [Go](https://github.com/uber/jaeger-client-go), [Python](https://github.com/uber/jaeger-client-python), and [Java](https://github.com/uber/jaeger-client-java).
 
 The OpenZipkin project also has its own OpenTracing-Zipkin bindings for [Go](https://github.com/openzipkin/zipkin-go-opentracing).
 
-## LightStep ([http://lightstep.com/](lightstep.com))
+## LightStep ([lightstep.com](http://lightstep.com/))
 
 [LightStep](http://lightstep.com/) runs a private beta with OpenTracing-native tracers in production environments. There are OpenTracing-compatible [LightStep Tracers](https://github.com/lightstep) available for Go, Python, Javasrcipt, Objective-C, Java, and PHP, with Ruby and C++ in-progress.
 
-## Tracer ([https://github.com/tracer/tracer](github.com/tracer/tracer))
+## Tracer ([github.com/tracer/tracer](https://github.com/tracer/tracer))
 
 The aptly-named "Tracer" tracer is a Dapper-style tracing system written in Go. The OpenTracing bindings are [here](https://github.com/tracer/tracer).
