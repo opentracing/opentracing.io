@@ -107,4 +107,5 @@ OpenTracing API does not enforce the notion of sampling, but most implementation
 * `sampling.priority` - integer
     - If greater than 0, a hint to the tracer to do its best to capture the trace.
     - If 0, a hint to the tracer to not capture the trace.
+    - If this tag is not provided, the tracer should use its default sampling mechanism.
 
