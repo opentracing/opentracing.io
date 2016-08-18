@@ -99,3 +99,12 @@ These tags can be provided by either client-side or server-side to describe the 
     - Remote port
 * `peer.service` - string
     - Remote service name
+
+### Sampling
+
+OpenTracing API does not enforce the notion of sampling, but most implementation do use it in one form or another. Sometimes the application needs to give a hint to the tracer that it would like to have a particular trace recorded in storage even if the normal sampling says otherwise. The `sampling.priority` tag is used to give that hint. Tracing implementations are not required to respect that hint, but most will do their best to preserve the trace.
+
+* `sampling.priority` - integer
+    - If greater than 0, a hint to the tracer to do its best to capture the trace.
+    - If 0, a hint to the tracer to not capture the trace.
+
