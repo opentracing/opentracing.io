@@ -106,7 +106,7 @@ These can all be valid timing diagrams for children that "FollowFrom" a parent.
 
 Every Span has zero or more **Logs**, each of which being a timestamped event name, optionally accompanied by a structured data payload of arbitrary size. The event name should be the stable identifier for some notable moment in the lifetime of a Span. For instance, a Span representing a browser page load might add an event for each field in [Performance.timing](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming).
 
-While it is not a formal requirement, specific event names should apply to many Span instances: tracing systems can use these event names (and timestamps) to analyze Spans in the aggregate.  For more information, see the [Data Semantics Guidelines](/data-semantics).
+While it is not a formal requirement, specific event names should apply to many Span instances: tracing systems can use these event names (and timestamps) to analyze Spans in the aggregate.  For more information, see the [Data Conventions](/data).
 
 <span id="tags"></span>
 
@@ -114,7 +114,7 @@ While it is not a formal requirement, specific event names should apply to many 
 
 Every Span may also have zero or more key:value **Tags**, which do not have timestamps and simply annotate the spans.
 
-As is the case with Logs, if certain known tag key:values are used for common application scenarios, tracers can choose to pay special attention to them. For more information, see the [Data Semantics Guidelines](/data-semantics).
+As is the case with Logs, if certain known tag key:values are used for common application scenarios, tracers can choose to pay special attention to them. For more information, see the [Data Conventions](/data).
 
 ## SpanContext
 
