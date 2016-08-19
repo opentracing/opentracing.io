@@ -15,7 +15,6 @@
       {% for page in site.core_pages_list %}
         <a class="sidebar-nav-item{% if page[1] == node.url %} active{% endif %}" href="{{ page[1] }}">{{ page[0] }}</a>
       {% endfor %}
-      <a class="sidebar-nav-item" href="{{ site.github.repo }}">View on GitHub</a>
 
       <div class="sidebar-group">For users</div>
       {% for page in site.user_pages_list %}
