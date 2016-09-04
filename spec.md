@@ -122,7 +122,7 @@ Every Span must provide access to a **SpanContext**. The SpanContext represents 
 
 ### Baggage
 
-**Baggage** is a set of key:value pairs stored in a SpanContext and propagated _in-band_ to all child Spans and their SpanContexts: in this way, the "Baggage" travels with the trace, hence the name. Given a full-stack OpenTracing integration, Baggage enables powerful functionality by transparently propagating arbitrary application data: for example, an end-user id may be added as a Baggage item in a mobile app, propagate (via the distributed tracing machinery) into the depths of a storage system, and recovered at the bottom of the stack to identify a particularly expensive SQL query.
+**Baggage** is a set of key:value pairs stored in a Span (and its SpanContext) and propagated _in-band_ to all child Spans and their SpanContexts: in this way, the "Baggage" travels with the trace, hence the name. Given a full-stack OpenTracing integration, Baggage enables powerful functionality by transparently propagating arbitrary application data: for example, an end-user id may be added as a Baggage item in a mobile app, propagate (via the distributed tracing machinery) into the depths of a storage system, and recovered at the bottom of the stack to identify a particularly expensive SQL query.
 
 Baggage comes with powerful _costs_ as well; since the Baggage is propagated in-band, if it is too large or the items too numerous it may decrease system throughput or increase RPC latencies.
 
@@ -130,8 +130,6 @@ Baggage comes with powerful _costs_ as well; since the Baggage is propagated in-
 
 - Baggage is propagated in-band (i.e., alongside the actual application data) across process boundaries. Span Tags are not propagated since they are not inherited by child Spans.
 - Span Tags are recorded out-of-band from the application data, presumably in the tracing system's storage. Implementations may choose to also record Baggage out-of-band, though that decision is not dictated by the OpenTracing specification.
-
-Also, Baggage keys have a restricted format: implementations may wish to use them as HTTP header keys (or key suffixes), and of course HTTP headers are case insensitive. As such, Baggage keys MUST match the regular expression `(?i:[a-z0-9][-a-z0-9]*)`, and – per the `?i:` – they are case-insensitive. That is, the Baggage key must start with a letter or number, and the remaining characters must be letters, numbers, or hyphens.
 
 ## Inject and Extract
 
@@ -149,12 +147,7 @@ The `Span` interface must have the following capabilities:
 - **Finish** the (already-started) `Span`. With the exception of calls to retrieve the `SpanContext`, Finish must be the last call made to any span instance. **(py: `finish`, go: `Finish`)** Some implementations may record information about active `Span`s before they are Finished (e.g., for long-lived `Span` instances), or Finish may never be called due to host process failure or programming errors. Implementations should clearly document the `Span` durability guarantees they provide in such cases.
 - **Set a key:value tag on the `Span`.** The key must be a `string`, and the value must be either a `string`, a `boolean`, or a numeric type. Behavior for other value types is undefined. If multiple values are set to the same key (i.e., in multiple calls), implementation behavior is also undefined. **(py: `set_tag`, go: `SetTag`)**
 - **Add a new log event** to the `Span`, accepting an event name `string` and an optional structured payload argument. If specified, the payload argument may be of any type and arbitrary size, though implementations are not required to retain all payload arguments (or even all parts of all payload arguments). An optional timestamp can be used to specify a past timestamp. **(py: `log`, go: `Log`)**
-
-## The `SpanContext` Interface
-
-The `SpanContext` interface must have the following capabilities. The user acquires a reference to a `SpanContext` via an associated `Span` instance or via `Tracer`'s Extract capability.
-
-- **Set a Baggage item**, represented as a simple string:string pair. Note that newly-set Baggage items are only guaranteed to propagate to *future* children of the associated `Span`. See the diagram below. **(py: `set_baggage_item`, go: `SetBaggageItem`)**
+- **Set a Baggage item**, represented as a simple string:string pair. Note that newly-set Baggage items are only guaranteed to propagate to *future* children of the `Span`. See the diagram below. **(py: `set_baggage_item`, go: `SetBaggageItem`)**
 - **Get a Baggage item** by key. **(py: `get_baggage_item`, go: `BaggageItem`)**
 
 ~~~
@@ -175,7 +168,13 @@ The `SpanContext` interface must have the following capabilities. The user acqui
                  SPAN C), AS WELL AS SPANS F AND G.
 ~~~
 
-- Though formally part of the `Tracer` interface, `SpanContext` is essential to [Inject and Extract](#inject-extract) below
+
+## The `SpanContext` Interface
+
+The `SpanContext` interface must have the following capabilities. The user acquires a reference to a `SpanContext` via an associated `Span` instance or via `Tracer`'s Extract capability.
+
+- **Iterate through all baggage items** stored in the SpanContext. **(py: `baggage`, go: `ForeachBaggageItem`)**
+- Though they are formally part of the `Tracer` interface, both [Inject and Extract](#inject-extract) are tightly coupled with the `SpanContext` concept
 
 ## The `Tracer` Interface
 
