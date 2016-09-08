@@ -27,5 +27,5 @@ Please refer to the [Per-Platform APIs]({{ baseurl }}integration) page for the l
 ## Support or Contact
 * Open an issue against [one of the repositories](https://github.com/opentracing), or
 * Start a discussion in the [Distributed Tracing](https://groups.google.com/forum/#!forum/distributed-tracing) Google group, or
-* Ask a question in the chat room https://gitter.im/opentracing/public
+* Ask a question in the [Gitter chat room](https://gitter.im/opentracing/public)
 
