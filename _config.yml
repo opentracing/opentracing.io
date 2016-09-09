@@ -12,6 +12,7 @@ user_pages_list:
   "APIs and Supported Tracers": '/integration'
   "Instrumentation Use Cases": '/use-cases'
   "Cross-Process Propagation": '/propagation'
+  "Instrument Systems at Scale": '/systems-at-scale'
 
 implementor_pages_list:       
   "Implementing OpenTracing": '/implementors'
