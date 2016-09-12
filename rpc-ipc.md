@@ -53,7 +53,10 @@ Some users may want to trace every request while other may want only specific re
 Users may also want to track information about the requests without having to manually access the span and set the tags themselves. It's helpful to provide a way for users to specify properties of the request they want to trace, and then automatically trace these features. For example, you could have a setting `TRACED_REQUEST_ATTRIBUTES` that the user can pass a list of attributes (such as `URL`, `METHOD`, or `HEADERS`), and then in your tracing filters, you would include the following:
 
 ```
-for attr in settings.TRACED_REQUEST_ATTRIBUTES:    if hasattr(request, attr):        payload = str(getattr(request, attr))        span.set_tag(attr, payload)
+for attr in settings.TRACED_REQUEST_ATTRIBUTES:
+    if hasattr(request, attr):
+        payload = str(getattr(request, attr))
+        span.set_tag(attr, payload)
 ```
 
 Another way to do this is to enumerate all traceable request properties, and then add a switch-like method in the filter that specifies how to handle each request property and tag it to the span.
@@ -69,7 +72,7 @@ The goals of server-side tracing are to trace the lifetime of a request to a ser
 * Server Finishes Processing the Request / Sends Response
     * Finish the span
 
-Because this workflow depends onrequest processing, you'll need to know how to  change the  framework’s requests and responses handling--whether this is through filters, middleware, a configurable stack, or some other mechanism.
+Because this workflow depends on request processing, you'll need to know how to  change the  framework’s requests and responses handling--whether this is through filters, middleware, a configurable stack, or some other mechanism.
 
 ### Extract the Current Trace State
 
@@ -86,7 +89,12 @@ span_ctx = tracer.extract(opentracing.Format.HTTP_HEADERS, request.headers)
 Java:
 
 ```Java
-import io.opentracing.propagation.Format;import io.opentracing.propagation.TextMap;Map<String, String> headers = request.getHeaders();SpanContext parentSpan = tracer.getTracer().extract(Format.Builtin.HTTP_HEADERS,    new TextMapExtractAdapter(headers));
+import io.opentracing.propagation.Format;
+import io.opentracing.propagation.TextMap;
+
+Map<String, String> headers = request.getHeaders();
+SpanContext parentSpan = tracer.getTracer().extract(Format.Builtin.HTTP_HEADERS,
+    new TextMapExtractAdapter(headers));
 ```
 
 OpenTracing can throw errors when an extract fails due to no span being present, so make sure to catch the errors that signify there was no injected span and not crash your server. This often just means that the request is coming from a third-party (or untraced) client, and the server should start a new trace.
@@ -98,13 +106,21 @@ Once you receive a request and extract any existing span context, you should imm
 Python:
 
 ```Python
-if(extracted_span_ctx):    span = tracer.start_span(operation_name=operation_name,        child_of=extracted_span_ctx)else:    span = tracer.start_span(operation_name=operation_name)
+if(extracted_span_ctx):
+    span = tracer.start_span(operation_name=operation_name,
+        child_of=extracted_span_ctx)
+else:
+    span = tracer.start_span(operation_name=operation_name)
 ```
 
 Java:
 
 ```Java
-if(parentSpan == null){    span = tracer.buildSpan(operationName).start();} else {    span = tracer.buildSpan(operationName).asChildOf(parentSpan).start();}
+if(parentSpan == null){
+    span = tracer.buildSpan(operationName).start();
+} else {
+    span = tracer.buildSpan(operationName).asChildOf(parentSpan).start();
+}
 ```
 
 ### Store the current span context
@@ -113,21 +129,43 @@ It's important for users to be able to access the current span context while pro
 
 1. Use of Global Context: If your framework has a global context that can store arbitrary values, then you can store the current span in the global context for the duration of the processing of a request. This works particularly well if your framework has filters that can alter how requests are processed. For example, if you have a global context called ctx, you could apply a filter similar to this:
 
-```def filter(request):    span = # extract / start span from request    with (ctx.active_span = span):        process_request(request)    span.finish()
+```
+def filter(request):
+    span = # extract / start span from request
+    with (ctx.active_span = span):
+        process_request(request)
+    span.finish()
 ```
 
 3. Now, at any point during the processing of the request, if the user accesses `ctx.active_span`, they'll receive the span for that request. Note that once the request is processed, `ctx.active_span` should retain whatever value it had before the request was processed.
 
 4. Map Requests to their associated span: You may not have a global context available, or you may use filters that have separate methods for preprocessing and postprocessing requests. If this is the case, you can instead create a mapping of requests to the span that represents its lifetime. One way that you could do this is to create a framework-specific tracer wrapper that stores this mapping. For example:
 
-```class MyFrameworkTracer:    def __init__(opentracing_tracer):        self.internal_tracer = opentracing_tracer        self.active_spans = {}    def add_span(request, span):        self.active_spans[request] = span    def get_span(request):        return self.active_spans[request]    def finish_span(request):        span = self.active_spans[request]        span.finish()        del self.active_spans[request]
+```
+class MyFrameworkTracer:
+    def __init__(opentracing_tracer):
+        self.internal_tracer = opentracing_tracer
+        self.active_spans = {}
+    def add_span(request, span):
+        self.active_spans[request] = span
+    def get_span(request):
+        return self.active_spans[request]
+    def finish_span(request):
+        span = self.active_spans[request]
+        span.finish()
+        del self.active_spans[request]
 ```
 
 5. If your server can handle multiple requests at once, then make sure that your implementation of the span map is threadsafe.
 
 6. The filters would then be applied along these lines:
 
-```def process_request(request):    span = # extract / start span from request    tracer.add_span(request, span)def process_response(request, response):    tracer.finish_span(request)
+```
+def process_request(request):
+    span = # extract / start span from request
+    tracer.add_span(request, span)
+def process_response(request, response):
+    tracer.finish_span(request)
 ```
 
 7. Note that the user here can call `tracer.get_span(request)` during response processing to access the current span. Make sure that the request (or whatever unique request identifier you're using to map to spans) is availabe to the user.
@@ -153,13 +191,22 @@ Just like on the server side, we have to recognize whether we need to start a ne
 How you recognize whether there is an active trace depends on how you're storing active spans. If you're using a global context, then you can do something like this:
 
 ```
-if hasattr(ctx, active_span):    parent_span = getattr(ctx, active_span)    span = tracer.start_span(operation_name=operation_name,        child_of=parent_span)else:    span = tracer.start_span(operation_name=operation_name)
+if hasattr(ctx, active_span):
+    parent_span = getattr(ctx, active_span)
+    span = tracer.start_span(operation_name=operation_name,
+        child_of=parent_span)
+else:
+    span = tracer.start_span(operation_name=operation_name)
 ```
 
 If you're using the request-to-span mapping technique, your approach might look like:
 
 ```
-parent_span = tracer.get_span(request)span = tracer.start_span(    operation_name=operation_name,    child_of=parent_span)```
+parent_span = tracer.get_span(request)
+span = tracer.start_span(
+    operation_name=operation_name,
+    child_of=parent_span)
+```
 
 You can see examples of this approach in [gRPC](https://github.com/grpc-ecosystem/grpc-opentracing/blob/master/java/src/main/java/io/opentracing/contrib/ActiveSpanSource.java) and [JDBI](https://github.com/opentracing-contrib/java-jdbi/blob/9f6259538a93f466f666700e3d4db89526eee23a/src/main/java/io/opentracing/contrib/jdbi/OpenTracingCollector.java#L153).
 
@@ -167,20 +214,32 @@ You can see examples of this approach in [gRPC](https://github.com/grpc-ecosyste
 
 This is where you pass the trace information into the client's request so that the server you send it to can continue the trace. If you're sending an HTTP request, then you'll just use the HTTP headers as your carrier.
 
-span = # start span from the current trace state`tracer.inject(span, opentracing.Format.HTTP_HEADERS, request.headers)`
+span = # start span from the current trace state
+`tracer.inject(span, opentracing.Format.HTTP_HEADERS, request.headers)`
 
 ### Finish the Span
 
 When you receive a response, you want to end the span to signify that the client request is finished. Just like on the server side, how you do this depends on how your client request/response processing happens. If your filter wraps the request directly you can just do this:
 
 ```
-def filter(request, response):    span = # start span from the current trace state    tracer.inject(span, opentracing.Format.HTTP_HEADERS, request.headers)    response = send_request(request)    if response.error:       span.set_tag(opentracing., true)    span.finish()
+def filter(request, response):
+    span = # start span from the current trace state
+    tracer.inject(span, opentracing.Format.HTTP_HEADERS, request.headers)
+    response = send_request(request)
+    if response.error:
+       span.set_tag(opentracing., true)
+    span.finish()
 ```
 
 Otherwise, if you have ways to process the request and response separately, you might extend your tracer to include a mapping of client requests to spans, and your implementation would look more like this:
 
 ```
-def process_request(request):    span = # start span from the current trace state    tracer.inject(span. opentracing.Format.HTTP_HEADERS, request.headers)    tracer.add_client_span(request, span)def process_response(request, response):    tracer.finish_client_span(request)
+def process_request(request):
+    span = # start span from the current trace state
+    tracer.inject(span. opentracing.Format.HTTP_HEADERS, request.headers)
+    tracer.add_client_span(request, span)
+def process_response(request, response):
+    tracer.finish_client_span(request)
 ```
 
 ## Closing Remarks
