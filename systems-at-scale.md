@@ -11,11 +11,11 @@ _Before getting onto recommendations on how to instrument your large-scale syste
 
 The two fundamental aspects of implementing OpenTracing across your infrastructure are _Spans_ and the _Relationships_ between those spans:
 
-* **_Spans_** are a logical unit of work in the system that has a start time and a duration. In a trace Spans are the components across the systems exercised on a specified path.
+* **_[Span](http://opentracing.io/spec/#spans)_** is a logical unit of work in the system that has a start time and a duration. In a trace Spans are associated with the components of the system as they are exercised on a specified path.
 
   ![image of spans in a system](/Images/OTHT_0.png)
 
-* **_Relationships_** are the connections between Spans. A Span may reference zero or more Spans that are causally related. This allows for the spans to be connected and help identify the critical path of a trace.
+* **_[Relationships](http://opentracing.io/spec/#causal-span-references)_** are the connections between Spans. A Span may reference zero or more Spans that are causally related. This allows for the spans to be connected and help identify the critical path of a trace.
 
   ![image of relationships in a system](/Images/OTHT_1.png)
 
