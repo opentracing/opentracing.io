@@ -12,11 +12,11 @@ user_pages_list:
   "APIs and Supported Tracers": '/integration'
   "Instrumentation Use Cases": '/use-cases'
   "Cross-Process Propagation": '/propagation'
-  "Instrument Systems at Scale": '/systems-at-scale'
+  "Instrument Systems at Scale": '/instrumenting-large-systems'
 
 implementor_pages_list:
   "Implementing OpenTracing": '/implementors'
-  "RPC/IPC Frameworks": '/rpc-ipc'
+  "RPC/IPC Frameworks": '/instrumenting-ipc-frameworks'
 
 # Dependencies
 markdown:         kramdown
