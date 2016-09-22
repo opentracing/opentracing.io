@@ -22,7 +22,7 @@ At a high level, here is what you need for an OpenTracing integration:
 Server framework requirements:
 
 * Filters, interceptors, middleware, or another way to process inbound requests
-* Active span storage: either a global context or a request-to-span map
+* Active span storage: either a request context or a request-to-span map
 * Settings or another way to configure tracer configuration
 
 Client framework requirements:
@@ -50,7 +50,18 @@ Some users may want to trace every request while other may want only specific re
 
 ### Tracing Request Properties
 
-Users may also want to track information about the requests without having to manually access the span and set the tags themselves. It's helpful to provide a way for users to specify properties of the request they want to trace, and then automatically trace these features. For example, you could have a setting `TRACED_REQUEST_ATTRIBUTES` that the user can pass a list of attributes (such as `URL`, `METHOD`, or `HEADERS`), and then in your tracing filters, you would include the following:
+Users may also want to track information about the requests without having to manually access the span and set the tags themselves. It's helpful to provide a way for users to specify properties of the request they want to trace, and then automatically trace these features. Ideally, this would be similar to the Span Decorator function in gRPC: 
+
+```
+// SpanDecorator binds a function that decorates gRPC Spans.
+func SpanDecorator(decorator SpanDecoratorFunc) Option {
+	return func(o *options) {
+		o.decorator = decorator
+	}
+}
+```
+
+Another approach could have a setting `TRACED_REQUEST_ATTRIBUTES` that the user can pass a list of attributes (such as `URL`, `METHOD`, or `HEADERS`), and then in your tracing filters, you would include the following:
 
 ```
 for attr in settings.TRACED_REQUEST_ATTRIBUTES:
@@ -58,8 +69,6 @@ for attr in settings.TRACED_REQUEST_ATTRIBUTES:
         payload = str(getattr(request, attr))
         span.set_tag(attr, payload)
 ```
-
-Another way to do this is to enumerate all traceable request properties, and then add a switch-like method in the filter that specifies how to handle each request property and tag it to the span.
 
 ## Server-side Tracing
 
@@ -127,7 +136,7 @@ if(parentSpan == null){
 
 It's important for users to be able to access the current span context while processing a request, in order to set custom tags on the span, log events, or create child spans that represent work done on behalf of the server. In order to allow for this, you have to decide how to make the span available to users. This will be dictated largely by the structure of your framework. Here are  two common cases as examples:
 
-1. Use of Global Context: If your framework has a global context that can store arbitrary values, then you can store the current span in the global context for the duration of the processing of a request. This works particularly well if your framework has filters that can alter how requests are processed. For example, if you have a global context called ctx, you could apply a filter similar to this:
+1. Use of request context: If your framework has a request context that can store arbitrary values, then you can store the current span in the request context for the duration of the processing of a request. This works particularly well if your framework has filters that can alter how requests are processed. For example, if you have a request context called ctx, you could apply a filter similar to this:
 
 ```
 def filter(request):
@@ -139,7 +148,7 @@ def filter(request):
 
 3. Now, at any point during the processing of the request, if the user accesses `ctx.active_span`, they'll receive the span for that request. Note that once the request is processed, `ctx.active_span` should retain whatever value it had before the request was processed.
 
-4. Map Requests to their associated span: You may not have a global context available, or you may use filters that have separate methods for preprocessing and postprocessing requests. If this is the case, you can instead create a mapping of requests to the span that represents its lifetime. One way that you could do this is to create a framework-specific tracer wrapper that stores this mapping. For example:
+4. Map Requests to their associated span: You may not have a request context available, or you may use filters that have separate methods for preprocessing and postprocessing requests. If this is the case, you can instead create a mapping of requests to the span that represents its lifetime. One way that you could do this is to create a framework-specific tracer wrapper that stores this mapping. For example:
 
 ```
 class MyFrameworkTracer:
@@ -188,7 +197,7 @@ Workflow for server side tracing:
 
 Just like on the server side, we have to recognize whether we need to start a new trace or connect with an already-active trace. For instance, most microservices act as both client *and* server within the larger distributed system, and their outbound client requests should be associated with whatever request the service was handling at the time. If there's an active trace, you'll start a span for the client request with the active span as its parent. Otherwise, the span you start will have no parent.
 
-How you recognize whether there is an active trace depends on how you're storing active spans. If you're using a global context, then you can do something like this:
+How you recognize whether there is an active trace depends on how you're storing active spans. If you're using a request context, then you can do something like this:
 
 ```
 if hasattr(ctx, active_span):
@@ -246,4 +255,4 @@ def process_response(request, response):
 
 Once you've packaged your implementation, email us at [community@opentracing.io](mailto://community@opentracing.io) with your implementation details (platform, description, github username) and we'll create a repo for you under [opentracing-contrib](https://github.com/opentracing-contrib/), so that others will be able to find and use your integration. You can also find there concrete examples of OpenTracing integrations into different open source projects.
 
-If you're interested in learning more about OpenTracing, join the conversation by joining our [mailing list](http://opentracing.us13.list-manage.com/subscribe?u=180afe03860541dae59e84153&id=19117aa6cd) or [Gitter](https://gitter.im/opentracing/public).
+If you're interested in learning more about OpenTracing, join the conversation by joining our [mailing list](http://opentracing.us13.list-manage.com/subscribe) or [Gitter](https://gitter.im/opentracing/public).
