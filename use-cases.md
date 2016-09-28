@@ -248,7 +248,7 @@ explicit_span.finish(
 
 ### Setting Sampling Priority Before the Trace Starts
 
-Most distributed tracing systems apply sampling to reduce the amount of trace data that needs to be recorded and processed. Sometimes developers want to have a way to ensure that a particular trace is going to be recorded (sampled) by the tracing system, e.g. by including a special parameter in the HTTP request, like `debug=true`. The OpenTracing API standardizes around some useful tags, and one o them is the so-called "sampling priority": exact semnatics are implementation-specific, but any values greater than zero (the default) indicates a trace of elevated importance. In order to pass this attribute to tracing systems that rely on pre-trace sampling, the following approach can be used:
+Most distributed tracing systems apply sampling to reduce the amount of trace data that needs to be recorded and processed. Sometimes developers want to have a way to ensure that a particular trace is going to be recorded (sampled) by the tracing system, e.g. by including a special parameter in the HTTP request, like `debug=true`. The OpenTracing API standardizes around some useful tags, and one of them is the so-called "sampling priority": exact semnatics are implementation-specific, but any values greater than zero (the default) indicates a trace of elevated importance. In order to pass this attribute to tracing systems that rely on pre-trace sampling, the following approach can be used:
 
 {% highlight python %}
 if request.get('debug'):
