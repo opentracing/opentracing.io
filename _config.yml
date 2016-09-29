@@ -2,20 +2,22 @@
 google_analytics: UA-79528055-1
 
 # Content
-core_pages_list:       
+core_pages_list:
   "Home": '/'
   "Semantic Specification": '/spec'
   "Data Conventions": '/data'
   "Contributors": '/contributors'
   "News and Notes": '/updates'
 
-user_pages_list:       
+user_pages_list:
   "APIs and Supported Tracers": '/integration'
   "Instrumentation Use Cases": '/use-cases'
   "Cross-Process Propagation": '/propagation'
+  "Instrument Systems at Scale": '/instrumenting-large-systems'
 
-implementor_pages_list:       
+implementor_pages_list:
   "Implementing OpenTracing": '/implementors'
+  "RPC/IPC Frameworks": '/instrumenting-ipc-frameworks'
 
 # Dependencies
 markdown:         kramdown
@@ -24,7 +26,7 @@ highlighter:      rouge
 kramdown:
   hard_wrap: false
 
-gems: 
+gems:
   - jekyll-paginate
   - jekyll-gist
   - jekyll-mentions
