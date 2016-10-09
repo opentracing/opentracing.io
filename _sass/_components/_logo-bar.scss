@@ -1,0 +1,136 @@
+@import '../variables';
+
+$logo-bar-scale: 15px;
+
+.logo-bar {
+  background: rgba(white, 0.1);
+  position: relative;
+  width: 100%;
+  display: block;
+  z-index: 10;
+  flex: none;
+
+  &--bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  &__content {
+    max-width: $max-width;
+    display: flex;
+    padding: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+
+  &__logos__title {
+    position: absolute;
+    top: -50px;
+    /* left: 0; */
+    font-size: 1rem;
+    /* padding-left: 8px; */
+    width: 100%;
+    /* text-align: right; */
+    left: 8px;
+    opacity: 0.7;
+
+    .right {
+      left: auto;
+      right: 8px;
+    }
+  }
+
+
+  &__logos {
+    max-width: $medium / 2;
+    min-width: $medium / 2;
+    display: flex;
+    flex: 1 auto;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+
+    &:first-child {
+      justify-content: flex-start;
+    }
+
+    &:last-child {
+      justify-content: flex-end;
+    }
+
+    a {
+      flex-grow: 1;
+      display: flex;
+      color: white;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-size: 1rem;
+      justify-content: center;
+
+      &[href*="tracer"],
+      &[href*="dropwizard"] {
+        font-size: $logo-bar-scale;
+      }
+
+      img, svg {
+          max-width: $logo-bar-scale * 8;
+          height: $logo-bar-scale;
+          max-height: $logo-bar-scale * 1.25;
+
+        &[src*="flask.svg"] {
+          max-height: $logo-bar-scale * 1.25;
+        }
+
+        &[src*="zipkin_small.png"] {
+          max-height: $logo-bar-scale * 0.8;
+        }
+
+        &[src*="appdash.png"] {
+          max-height: $logo-bar-scale * 1.3;
+        }
+
+        &[src*="finagle"] {
+          max-height: $logo-bar-scale * 1.1;
+        }
+      }
+    }
+  }
+
+  @media (max-width: $medium) {
+    &__logos {
+      max-width: 100%;
+      min-width: 100%;
+      min-height: 40px;
+
+      &[href*="tracer"],
+      &[href*="dropwizard"] {
+        font-size: $logo-bar-scale * 0.5;
+      }
+
+      img, svg {
+          max-width: $logo-bar-scale * 8 * 0.5;
+          height: $logo-bar-scale * 0.5;
+          max-height: $logo-bar-scale * 1.25 * 0.5;
+
+        &[src*="flask.svg"] {
+          max-height: $logo-bar-scale * 1.25 * 0.5;
+        }
+
+        &[src*="zipkin_small.png"] {
+          max-height: $logo-bar-scale * 0.8 * 0.5;
+        }
+
+        &[src*="appdash.png"] {
+          max-height: $logo-bar-scale * 1.3 * 0.5;
+        }
+
+        &[src*="finagle"] {
+          max-height: $logo-bar-scale * 1.1 * 0.5;
+        }
+      }
+    }
+  }
+}

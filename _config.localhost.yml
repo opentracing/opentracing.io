@@ -1,0 +1,8 @@
+permalink: pretty
+markdown: kramdown
+kramdown:
+  input: GFM # Enable GitHub Flavored Markdown (fenced code blocks)
+  hard_wrap: false
+highlighter: rouge
+url: http://localhost:4000
+exclude: ['node_modules']

@@ -1,0 +1,92 @@
+@import '../variables';
+
+$window-min-width: 350px;
+$window-max-width: $window-min-width * 1.14;
+$window-min-height: $window-min-width * 0.785;
+$window-font-size: 0.8rem;
+
+.window {
+  margin: 2.5rem;
+  background: $blue-black;
+  border: 1px solid lighten($blue-black, 10);
+  border-radius: 7px;
+  min-height: $window-min-height;
+  min-width: $window-min-width;
+  max-width: $window-max-width;
+  position: relative;
+  box-shadow: 1px 1px 20px 0px rgba(black, 0.3);
+  font-family: monospace;
+
+  &__header {
+    padding: 7px;
+
+    &__button__red, &__button__orange, &__button__green {
+      float: left;
+      width: 0.8rem;
+      height: 0.8rem;
+      margin-right: 8px;
+      background: red;
+      border-radius: 0.8rem;
+    }
+
+    &__button__red    { background: red; }
+    &__button__orange { background: orange; }
+    &__button__green  { background: green; }
+
+    &__title {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  &__content {
+
+    padding: 1.5rem;
+    pre {
+    line-height: 1.3rem;
+    /* font-family: monospace; */
+    font-size: $window-font-size;
+    white-space: pre-wrap;
+    font-weight: 600;
+    font-family: 'bariolthin';
+    }
+  }
+
+  @media (max-width: $large) {
+    min-height: $window-min-height * 0.5;
+    min-width: $window-min-width * 0.75;
+    max-width: $window-max-width * 0.75;
+
+    &__content {
+      font-size: $window-font-size * 0.75;
+    }
+  }
+
+  @media (max-width: $medium) {
+    min-height: $window-min-height * 0.5;
+    min-width: $window-min-width * 0.5;
+    max-width: $window-max-width * 0.5;
+
+    &__content {
+      font-size: $window-font-size * 0.5;
+    }
+  }
+
+  @media (max-width: $small) {
+    min-height: $window-min-height * 0.3;
+    min-width: $window-min-width * 0.3;
+    max-width: $window-max-width * 0.3;
+
+    &__content {
+      font-size: $window-font-size * 0.3;
+    }
+  }
+
+  @media (max-width: $xsmall) {
+    min-height: $window-min-height * 0.3;
+    min-width: $window-min-width * 0.3;
+    max-width: $window-max-width * 0.3;
+
+  }
+}

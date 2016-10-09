@@ -1,2 +1,4 @@
-_site/
-Gemfile.lock
+_site/*
+.DS_Store
+node_modules
+Gemfile

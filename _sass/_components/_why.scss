@@ -1,0 +1,73 @@
+@import '../variables';
+.why {
+  margin: 20vh auto 10vh auto;
+  width: 100vw;
+  max-width: $max-width;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  position: relative;
+  padding: 0 5vw;
+  min-height: 300px;
+  flex-wrap: wrap;
+  font-family: 'bariolthin';
+
+  &__section {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+    &.why-tracing {
+      flex: 3;
+      text-align: center;
+      align-items: center;
+    }
+  }
+
+  &__figure {
+    flex: 1;
+    max-width:50px;
+  }
+
+  &__content {
+    flex: 3;
+    h2 {
+      color: $dark-blue;
+      font-size: 2.9em;
+      font-weight: 700;
+    }
+
+    h4, p {
+      font-weight: 700;
+    }
+
+  }
+
+  @media (max-width: $medium) {
+    margin: 10vh auto;
+    width: 80vw;
+    flex-direction: column;
+
+    .why-tracing {
+      order: 1;
+    }
+
+    &__section {
+      margin: 5vh auto;
+      min-width: 100%;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+      order: 2;
+      flex: 1;
+    }
+
+    &__figure {
+      margin-right: 0;
+    }
+
+  }
+}
