@@ -1,6 +1,7 @@
 @import '../variables';
+
 .why {
-  margin: 20vh auto 10vh auto;
+  margin: 15vh auto 5vh auto;
   width: 100vw;
   max-width: $max-width;
   display: flex;
@@ -16,9 +17,9 @@
     flex: 2;
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
+    align-items: flex-start;
+    flex-direction: row;
+    text-align: left;
 
     &.why-tracing {
       flex: 3;
@@ -29,21 +30,22 @@
 
   &__figure {
     flex: 1;
-    max-width:50px;
+    max-width: 50px;
+    margin-right: 40px;
   }
 
   &__content {
     flex: 3;
+
+    p {
+      font-size: 1rem;
+    }
+
     h2 {
       color: $dark-blue;
-      font-size: 2.9em;
-      font-weight: 700;
+      font-size: 3.2rem;
+      margin-bottom: 1rem;
     }
-
-    h4, p {
-      font-weight: 700;
-    }
-
   }
 
   @media (max-width: $medium) {
@@ -68,6 +70,28 @@
     &__figure {
       margin-right: 0;
     }
+
+    h2, h4, p {
+      font-weight: 700;
+    }
+
+    h2 {
+      color: $dark-blue;
+      font-size: 3.2rem;
+      margin-bottom: 1rem;
+    }
+
+    h4 {
+      font-size: 2rem;
+    }
+
+    a {
+      font-size: 1.3rem;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+
 
   }
 }

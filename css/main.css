@@ -1144,7 +1144,7 @@ img, svg {
           max-height: 8.25px; } }
 
 .why {
-  margin: 20vh auto 10vh auto;
+  margin: 15vh auto 5vh auto;
   width: 100vw;
   max-width: 1300px;
   display: -webkit-box;
@@ -1173,14 +1173,14 @@ img, svg {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-orient: vertical;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    text-align: center; }
+        -ms-flex-direction: row;
+            flex-direction: row;
+    text-align: left; }
     .why__section.why-tracing {
       -webkit-box-flex: 3;
           -ms-flex: 3;
@@ -1193,17 +1193,18 @@ img, svg {
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
-    max-width: 50px; }
+    max-width: 50px;
+    margin-right: 40px; }
   .why__content {
     -webkit-box-flex: 3;
         -ms-flex: 3;
             flex: 3; }
+    .why__content p {
+      font-size: 1rem; }
     .why__content h2 {
       color: #5ea7d1;
-      font-size: 2.9em;
-      font-weight: 700; }
-    .why__content h4, .why__content p {
-      font-weight: 700; }
+      font-size: 3.2rem;
+      margin-bottom: 1rem; }
   @media (max-width: 768px) {
     .why {
       margin: 10vh auto;
@@ -1234,7 +1235,19 @@ img, svg {
             -ms-flex: 1;
                 flex: 1; }
       .why__figure {
-        margin-right: 0; } }
+        margin-right: 0; }
+      .why h2, .why h4, .why p {
+        font-weight: 700; }
+      .why h2 {
+        color: #5ea7d1;
+        font-size: 3.2rem;
+        margin-bottom: 1rem; }
+      .why h4 {
+        font-size: 2rem; }
+      .why a {
+        font-size: 1.3rem; }
+      .why p {
+        font-size: 1.5rem; } }
 
 .companies {
   position: relative;
@@ -1308,9 +1321,10 @@ img, svg {
 .button {
   border-radius: 5px;
   color: #4098c8;
-  padding: 0.5rem;
   cursor: pointer;
-  font-size: 1.3rem; }
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase; }
   .button:hover:before {
     margin-right: 15px; }
   .button:before {
@@ -1321,7 +1335,7 @@ img, svg {
     display: inline-block;
     -webkit-transition: margin 200ms;
     transition: margin 200ms;
-    padding: 3px 18px;
+    padding: 0px 10px;
     border: 1px solid #4098c8;
     border-radius: 12px;
     margin-right: 10px; }

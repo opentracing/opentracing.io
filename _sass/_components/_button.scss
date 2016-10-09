@@ -1,13 +1,15 @@
 @import '../variables';
 
-$font-size: 1.3rem;
+$font-size: 0.9rem;
 
 .button {
   border-radius: 5px;
   color: $darker-blue;
-  padding: 0.5rem;
   cursor: pointer;
   font-size: $font-size;
+  font-weight: 700;
+  text-transform: uppercase;
+
   &:hover {
     &:before {
       margin-right: 15px;
@@ -21,7 +23,7 @@ $font-size: 1.3rem;
     font-size: inherit;
     display: inline-block;
     transition: margin 200ms;
-    padding: 3px 18px;
+    padding: 0px 10px;
     border: 1px solid $darker-blue;
     border-radius: 12px;
     margin-right: 10px;
