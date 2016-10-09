@@ -1,7 +1,7 @@
 @import '../variables';
 
 .why {
-  margin: 15vh auto 5vh auto;
+  margin: 75px auto;
   width: 100vw;
   max-width: $max-width;
   display: flex;
@@ -9,7 +9,6 @@
   align-items: flex-start;
   position: relative;
   padding: 0 30px;
-  min-height: 300px;
   flex-wrap: wrap;
   font-family: 'bariolthin';
 
@@ -30,7 +29,7 @@
 
   &__figure {
     flex: 1;
-    max-width: 45px;
+    max-width: 40px;
     margin-right: 20px;
   }
 
@@ -38,7 +37,7 @@
     flex: 3;
 
     p {
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
 
     h2 {
