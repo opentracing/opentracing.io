@@ -24,7 +24,9 @@
       </div>
 
       <a href="https://medium.com/opentracing">Blog</a>
-      <a href="https://groups.google.com/forum/#!forum/opentracing">Join the mailing list</a>
+    </div>
+    <div class="header__actions right">
+      <a class="button white" href="https://groups.google.com/forum/#!forum/opentracing">Join the mailing list</a>
     </div>
   </div>
 
@@ -48,33 +50,3 @@
     </div>
   </div>
 </header>
-
-<script type="text/javascript">
-
-var _mobileMenuVisible = false;
-var _mobileMenuContent = document.querySelector('.header__container__mobile');
-var _openButton = document.querySelector('.header__hamburger__button');
-var _closeButton = document.querySelector('.header__close__button');
-
-function setState(state, classList) {
-  _mobileMenuContent.setAttribute('class', classList);
-  _mobileMenuVisible = state;
-}
-
-_openButton.addEventListener('click', function() {
-  var classes = _mobileMenuContent.getAttribute('class')
-
-  if(!_mobileMenuVisible) {
-    setState(true, classes + ' active ');
-  }
-})
-
-_closeButton.addEventListener('click', function() {
-  var classes = _mobileMenuContent.getAttribute('class')
-
-  if(_mobileMenuVisible) {
-    setState(false, classes.replace(' active ', '') );
-  }
-})
-
-</script>

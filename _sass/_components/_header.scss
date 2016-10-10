@@ -55,16 +55,20 @@
 
   &__logo {
     display: flex;
-    max-width: 200px;
+    max-width: 225px;
     align-items: center;
   }
 
   &__actions {
     display: flex;
     flex: 1;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: row;
+
+    &.right {
+      justify-content: flex-end;
+    }
 
     a {
       letter-spacing: 1px;
