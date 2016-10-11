@@ -89,7 +89,7 @@ $logo-bar-scale: 14px;
 
       &[href*="tracer"],
       &[href*="dropwizard"] {
-        font-size: $logo-bar-scale * 0.7;
+        font-size: $logo-bar-scale;
       }
 
       img, svg {
@@ -102,7 +102,7 @@ $logo-bar-scale: 14px;
         }
 
         &[src*="zipkin_small.png"] {
-          max-height: $logo-bar-scale * 0.6;
+          max-height: $logo-bar-scale * 0.8;
         }
 
         &[src*="appdash.png"] {
@@ -130,31 +130,33 @@ $logo-bar-scale: 14px;
         left: 0px;
       }
 
+      a {
 
-      &[href*="tracer"],
-      &[href*="dropwizard"] {
-        font-size: $logo-bar-scale * 0.5;
-      }
-
-      img, svg {
-          max-width: $logo-bar-scale * 8 * 0.5;
-          height: $logo-bar-scale * 0.5;
-          max-height: $logo-bar-scale * 1.25 * 0.5;
-
-        &[src*="flask.svg"] {
-          max-height: $logo-bar-scale * 1.25 * 0.5;
+        &[href*="tracer"],
+        &[href*="dropwizard"] {
+          font-size: $logo-bar-scale * 0.7;
         }
 
-        &[src*="zipkin_small.png"] {
-          max-height: $logo-bar-scale * 0.8 * 0.5;
-        }
+        img, svg {
+          max-width: $logo-bar-scale * 8;
+          height: $logo-bar-scale;
+          max-height: $logo-bar-scale * 1.25;
 
-        &[src*="appdash.png"] {
-          max-height: $logo-bar-scale * 1.3 * 0.5;
-        }
+          &[src*="flask.svg"] {
+            max-height: $logo-bar-scale * 1.25;
+          }
 
-        &[src*="finagle"] {
-          max-height: $logo-bar-scale * 1.1 * 0.5;
+          &[src*="zipkin_small.png"] {
+            max-height: $logo-bar-scale * 0.6;
+          }
+
+          &[src*="appdash.png"] {
+            max-height: $logo-bar-scale * 1.3;
+          }
+
+          &[src*="finagle"] {
+            max-height: $logo-bar-scale * 1.1;
+          }
         }
       }
     }
