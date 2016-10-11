@@ -8,10 +8,9 @@ array:
     url: http://flask.pocoo.org/
     icon: img/frameworks/flask.svg
 
-  - name: Finagle
-    url: https://twitter.github.io/finagle
-    icon: img/frameworks/finagle_small.png
-
+  - name: go-kit
+    url: https://gokit.io/
+    icon: img/frameworks/gokit.png
 
   - name: Django
     url: https://www.djangoproject.com
