@@ -339,14 +339,14 @@
 <p>Enter OpenTracing: by offering consistent, expressive, vendor-neutral APIs for popular platforms, OpenTracing makes it easy for developers to add (or switch) tracing implementations with an O(1) configuration change. OpenTracing also offers a lingua franca for OSS instrumentation and platform-specific tracing helper libraries. Please refer to the Semantic Specification.</p>
 <h2 id="what-is-a-trace">What is a Trace?</h2>
 <p>At the highest level, a trace tells the story of a transaction or workflow as it propagates through a (potentially distributed) system. In OpenTracing, a trace is a directed acyclic graph (DAG) of &quot;spans&quot;: named, timed operations representing a contiguous segment of work in that trace.</p>
-<p><img src="../images/OTOV_0.png" alt=""></p>
+<p><img src="images/OTOV_0.png" alt=""></p>
 <p>Each component in a distributed trace will contribute its own span or spans. In the case of a trivial RPC, for instance, OpenTracing expects both the client and server to represent their respective role in the workflow as at least one span.</p>
-<p><img src="../images/OTOV_1.png" alt=""></p>
+<p><img src="images/OTOV_1.png" alt=""></p>
 <p>A parent span may explicitly start other spans, either in serial or in parallel. In OpenTracing, it is even possible to model a child span with multiple parents (e.g., a buffer flush may descend from the multiple writes that filled said buffer).</p>
 <h3 id="a-basic-trace">A Basic Trace</h3>
-<p><img src="../images/OTOV_2.png" alt=""></p>
+<p><img src="images/OTOV_2.png" alt=""></p>
 <p>Tracing a workflow or transaction through a distributed system often looks something like the above. While this type of visualization can be useful to see how various components fit together, it does not convey any time durations, does not scale well, and is cumbersome when parallelism is involved. Another limitation is that there is no way to easily show latency or other aspects of timing. A more useful way to visualize even a basic trace often looks like this:</p>
-<p><img src="../images/OTOV_3.png" alt=""></p>
+<p><img src="images/OTOV_3.png" alt=""></p>
 <p>This type of visualization adds the context of time, the hierarchy of the services involved, and the serial or parallel nature of the process/task execution. This view helps to highlight the system&apos;s critical path. By focusing on the critical path, attention can focus on the area of code where the most valuable improvements can be made. For example, you might want to trace the resource allocation spans inside an API request down to the underlying blocking calls.</p>
 
                                 
@@ -371,7 +371,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"layout":"page","title":"Introduction","level":"1.1","depth":1,"next":{"title":"Quick Start","level":"1.2","depth":1,"path":"pages/quick-start.md","ref":"pages/quick-start.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","github","-search","scripts"],"root":"_docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"scripts":{"files":["scripts/injectLogo.js"]},"fontSettings":{"theme":"white","size":3},"github":{"url":"https://github.com/opentracing/opentracing.io/"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Opentracing","gitbook":">=3.2.1"},"file":{"path":"README.MD","mtime":"2016-10-11T06:01:29.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-10-11T06:11:01.158Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"layout":"page","title":"Introduction","level":"1.1","depth":1,"next":{"title":"Quick Start","level":"1.2","depth":1,"path":"pages/quick-start.md","ref":"pages/quick-start.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","github","-search","scripts"],"root":"_docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"scripts":{"files":["scripts/injectLogo.js"]},"fontSettings":{"theme":"white","size":3},"github":{"url":"https://github.com/opentracing/opentracing.io/"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Opentracing","gitbook":">=3.2.1"},"file":{"path":"README.MD","mtime":"2016-10-11T06:16:26.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-10-11T06:16:42.793Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -389,7 +389,7 @@
         
     
         
-        <script src="gitbook/gitbook-plugin-scripts/1476166263297-injectLogo.js"></script>
+        <script src="gitbook/gitbook-plugin-scripts/1476166604893-injectLogo.js"></script>
         
     
         
