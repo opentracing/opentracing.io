@@ -273,9 +273,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.7" data-path="supported-tracer.html">
+        <li class="chapter active" data-level="1.7" data-path="supported-tracers.html">
             
-                <a href="supported-tracer.html">
+                <a href="supported-tracers.html">
             
                     
                         <b>1.7.</b>
@@ -331,6 +331,8 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="supported-tracer-implementations">Supported Tracer Implementations</h1>
+<h2 id="zipkin-and-jaeger">Zipkin and Jaeger</h2>
+<p>Zipkin and its cousin, Jaeger, both support OpenTracing in various languages. There is also an experimental <a href="https://github.com/openzipkin/brave-opentracing" target="_blank">bridge from Brave (Zipkin Java) instrumentation to OpenTracing</a>. Links: <a href="https://github.com/openzipkin/zipkin-go-opentracing" target="_blank">zipkin-go-opentracing</a>, <a href="https://github.com/uber/jaeger-client-java" target="_blank">jaeger-client-java</a>, <a href="https://github.com/uber/jaeger-client-go" target="_blank">jaeger-client-go</a>, <a href="https://github.com/uber/jaeger-client-python" target="_blank">jaeger-client-python</a>, and <a href="https://github.com/uber/jaeger-client-node" target="_blank">jaeger-client-node</a>.</p>
 <h2 id="appdash">Appdash</h2>
 <p>Appdash (<a href="https://sourcegraph.com/blog/announcing-appdash-an-open-source-perf-tracing/" target="_blank">background reading</a>) is a lightweight, Golang-based distributed tracing system, originally developed and since open-sourced by <a href="https://sourcegraph.com/" target="_blank">sourcegraph</a>. There is an OpenTracing-compatible <code>Tracer</code> implementation that uses Appdash as a backend; binding Appdash to OpenTracing instrumentation is trivial:</p>
 <pre><code class="lang-go"><span class="hljs-keyword">import</span> (
@@ -350,10 +352,8 @@
 }
 </code></pre>
 <p>For more details, read <a href="https://godoc.org/github.com/sourcegraph/appdash/opentracing" target="_blank">the godocs</a>.</p>
-<h2 id="zipkin">Zipkin</h2>
-<p>Uber has bound OpenTracing to Zipkin internally, though this work is not public. There is also an <a href="https://github.com/opentracing/opentracing-java/pull/25" target="_blank">in-progress PR</a> which bridges <a href="https://github.com/openzipkin/brave" target="_blank">Brave</a> (the most popular Zipkin Java instrumentation library) and OpenTracing, thus making an easy bridge from Zipkin instrumentation into other OpenTracing-compatible Tracers.</p>
 <h2 id="lightstep">LightStep</h2>
-<p><a href="http://lightstep.com/" target="_blank">LightStep</a> runs a private beta with OpenTracing-native tracers in production environments. There are OpenTracing-compatible <a href="https://github.com/lightstep" target="_blank">LightStep Tracers</a> available for Go, Python, Javasrcipt, Objective-C, Java, and PHP, with Ruby and C++ in-progress.</p>
+<p><a href="http://lightstep.com/" target="_blank">LightStep</a> runs a private beta with OpenTracing-native tracers in production environments. There are OpenTracing-compatible <a href="https://github.com/lightstep" target="_blank">LightStep Tracers</a> available for Go, Python, Javasrcipt, Objective-C, Java, PHP, Ruby, and C++.</p>
 
                                 
                                 </section>
@@ -377,7 +377,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Supported Tracers","level":"1.7","depth":1,"previous":{"title":"Authors and Contributors","level":"1.6","depth":1,"path":"pages/authors-and-contributors.md","ref":"pages/authors-and-contributors.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","github","-search","scripts"],"root":"_docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"scripts":{"files":["scripts/injectLogo.js"]},"fontSettings":{"theme":"white","size":3},"github":{"url":"https://github.com/opentracing/opentracing.io/"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Opentracing","gitbook":">=3.2.1"},"file":{"path":"pages/supported-tracer.md","mtime":"2016-10-11T04:14:41.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-10-11T06:16:42.793Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Supported Tracers","level":"1.7","depth":1,"previous":{"title":"Authors and Contributors","level":"1.6","depth":1,"path":"pages/authors-and-contributors.md","ref":"pages/authors-and-contributors.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","github","-search","scripts"],"root":"_docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"scripts":{"files":["scripts/injectLogo.js"]},"fontSettings":{"theme":"white","size":3},"github":{"url":"https://github.com/opentracing/opentracing.io/"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Opentracing","gitbook":">=3.2.1"},"file":{"path":"pages/supported-tracers.md","mtime":"2016-10-11T06:25:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-10-11T06:26:11.804Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -395,7 +395,7 @@
         
     
         
-        <script src="../gitbook/gitbook-plugin-scripts/1476166604893-injectLogo.js"></script>
+        <script src="../gitbook/gitbook-plugin-scripts/1476167174001-injectLogo.js"></script>
         
     
         

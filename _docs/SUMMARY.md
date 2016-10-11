@@ -9,4 +9,4 @@
   * [Instrumenting Large Systems](pages/instrumentation/instrumenting-large-systems.md)
   * [Instrumenting Frameworks](pages/instrumentation/instrumenting-frameworks.md)
 * [Authors and Contributors](pages/authors-and-contributors.md)
-* [Supported Tracers](pages/supported-tracer.md)
+* [Supported Tracers](pages/supported-tracers.md)
