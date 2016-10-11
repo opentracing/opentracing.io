@@ -1,4 +1,5 @@
 * [Quick Start](pages/quick-start.md)
+* [Concepts and Terminology](pages/spec.md)
 * [OpenTracing APIs](pages/api/index.md)
   * [OpenTracing Language Support](pages/api/api-implementations.md)
   * [Data Conventions](pages/api/data-conventions.md)
@@ -7,6 +8,5 @@
   * [Common Use Cases](pages/instrumentation/common-use-cases.md)
   * [Instrumenting Large Systems](pages/instrumentation/instrumenting-large-systems.md)
   * [Instrumenting Frameworks](pages/instrumentation/instrumenting-frameworks.md)
-* [Concepts and Terminology](pages/concepts-and-terminology.md)
 * [Authors and Contributors](pages/authors-and-contributors.md)
 * [Supported Tracers](pages/supported-tracer.md)
