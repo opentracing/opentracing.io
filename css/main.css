@@ -1022,12 +1022,12 @@ img, svg {
       width: 100%;
       text-align: center; }
   .bash-window__content {
-    padding: 2rem; }
+    padding: 1rem; }
     .bash-window__content pre {
-      line-height: 1.7rem;
-      font-size: 0.8rem;
+      line-height: 0.91rem;
+      font-size: 0.65rem;
       white-space: pre-wrap;
-      font-weight: 600;
+      font-weight: normal;
       font-family: 'bariolthin'; }
   @media (max-width: 1000px) {
     .bash-window {
@@ -1035,21 +1035,21 @@ img, svg {
       min-width: 262.5px;
       max-width: 299.25px; }
       .bash-window__content {
-        font-size: 0.6rem; } }
+        font-size: 0.4875rem; } }
   @media (max-width: 768px) {
     .bash-window {
       min-height: 137.375px;
       min-width: 175px;
       max-width: 199.5px; }
       .bash-window__content {
-        font-size: 0.4rem; } }
+        font-size: 0.325rem; } }
   @media (max-width: 500px) {
     .bash-window {
       min-height: 82.425px;
       min-width: 105px;
       max-width: 119.7px; }
       .bash-window__content {
-        font-size: 0.24rem; } }
+        font-size: 0.195rem; } }
   @media (max-width: 400px) {
     .bash-window {
       min-height: 82.425px;
