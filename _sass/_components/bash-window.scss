@@ -3,7 +3,7 @@
 $window-min-width: 350px;
 $window-max-width: $window-min-width * 1.14;
 $window-min-height: $window-min-width * 0.785;
-$window-font-size: 0.8rem;
+$window-font-size: 0.65rem;
 
 .bash-window {
   margin: 3.5rem;
@@ -42,12 +42,12 @@ $window-font-size: 0.8rem;
 
   &__content {
 
-    padding: 2rem;
+    padding: 1rem;
     pre {
-      line-height: 1.7rem;
+      line-height: $window-font-size * 1.4;
       font-size: $window-font-size;
       white-space: pre-wrap;
-      font-weight: 600;
+      font-weight: normal;
       font-family: 'bariolthin';
     }
   }
