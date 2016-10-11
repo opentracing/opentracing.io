@@ -1239,14 +1239,11 @@ img, svg {
       margin-bottom: 5rem;
       max-width: 800px; }
     .why__section.app-developer, .why__section.framework-developer {
-      -webkit-box-flex: 3;
-          -ms-flex: 3;
-              flex: 3;
-      padding: 0 4rem; }
-    .why__section.app-developer {
       -webkit-box-flex: 2;
           -ms-flex: 2;
               flex: 2;
+      padding: 0 4rem; }
+    .why__section.app-developer {
       border-right: 1px solid rgba(69, 193, 222, 0.2); }
   .why__figure {
     -webkit-box-flex: 1;

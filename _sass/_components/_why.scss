@@ -33,12 +33,11 @@
 
     &.app-developer,
     &.framework-developer {
-      flex: 3;
+      flex: 2;
       padding: 0 4rem;
     }
 
     &.app-developer {
-      flex: 2;
       border-right: 1px solid rgba($blue, 0.2);
     }
   }
