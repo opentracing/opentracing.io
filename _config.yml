@@ -4,5 +4,5 @@ kramdown:
   input: GFM # Enable GitHub Flavored Markdown (fenced code blocks)
   hard_wrap: false
 highlighter: rouge
-url: http://reimertz.github.io/opentracing.github.io
+url: //reimertz.github.io/opentracing.github.io
 exclude: ['node_modules']
