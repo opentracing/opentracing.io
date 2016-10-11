@@ -2,11 +2,16 @@
   "gitbook": ">=3.2.1",
   "root": "_docs",
   "title": "Opentracing",
-  "plugins": ["fontsettings", "github", "-search", "scripts"],
+  "plugins": ["edit-link", "fontsettings", "github", "-search", "scripts"],
   "pluginsConfig": {
+    "edit-link": {
+      "base": "https://github.com/opentracing/opentracing.github.io/edit/master/_docs",
+      "label": "Edit This Page"
+    },
      "scripts": {
         "files": [
-          "scripts/injectLogo.js"
+          "scripts/injectLogo.js",
+          "scripts/analytics.js"
         ]
     },
     "fontSettings": {
@@ -14,10 +19,13 @@
        "size": 3
     },
     "github": {
-      "url": "https://github.com/opentracing/opentracing.io/"
+      "url": "https://github.com/opentracing"
     },
     "theme-default": {
       "showLevel": true
+    },
+    "ga": {
+      "token": "UA-79528055-1"
     }
   }
 }
