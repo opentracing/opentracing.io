@@ -4,5 +4,14 @@ kramdown:
   input: GFM # Enable GitHub Flavored Markdown (fenced code blocks)
   hard_wrap: false
 highlighter: rouge
-url: //opentracing.io
+
+title:            The OpenTracing Project
+tagline:          Consistent, expressive, vendor-neutral APIs for distributed tracing and context propagation
+description:      Consistent, expressive, vendor-neutral APIs for distributed tracing and context propagation
+url:              http://opentracing.io
+
+author:
+  name: The OpenTracing Authors
+  url: http://opentracing.io
+
 exclude: ['node_modules']

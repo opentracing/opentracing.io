@@ -854,6 +854,8 @@ img, svg {
   overflow: hidden;
   z-index: 2;
   position: relative; }
+  .hero.page-not-found {
+    min-height: 100vh; }
   .hero__content {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;

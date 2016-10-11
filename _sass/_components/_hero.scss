@@ -18,6 +18,10 @@ $hero-height: 90vh;
   z-index: 2;
   position: relative;
 
+  &.page-not-found {
+    min-height: 100vh;
+  }
+
   &__content {
     flex-wrap: wrap;
     height: $hero-height;
