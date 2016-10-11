@@ -25,11 +25,10 @@
     "url": "git+https://github.com/reimertz/ixd.git"
   },
   "author": "Pierre Reimerz",
-  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/prose/starter/issues"
+    "url": "https://github.com/opentracing/opentracing.github.io/issues"
   },
-  "homepage": "https://github.com/prose/starter#readme",
+  "homepage": "https://github.com/opentracing/opentracing.github.io#readme",
   "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^6.5.0",
