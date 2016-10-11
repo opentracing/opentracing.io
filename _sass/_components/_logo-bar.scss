@@ -1,6 +1,6 @@
 @import '../variables';
 
-$logo-bar-scale: 15px;
+$logo-bar-scale: 14px;
 
 .logo-bar {
   background: rgba(white, 0.1);
@@ -29,11 +29,8 @@ $logo-bar-scale: 15px;
   &__logos__title {
     position: absolute;
     top: -50px;
-    /* left: 0; */
     font-size: 1rem;
-    /* padding-left: 8px; */
     width: 100%;
-    /* text-align: right; */
     left: 8px;
     opacity: 0.7;
 
@@ -92,7 +89,7 @@ $logo-bar-scale: 15px;
 
       &[href*="tracer"],
       &[href*="dropwizard"] {
-        font-size: $logo-bar-scale;
+        font-size: $logo-bar-scale * 0.7;
       }
 
       img, svg {
@@ -105,7 +102,7 @@ $logo-bar-scale: 15px;
         }
 
         &[src*="zipkin_small.png"] {
-          max-height: $logo-bar-scale * 0.8;
+          max-height: $logo-bar-scale * 0.6;
         }
 
         &[src*="appdash.png"] {

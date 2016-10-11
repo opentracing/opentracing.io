@@ -78,8 +78,7 @@
   }
 
   @media (max-width: $medium) {
-    margin: 10vh auto;
-    width: 80vw;
+    width: 100vw;
     flex-direction: column;
 
     .why-tracing {
@@ -98,6 +97,14 @@
       flex-direction: column;
       order: 2;
       flex: 1;
+
+
+      &.app-developer,
+      &.framework-developer {
+        flex: 1;
+        padding: 0;
+      }
+
     }
 
     &__figure {
