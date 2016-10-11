@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "weekly hangout: progress updates, example app, blog posts"
 ---
 

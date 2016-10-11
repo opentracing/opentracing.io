@@ -1,40 +1,17 @@
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
-    {% if page.title == "Home" %}
-      {{ site.title }} &middot; {{ site.tagline }}
-    {% else %}
-      {{ page.title }} &middot; {{ site.title }}
-    {% endif %}
-  </title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="{{ site.baseurl }}public/css/poole.css">
-  <link rel="stylesheet" href="{{ site.baseurl }}public/css/syntax.css">
-  <link rel="stylesheet" href="{{ site.baseurl }}public/css/hyde.css">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-
-  <!-- Icons -->
-  <link rel="shortcut icon" href="{{ site.baseurl }}public/favicon.ico">
-  <!--
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.baseurl }}public/apple-touch-icon-144-precomposed.png">
-  -->
-
-  <!-- TOC -->
-  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-  <script src="{{ site.baseurl }}public/js/toc.js"></script>
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-  
-  <!-- Google Analytics tag -->
-  {% if jekyll.environment == 'production' %}
-  {% include analytics.html %}
-  {% endif %}
+  <title>opentracing.io {% if page.url != '/index.html' %} | {{page.title}}{% endif %}</title>
+  <meta http-equiv="cache-control" content="max-age=0" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="expires" content="0" />
+  <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta charset='UTF-8'/>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <link href='{{site.url}}/css/main.css' rel='stylesheet' />
+  <link rel="apple-touch-icon" sizes="180x180" href="{{site.url}}/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="{{site.url}}img/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="{{site.url}}img/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="{{site.url}}/img/manifest.json">
+  <link rel="mask-icon" href="{{site.url}}/img/safari-pinned-tab.svg" color="#5bbad5 ">
+  <meta name="theme-color" content="#ffffff ">
 </head>

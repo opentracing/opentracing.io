@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "weekly hangout: C++ progress, Maven Central, go-kit"
 ---
 

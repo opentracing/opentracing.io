@@ -1,0 +1,567 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Concepts and Terminology · Opentracing</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="authors-and-contributors.html" />
+    
+    
+    <link rel="prev" href="instrumentation/instrumenting-frameworks.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="overview.html">
+            
+                <a href="overview.html">
+            
+                    
+                        <b>1.2.</b>
+                    
+                    Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="quick-start.html">
+            
+                <a href="quick-start.html">
+            
+                    
+                        <b>1.3.</b>
+                    
+                    Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="api/">
+            
+                <a href="api/">
+            
+                    
+                        <b>1.4.</b>
+                    
+                    API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="api/api-implementations.html">
+            
+                <a href="api/api-implementations.html">
+            
+                    
+                        <b>1.4.1.</b>
+                    
+                    API Implementations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="api/data-conventions.html">
+            
+                <a href="api/data-conventions.html">
+            
+                    
+                        <b>1.4.2.</b>
+                    
+                    Data Conventions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="api/across-process-tracing.html">
+            
+                <a href="api/across-process-tracing.html">
+            
+                    
+                        <b>1.4.3.</b>
+                    
+                    Across Process Tracing
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="instrumentation/">
+            
+                <a href="instrumentation/">
+            
+                    
+                        <b>1.5.</b>
+                    
+                    Instrumentation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="instrumentation/instrumenting-large-systems.html">
+            
+                <a href="instrumentation/instrumenting-large-systems.html">
+            
+                    
+                        <b>1.5.1.</b>
+                    
+                    Instrumenting Large Systems
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="instrumentation/common-use-cases.html">
+            
+                <a href="instrumentation/common-use-cases.html">
+            
+                    
+                        <b>1.5.2.</b>
+                    
+                    Common Use Cases
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="instrumentation/instrumenting-frameworks.html">
+            
+                <a href="instrumentation/instrumenting-frameworks.html">
+            
+                    
+                        <b>1.5.3.</b>
+                    
+                    Instrumenting Frameworks
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6" data-path="concepts-and-terminology.html">
+            
+                <a href="concepts-and-terminology.html">
+            
+                    
+                        <b>1.6.</b>
+                    
+                    Concepts and Terminology
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="authors-and-contributors.html">
+            
+                <a href="authors-and-contributors.html">
+            
+                    
+                        <b>1.7.</b>
+                    
+                    Authors and Contributors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="supported-tracer.html">
+            
+                <a href="supported-tracer.html">
+            
+                    
+                        <b>1.8.</b>
+                    
+                    Supported Tracers
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Concepts and Terminology</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="concepts-and-terminology">Concepts and Terminology</h1>
+<pre><code>Causal relationships for Spans in a single trace
+
+
+        [Span A]  &#x2190;&#x2190;&#x2190;(the root span)
+            |
+     +------+------+
+     |             |
+ [Span B]      [Span C] &#x2190;&#x2190;&#x2190;(Span C is a &quot;ChildOf&quot; Span A)
+     |             |
+ [Span D]      +---+-------+
+               |           |
+           [Span E]    [Span F] &gt;&gt;&gt; [Span G] &gt;&gt;&gt; [Span H]
+                                       &#x2191;
+                                       &#x2191;
+                                       &#x2191;
+                         (Span G &quot;FollowsFrom&quot; Span F)
+</code></pre><pre><code>Temporal relationships for all of the above
+
+
+&#x2013;&#x2013;|&#x2013;&#x2013;&#x2013;&#x2013;&#x2013;&#x2013;&#x2013;|&#x2013;&#x2013;&#x2013;&#x2013;&#x2013;&#x2013;&#x2013;|&#x2013;&#x2013;&#x2013;&#x2013;&#x2013;&#x2013;&#x2013;|&#x2013;&#x2013;&#x2013;&#x2013;&#x2013;&#x2013;&#x2013;|&#x2013;&#x2013;&#x2013;&#x2013;&#x2013;&#x2013;&#x2013;|&#x2013;&#x2013;&#x2013;&#x2013;&#x2013;&#x2013;&#x2013;|&#x2013;&#x2013;&#x2013;&#x2013;&#x2013;&#x2013;&#x2013;|&#x2013;&gt; time
+
+ [Span A&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;]
+   [Span B&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;]
+      [Span D&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;]
+    [Span C&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;]
+         [Span E&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;]        [Span F&#xB7;&#xB7;] [Span G&#xB7;&#xB7;] [Span H&#xB7;&#xB7;]
+</code></pre><h2 id="traces">Traces</h2>
+<p>A <strong>Trace</strong> represents the potentially distributed, potentially concurrent data/execution path in a (potentially distributed, potentially concurrent) system. A Trace can be thought of as a directed acyclic graph (DAG) of Spans.</p>
+<h2 id="spans">Spans</h2>
+<p>A <strong>Span</strong> represents a logical unit of work in the system that has a start time and a duration. Spans may be nested and ordered to model causal relationships.</p>
+<h3 id="operation-names">Operation Names</h3>
+<p>Each Span has an <strong>operation name</strong>, a human-readable string which concisely represents the work done by the Span (e.g., an RPC method name, a function name, or the name of a subtask or stage within a larger computation). The operation name should be <strong>the most general (i.e., least specific) string that identifies a (statistically) interesting class of Span instances</strong>; more specific sub-classes should be described using <a href="#tags">Tags</a>.</p>
+<p>For example, here are potential operation names for a Span that gets hypothetical account information:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Operation Name</th>
+<th style="text-align:left">Guidance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>get</code></td>
+<td style="text-align:left">Too general</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>get_account/792</code></td>
+<td style="text-align:left">Too specific</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>get_account</code></td>
+<td style="text-align:left">Good, and <code>account_id=792</code> would make a nice <a href="#tags">Tag</a></td>
+</tr>
+</tbody>
+</table>
+<p><span id="references"></span></p>
+<h3 id="causal-span-references">Causal Span References</h3>
+<p>A Span may reference zero or more Spans that are causally related. OpenTracing presently defines two types of references: <code>ChildOf</code> and <code>FollowsFrom</code>. <strong>Both reference types specifically model direct causal relationships between a child Span and a parent Span.</strong> In the future, OpenTracing may also support reference types for spans with non-causal relationships (e.g., Spans that are batched together, Spans that are stuck in the same queue, etc).</p>
+<p><strong><code>ChildOf</code> references:</strong> A Span may be the &quot;ChildOf&quot; a parent Span. In a &quot;ChildOf&quot; reference, the parent Span depends on the child Span in some capacity. All of the following would constitute ChildOf relationships:</p>
+<ul>
+<li>A Span representing the server side of an RPC may be the ChildOf a Span representing the client side of that RPC</li>
+<li>A Span representing a SQL insert may be the ChildOf a Span representing an ORM save method</li>
+<li>Many Spans doing concurrent (perhaps distributed) work may all individually be the ChildOf a single parent Span that merges the results for all children that return within a deadline</li>
+</ul>
+<p>These could all be valid timing diagrams for children that are the &quot;ChildOf&quot; a parent.</p>
+<pre><code>    [-Parent Span---------]
+         [-Child Span----]
+
+    [-Parent Span--------------]
+         [-Child Span A----]
+          [-Child Span B----]
+        [-Child Span C----]
+         [-Child Span D---------------]
+         [-Child Span E----]
+</code></pre><p><strong><code>FollowsFrom</code> references:</strong> Some parent Spans do not depend in any way on the result of their child Spans. In these cases, we say merely that the child Span &quot;FollowsFrom&quot; the parent Span in a causal sense. There are many distinct &quot;FollowsFrom&quot; reference sub-categories, and in future versions of OpenTracing they may be distinguished more formally.</p>
+<p>These can all be valid timing diagrams for children that &quot;FollowFrom&quot; a parent.</p>
+<pre><code>    [-Parent Span-]  [-Child Span-]
+
+
+    [-Parent Span--]
+     [-Child Span-]
+
+
+    [-Parent Span-]
+                [-Child Span-]
+</code></pre><h3 id="logs">Logs</h3>
+<p>Every Span has zero or more <strong>Logs</strong>, each of which being a timestamped event name, optionally accompanied by a structured data payload of arbitrary size. The event name should be the stable identifier for some notable moment in the lifetime of a Span. For instance, a Span representing a browser page load might add an event for each field in <a href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming" target="_blank">Performance.timing</a>.</p>
+<p>While it is not a formal requirement, specific event names should apply to many Span instances: tracing systems can use these event names (and timestamps) to analyze Spans in the aggregate.  For more information, see the <a href="../data-semantics">Data Semantics Guidelines</a>.</p>
+<p><span id="tags"></span></p>
+<h3 id="tags">Tags</h3>
+<p>Every Span may also have zero or more key:value <strong>Tags</strong>, which do not have timestamps and simply annotate the spans.</p>
+<p>As is the case with Logs, if certain known tag key:values are used for common application scenarios, tracers can choose to pay special attention to them. For more information, see the <a href="../data-semantics">Data Semantics Guidelines</a>.</p>
+<h2 id="spancontext">SpanContext</h2>
+<p>Every Span must provide access to a <strong>SpanContext</strong>. The SpanContext represents Span state that must propagate to child Spans and across process boundaries (e.g., a <code>&lt;trace_id, span_id, sampled&gt;</code> tuple) and also encapsulates any <strong>Baggage</strong> (see below). SpanContext is used when propagating traces across process boundaries and when creating edges in the trace graph (e.g., ChildOf relationships or other <a href="#references">references</a>).</p>
+<h3 id="baggage">Baggage</h3>
+<p><strong>Baggage</strong> is a set of key:value pairs stored in a SpanContext and propagated <em>in-band</em> to all child Spans and their SpanContexts: in this way, the &quot;Baggage&quot; travels with the trace, hence the name. Given a full-stack OpenTracing integration, Baggage enables powerful functionality by transparently propagating arbitrary application data: for example, an end-user id may be added as a Baggage item in a mobile app, propagate (via the distributed tracing machinery) into the depths of a storage system, and recovered at the bottom of the stack to identify a particularly expensive SQL query.</p>
+<p>Baggage comes with powerful <em>costs</em> as well; since the Baggage is propagated in-band, if it is too large or the items too numerous it may decrease system throughput or increase RPC latencies.</p>
+<h2 id="baggage-vs-span-tags">Baggage vs. Span Tags</h2>
+<ul>
+<li>Baggage is propagated in-band (i.e., alongside the actual application data) across process boundaries. Span Tags are not propagated since they are not inherited by child Spans.</li>
+<li>Span Tags are recorded out-of-band from the application data, presumably in the tracing system&apos;s storage. Implementations may choose to also record Baggage out-of-band, though that decision is not dictated by the OpenTracing specification.</li>
+</ul>
+<p>Also, Baggage keys have a restricted format: implementations may wish to use them as HTTP header keys (or key suffixes), and of course HTTP headers are case insensitive. As such, Baggage keys MUST match the regular expression <code>(?i:[a-z0-9][-a-z0-9]*)</code>, and &#x2013; per the <code>?i:</code> &#x2013; they are case-insensitive. That is, the Baggage key must start with a letter or number, and the remaining characters must be letters, numbers, or hyphens.</p>
+<h2 id="inject-and-extract">Inject and Extract</h2>
+<p>SpanContexts may be <strong>Injected</strong> into and <strong>Extracted</strong> from <strong>Carrier</strong> objects that are used for inter-process communication (e.g., HTTP headers). In this way, SpanContexts may propagate across process boundaries along with sufficient information to reference Spans (and thus continue traces) from remote processes.</p>
+<h1 id="platform-independent-api-semantics">Platform-Independent API Semantics</h1>
+<p>OpenTracing supports a number of different platforms, and of course the per-platform APIs try to adhere to the idioms and conventions of their respective language and platform (i.e., they &quot;do as the Romans do&quot;). That said, each platform API must model a common set of semantics for the core tracing concepts described above. In this section we attempt to describe those concepts and semantics in a language- and platform-agnostic fashion.</p>
+<h2 id="the-span-interface">The <code>Span</code> Interface</h2>
+<p>The <code>Span</code> interface must have the following capabilities:</p>
+<ul>
+<li><strong>Get the <code>Span</code>&apos;s <a href="#SpanContext"><code>SpanContext</code></a></strong> (even after the <code>Span</code> has finished, per Finish just below)</li>
+<li><strong>Finish</strong> the (already-started) <code>Span</code>. With the exception of calls to retrieve the <code>SpanContext</code>, Finish must be the last call made to any span instance. <strong>(py: <code>finish</code>, go: <code>Finish</code>)</strong> Some implementations may record information about active <code>Span</code>s before they are Finished (e.g., for long-lived <code>Span</code> instances), or Finish may never be called due to host process failure or programming errors. Implementations should clearly document the <code>Span</code> durability guarantees they provide in such cases.</li>
+<li><strong>Set a key:value tag on the <code>Span</code>.</strong> The key must be a <code>string</code>, and the value must be either a <code>string</code>, a <code>boolean</code>, or a numeric type. Behavior for other value types is undefined. If multiple values are set to the same key (i.e., in multiple calls), implementation behavior is also undefined. <strong>(py: <code>set_tag</code>, go: <code>SetTag</code>)</strong></li>
+<li><strong>Add a new log event</strong> to the <code>Span</code>, accepting an event name <code>string</code> and an optional structured payload argument. If specified, the payload argument may be of any type and arbitrary size, though implementations are not required to retain all payload arguments (or even all parts of all payload arguments). An optional timestamp can be used to specify a past timestamp. <strong>(py: <code>log</code>, go: <code>Log</code>)</strong></li>
+</ul>
+<h2 id="the-spancontext-interface">The <code>SpanContext</code> Interface</h2>
+<p>The <code>SpanContext</code> interface must have the following capabilities. The user acquires a reference to a <code>SpanContext</code> via an associated <code>Span</code> instance or via <code>Tracer</code>&apos;s Extract capability.</p>
+<ul>
+<li><strong>Set a Baggage item</strong>, represented as a simple string:string pair. Note that newly-set Baggage items are only guaranteed to propagate to <em>future</em> children of the associated <code>Span</code>. See the diagram below. <strong>(py: <code>set_baggage_item</code>, go: <code>SetBaggageItem</code>)</strong></li>
+<li><strong>Get a Baggage item</strong> by key. <strong>(py: <code>get_baggage_item</code>, go: <code>BaggageItem</code>)</strong></li>
+</ul>
+<pre><code>        [Span A]
+            |
+     +------+------+
+     |             |
+ [Span B]      [Span C] &#x2190;&#x2190;&#x2190; (1) BAGGAGE ITEM &quot;X&quot; IS SET ON SPAN C,
+     |             |            BUT AFTER SPAN E ALREADY STARTED.
+ [Span D]      +---+-----+
+               |         |
+           [Span E]  [Span F] &gt;&gt;&gt; [Span G] &gt;&gt;&gt; [Span H]
+                                                 &#x2191;
+                                                 &#x2191;
+                                                 &#x2191;
+             (2) BAGGAGE ITEM &quot;X&quot; IS AVAILABLE FOR
+                 RETRIEVAL BY SPAN H (A CHILD OF
+                 SPAN C), AS WELL AS SPANS F AND G.
+</code></pre><ul>
+<li>Though formally part of the <code>Tracer</code> interface, <code>SpanContext</code> is essential to <a href="#inject-extract">Inject and Extract</a> below</li>
+</ul>
+<h2 id="the-tracer-interface">The <code>Tracer</code> Interface</h2>
+<p>The <code>Tracer</code> interface must have the following capabilities:</p>
+<ul>
+<li><strong>Start a new <code>Span</code></strong>. The caller can specify zero or more <a href="#references"><code>SpanContext</code> references</a> (e.g., <code>FollowsFrom</code> or <code>ChildOf</code>), an explicit start timestamp (other than &quot;now&quot;), and an initial set of <code>Span</code> tags. <strong>(py: <code>start_span</code>, go: <code>StartSpan</code>)</strong></li>
+<li><span id="inject-extract"></span><strong>Inject a <code>SpanContext</code></strong> into a &quot;carrier&quot; object for cross-process propagation. The type of the carrier is either determined through reflection or an explicit <a href="../propagation#format-identifiers">format identifier</a>. See the <a href="../propagation#propagation-example">end-to-end propagation example</a> to make this more concrete.</li>
+<li><strong>Extract a <code>SpanContext</code></strong> given a &quot;carrier&quot; object whose contents crossed a process boundary. Extract examines the carrier and tries to reconstruct the previously-Injected <code>SpanContext</code> instance. Unless there&apos;s an error, Extract returns a <code>SpanContext</code> which can be used in the host process like any other, most likely to start a new (child) Span. (Note that some OpenTracing implementations consider the <code>Span</code>s on either side of an RPC to have the same identity, and others consider the client to be the parent and the server to be the child) The type of the carrier is either determined through language reflection or an explicit <a href="../propagation#format-identifiers">format</a>. See the <a href="../propagation#propagation-example">end-to-end propagation example</a> to make this more concrete.</li>
+</ul>
+<h3 id="global-and-no-op-tracers">Global and No-op Tracers</h3>
+<p>A per-platform OpenTracing API library (e.g., <a href="https://github.com/opentracing/opentracing-go" target="_blank">opentracing-go</a>, <a href="https://github.com/opentracing/opentracing-java" target="_blank">opentracing-java</a>, etc; not OpenTracing <code>Tracer</code> <em>implementations</em>) must provide a no-op Tracer as part of their interface. The no-op Tracer implementation must not crash and should have no side-effects, including baggage propagation. The Tracer implementation must provide a no-op Span implementation as well; in this way, the instrumentation code that relies on Span instances returned by the Tracer does not need to change to accommodate the possibility of no-op implementations. The no-op Tracer&apos;s Inject method should always succeed, and Extract should always behave as if no <code>SpanContext</code> could be found in the carrier.</p>
+<p>The per-platform OpenTracing API libraries <em>may</em> provide support for configuring (Go: <code>InitGlobalTracer()</code>, py: <code>opentracing.tracer = myTracer</code>) and retrieving (Go: <code>GlobalTracer()</code>, py: <code>opentracing.tracer</code>) a global/singleton Tracer instance. If a global Tracer is supported, the default must be the no-op Tracer.</p>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="instrumentation/instrumenting-frameworks.html" class="navigation navigation-prev " aria-label="Previous page: Instrumenting Frameworks">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="authors-and-contributors.html" class="navigation navigation-next " aria-label="Next page: Authors and Contributors">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Concepts and Terminology","level":"1.6","depth":1,"next":{"title":"Authors and Contributors","level":"1.7","depth":1,"path":"pages/authors-and-contributors.md","ref":"pages/authors-and-contributors.md","articles":[]},"previous":{"title":"Instrumenting Frameworks","level":"1.5.3","depth":2,"path":"pages/instrumentation/instrumenting-frameworks.md","ref":"pages/instrumentation/instrumenting-frameworks.md","articles":[]},"dir":"ltr"},"config":{"plugins":["fontsettings","edit-link","github","-search","scripts"],"root":"_docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/opentracing/opentracing.io/"},"scripts":{"files":["scripts/injectLogo.js"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"theme":"white","size":3},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/opentracing/opentracing/tree/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Opentracing","gitbook":">=3.2.1"},"file":{"path":"pages/concepts-and-terminology.md","mtime":"2016-10-11T02:35:57.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-10-11T02:39:43.533Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-scripts/1476153586451-injectLogo.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+
+    </body>
+</html>
+

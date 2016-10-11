@@ -1,23 +1,64 @@
-[![Gitter chat](http://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg)](https://gitter.im/opentracing/public)
+This repository contains the source code for http://opentracing.github.io website, generated with Jekyll + Node.js + Gitbook.
 
-This repository contains the source code for http://opentracing.github.io website, generated with [Jekyll](http://jekyllrb.com/).
+
+## Project structure
+
+### Folders
+
+#### _data
+collections of data that is then used in to render liquid templates
+
+#### _docs
+The gitbook documentation that is then built into /documentation on build
+
+#### _includes, _layouts
+jekyll folders containing html templates and layouts
+
+#### _sass
+Contains the scss that is then preprocessed into /css on build
+
+#### _site
+Jekyll temp folder when running `jekyll serve`. You can ignore this.
+
+#### fonts, img, css, documentation
+post-build static assets. don't remove these.
 
 ## Making changes
 
 Create a branch, test the change locally, then create a pull request.
 
-## Testing localling with Jekyll
 
-See https://help.github.com/articles/using-jekyll-with-pages/
+## Running Opentracing.io locally
 
-or, as a crash course:
+### Prerequisites
 
-* make sure Ruby version 2.0.0 or greater is installed
-* install Bundler: `sudo gem install bundler`
-* clone the repository and `cd` to it
-* install github-pages: `sudo bundle install`
-* run the webserver: `bundle exec jekyll serve` 
-* check results: `open http://localhost:4000`
+you need to have Node.js, NPM and Jekyll installed on your computer.
 
-Tips:
-* Jekyll will regenerate the site as you update the files, unless you edit `_config.yml`, which requires a restart of `jekyll serve`
+
+### Install dependencies
+```
+npm install
+```
+
+### Run development server
+```
+npm run dev
+open http://localhost:3000
+```
+
+## Running Gitbook locally (to edit documentation)
+
+### Run gitbook server
+```
+npm run docs:watch
+```
+
+### Build Documentation
+```
+npm run docs:build
+```
+
+### Build for Production
+```
+npm run production
+```

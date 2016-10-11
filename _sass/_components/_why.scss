@@ -1,0 +1,137 @@
+@import '../variables';
+
+
+.why {
+  margin: 90px auto;
+  width: 100vw;
+  max-width: ($max-width - 200px);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  position: relative;
+  padding: 0 30px;
+  flex-wrap: wrap;
+  font-family: 'bariolthin';
+
+  &__section {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    text-align: left;
+    padding: 0 1rem;
+
+    &.why-tracing {
+      min-width: 100%;
+      flex: 1;
+      text-align: center;
+      align-items: center;
+      margin-bottom: 5rem;
+      max-width: 800px;
+    }
+
+    &.app-developer,
+    &.framework-developer {
+      flex: 3;
+      padding: 0 4rem;
+    }
+
+    &.app-developer {
+      flex: 2;
+      border-right: 1px solid rgba($blue, 0.2);
+    }
+  }
+
+  &__figure {
+    flex: 1;
+    max-width: 40px;
+    margin-right: 20px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 160px;
+
+    h2 {
+      color: $dark-blue;
+      font-size: 5.8rem;
+      margin-bottom: 1.9rem;
+    }
+
+    h4 {
+      font-size: 1.6rem;
+    }
+
+    p {
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    .why-tracing & a {
+      letter-spacing: 2px;
+      font-size: 1.45rem;
+    }
+
+  }
+
+  @media (max-width: $medium) {
+    width: 100vw;
+    flex-direction: column;
+
+    .why-tracing {
+      order: 1;
+    }
+
+    .app-developer {
+      border-right: none;
+    }
+
+    &__section {
+      margin: 5vh auto;
+      min-width: 100%;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+      order: 2;
+      flex: 1;
+
+
+      &.app-developer,
+      &.framework-developer {
+        flex: 1;
+        padding: 0;
+      }
+
+    }
+
+    &__figure {
+      margin-right: 0;
+    }
+
+    h2, h4, p {
+      font-weight: 700;
+    }
+
+    h2 {
+      color: $blue-text;
+      font-size: 3.2rem;
+      margin-bottom: 1rem;
+    }
+
+    h4 {
+      font-size: 2rem;
+    }
+
+    a {
+      font-size: 1.3rem;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+
+
+  }
+}

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "weekly hangout: C#, HTTP encoding, key-value logging, reusing existing log instrumentation"
 ---
 

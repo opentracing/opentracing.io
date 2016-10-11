@@ -1,16 +1,11 @@
----
-layout: default
----
-
-<div class="page">
-  {% if page.title != "Home" %}
-    <h1 class="page-title">{{ page.title }}</h1>
-  {% endif %}
-  {{ content }}
-</div>
-
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#toc').toc();
-});
-</script>
+<!DOCTYPE html>
+<html>
+  {% include head.html %}
+  <body class="">
+    {% include header.html %}
+    <main class="container">
+      {{ content }}
+    </main>
+    {% include footer.html %}
+  </body>
+</html>

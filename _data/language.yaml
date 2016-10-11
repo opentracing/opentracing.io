@@ -1,0 +1,25 @@
+category: Languages
+array:
+  - name: Go
+    url: //github.com/opentracing/opentracing-go
+    icon: ''
+
+  - name: JavaScript
+    url: //github.com/opentracing/opentracing-javascript
+    icon: ''
+
+  - name: Java
+    url: //github.com/opentracing/opentracing-java
+    icon: ''
+
+  - name: Python
+    url: //github.com/opentracing/opentracing-python
+    icon: ''
+
+  - name: Objective-C
+    url: //github.com/opentracing/opentracing-objective-c
+    icon: ''
+
+  - name: C++
+    url: //github.com/opentracing/opentracing-cpp
+    icon: ''

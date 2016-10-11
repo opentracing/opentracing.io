@@ -1,0 +1,66 @@
+@import 'variables';
+
+html, body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  font-family: 'bariol_regular' !important;
+}
+
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main.container {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 200ms;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.container {
+  max-width: $max-width;
+}
+
+.thin {
+  font-family: 'bariolthin';
+  font-weight: 300;
+}
+
+.dark-blue {
+  color: $blue-black;
+}
+
+div.line {
+  width: 40%;
+  height: 1px;
+  background: rgba(white, 0.5);
+  display: inline-block;
+  margin: 2rem 0;
+}
+
+*, :after, :before {
+    box-sizing: border-box;
+}

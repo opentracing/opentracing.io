@@ -1,0 +1,83 @@
+@import '../variables';
+
+.companies {
+  position: relative;
+  width: 100%;
+  display: block;
+  z-index: 10;
+  flex: none;
+
+  &__content {
+    max-width: $max-width/1.5;
+    display: flex;
+    padding: 3rem;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    flex-wrap: wrap;
+
+  }
+
+  &__logos {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+
+    &:before, &:after {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      content: '';
+      display: block;
+    }
+
+    &:before {
+      top: -30px;
+      border-top: 1px solid rgba($blue, 0.2);
+    }
+
+    &:after {
+      top: -60px;
+      opacity: 0.5;
+      color: $blue;
+      content: 'Organizations using OpenTracing';
+    }
+
+
+    a {
+      flex-grow: 1;
+      display: flex;
+      color: red;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-size: 1rem;
+      justify-content: center;
+
+      img {
+        opacity: 0.5;
+        height: 30px;
+      }
+    }
+  }
+
+  @media (max-width: $medium) {
+    &__logos {
+      width: 100%;
+      a {
+        flex-grow: 1;
+
+        img {
+          height: 20px;
+        }
+      }
+
+      &:after {
+        font-size: 1.3rem;
+        text-align: center;
+      }
+    }
+  }
+}

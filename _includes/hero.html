@@ -1,0 +1,44 @@
+<section class="hero landing-page">
+  <div class="hero__content">
+
+    {% include bash-window.html %}
+
+    <section class="hero__copy">
+      <h1 class="bariol-thin">A vendor-neutral open standard for distributed tracing.</h1>
+      <h2 class="dark-blue">Libraries available in 6 languanges</h2>
+      <p class="dark-blue">
+      {% for language in site.data.language.array %}
+        <a href="{{language.url}}">{{ language.name }}</a>{% if forloop.last == false %},{% endif %}
+      {% endfor %}
+      </p>
+    </section>
+  </div>
+  <section class="logo-bar logo-bar--bottom">
+    <div class="logo-bar__content">
+
+      <div class="logo-bar__logos tracers">
+        {% for tracer in site.data.tracers.array %}
+            <a href="{{tracer.url}}">
+              {% if tracer.icon %}
+                <img src="{{ tracer.icon }}" alt="{{ tracer.name }} logo">
+              {% else %}
+                {{ tracer.name }}
+              {% endif %}
+            </a>
+        {% endfor %}
+      </div>
+      <div class="logo-bar__logos frameworks">
+        {% for framework in site.data.frameworks.array %}
+          <a href="{{framework.url}}">
+            {% if framework.icon %}
+              <img src="{{ framework.icon }}" alt="{{ framework.name }} logo">
+            {% else %}
+              {{ framework.name }}
+            {% endif %}
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</section>
+

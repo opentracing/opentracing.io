@@ -1,0 +1,48 @@
+@import '../variables';
+
+$font-size: 0.9rem;
+
+.button {
+  border-radius: 5px;
+  color: $dark-blue;
+  cursor: pointer;
+  font-size: inherit;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  &:hover {
+    &:before {
+      margin-right: 15px;
+    }
+  }
+
+  &:before {
+    content: '->';
+    position: relative;
+    border: 5px;
+    font-size: inherit;
+    display: inline-block;
+    transition: margin 200ms;
+    padding: 0.15em 0.85em;
+    color: $blue-text;
+    border: 1px solid $blue-text;
+    border-radius: 0.65em;
+    margin-right: 10px;
+  }
+
+
+  &.white {
+    color: white;
+
+    &:before {
+      border-color: white;
+      color: white;
+    }
+  }
+
+  @media (max-width: $medium) {
+    font-weight: 600;
+    line-height: 2rem;
+  }
+
+}
