@@ -2,7 +2,7 @@
   "gitbook": ">=3.2.1",
   "root": "_docs",
   "title": "Opentracing",
-  "plugins": ["fontsettings", "edit-link", "github", "-search", "scripts"],
+  "plugins": ["fontsettings", "github", "-search", "scripts"],
   "pluginsConfig": {
      "scripts": {
         "files": [
@@ -12,10 +12,6 @@
     "fontSettings": {
       "theme": "white",
        "size": 3
-    },
-    "edit-link": {
-      "base": "https://github.com/opentracing/opentracing/tree/master",
-      "label": "Edit This Page"
     },
     "github": {
       "url": "https://github.com/opentracing/opentracing.io/"
