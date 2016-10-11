@@ -24,7 +24,7 @@
 
     &.why-tracing {
       min-width: 100%;
-      flex: 1;
+      flex: 1 1 100%;
       text-align: center;
       align-items: center;
       margin-bottom: 5rem;
@@ -82,6 +82,10 @@
 
     .why-tracing {
       order: 1;
+
+     a {
+        line-height: 2.25em;
+      }
     }
 
     .app-developer {

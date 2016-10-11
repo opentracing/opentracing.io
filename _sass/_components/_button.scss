@@ -23,11 +23,12 @@ $font-size: 0.9rem;
     font-size: inherit;
     display: inline-block;
     transition: margin 200ms;
-    padding: 0.15em 0.85em;
+    padding: 0.15rem 0.85rem;
     color: $blue-text;
     border: 1px solid $blue-text;
     border-radius: 0.65em;
     margin-right: 10px;
+    line-height: 2rem;
   }
 
 

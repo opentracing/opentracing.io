@@ -1230,8 +1230,8 @@ img, svg {
     .why__section.why-tracing {
       min-width: 100%;
       -webkit-box-flex: 1;
-          -ms-flex: 1;
-              flex: 1;
+          -ms-flex: 1 1 100%;
+              flex: 1 1 100%;
       text-align: center;
       -webkit-box-align: center;
           -ms-flex-align: center;
@@ -1286,6 +1286,8 @@ img, svg {
         -webkit-box-ordinal-group: 2;
             -ms-flex-order: 1;
                 order: 1; }
+        .why .why-tracing a {
+          line-height: 2.25em; }
       .why .app-developer {
         border-right: none; }
       .why__section {
@@ -1428,11 +1430,12 @@ img, svg {
     display: inline-block;
     -webkit-transition: margin 200ms;
     transition: margin 200ms;
-    padding: 0.15em 0.85em;
+    padding: 0.15rem 0.85rem;
     color: #45c1de;
     border: 1px solid #45c1de;
     border-radius: 0.65em;
-    margin-right: 10px; }
+    margin-right: 10px;
+    line-height: 2rem; }
   .button.white {
     color: white; }
     .button.white:before {
