@@ -88,9 +88,6 @@
       }
     }
 
-    .app-developer {
-      border-right: none;
-    }
 
     &__section {
       margin: 5vh auto;
@@ -98,14 +95,18 @@
       align-items: center;
       text-align: center;
       flex-direction: column;
+      min-height: 200px;
       order: 2;
       flex: 1;
-
 
       &.app-developer,
       &.framework-developer {
         flex: 1;
         padding: 0;
+      }
+
+      .app-developer {
+        border-right: none;
       }
 
     }

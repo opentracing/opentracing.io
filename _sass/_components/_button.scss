@@ -23,12 +23,12 @@ $font-size: 0.9rem;
     font-size: inherit;
     display: inline-block;
     transition: margin 200ms;
-    padding: 0.15rem 0.85rem;
+    padding: 0.075rem 1.25rem;
     color: $blue-text;
     border: 1px solid $blue-text;
     border-radius: 0.65em;
     margin-right: 10px;
-    line-height: 2rem;
+    line-height: 1.5rem;
   }
 
 
@@ -44,6 +44,10 @@ $font-size: 0.9rem;
   @media (max-width: $medium) {
     font-weight: 600;
     line-height: 2rem;
+
+    &:before {
+      line-height: 2rem;
+    }
   }
 
 }

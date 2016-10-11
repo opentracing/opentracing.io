@@ -1288,8 +1288,6 @@ img, svg {
                 order: 1; }
         .why .why-tracing a {
           line-height: 2.25em; }
-      .why .app-developer {
-        border-right: none; }
       .why__section {
         margin: 5vh auto;
         min-width: 100%;
@@ -1301,6 +1299,7 @@ img, svg {
         -webkit-box-direction: normal;
             -ms-flex-direction: column;
                 flex-direction: column;
+        min-height: 200px;
         -webkit-box-ordinal-group: 3;
             -ms-flex-order: 2;
                 order: 2;
@@ -1312,6 +1311,8 @@ img, svg {
               -ms-flex: 1;
                   flex: 1;
           padding: 0; }
+        .why__section .app-developer {
+          border-right: none; }
       .why__figure {
         margin-right: 0; }
       .why h2, .why h4, .why p {
@@ -1430,12 +1431,12 @@ img, svg {
     display: inline-block;
     -webkit-transition: margin 200ms;
     transition: margin 200ms;
-    padding: 0.15rem 0.85rem;
+    padding: 0.075rem 1.25rem;
     color: #45c1de;
     border: 1px solid #45c1de;
     border-radius: 0.65em;
     margin-right: 10px;
-    line-height: 2rem; }
+    line-height: 1.5rem; }
   .button.white {
     color: white; }
     .button.white:before {
@@ -1444,4 +1445,6 @@ img, svg {
   @media (max-width: 768px) {
     .button {
       font-weight: 600;
-      line-height: 2rem; } }
+      line-height: 2rem; }
+      .button:before {
+        line-height: 2rem; } }
