@@ -2,17 +2,17 @@ category: Social Accounts
 array:
   - name: Medium
     url:  //medium.com/opentracing
-    icon: img/social/medium.png
+    icon: /img/social/medium.png
 
   - name: Github
     url:  //github.com/opentracing
-    icon: img/social/github.png
+    icon: /img/social/github.png
 
   - name: Twitter
     url:  //twitter.com/opentracing
-    icon: img/social/twitter.png
+    icon: /img/social/twitter.png
 
   - name: Gitter
     url:  //gitter.im/opentracing/public
-    icon: img/social/gitter.png
+    icon: /img/social/gitter.png
 
