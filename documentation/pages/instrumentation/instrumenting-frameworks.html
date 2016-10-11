@@ -337,7 +337,7 @@
 <h2 id="audience">Audience</h2>
 <p>The audience for this guide are developers interested in adding <a href="http://opentracing.io/" target="_blank">OpenTracing</a> instrumentation to a web, RPC, or other framework that makes requests and/or receives responses. This instrumentation makes it easy for developers using the framework to incorporate end-to-end (distributed) tracing.</p>
 <p>Distributed tracing provides insight about individual requests as they propagate throughout a system. OpenTracing is an open-source standard API for consistent distributed tracing of requests across processes, from web and mobile client platforms to the storage systems and custom backends at the bottom of an application stack. Once OpenTracing integrates across  the entire application stack, it&#x2019;s easy to trace requests across the distributed system. This allows developers and operators much-needed visibility optimize and stabilize production services.</p>
-<p>Before you begin, check <a href="http://opentracing.io/integration/" target="_blank">here</a> to make sure that there&apos;s a working OpenTracing API for your platform.</p>
+<p>Before you begin, check <a href="../api/api-implementations">here</a> to make sure that there&apos;s a working OpenTracing API for your platform.</p>
 <h2 id="overview">Overview</h2>
 <p>At a high level, here is what you need for an OpenTracing integration:</p>
 <p>Server framework requirements:</p>
@@ -354,7 +354,7 @@
 <h2 id="pro-tips">Pro-tips:</h2>
 <p>Before we dive into implementation, here are a few important concepts and features that should be made available to framework users.</p>
 <h3 id="operation-names">Operation Names</h3>
-<p>You&apos;ll notice an operation_name variable floating around this tutorial. Every span is created with an operation name that should follow the guidelines outlined <a href="http://opentracing.io/spec/#operation-names" target="_blank">here</a>. You should have a default operation name for each span, but also provide a way for the user to specify custom operation names.</p>
+<p>You&apos;ll notice an operation_name variable floating around this tutorial. Every span is created with an operation name that should follow the guidelines outlined <a href="../spec">here</a>. You should have a default operation name for each span, but also provide a way for the user to specify custom operation names.</p>
 <p>Examples of default operation names:</p>
 <ul>
 <li>The name of the request handler method</li>
@@ -517,7 +517,7 @@ def process_response(request, response):
     tracer.finish_client_span(request)
 </code></pre><h2 id="closing-remarks">Closing Remarks</h2>
 <p>Once you&apos;ve packaged your implementation, email us at <a href="mailto://community@opentracing.io" target="_blank">community@opentracing.io</a> with your implementation details (platform, description, github username) and we&apos;ll create a repo for you under <a href="https://github.com/opentracing-contrib/" target="_blank">opentracing-contrib</a>, so that others will be able to find and use your integration. You can also find there concrete examples of OpenTracing integrations into different open source projects.</p>
-<p>If you&apos;re interested in learning more about OpenTracing, join the conversation by joining our <a href="http://opentracing.us13.list-manage.com/subscribe" target="_blank">mailing list</a> or <a href="https://gitter.im/opentracing/public" target="_blank">Gitter</a>.</p>
+<p>If you&apos;re interested in learning more about OpenTracing, join the conversation by joining our <a href="https://groups.google.com/forum/#!forum/opentracing" target="_blank">mailing list</a> or <a href="https://gitter.im/opentracing/public" target="_blank">Gitter</a>.</p>
 
                                 
                                 </section>
@@ -545,7 +545,7 @@ def process_response(request, response):
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Instrumenting Frameworks","level":"1.5.3","depth":2,"next":{"title":"Authors and Contributors","level":"1.6","depth":1,"path":"pages/authors-and-contributors.md","ref":"pages/authors-and-contributors.md","articles":[]},"previous":{"title":"Instrumenting Large Systems","level":"1.5.2","depth":2,"path":"pages/instrumentation/instrumenting-large-systems.md","ref":"pages/instrumentation/instrumenting-large-systems.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","fontsettings","github","-search","scripts"],"root":"_docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/opentracing"},"scripts":{"files":["scripts/injectLogo.js","scripts/analytics.js"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"theme":"white","size":3},"highlight":{},"ga":{"token":"UA-79528055-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/opentracing/opentracing.github.io/edit/master/_docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Opentracing","gitbook":">=3.2.1"},"file":{"path":"pages/instrumentation/instrumenting-frameworks.md","mtime":"2016-10-11T02:35:57.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-10-11T11:40:47.372Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Instrumenting Frameworks","level":"1.5.3","depth":2,"next":{"title":"Authors and Contributors","level":"1.6","depth":1,"path":"pages/authors-and-contributors.md","ref":"pages/authors-and-contributors.md","articles":[]},"previous":{"title":"Instrumenting Large Systems","level":"1.5.2","depth":2,"path":"pages/instrumentation/instrumenting-large-systems.md","ref":"pages/instrumentation/instrumenting-large-systems.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","fontsettings","github","-search","scripts"],"root":"_docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/opentracing"},"scripts":{"files":["scripts/injectLogo.js","scripts/analytics.js"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"theme":"white","size":3},"highlight":{},"ga":{"token":"UA-79528055-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/opentracing/opentracing.github.io/edit/master/_docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Opentracing","gitbook":">=3.2.1"},"file":{"path":"pages/instrumentation/instrumenting-frameworks.md","mtime":"2016-10-11T14:37:27.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-10-11T14:51:27.346Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -567,11 +567,11 @@ def process_response(request, response):
         
     
         
-        <script src="../../gitbook/gitbook-plugin-scripts/1476186050269-injectLogo.js"></script>
+        <script src="../../gitbook/gitbook-plugin-scripts/1476197490071-injectLogo.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-scripts/1476186050270-analytics.js"></script>
+        <script src="../../gitbook/gitbook-plugin-scripts/1476197490072-analytics.js"></script>
         
     
         

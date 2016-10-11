@@ -8,6 +8,7 @@
 * @bg451 (Brandon Gonzalez)
 * @dkuebric (Dan Kuebrich)
 * @michaelsembwever (mck)
+* @pritianka (Priyanka Sharma)
 * @slimsag (Stephen Gutekanst)
 * @tschottdorf (Tobias Schottdorf)
 * @yurishkuro (Yuri Shkuro)

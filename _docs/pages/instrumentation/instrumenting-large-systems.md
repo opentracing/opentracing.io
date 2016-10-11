@@ -1,22 +1,22 @@
 # How to Instrument Systems at Scale
 
-_Before getting onto recommendations on how to instrument your large-scale system with OpenTracing, be sure to read the [Specification overview](/spec)._
+_Before getting onto recommendations on how to instrument your large-scale system with OpenTracing, be sure to read the [Specification overview](/pages/spec)._
 
 ## Spans and Relationships
 
 The two fundamental aspects of implementing OpenTracing across your infrastructure are _Spans_ and the _Relationships_ between those spans:
 
-* **_[Span](http://opentracing.io/spec/#spans)_** is a logical unit of work in the system that has a start time and a duration. In a trace Spans are associated with the components of the system as they are exercised on a specified path.
+* **_[Span](/pages/spec#spans)_** is a logical unit of work in the system that has a start time and a duration. In a trace Spans are associated with the components of the system as they are exercised on a specified path.
 
   ![image of spans in a system](/images/OTHT_0.png)
 
-* **_[Relationships](http://opentracing.io/spec/#causal-span-references)_** are the connections between Spans. A Span may reference zero or more Spans that are causally related. This allows for the spans to be connected and help identify the critical path of a trace.
+* **_[Relationships](/pages/spec/#causal-span-references)_** are the connections between Spans. A Span may reference zero or more Spans that are causally related. This allows for the spans to be connected and help identify the critical path of a trace.
 
   ![image of relationships in a system](/images/OTHT_1.png)
 
 Your desired end state is to get Spans for all or your code components as well as the relationships between those Spans. When starting to build out your infrastructure with distributed tracing the best practice is to start with service frameworks (i.e. RPC layer) or other components known to have broad interaction with multiple execution paths.
 
-By using a service framework that is instrumented with OpenTracing ([gRPC](https://github.com/grpc/grpc-go), etc.) you can get a head start on this effort. However, if you are working with a non-instrumented framework you can get some assistance with this part by reading the [IPC/RPC Framework Guide](OT_Framework_Guide.md).
+By using a service framework that is instrumented with OpenTracing ([gRPC](https://github.com/grpc/grpc-go), etc.) you can get a head start on this effort. However, if you are working with a non-instrumented framework you can get some assistance with this part by reading the [IPC/RPC Framework Guide](/pages/instrumentation/instrumenting-frameworks).
 
 ## Focus on Areas of Value
 

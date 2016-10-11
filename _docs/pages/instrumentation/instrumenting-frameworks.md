@@ -8,7 +8,7 @@ The audience for this guide are developers interested in adding [OpenTracing](ht
 
 Distributed tracing provides insight about individual requests as they propagate throughout a system. OpenTracing is an open-source standard API for consistent distributed tracing of requests across processes, from web and mobile client platforms to the storage systems and custom backends at the bottom of an application stack. Once OpenTracing integrates across  the entire application stack, it’s easy to trace requests across the distributed system. This allows developers and operators much-needed visibility optimize and stabilize production services.
 
-Before you begin, check [here](http://opentracing.io/integration/) to make sure that there's a working OpenTracing API for your platform.
+Before you begin, check [here](/pages/api/api-implementations) to make sure that there's a working OpenTracing API for your platform.
 
 ## Overview
 
@@ -31,7 +31,7 @@ Before we dive into implementation, here are a few important concepts and featur
 
 ### Operation Names
 
-You'll notice an operation_name variable floating around this tutorial. Every span is created with an operation name that should follow the guidelines outlined [here](http://opentracing.io/spec/#operation-names). You should have a default operation name for each span, but also provide a way for the user to specify custom operation names.
+You'll notice an operation_name variable floating around this tutorial. Every span is created with an operation name that should follow the guidelines outlined [here](/pages/spec). You should have a default operation name for each span, but also provide a way for the user to specify custom operation names.
 
 Examples of default operation names:
 
@@ -250,4 +250,4 @@ def process_response(request, response):
 
 Once you've packaged your implementation, email us at [community@opentracing.io](mailto://community@opentracing.io) with your implementation details (platform, description, github username) and we'll create a repo for you under [opentracing-contrib](https://github.com/opentracing-contrib/), so that others will be able to find and use your integration. You can also find there concrete examples of OpenTracing integrations into different open source projects.
 
-If you're interested in learning more about OpenTracing, join the conversation by joining our [mailing list](http://opentracing.us13.list-manage.com/subscribe) or [Gitter](https://gitter.im/opentracing/public).
+If you're interested in learning more about OpenTracing, join the conversation by joining our [mailing list](https://groups.google.com/forum/#!forum/opentracing) or [Gitter](https://gitter.im/opentracing/public).

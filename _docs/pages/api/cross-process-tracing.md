@@ -1,6 +1,6 @@
 # Everything You Wanted to Know About Inject and Extract but were Afraid to Ask
 
-Programmers adding tracing support across process boundaries must understand the `Tracer.Inject(...)` and `Tracer.Extract(...)` capabilities of [the OpenTracing specification](/spec). They are conceptually powerful, allowing the programmer to write *correct* and *general* cross-process propagation code **without being bound to a particular OpenTracing implementation**; that said, with great power comes great opportunity for confusion. :)
+Programmers adding tracing support across process boundaries must understand the `Tracer.Inject(...)` and `Tracer.Extract(...)` capabilities of [the OpenTracing specification](/pages/spec). They are conceptually powerful, allowing the programmer to write *correct* and *general* cross-process propagation code **without being bound to a particular OpenTracing implementation**; that said, with great power comes great opportunity for confusion. :)
 
 This document provides a concise summary of the design and proper use of `Inject` and `Extract`, regardless of the particular OpenTracing language or OpenTracing implementation.
 
@@ -10,17 +10,13 @@ The hardest thing about distributed tracing is the *distributed* part. Any traci
 
 Some distributed tracing systems (e.g., [Project5](http://dl.acm.org/citation.cfm?id=945454) from 2003, or [WAP5](http://www2006.org/programme/item.php?id=2033) from 2006 or [The Mystery Machine](https://www.usenix.org/node/186168) from 2014) *infer* causal relationships across process boundaries. Of course **there is a tradeoff between the apparent convenience of these black-box inference-based approaches and the freshness and quality of the assembled traces.** Per the concern about quality, OpenTracing is an *explicit* distributed tracing instrumentation standard, and as such it is much better-aligned with approaches like [X-Trace](https://www.usenix.org/conference/nsdi-07/x-trace-pervasive-network-tracing-framework) from 2007, [Dapper](http://research.google.com/pubs/pub36356.html) from 2010, or numerous open-source tracing systems like [Zipkin](https://github.com/openzipkin) or [Appdash](https://github.com/sourcegraph/appdash) (among others).
 
-Let's briefly restate the "Why OpenTracing?" section of the [OpenTracing landing page](/):
-
-> By offering consistent, expressive, vendor-neutral APIs for popular platforms, OpenTracing makes it easy for developers to add (or switch) tracing implementations with an O(1) configuration change. OpenTracing also offers a lingua franca for OSS instrumentation and platform-specific tracing helper libraries.
-
 **Together, `Inject` and `Extract` allow for inter-process trace propagation without tightly coupling the programmer to a particular OpenTracing implementation.**
 
 ## Requirements for the OpenTracing propagation scheme
 
 For `Inject` and `Extract` to be useful, all of the following *must* be true:
 
-- Per the above, the [OpenTracing user](/use-cases/#stepping-back-who-is-opentracing-for) handling cross-process trace propagation must not need to write OpenTracing-implementation-specific code
+- Per the above, the [OpenTracing user](/pages/instrumentation/common-use-cases#stepping-back-who-is-opentracing-for) handling cross-process trace propagation must not need to write OpenTracing-implementation-specific code
 - OpenTracing implementations must not need special handlers for every known inter-process communication mechanism: that's far too much work, and it's not even well-defined
 - That said, the propagation mechanism should be extensible for optimizations
 
@@ -139,4 +135,4 @@ To make the above more concrete, consider the following sequence:
 1. The server process calls `Tracer.Extract(...)`, passing in the desired operation name, a format identifier for a text map, and the Carrier from above
 1. In the absence of data corruption or other errors, the *server* now has a `SpanContext` instance that belongs to the same trace as the one in the client
 
-Other examples can be found in the [OpenTracing use cases](/use-cases) doc.
+Other examples can be found in the [OpenTracing use cases](/pages/instrumentation/common-use-cases) doc.

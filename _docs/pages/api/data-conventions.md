@@ -23,7 +23,7 @@ Secondarily, an optional **component** tag can be provided to scope the operatio
 
 ### Span Structure
 
-Span structure is also important: what do spans represent, and what relationship do they have towards their ancestors?  This is covered in the [Semantic Specification](/spec).
+Span structure is also important: what do spans represent, and what relationship do they have towards their ancestors?  This is covered in the [Semantic Specification](/pages/spec).
 
 
 ## Span Tag Use-Cases

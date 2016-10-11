@@ -1,4 +1,4 @@
-# Commom use cases
+# Common use cases
 
 This page aims to illustrate common use cases that developers who instrument their applications and libraries with OpenTracing API need to deal with.
 

@@ -333,19 +333,19 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="how-to-instrument-systems-at-scale">How to Instrument Systems at Scale</h1>
-<p><em>Before getting onto recommendations on how to instrument your large-scale system with OpenTracing, be sure to read the <a href="../../spec">Specification overview</a>.</em></p>
+<p><em>Before getting onto recommendations on how to instrument your large-scale system with OpenTracing, be sure to read the <a href="../spec">Specification overview</a>.</em></p>
 <h2 id="spans-and-relationships">Spans and Relationships</h2>
 <p>The two fundamental aspects of implementing OpenTracing across your infrastructure are <em>Spans</em> and the <em>Relationships</em> between those spans:</p>
 <ul>
-<li><p><strong><em><a href="http://opentracing.io/spec/#spans" target="_blank">Span</a></em></strong> is a logical unit of work in the system that has a start time and a duration. In a trace Spans are associated with the components of the system as they are exercised on a specified path.</p>
+<li><p><strong><em><a href="../spec#spans">Span</a></em></strong> is a logical unit of work in the system that has a start time and a duration. In a trace Spans are associated with the components of the system as they are exercised on a specified path.</p>
 <p><img src="../../images/OTHT_0.png" alt="image of spans in a system"></p>
 </li>
-<li><p><strong><em><a href="http://opentracing.io/spec/#causal-span-references" target="_blank">Relationships</a></em></strong> are the connections between Spans. A Span may reference zero or more Spans that are causally related. This allows for the spans to be connected and help identify the critical path of a trace.</p>
+<li><p><strong><em><a href="../spec#causal-span-references">Relationships</a></em></strong> are the connections between Spans. A Span may reference zero or more Spans that are causally related. This allows for the spans to be connected and help identify the critical path of a trace.</p>
 <p><img src="../../images/OTHT_1.png" alt="image of relationships in a system"></p>
 </li>
 </ul>
 <p>Your desired end state is to get Spans for all or your code components as well as the relationships between those Spans. When starting to build out your infrastructure with distributed tracing the best practice is to start with service frameworks (i.e. RPC layer) or other components known to have broad interaction with multiple execution paths.</p>
-<p>By using a service framework that is instrumented with OpenTracing (<a href="https://github.com/grpc/grpc-go" target="_blank">gRPC</a>, etc.) you can get a head start on this effort. However, if you are working with a non-instrumented framework you can get some assistance with this part by reading the <a href="OT_Framework_Guide.md">IPC/RPC Framework Guide</a>.</p>
+<p>By using a service framework that is instrumented with OpenTracing (<a href="https://github.com/grpc/grpc-go" target="_blank">gRPC</a>, etc.) you can get a head start on this effort. However, if you are working with a non-instrumented framework you can get some assistance with this part by reading the <a href="instrumenting-frameworks">IPC/RPC Framework Guide</a>.</p>
 <h2 id="focus-on-areas-of-value">Focus on Areas of Value</h2>
 <p>As mentioned above, start with your RPC layers and your web framework to provide a good foundation for your instrumentation. Both of these will likely have a large coverage area and touch a significant number of transaction paths.</p>
 <p>Next you should look for areas of your infrastructure on the path of a transaction not covered by your service framework. Instrument enough of these code components to create a trace along the critical path of a high value transaction.</p>
@@ -408,7 +408,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Instrumenting Large Systems","level":"1.5.2","depth":2,"next":{"title":"Instrumenting Frameworks","level":"1.5.3","depth":2,"path":"pages/instrumentation/instrumenting-frameworks.md","ref":"pages/instrumentation/instrumenting-frameworks.md","articles":[]},"previous":{"title":"Common Use Cases","level":"1.5.1","depth":2,"path":"pages/instrumentation/common-use-cases.md","ref":"pages/instrumentation/common-use-cases.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","fontsettings","github","-search","scripts"],"root":"_docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/opentracing"},"scripts":{"files":["scripts/injectLogo.js","scripts/analytics.js"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"theme":"white","size":3},"highlight":{},"ga":{"token":"UA-79528055-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/opentracing/opentracing.github.io/edit/master/_docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Opentracing","gitbook":">=3.2.1"},"file":{"path":"pages/instrumentation/instrumenting-large-systems.md","mtime":"2016-10-11T02:35:57.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-10-11T11:40:47.372Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Instrumenting Large Systems","level":"1.5.2","depth":2,"next":{"title":"Instrumenting Frameworks","level":"1.5.3","depth":2,"path":"pages/instrumentation/instrumenting-frameworks.md","ref":"pages/instrumentation/instrumenting-frameworks.md","articles":[]},"previous":{"title":"Common Use Cases","level":"1.5.1","depth":2,"path":"pages/instrumentation/common-use-cases.md","ref":"pages/instrumentation/common-use-cases.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","fontsettings","github","-search","scripts"],"root":"_docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/opentracing"},"scripts":{"files":["scripts/injectLogo.js","scripts/analytics.js"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"theme":"white","size":3},"highlight":{},"ga":{"token":"UA-79528055-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/opentracing/opentracing.github.io/edit/master/_docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Opentracing","gitbook":">=3.2.1"},"file":{"path":"pages/instrumentation/instrumenting-large-systems.md","mtime":"2016-10-11T14:48:29.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-10-11T14:51:27.346Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -430,11 +430,11 @@
         
     
         
-        <script src="../../gitbook/gitbook-plugin-scripts/1476186050269-injectLogo.js"></script>
+        <script src="../../gitbook/gitbook-plugin-scripts/1476197490071-injectLogo.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-scripts/1476186050270-analytics.js"></script>
+        <script src="../../gitbook/gitbook-plugin-scripts/1476197490072-analytics.js"></script>
         
     
         
