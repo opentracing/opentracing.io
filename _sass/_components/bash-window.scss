@@ -5,8 +5,8 @@ $window-max-width: $window-min-width * 1.14;
 $window-min-height: $window-min-width * 0.785;
 $window-font-size: 0.8rem;
 
-.window {
-  margin: 2.5rem;
+.bash-window {
+  margin: 3.5rem;
   background: $blue-black;
   border: 1px solid lighten($blue-black, 10);
   border-radius: 7px;
@@ -29,9 +29,9 @@ $window-font-size: 0.8rem;
       border-radius: 0.8rem;
     }
 
-    &__button__red    { background: red; }
-    &__button__orange { background: orange; }
-    &__button__green  { background: green; }
+    &__button__red    { background: $red; }
+    &__button__orange { background: $orange; }
+    &__button__green  { background: $green; }
 
     &__title {
       position: absolute;
@@ -42,14 +42,13 @@ $window-font-size: 0.8rem;
 
   &__content {
 
-    padding: 1.5rem;
+    padding: 2rem;
     pre {
-    line-height: 1.3rem;
-    /* font-family: monospace; */
-    font-size: $window-font-size;
-    white-space: pre-wrap;
-    font-weight: 600;
-    font-family: 'bariolthin';
+      line-height: 1.7rem;
+      font-size: $window-font-size;
+      white-space: pre-wrap;
+      font-weight: 600;
+      font-family: 'bariolthin';
     }
   }
 

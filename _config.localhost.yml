@@ -5,4 +5,4 @@ kramdown:
   hard_wrap: false
 highlighter: rouge
 url: http://localhost:4000
-exclude: ['node_modules']
+exclude: ['node_modules', '_posts']

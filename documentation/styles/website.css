@@ -39,7 +39,7 @@ a:hover {
   color: white !important;
 }
 
-.book-summary ul.summary li.active a {
+.book-summary ul.summary li.active > a {
   text-decoration: underline;
 }
 

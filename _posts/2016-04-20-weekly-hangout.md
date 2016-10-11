@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "weekly hangout: metadata standard, sync.Pool, Uber's OT-Zipkin bridge"
 ---
 

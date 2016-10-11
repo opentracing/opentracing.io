@@ -57,6 +57,11 @@
     display: flex;
     max-width: 225px;
     align-items: center;
+
+    img {
+      vertical-align: text-top;
+    }
+
   }
 
   &__actions {

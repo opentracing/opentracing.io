@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "weekly hangout: 1.0rc milestone, standardtracer, tag standardization"
 ---
 

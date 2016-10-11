@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "weekly hangout: cassandra, inject/join, java status"
 ---
 

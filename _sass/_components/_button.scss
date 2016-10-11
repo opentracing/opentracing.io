@@ -4,9 +4,9 @@ $font-size: 0.9rem;
 
 .button {
   border-radius: 5px;
-  color: $darker-blue;
+  color: $dark-blue;
   cursor: pointer;
-  font-size: $font-size;
+  font-size: inherit;
   font-weight: 700;
   text-transform: uppercase;
 
@@ -23,9 +23,10 @@ $font-size: 0.9rem;
     font-size: inherit;
     display: inline-block;
     transition: margin 200ms;
-    padding: 0px 10px;
-    border: 1px solid $darker-blue;
-    border-radius: 12px;
+    padding: 0.15em 0.85em;
+    color: $blue-text;
+    border: 1px solid $blue-text;
+    border-radius: 0.65em;
     margin-right: 10px;
   }
 

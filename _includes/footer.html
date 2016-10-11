@@ -8,17 +8,17 @@
         <a href="{{site.url}}/documentation/pages/api/">API</a>
         <a href="{{site.url}}/documentation/pages/instrumentation">Instrumentation</a>
         <a href="{{site.url}}/documentation/pages/concepts-and-terminology">Concepts and Terminology</a>
+        <a href="{{site.url}}/documentation/pages/instrumentation/instrumenting-frameworks">Instrumenting a framework</a>
       </div>
     </div>
 
     <div class="footer__section form">
-      <h4 class="footer__subtitle full-width-line">Connect with OpenTracing</h4>
-
       <div class="footer__social_icons">
         {% for social in site.data.social.array %}
           <a href="{{social.url}}"><img src="{{ social.icon }}" alt="" style="color: {{social.color}};"></a>
         {% endfor %}
       </div>
+
       <a class="footer__social_newsletter button white thin" href="https://groups.google.com/forum/#!forum/opentracing">Join the mailing list</a>
     </div>
 

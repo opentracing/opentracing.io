@@ -3,7 +3,7 @@
 $line-width: 30%;
 
 .footer {
-  background: $dark-purple;
+  background: $blue-black;
   position: relative;
   width: 100%;
   display: block;
@@ -43,7 +43,7 @@ $line-width: 30%;
 
   &__subtitle {
     color: white;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
     letter-spacing: 1px;
 
@@ -61,6 +61,15 @@ $line-width: 30%;
       margin-left:  calc( (100% - #{ $line-width }) / 2);
       margin-right: calc( (100% - #{ $line-width }) / 2);
     }
+
+    .resources &,
+    .ecosystem & {
+      text-align: right;
+
+      &:after {
+        margin-left: 100% - $line-width;
+      }
+    }
   }
 
   &__social_icons {
@@ -69,6 +78,8 @@ $line-width: 30%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    border-bottom: 1px solid rgba(white, 0.5);
+    padding-bottom: 20px;
 
     img {
       flex-grow: 1;
@@ -90,7 +101,13 @@ $line-width: 30%;
     flex-direction: column;
     flex-wrap: wrap;
 
+    .resources &,
+    .ecosystem & {
+      align-items: flex-end;
+    }
+
     a {
+      font-size: 1rem;
       font-family: 'bariolthin';
       letter-spacing: 1px;
       padding: 5px 5px;
@@ -106,7 +123,12 @@ $line-width: 30%;
     }
 
     &__actions {
+
       align-items: center;
+      .resources &,
+      .ecosystem & {
+        align-items: center;
+      }
 
       a {
         font-weight: 600;
@@ -119,6 +141,12 @@ $line-width: 30%;
       font-size: 1.75rem;
       margin-top: 4rem;
       width: 100%;
+
+      .resources &,
+      .ecosystem & {
+        text-align: center;
+      }
+
       &:not(.no-line):after {
         margin-left: 0;
         margin-right: 0;

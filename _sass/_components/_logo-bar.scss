@@ -19,7 +19,7 @@ $logo-bar-scale: 15px;
   &__content {
     max-width: $max-width;
     display: flex;
-    padding: 1.5rem;
+    padding: 2.5rem 2.5rem 2rem 2.5rem;
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
@@ -52,6 +52,26 @@ $logo-bar-scale: 15px;
     align-items: center;
     flex-direction: row;
     position: relative;
+
+    &:before {
+      display: block;
+      text-align: left;
+      width: 100%;
+      font-size: 0.9rem;
+      opacity: 0.5;
+      position: absolute;
+      top: -22px;
+      left: 10px;
+      content: 'Supported Tracers';
+    }
+
+    &.tracers:before {
+      content: 'Supported Tracers';
+    }
+
+    &.frameworks:before {
+      content: 'Supported Frameworks';
+    }
 
     &:first-child {
       justify-content: flex-start;
@@ -103,7 +123,16 @@ $logo-bar-scale: 15px;
     &__logos {
       max-width: 100%;
       min-width: 100%;
-      min-height: 40px;
+      min-height: 65px;
+
+      &:before {
+        font-size: 1.4rem;
+        text-align: center;
+        width: 100%;
+        top: -5px;
+        left: 0px;
+      }
+
 
       &[href*="tracer"],
       &[href*="dropwizard"] {

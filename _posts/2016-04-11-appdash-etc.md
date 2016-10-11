@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "overdue updates: appdash, brave, C++, DAG tracing"
 ---
 

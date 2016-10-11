@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "weekly hangout: inject/join, ot-java discussion, appdash"
 ---
 

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "weekly hangout: DAG tracing, span errors, basictracer-py"
 ---
 

@@ -5,13 +5,13 @@
     </div>
     <div class="header__actions">
       <div class="dropdown">
-        <a class="dropdown__button" href="documentation">Docs</a>
+        <a class="dropdown__button" href="{{site.url}}/documentation">Docs</a>
         <div class="dropdown__content docs">
-          <a href="documentation">Overview</a>
-          <a href="documentation/pages/quick-start">Quickstart</a>
-          <a href="documentation/pages/api/">API</a>
-          <a href="documentation/pages/instrumentation">Instrumentation</a>
-          <a href="documentation/pages/concepts-and-terminology">Concepts and Terminology</a>
+          <a href="{{site.url}}/documentation">Overview</a>
+          <a href="{{site.url}}/documentation/pages/quick-start">Quickstart</a>
+          <a href="{{site.url}}/documentation/pages/api/">API</a>
+          <a href="{{site.url}}/documentation/pages/instrumentation">Instrumentation</a>
+          <a href="{{site.url}}/documentation/pages/concepts-and-terminology">Concepts and Terminology</a>
         </div>
       </div>
       <div class="dropdown">
@@ -37,16 +37,51 @@
     <div class="header__hamburger__button">☰</div>
     <div class="dropdown__content mobile">
       <div class="header__close__button">✕</div>
+
       <h3>Docs</h3>
-        <a href="documentation">Overview</a>
-        <a href="documentation/pages/quick-start">Quickstart</a>
-        <a href="documentation/pages/concepts-and-terminology">Semantic Specifications</a>
-        <a href="documentation/pages/common-use-cases">Common use cases</a>
-        <a href="documentation/pages/instrumenting-frameworks">Instrumenting a framework</a>
+        <a href="{{site.url}}/documentation">Overview</a>
+        <a href="{{site.url}}/documentation/pages/quick-start">Quickstart</a>
+        <a href="{{site.url}}/documentation/pages/concepts-and-terminology">Semantic Specifications</a>
+        <a href="{{site.url}}/documentation/pages/common-use-cases">Common use cases</a>
+        <a href="{{site.url}}/documentation/pages/instrumenting-frameworks">Instrumenting a framework</a>
+
       <h3>Github</h3>
       {% for language in site.data.language.array %}
         <a href="{{language.url}}">{{ language.name }}</a>
       {% endfor %}
+
+      <h3>Mailing List</h3>
+      <a href="https://groups.google.com/forum/#!forum/opentracing">Join!</a>
     </div>
   </div>
 </header>
+
+<script type="text/javascript">
+
+var _mobileMenuVisible = false;
+var _mobileMenuContent = document.querySelector('.header__container__mobile');
+var _openButton = document.querySelector('.header__hamburger__button');
+var _closeButton = document.querySelector('.header__close__button');
+
+function setState(state, classList) {
+  _mobileMenuContent.setAttribute('class', classList);
+  _mobileMenuVisible = state;
+}
+
+_openButton.addEventListener('click', function() {
+  var classes = _mobileMenuContent.getAttribute('class')
+
+  if(!_mobileMenuVisible) {
+    setState(true, classes + ' active ');
+  }
+})
+
+_closeButton.addEventListener('click', function() {
+  var classes = _mobileMenuContent.getAttribute('class')
+
+  if(_mobileMenuVisible) {
+    setState(false, classes.replace(' active ', '') );
+  }
+})
+
+</script>
