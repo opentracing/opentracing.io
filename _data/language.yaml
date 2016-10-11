@@ -17,7 +17,7 @@ array:
     icon: ''
 
   - name: Objective-C
-    url: //github.com/opentracing/opentracing-objective-c
+    url: //github.com/opentracing/opentracing-objc
     icon: ''
 
   - name: C++

@@ -1,5 +1,5 @@
-## API
+## OpenTracing APIs
 
-* [API Implementations](api-implementations.md)
+* [OpenTracing Language Support](api-implementations.md)
 * [Data Conventions](data-conventions.md)
-* [Across Process Tracing](across-process-tracing.md)
+* [Cross-Process Tracing](cross-process-tracing.md)
