@@ -1,5 +1,9 @@
 category: Companies
 array:
+  - name: Uber
+    url: https://eng.uber.com
+    icon: img/companies/uber.png
+
   - name: Apple
     url: https://apple.com
     icon: https://simpleicons.org/icons/apple.svg
