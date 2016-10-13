@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/reimertz/ixd.git"
+    "url": "git+https://github.com/opentracing/opentracing.github.io.git"
   },
   "author": "Pierre Reimerz",
   "bugs": {
@@ -36,5 +36,8 @@
     "onchange": "^3.0.2",
     "parallelshell": "^2.0.0",
     "postcss-cli": "^2.6.0"
+  },
+  "engines" : {
+    "node" : ">=4.6.0"
   }
 }

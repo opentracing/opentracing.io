@@ -9,7 +9,6 @@ title:            The OpenTracing Project
 tagline:          Consistent, expressive, vendor-neutral APIs for distributed tracing and context propagation
 description:      Consistent, expressive, vendor-neutral APIs for distributed tracing and context propagation
 url:              http://opentracing.io
-
 author:
   name: The OpenTracing Authors
   url: http://opentracing.io
