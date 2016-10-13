@@ -1,5 +1,5 @@
 ---
-permalink: /index
+permalink: /index.html
 layout: default
 title: 'Overview'
 ---
