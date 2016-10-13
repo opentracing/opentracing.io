@@ -13,4 +13,13 @@ author:
   name: The OpenTracing Authors
   url:  http://opentracing.io
 
-exclude: ['node_modules']
+exclude:
+  - node_modules
+  - vendor
+  - book.json
+  - .gitignore
+  - .nvmrc
+  - book.json
+  - deploy.sh
+  - package.json
+  - README.md
