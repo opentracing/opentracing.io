@@ -1,4 +1,6 @@
-_site/*
+css
+documentation
+_site
 .DS_Store
 node_modules
 Gemfile

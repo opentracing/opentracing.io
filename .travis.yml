@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - '4.6.0'
+before_install:
+  - rvm install 2.0.0
+install:
+  - gem install jekyll
+  - npm install
+script:
+  - bash ./deploy.sh
+env:
+  global:
+    - GITHUB_REPO: "opentracing/opentracing.github.io"
+sudo: false
