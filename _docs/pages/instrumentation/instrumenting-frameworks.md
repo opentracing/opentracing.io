@@ -248,6 +248,12 @@ def process_response(request, response):
 
 ## Closing Remarks
 
+If you'd like to highlight your project as OpenTracing-compatible, feel free to use our GitHub badge and link it to the OpenTracing website.
+
+[![OpenTracing badge](https://github.com/opentracing/contrib/blob/master/badge/OpenTracing-enabled-blue.png)](http://opentracing.io)
+
+`[![OpenTracing Badge](https://github.com/opentracing/contrib/blob/master/badge/OpenTracing-enabled-blue.png)](http://opentracing.io)`
+
 Once you've packaged your implementation, email us at [community@opentracing.io](mailto://community@opentracing.io) with your implementation details (platform, description, github username) and we'll create a repo for you under [opentracing-contrib](https://github.com/opentracing-contrib/), so that others will be able to find and use your integration. You can also find there concrete examples of OpenTracing integrations into different open source projects.
 
 If you're interested in learning more about OpenTracing, join the conversation by joining our [mailing list](https://groups.google.com/forum/#!forum/opentracing) or [Gitter](https://gitter.im/opentracing/public).
