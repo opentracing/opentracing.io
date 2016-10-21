@@ -1,0 +1,33 @@
+@import '../variables';
+
+.cncf-foundation {
+  width: 100%;
+  margin-bottom: 1rem;
+
+  &__content {
+    display: flex;
+    padding: 2.5rem;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+
+    a {
+      color: #39a9da;
+    }
+
+    img {
+      max-width: 50rem;
+    }
+  }
+
+  @media (max-width: $medium) {
+
+    &__content {
+      img {
+        margin-top: 1rem;
+        max-width: 15rem;
+      }
+    }
+  }
+}

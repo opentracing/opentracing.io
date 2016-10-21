@@ -10,12 +10,14 @@
   &__content {
     max-width: $max-width/1.5;
     display: flex;
-    padding: 3rem;
+    padding: 2.5rem 0;
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
     margin: 0 auto;
     flex-wrap: wrap;
+    border-top: 1px solid rgba($blue, 0.2);
+    border-bottom: 1px solid rgba($blue, 0.2);
 
   }
 
@@ -35,12 +37,7 @@
     }
 
     &:before {
-      top: -30px;
-      border-top: 1px solid rgba($blue, 0.2);
-    }
-
-    &:after {
-      top: -60px;
+      top: -70px;
       opacity: 0.5;
       color: $blue;
       content: 'Organizations using OpenTracing';
@@ -74,7 +71,7 @@
         }
       }
 
-      &:after {
+      &:before {
         font-size: 1.3rem;
         text-align: center;
       }
