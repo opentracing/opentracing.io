@@ -1,0 +1,520 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Data Conventions · Opentracing</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="cross-process-tracing.html" />
+    
+    
+    <link rel="prev" href="api-implementations.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../quick-start.html">
+            
+                <a href="../quick-start.html">
+            
+                    
+                        <b>1.2.</b>
+                    
+                    Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../spec.html">
+            
+                <a href="../spec.html">
+            
+                    
+                        <b>1.3.</b>
+                    
+                    Concepts and Terminology
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                        <b>1.4.</b>
+                    
+                    OpenTracing APIs
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="api-implementations.html">
+            
+                <a href="api-implementations.html">
+            
+                    
+                        <b>1.4.1.</b>
+                    
+                    OpenTracing Language Support
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.2" data-path="data-conventions.html">
+            
+                <a href="data-conventions.html">
+            
+                    
+                        <b>1.4.2.</b>
+                    
+                    Data Conventions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="cross-process-tracing.html">
+            
+                <a href="cross-process-tracing.html">
+            
+                    
+                        <b>1.4.3.</b>
+                    
+                    Cross-Process Tracing
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../instrumentation/">
+            
+                <a href="../instrumentation/">
+            
+                    
+                        <b>1.5.</b>
+                    
+                    Best Practices
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../instrumentation/common-use-cases.html">
+            
+                <a href="../instrumentation/common-use-cases.html">
+            
+                    
+                        <b>1.5.1.</b>
+                    
+                    Common Use Cases
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../instrumentation/instrumenting-large-systems.html">
+            
+                <a href="../instrumentation/instrumenting-large-systems.html">
+            
+                    
+                        <b>1.5.2.</b>
+                    
+                    Instrumenting Large Systems
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../instrumentation/instrumenting-frameworks.html">
+            
+                <a href="../instrumentation/instrumenting-frameworks.html">
+            
+                    
+                        <b>1.5.3.</b>
+                    
+                    Instrumenting Frameworks
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../authors-and-contributors.html">
+            
+                <a href="../authors-and-contributors.html">
+            
+                    
+                        <b>1.6.</b>
+                    
+                    Authors and Contributors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../supported-tracers.html">
+            
+                <a href="../supported-tracers.html">
+            
+                    
+                        <b>1.7.</b>
+                    
+                    Supported Tracers
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Data Conventions</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="data-conventions">Data Conventions</h1>
+<h2 id="introduction">Introduction</h2>
+<p>OpenTracing defines an API through which application instrumentation can log data to a pluggable tracer. In general, there is no guarantee made by OpenTracing about the way that data will be handled by an underlying tracer. So what type of data should be provided to the APIs in order to best ensure compatibility across tracer implementations?</p>
+<p>A high-level understanding between the instrumentor and tracer developers adds great value: if certain known tag key/values are used for common application scenarios, tracers can choose to pay special attention to them. The same is true of <code>log</code>ged events, and span structure in general.</p>
+<p>As an example, consider the common case of a HTTP-based application server. The URL of an incoming request that the application is handling is often useful for diagnostics, as well as the HTTP verb and the resultant status code. An instrumentor could choose to report the URL in a tag named <code>URL</code>, or perhaps named <code>http.url</code>--either would be valid from the pure API perspective. But if the Tracer wishes to add intelligence, such as indexing on the URL value or sampling proactively for requests to a particular endpoint, it must know where to look for relevant data. In short, when tag names and other instrumentor-provided values are used consistently, the tracers on the other side of the API can employ more intelligence.</p>
+<p>The guidelines provided here describe a common ground on which instrumentors and tracer authors can build beyond pure data collection. Adherence to the guidelines is optional but highly recommended for instrumentors.</p>
+<h2 id="spans">Spans</h2>
+<h3 id="span-naming">Span Naming</h3>
+<p>Spans carry tags, logs, and baggage, but they also have a top-level <strong>operation name</strong>. This should be a low-cardinality string value representing the type of work being done in the span. Typically, this is the local type of work being done. Examples include an RPC or endpoint name for a HTTP span, <code>SELECT</code> or <code>INSERT</code> for a SQL span, and so on.</p>
+<p>Secondarily, an optional <strong>component</strong> tag can be provided to scope the operation name. Typically, a process, framework, library, or module name is a good guideline for the component tag.</p>
+<h3 id="span-structure">Span Structure</h3>
+<p>Span structure is also important: what do spans represent, and what relationship do they have towards their ancestors?  This is covered in the <a href="../spec">Semantic Specification</a>.</p>
+<h2 id="span-tag-use-cases">Span Tag Use-Cases</h2>
+<p>The following tags are recommended for instrumentors who are trying to represent a particular type of data. Tag names follow a general structure of namespacing.</p>
+<p>The recommended tags below are accompanied by <code>const</code> values included in an <code>ext</code> module for each opentracing implementation.  These <code>ext</code> values should be used in place of the strings below, as tracers may choose to use different underlying representations for these common concepts.  The symbols are similar in each implementation: (<a href="https://github.com/opentracing/opentracing-go/blob/master/ext/tags.go" target="_blank">Go</a>, <a href="https://github.com/opentracing/opentracing-python/blob/master/opentracing/ext/tags.py" target="_blank">Python</a>, etc.)</p>
+<p>Some tags mentioned below may contain values of significant size. Handling of such values is implementation-specific: it is the responsibility of the Tracer to honor, drop, or truncate these tags as appropriate. However, care should be exercised on the part of the instrumentor, as even the generation or passing of such values to the Tracer may create undesirable overhead for the application.</p>
+<p>It is not required that all suggested tags be used, even if one is used.</p>
+<h3 id="errors">Errors</h3>
+<p>The error state of a span instance should be represented as a tag.</p>
+<ul>
+<li><code>error</code> - bool<ul>
+<li><code>true</code> means that the span is in an error state</li>
+<li><code>false</code> or the absence of an <code>error</code> tag means that the span is not in an error state</li>
+</ul>
+</li>
+</ul>
+<h3 id="component-identification">Component Identification</h3>
+<p>For any span, it can be useful to specify the type of component being instrumented. This is particularly recommended for instrumentation provided for libraries or modules, where end-users may have a mix of custom and library-provided instrumentation.</p>
+<ul>
+<li><code>component</code> - string<ul>
+<li>Low-cardinality identifier of the module, library, or package that is instrumented.</li>
+<li>Examples:<ul>
+<li><code>httplib</code> for instrumentation of Python builtin httplib functionality</li>
+<li><code>JDBC</code> for instrumentation of JDBC database connectors</li>
+<li><code>mongoose</code> for instrumentation of Ruby MongoDB client connector</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>span.kind</code> - string<ul>
+<li>One of <code>client</code> or <code>server</code>, indicating if this span represents a client or server</li>
+</ul>
+</li>
+</ul>
+<h3 id="http-server-tags">HTTP Server Tags</h3>
+<p>These tags are recommended for spans marking entry into a HTTP-based service.</p>
+<ul>
+<li><code>http.url</code> - string<ul>
+<li>URL of the request being handled in this segment of the trace, in <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier" target="_blank">standard URI format</a>.</li>
+<li>Protocol optional</li>
+<li>Examples:<ul>
+<li><code>https://domain.net/path/to?resource=here</code></li>
+<li><code>domain.net/path/to/resource</code></li>
+<li><code>http://user:pass@domain.org:8888</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>http.method</code> - string<ul>
+<li>HTTP method of the request being handled.</li>
+<li>Case-insensitive</li>
+<li>Examples:<ul>
+<li><code>GET</code>, <code>POST</code>, <code>HEAD</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>http.status_code</code> - integer<ul>
+<li>HTTP status code to be returned with HTTP response.</li>
+<li>Examples:<ul>
+<li><code>200</code>, <code>503</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>span.kind</code> - string<ul>
+<li>Value of <code>server</code> should be used to indicate that this is a server-side span (see &quot;<a href="#component-identification">Component Identification</a>&quot;)</li>
+</ul>
+</li>
+</ul>
+<h3 id="peer-tags">Peer Tags</h3>
+<p>These tags can be provided by either client-side or server-side to describe the downstream (client case) or upstream (server case) peer being communicated with.</p>
+<ul>
+<li><code>peer.hostname</code> - string<ul>
+<li>Remote hostname</li>
+</ul>
+</li>
+<li><code>peer.ipv4</code> - string<ul>
+<li>Remote IP v4 address</li>
+</ul>
+</li>
+<li><code>peer.ipv6</code> - string<ul>
+<li>Remote IP v6 address</li>
+</ul>
+</li>
+<li><code>peer.port</code> - integer<ul>
+<li>Remote port</li>
+</ul>
+</li>
+<li><code>peer.service</code> - string<ul>
+<li>Remote service name</li>
+</ul>
+</li>
+</ul>
+<h3 id="sampling">Sampling</h3>
+<p>OpenTracing API does not enforce the notion of sampling, but most implementation do use it in one form or another. Sometimes the application needs to give a hint to the tracer that it would like to have a particular trace recorded in storage even if the normal sampling says otherwise. The <code>sampling.priority</code> tag is used to provide such hint. Tracing implementations are not required to respect the hint, but most will do their best to preserve the trace.</p>
+<ul>
+<li><code>sampling.priority</code> - integer<ul>
+<li>If greater than 0, a hint to the tracer to do its best to capture the trace.</li>
+<li>If 0, a hint to the tracer to not capture the trace.</li>
+<li>If this tag is not provided, the tracer should use its default sampling mechanism.</li>
+</ul>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="api-implementations.html" class="navigation navigation-prev " aria-label="Previous page: OpenTracing Language Support">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="cross-process-tracing.html" class="navigation navigation-next " aria-label="Next page: Cross-Process Tracing">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Data Conventions","level":"1.4.2","depth":2,"next":{"title":"Cross-Process Tracing","level":"1.4.3","depth":2,"path":"pages/api/cross-process-tracing.md","ref":"pages/api/cross-process-tracing.md","articles":[]},"previous":{"title":"OpenTracing Language Support","level":"1.4.1","depth":2,"path":"pages/api/api-implementations.md","ref":"pages/api/api-implementations.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","fontsettings","github","-search","scripts"],"root":"_docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/opentracing"},"scripts":{"files":["scripts/injectLogo.js","scripts/analytics.js"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"theme":"white","size":3},"highlight":{},"ga":{"token":"UA-79528055-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/opentracing/opentracing.github.io/edit/master/_docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Opentracing","gitbook":">=3.2.1"},"file":{"path":"pages/api/data-conventions.md","mtime":"2016-10-11T16:32:22.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-10-12T18:56:52.561Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-scripts/1476298615087-injectLogo.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-scripts/1476298615089-analytics.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+
+    </body>
+</html>
+
