@@ -7,3 +7,4 @@ title: 'Overview'
 {% include hero.html %}
 {% include why.html %}
 {% include companies.html %}
+{% include cncf-foundation.html %}
