@@ -1,14 +1,5 @@
-opentracing.io
-====
-
-> repo for the opentracing.io + documentation
-
-[![Build Status](https://api.travis-ci.org/opentracing/opentracing.github.io.svg?branch=master)](https://travis-ci.org/opentracing/opentracing.github.io)
-[![Join gitter channel](https://badges.gitter.im/opentracing/opentracing.github.io.svg)](https://gitter.im/opentracing/public)
-
 This repository contains the source code for http://opentracing.github.io website, generated with Jekyll + Node.js + Gitbook.
 
-We build this  static page using Travis when master changes. You can see the latest build [here](https://api.travis-ci.org/opentracing/opentracing.github.io)
 
 ## Prerequisites
 
@@ -28,14 +19,32 @@ jekyll --version
 ## Running Opentracing.io locally
 
 ### Install dependencies
+
 ```
 npm install
 ```
 
-### Run locally
+### Run development server
 ```
 npm run dev
 open http://localhost:4000
+```
+
+## Running Gitbook locally (to edit documentation)
+
+### Run gitbook server
+```
+npm run docs:watch
+```
+
+### Build Documentation
+```
+npm run docs:build
+```
+
+### Build for Production
+```
+npm run production
 ```
 
 ## Project structure
@@ -57,9 +66,10 @@ Contains the scss that is then preprocessed into /css on build
 #### _site
 Jekyll temp folder when running `jekyll serve`. You can ignore this.
 
-#### fonts, img
-static content
+#### fonts, img, css, documentation
+post-build static assets. don't remove these.
 
-#### css, documentation
-post-build static assets. don't edit these.
 
+## Making changes
+
+Create a branch, test the change locally, then create a pull request.

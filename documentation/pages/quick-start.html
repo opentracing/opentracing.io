@@ -1,0 +1,602 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Quick Start · Opentracing</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="spec.html" />
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="quick-start.html">
+            
+                <a href="quick-start.html">
+            
+                    
+                        <b>1.2.</b>
+                    
+                    Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="spec.html">
+            
+                <a href="spec.html">
+            
+                    
+                        <b>1.3.</b>
+                    
+                    Concepts and Terminology
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="api/">
+            
+                <a href="api/">
+            
+                    
+                        <b>1.4.</b>
+                    
+                    OpenTracing APIs
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="api/api-implementations.html">
+            
+                <a href="api/api-implementations.html">
+            
+                    
+                        <b>1.4.1.</b>
+                    
+                    OpenTracing Language Support
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="api/data-conventions.html">
+            
+                <a href="api/data-conventions.html">
+            
+                    
+                        <b>1.4.2.</b>
+                    
+                    Data Conventions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="api/cross-process-tracing.html">
+            
+                <a href="api/cross-process-tracing.html">
+            
+                    
+                        <b>1.4.3.</b>
+                    
+                    Cross-Process Tracing
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="instrumentation/">
+            
+                <a href="instrumentation/">
+            
+                    
+                        <b>1.5.</b>
+                    
+                    Best Practices
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="instrumentation/common-use-cases.html">
+            
+                <a href="instrumentation/common-use-cases.html">
+            
+                    
+                        <b>1.5.1.</b>
+                    
+                    Common Use Cases
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="instrumentation/instrumenting-large-systems.html">
+            
+                <a href="instrumentation/instrumenting-large-systems.html">
+            
+                    
+                        <b>1.5.2.</b>
+                    
+                    Instrumenting Large Systems
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="instrumentation/instrumenting-frameworks.html">
+            
+                <a href="instrumentation/instrumenting-frameworks.html">
+            
+                    
+                        <b>1.5.3.</b>
+                    
+                    Instrumenting Frameworks
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="authors-and-contributors.html">
+            
+                <a href="authors-and-contributors.html">
+            
+                    
+                        <b>1.6.</b>
+                    
+                    Authors and Contributors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="supported-tracers.html">
+            
+                <a href="supported-tracers.html">
+            
+                    
+                        <b>1.7.</b>
+                    
+                    Supported Tracers
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Quick Start</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="distributed-tracing-in-10-minutes"><strong>Distributed Tracing in 10 Minutes</strong></h1>
+<p><em><em>originally posted on <a href="https://medium.com/opentracing/distributed-tracing-in-10-minutes-51b378ee40f1#.ypcuah408" target="_blank">OpenTracing blog</a></em></em></p>
+<p>With the intrinsic concurrency and asynchrony of modern software applications, distributed tracing has become part of the table stakes for effective monitoring. That said, instrumenting a system for tracing has, at least historically, been a labor-intensive, complicated task. Tracing brings the benefits of visibility into an application as it grows to 10+ processes, starts seeing increased concurrency, or non-trivial interactions between mobile/web clients and servers. But setting up instrumentation and deciding which tracer to use can add up to a large project. The <a href="http://opentracing.io/" target="_blank">OpenTracing</a> standard changes that, making it possible to instrument applications for distributed tracing with minimal effort. As I demonstrate below, you can now easily set up tracing in less than 10 minutes with OpenTracing.</p>
+<p><img src="../images/QS_01.gif" alt="image alt text"></p>
+<p>A screencast of the example app built in this post</p>
+<p>Imagine a simple website. Whenever a user goes to your home page, the web server makes two HTTP calls, and each of those calls branches out and makes a call to the database. This is fairly straightforward and debugging any slow requests wouldn&#x2019;t be too difficult. If you are serious about latency, you might assign each request a unique ID and propagate it downstream through HTTP headers. If a request took a long time, you can then grep over the log files for that request ID to figure out what was going on. Now imagine your website starts becoming popular and your application is spread across multiple machines and services. As the number of machines and services grow, logs provide less and less visibility. Determining causality gets tricky pretty quickly. This is when you realize workflow tracing would have more than worth the investment.</p>
+<p>As I mentioned, OpenTracing steps in to make it very easy for you to trace because it <a href="https://medium.com/opentracing/towards-turnkey-distributed-tracing-5f4297d1736" target="_blank">standardizes instrumentation</a>. What that means is that you can instrument first and defer most implementation decisions to later.</p>
+<p>You can follow my entire process below&#x200A;&#x2014;&#x200A;from building the web app to seeing the traces in <a href="https://github.com/sourcegraph/appdash" target="_blank">AppDash</a>, the open source distributed tracing system I chose. Alternatively, you can skip ahead and see the finished result with Appdash. To do that, run</p>
+<pre><code>docker run --rm -ti -p 8080:8080 -p 8700:8700 bg451/opentracing-example
+</code></pre><p>This will spin up the test server and a local Appdash instance. The source code can be found at <a href="https://github.com/bg451/opentracing-example" target="_blank">here</a>.</p>
+<p>For those who want to see the full story, you can go through the full exercise of building the web app, instrumenting it with OpenTracing, binding to a tracer, AppDash, and finally seeing the traces, in this blog post.</p>
+<h2 id="building-the-web-app"><strong>Building the web app</strong></h2>
+<p>To start off, write a few simple endpoints:</p>
+<pre><code class="lang-go"><span class="hljs-comment">// Acts as our index page</span>
+<span class="hljs-keyword">func</span> indexHandler(w http.ResponseWriter, r *http.Request) {
+    w.Write([]<span class="hljs-keyword">byte</span>(<span class="hljs-string">`&lt;a href=&quot;/home&quot;&gt; Click here to start a request &lt;/a&gt;`</span>))
+}
+<span class="hljs-keyword">func</span> homeHandler(w http.ResponseWriter, r *http.Request) {
+     w.Write([]<span class="hljs-keyword">byte</span>(<span class="hljs-string">&quot;Request started&quot;</span>))
+    <span class="hljs-keyword">go</span> <span class="hljs-keyword">func</span>() {
+        http.Get(<span class="hljs-string">&quot;http://localhost:8080/async&quot;</span>)
+    }()
+    http.Get(<span class="hljs-string">&quot;http://localhost:8080/service&quot;</span>)
+    time.Sleep(time.Duration(rand.Intn(<span class="hljs-number">200</span>)) * time.Millisecond)
+    w.Write([]<span class="hljs-keyword">byte</span>(<span class="hljs-string">&quot;Request done!&quot;</span>))
+}
+<span class="hljs-comment">// Mocks a service endpoint that makes a DB call</span>
+<span class="hljs-keyword">func</span> serviceHandler(w http.ResponseWriter, r *http.Request) {
+    <span class="hljs-comment">// ...</span>
+    http.Get(<span class="hljs-string">&quot;http://localhost:8080/db&quot;</span>)
+    time.Sleep(time.Duration(rand.Intn(<span class="hljs-number">200</span>)) * time.Millisecond)
+    <span class="hljs-comment">// ...</span>
+}
+<span class="hljs-comment">// Mocks a DB call</span>
+<span class="hljs-keyword">func</span> dbHandler(w http.ResponseWriter, r *http.Request) {
+    time.Sleep(time.Duration(rand.Intn(<span class="hljs-number">200</span>)) * time.Millisecond)
+    <span class="hljs-comment">// here would be the actual call to a DB.</span>
+}
+</code></pre>
+<p>Put this all together into a working server.</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> main() {
+    port := <span class="hljs-number">8080</span>
+    addr := fmt.Sprintf(<span class="hljs-string">&quot;:%d&quot;</span>, port)
+    mux := http.NewServeMux()
+    mux.HandleFunc(<span class="hljs-string">&quot;/&quot;</span>, indexHandler)
+    mux.HandleFunc(<span class="hljs-string">&quot;/home&quot;</span>, homeHandler)
+    mux.HandleFunc(<span class="hljs-string">&quot;/async&quot;</span>, serviceHandler)
+    mux.HandleFunc(<span class="hljs-string">&quot;/service&quot;</span>, serviceHandler)
+    mux.HandleFunc(<span class="hljs-string">&quot;/db&quot;</span>, dbHandler)
+    fmt.Printf(<span class="hljs-string">&quot;Go to http://localhost:%d/home to start a request!\n&quot;</span>, port)
+    log.Fatal(http.ListenAndServe(addr, mux))
+}
+</code></pre>
+<p>Throw everything into <code>main.go</code> file and run: <code>go run main.go</code>.</p>
+<h4 id="instrument-the-app"><strong>Instrument the app</strong></h4>
+<p>Now that you have a working web server, you can start instrumenting it. Start at the top level and work your way down. You can start a span and finish it like so:</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> homeHandler(w http.ResponseWriter, r *http.Request) {
+  span := opentracing.StartSpan(<span class="hljs-string">&quot;/home&quot;</span>) <span class="hljs-comment">// Start a span using the global, in this case noop, tracer</span>
+  <span class="hljs-keyword">defer</span> span.Finish()
+  <span class="hljs-comment">// ... the rest of the function</span>
+}
+</code></pre>
+<p>This span records how long it takes <strong>homeHandler</strong> to complete, but that&#x2019;s just the tip of the iceberg in terms of information that you can record. OpenTracing enables you to attach <a href="spec#tags">tags</a> and <a href="spec#logs">logs</a> to an individual span. For instance, you can specify whether or not a span contains an error inside <strong>homeHandler</strong>:</p>
+<pre><code class="lang-go"><span class="hljs-comment">// The ext package provides a set of standardized tags available for use.</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;github.com/opentracing/opentracing-go/ext&quot;</span>
+
+<span class="hljs-keyword">func</span> homeHandler(w http.ResponseWriter, r *http.Request) {
+<span class="hljs-comment">// ...</span>
+<span class="hljs-comment">// We record any errors now.</span>
+    _, err := http.Get(<span class="hljs-string">&quot;http://localhost:8080/service&quot;</span>)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        ext.Error.Set(span, <span class="hljs-literal">true</span>) <span class="hljs-comment">// Tag the span as errored</span>
+        span.LogEventWithPayload(<span class="hljs-string">&quot;GET service error&quot;</span>, err) <span class="hljs-comment">// Log the error</span>
+    }
+<span class="hljs-comment">// ...</span>
+}
+</code></pre>
+<p>You can record other things as well, including important events, the user ID, and the browser type.</p>
+<p>However, that&#x2019;s only for one function. To build true end-to-end traces, you&#x2019;ll want to include spans for the client side of the HTTP calls. In our example, you need to start propagating span contexts downstream to the other endpoints now, and those endpoints need to be able to join traces. This is where the Inject/Extract part of the API comes into play. <strong>homeHandler</strong> creates a &quot;root&quot; span since it&#x2019;s the first thing to get called. You will start there and work your way down.</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> homeHandler(w http.ResponseWriter, r *http.Request) {
+    w.Write([]<span class="hljs-keyword">byte</span>(<span class="hljs-string">&quot;Request started&quot;</span>))
+    span := opentracing.StartSpan(<span class="hljs-string">&quot;/home&quot;</span>)
+    <span class="hljs-keyword">defer</span> span.Finish()
+
+    <span class="hljs-comment">// Since we have to inject our span into the HTTP headers, we create a request</span>
+    asyncReq, _ := http.NewRequest(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;http://localhost:8080/async&quot;</span>, <span class="hljs-literal">nil</span>)
+    <span class="hljs-comment">// Inject the span context into the header</span>
+    err := span.Tracer().Inject(span.Context(),
+        opentracing.TextMap,
+        opentracing.HTTPHeaderTextMapCarrier(asyncReq.Header))
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        log.Fatalf(<span class="hljs-string">&quot;Could not inject span context into header: %v&quot;</span>, err)
+    }
+    <span class="hljs-keyword">go</span> <span class="hljs-keyword">func</span>() {
+        <span class="hljs-keyword">if</span> _, err := http.DefaultClient.Do(asyncReq); err != <span class="hljs-literal">nil</span> {
+            span.SetTag(<span class="hljs-string">&quot;error&quot;</span>, <span class="hljs-literal">true</span>)
+            span.LogEvent(fmt.Sprintf(<span class="hljs-string">&quot;GET /async error: %v&quot;</span>, err))
+        }
+    }()
+    <span class="hljs-comment">// Repeat for the /service call.</span>
+    <span class="hljs-comment">// ....</span>
+}
+</code></pre>
+<p>What happens underneath is that the underlying implementation injects a span&#x2019;s metadata about the current trace into the request&#x2019;s headers to be read by anyone downstream. Go ahead and extract that data in <strong>serviceHandler</strong>.</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> serviceHandler(w http.ResponseWriter, r *http.Request) {
+    <span class="hljs-keyword">var</span> sp opentracing.Span
+    opName := r.URL.Path
+    <span class="hljs-comment">// Attempt to join a trace by getting trace context from the headers.</span>
+    wireContext, err := opentracing.GlobalTracer().Extract(
+        opentracing.TextMap,
+        opentracing.HTTPHeaderTextMapCarrier(r.Header))
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-comment">// If for whatever reason we can&apos;t join, go ahead an start a new root span.</span>
+        sp = opentracing.StartSpan(opName)
+    } <span class="hljs-keyword">else</span> {
+        sp = opentracing.StartSpan(opName, opentracing.ChildOf(wireContext))
+    }
+  <span class="hljs-keyword">defer</span> sp.Finish()
+  <span class="hljs-comment">// ... rest of the function</span>
+</code></pre>
+<p>And that&#x2019;s it! If you repeat the steps above for things you want to trace, you should have a fully instrumented system fairly quickly. To decide what needs be traced, you should look at your requests&#x2019; critical paths.</p>
+<h2 id="connect-the-tracer"><strong>Connect the tracer</strong></h2>
+<p>One of the great things about OpenTracing is that once your system is instrumented, adding a tracer is really straightforward! In this example, you can see that I&#x2019;ve used Appdash, an open source tracing system. There&#x2019;s small chunk of code needed inside your main function to start the Appdash instance. However, you won&#x2019;t need to touch any of your instrumentation code at all. In your main function, add:</p>
+<pre><code class="lang-go"><span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;sourcegraph.com/sourcegraph/appdash&quot;</span>
+    &#x201C;sourcegraph.com/sourcegraph/appdash/traceapp&#x201D;
+    appdashot <span class="hljs-string">&quot;sourcegraph.com/sourcegraph/appdash/opentracing&quot;</span>
+)
+
+<span class="hljs-keyword">func</span> main() {
+    <span class="hljs-comment">// ...</span>
+      store := appdash.NewMemoryStore()
+
+    <span class="hljs-comment">// Listen on any available TCP port locally.</span>
+    l, err := net.ListenTCP(<span class="hljs-string">&quot;tcp&quot;</span>, &amp;net.TCPAddr{IP: net.IPv4(<span class="hljs-number">127</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>), Port: <span class="hljs-number">0</span>})
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        log.Fatal(err)
+    }
+    collectorPort := l.Addr().(*net.TCPAddr).Port
+    collectorAdd := fmt.Sprintf(<span class="hljs-string">&quot;:%d&quot;</span>, collectorPort)
+
+    <span class="hljs-comment">// Start an Appdash collection server that will listen for spans and</span>
+    <span class="hljs-comment">// annotations and add them to the local collector (stored in-memory).</span>
+    cs := appdash.NewServer(l, appdash.NewLocalCollector(store))
+    <span class="hljs-keyword">go</span> cs.Start()
+
+    <span class="hljs-comment">// Print the URL at which the web UI will be running.</span>
+    appdashPort := <span class="hljs-number">8700</span>
+    appdashURLStr := fmt.Sprintf(<span class="hljs-string">&quot;http://localhost:%d&quot;</span>, appdashPort)
+    appdashURL, err := url.Parse(appdashURLStr)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        log.Fatalf(<span class="hljs-string">&quot;Error parsing %s: %s&quot;</span>, appdashURLStr, err)
+    }
+    fmt.Printf(<span class="hljs-string">&quot;To see your traces, go to %s/traces\n&quot;</span>, appdashURL)
+
+    <span class="hljs-comment">// Start the web UI in a separate goroutine.</span>
+    tapp, err := traceapp.New(<span class="hljs-literal">nil</span>, appdashURL)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+         log.Fatal(err)
+    }
+    tapp.Store = store
+    tapp.Queryer = store
+    <span class="hljs-keyword">go</span> <span class="hljs-keyword">func</span>() {
+    log.Fatal(http.ListenAndServe(fmt.Sprintf(<span class="hljs-string">&quot;:%d&quot;</span>, appdashPort), tapp))
+    }()
+
+    tracer := appdashot.NewTracer(appdash.NewRemoteCollector(collectorPort))
+    opentracing.InitGlobalTracer(tracer)
+<span class="hljs-comment">// ...</span>
+}
+</code></pre>
+<p>This will create an embedded Appdash instance and serve traces locally.</p>
+<p><img src="../images/QS_02.png" alt="image alt text"></p>
+<p>Should you want to change your tracer implementation, it is a O(1) change because of OpenTracing. All you need to do is update your main function; the rest of your instrumentation stays the same. For example, if you decide to use Zipkin later on, this is all you would need to do in your main function:</p>
+<pre><code class="lang-go"><span class="hljs-keyword">import</span> zipkin <span class="hljs-string">&quot;github.com/openzipkin/zipkin-go-opentracing&quot;</span>
+
+<span class="hljs-keyword">func</span> main() {
+  <span class="hljs-comment">// ...</span>
+  <span class="hljs-comment">// Replace Appdash tracer code with this</span>
+  collector, err := zipkin.NewKafkaCollector(<span class="hljs-string">&quot;ZIPKIN_ADDR&quot;</span>)
+  <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+    log.Fatal(err)
+    <span class="hljs-keyword">return</span>
+  }
+
+  tracer, err = zipkin.NewTracer(
+    zipkin.NewRecorder(collector, <span class="hljs-literal">false</span>, <span class="hljs-string">&quot;localhost:8000&quot;</span>, <span class="hljs-string">&quot;example&quot;</span>),
+  )
+  <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+    log.Fatal(err)
+  }
+  opentracing.InitGlobalTracer(tracer)
+  <span class="hljs-comment">// ...</span>
+}
+</code></pre>
+<p>Having made it thus far, you can see that instrumenting your code for tracing is much easier with OpenTracing. I recommend this as a best practice whenever starting out on an app. That&#x2019;s because by setting up tracing even when your application is small, trace data can guide your development strategy as you grow. Having visibility into your processes as they start to mature and increase in complexity will help you build a sustainable product.</p>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="spec.html" class="navigation navigation-next " aria-label="Next page: Concepts and Terminology">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Quick Start","level":"1.2","depth":1,"next":{"title":"Concepts and Terminology","level":"1.3","depth":1,"path":"pages/spec.md","ref":"pages/spec.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.MD","ref":"README.MD","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","fontsettings","github","-search","scripts"],"root":"_docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/opentracing"},"scripts":{"files":["scripts/injectLogo.js","scripts/analytics.js"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"theme":"white","size":3},"highlight":{},"ga":{"token":"UA-79528055-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/opentracing/opentracing.github.io/edit/master/_docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Opentracing","gitbook":">=3.2.1"},"file":{"path":"pages/quick-start.md","mtime":"2016-10-11T16:32:22.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-10-12T18:56:52.561Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-scripts/1476298615087-injectLogo.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-scripts/1476298615089-analytics.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+
+    </body>
+</html>
+
