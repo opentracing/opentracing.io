@@ -11,6 +11,12 @@ rm -rf _site
 # build
 npm run production
 
+# Pull requests and commits to other branches shouldn't try to deploy, just build to verify
+if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "master" ]; then
+  echo "Skipping deploy; just doing a build."
+  exit 0
+fi
+
 # deploy
 cd _site
 git init
