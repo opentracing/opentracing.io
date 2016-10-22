@@ -516,6 +516,9 @@ span = tracer.start_span(
 def process_response(request, response):
     tracer.finish_client_span(request)
 </code></pre><h2 id="closing-remarks">Closing Remarks</h2>
+<p>If you&apos;d like to highlight your project as OpenTracing-compatible, feel free to use our GitHub badge and link it to the OpenTracing website.</p>
+<p><a href="http://opentracing.io" target="_blank"><img src="https://github.com/opentracing/contrib/blob/master/badge/OpenTracing-enabled-blue.png" alt="OpenTracing badge"></a></p>
+<p><code>[![OpenTracing Badge](https://github.com/opentracing/contrib/blob/master/badge/OpenTracing-enabled-blue.png)](http://opentracing.io)</code></p>
 <p>Once you&apos;ve packaged your implementation, email us at <a href="mailto://community@opentracing.io" target="_blank">community@opentracing.io</a> with your implementation details (platform, description, github username) and we&apos;ll create a repo for you under <a href="https://github.com/opentracing-contrib/" target="_blank">opentracing-contrib</a>, so that others will be able to find and use your integration. You can also find there concrete examples of OpenTracing integrations into different open source projects.</p>
 <p>If you&apos;re interested in learning more about OpenTracing, join the conversation by joining our <a href="https://groups.google.com/forum/#!forum/opentracing" target="_blank">mailing list</a> or <a href="https://gitter.im/opentracing/public" target="_blank">Gitter</a>.</p>
 
@@ -545,7 +548,7 @@ def process_response(request, response):
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Instrumenting Frameworks","level":"1.5.3","depth":2,"next":{"title":"Authors and Contributors","level":"1.6","depth":1,"path":"pages/authors-and-contributors.md","ref":"pages/authors-and-contributors.md","articles":[]},"previous":{"title":"Instrumenting Large Systems","level":"1.5.2","depth":2,"path":"pages/instrumentation/instrumenting-large-systems.md","ref":"pages/instrumentation/instrumenting-large-systems.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","fontsettings","github","-search","scripts"],"root":"_docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/opentracing"},"scripts":{"files":["scripts/injectLogo.js","scripts/analytics.js"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"theme":"white","size":3},"highlight":{},"ga":{"token":"UA-79528055-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/opentracing/opentracing.github.io/edit/master/_docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Opentracing","gitbook":">=3.2.1"},"file":{"path":"pages/instrumentation/instrumenting-frameworks.md","mtime":"2016-10-11T16:32:22.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-10-12T18:56:52.561Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Instrumenting Frameworks","level":"1.5.3","depth":2,"next":{"title":"Authors and Contributors","level":"1.6","depth":1,"path":"pages/authors-and-contributors.md","ref":"pages/authors-and-contributors.md","articles":[]},"previous":{"title":"Instrumenting Large Systems","level":"1.5.2","depth":2,"path":"pages/instrumentation/instrumenting-large-systems.md","ref":"pages/instrumentation/instrumenting-large-systems.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","fontsettings","github","-search","scripts"],"root":"_docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/opentracing"},"scripts":{"files":["scripts/injectLogo.js","scripts/analytics.js"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"theme":"white","size":3},"highlight":{},"ga":{"token":"UA-79528055-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/opentracing/opentracing.github.io/edit/master/_docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Opentracing","gitbook":">=3.2.1"},"file":{"path":"pages/instrumentation/instrumenting-frameworks.md","mtime":"2016-10-21T00:47:27.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-10-22T19:17:29.045Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -567,11 +570,11 @@ def process_response(request, response):
         
     
         
-        <script src="../../gitbook/gitbook-plugin-scripts/1476298615087-injectLogo.js"></script>
+        <script src="../../gitbook/gitbook-plugin-scripts/1477163857816-injectLogo.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-scripts/1476298615089-analytics.js"></script>
+        <script src="../../gitbook/gitbook-plugin-scripts/1477163857821-analytics.js"></script>
         
     
         
