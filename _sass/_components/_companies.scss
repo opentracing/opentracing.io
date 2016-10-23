@@ -27,6 +27,7 @@
     align-items: center;
     flex-direction: row;
     position: relative;
+    flex-wrap: wrap;
 
     &:before, &:after {
       position: absolute;
@@ -56,6 +57,7 @@
       img {
         opacity: 0.5;
         height: 30px;
+        margin: 1rem;
       }
     }
   }
