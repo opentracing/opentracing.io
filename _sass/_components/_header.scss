@@ -87,6 +87,12 @@
     }
   }
 
+  @media (max-width: $medium) {
+    &__actions.right {
+      display: none;
+    }
+  }
+
   @media (max-width: $small) {
     &__container {
       display: none;
@@ -94,5 +100,5 @@
     &__container__mobile {
       display: flex;
     }
-   }
+  }
 }
