@@ -21,13 +21,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/opentracing/opentracing.github.io.git"
+    "url": "git+https://github.com/opentracing/opentracing.io.git"
   },
   "author": "Pierre Reimerz",
   "bugs": {
-    "url": "https://github.com/opentracing/opentracing.github.io/issues"
+    "url": "https://github.com/opentracing/opentracing.io/issues"
   },
-  "homepage": "https://github.com/opentracing/opentracing.github.io#readme",
+  "homepage": "https://github.com/opentracing/opentracing.io#readme",
   "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^6.5.0",

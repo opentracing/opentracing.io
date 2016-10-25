@@ -5,7 +5,7 @@
   "plugins": ["edit-link", "fontsettings", "github", "-search", "scripts"],
   "pluginsConfig": {
     "edit-link": {
-      "base": "https://github.com/opentracing/opentracing.github.io/edit/master/_docs",
+      "base": "https://github.com/opentracing/opentracing.io/edit/master/_docs",
       "label": "Edit This Page"
     },
      "scripts": {

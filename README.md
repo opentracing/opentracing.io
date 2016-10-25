@@ -3,12 +3,12 @@ opentracing.io
 
 > repo for the opentracing.io + documentation
 
-[![Build Status](https://api.travis-ci.org/opentracing/opentracing.github.io.svg?branch=master)](https://travis-ci.org/opentracing/opentracing.github.io)
-[![Join gitter channel](https://badges.gitter.im/opentracing/opentracing.github.io.svg)](https://gitter.im/opentracing/public)
+[![Build Status](https://api.travis-ci.org/opentracing/opentracing.io.svg?branch=master)](https://travis-ci.org/opentracing/opentracing.io)
+[![Join gitter channel](https://badges.gitter.im/opentracing/opentracing.io.svg)](https://gitter.im/opentracing/public)
 
-This repository contains the source code for http://opentracing.github.io website, generated with Jekyll + Node.js + Gitbook.
+This repository contains the source code for http://opentracing.io website, generated with Jekyll + Node.js + Gitbook.
 
-We build this  static page using Travis when master changes. You can see the latest build [here](https://api.travis-ci.org/opentracing/opentracing.github.io)
+We build this  static page using Travis when master changes. You can see the latest build [here](https://api.travis-ci.org/opentracing/opentracing.io)
 
 ## Prerequisites
 
