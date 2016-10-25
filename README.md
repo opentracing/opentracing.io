@@ -29,6 +29,7 @@ jekyll --version
 
 ### Install dependencies
 ```
+nvm use
 npm install
 ```
 
