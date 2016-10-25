@@ -8,7 +8,4 @@ install:
   - npm install
 script:
   - bash ./deploy.sh
-env:
-  global:
-    - GITHUB_REPO: "opentracing/opentracing.github.io"
 sudo: false
