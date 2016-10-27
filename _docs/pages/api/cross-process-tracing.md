@@ -32,11 +32,11 @@ Similarly, given a Carrier, an injected trace may be **Extracted**, yielding a S
 span_context = ...
 outbound_request = ...
 
-# We'll use the (builtin) TEXT_MAP carrier format. We start by
-# using an empty map as the carrier prior to the call to
-# `tracer.inject`.
+# We'll use the (builtin) HTTP_HEADERS carrier format. We
+# start by using an empty map as the carrier prior to the
+# call to `tracer.inject`.
 carrier = {}
-tracer.inject(span_context, opentracing.Format.TEXT_MAP, carrier)
+tracer.inject(span_context, opentracing.Format.HTTP_HEADERS, carrier)
 
 # `carrier` now contains (opaque) key:value pairs which we pass
 # along over whatever wire protocol we already use.
@@ -49,15 +49,15 @@ for key, value in carrier:
 ```python
 inbound_request = ...
 
-# We'll again use the (builtin) TEXT_MAP carrier format. Per the
-# TEXT_MAP documentation, we can use a map that has extraneous data
+# We'll again use the (builtin) HTTP_HEADERS carrier format. Per the
+# HTTP_HEADERS documentation, we can use a map that has extraneous data
 # in it and let the OpenTracing implementation look for the subset
 # of key:value pairs it needs.
 #
 # As such, we directly use the key:value `inbound_request.headers`
 # map as the carrier.
 carrier = inbound_request.headers
-span_context = tracer.extract(opentracing.Format.TEXT_MAP, carrier)
+span_context = tracer.extract(opentracing.Format.HTTP_HEADERS, carrier)
 # Continue the trace given span_context. E.g.,
 span = tracer.start_span("...", child_of=span_context)
 
@@ -107,7 +107,7 @@ try:
 except opentracing.UnsupportedFormatException:
     # If unsupported, fall back on a required OpenTracing format.
     carrier = {}
-    tracer.inject(span_context, opentracing.Format.TEXT_MAP, carrier)
+    tracer.inject(span_context, opentracing.Format.HTTP_HEADERS, carrier)
     # `carrier` now contains (opaque) key:value pairs which we
     # pass along over whatever wire protocol we already use.
     for key, value in carrier:
