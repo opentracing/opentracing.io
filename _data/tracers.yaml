@@ -15,3 +15,7 @@ array:
   - name: Tracer
     url: https://github.com/tracer/tracer
     icon: false
+
+  - name: Jaeger
+    url: http://uber.github.io/jaeger/
+    icon: false
