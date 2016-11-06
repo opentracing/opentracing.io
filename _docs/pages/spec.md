@@ -108,7 +108,7 @@ While it is not a formal requirement, specific event names should apply to many 
 
 Every Span may also have zero or more key:value **Tags**, which do not have timestamps and simply annotate the spans.
 
-As is the case with Logs, if certain known tag key:values are used for common application scenarios, tracers can choose to pay special attention to them. For more information, see the [Data Semantics Guidelines](api/data-conventions).
+As is the case with Logs, if certain known tag key:values are used for common application scenarios, tracers can choose to pay special attention to them. For more information, see the [Data Conventions Guidelines](api/data-conventions.html).
 
 ## SpanContext
 
