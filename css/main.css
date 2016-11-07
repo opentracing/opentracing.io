@@ -1123,9 +1123,7 @@ img, svg {
       font-size: 0.9rem;
       opacity: 0.5;
       position: absolute;
-      top: -22px;
-      left: 10px;
-      content: 'Supported Tracers'; }
+      top: -22px; }
     .logo-bar__logos.tracers:before {
       content: 'Supported Tracers'; }
     .logo-bar__logos.frameworks:before {

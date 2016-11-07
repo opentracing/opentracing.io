@@ -27,7 +27,7 @@
             </a>
         {% endfor %}
       </div>
-      <div class="logo-bar__logos frameworks">
+      <a class="logo-bar__logos frameworks" href="/documentation/pages/supported-tracers">
         {% for framework in site.data.frameworks.array %}
           <a href="{{framework.url}}">
             {% if framework.icon %}
@@ -37,7 +37,7 @@
             {% endif %}
           </a>
         {% endfor %}
-      </div>
+      </a>
     </div>
   </section>
 </section>
