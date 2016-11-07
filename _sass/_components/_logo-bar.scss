@@ -58,6 +58,8 @@ $logo-bar-scale: 14px;
       opacity: 0.5;
       position: absolute;
       top: -22px;
+      left: 10px;
+      content: 'Supported Tracers';
     }
 
     &.tracers:before {
