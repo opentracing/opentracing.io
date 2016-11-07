@@ -19,3 +19,7 @@ array:
   - name: Jaeger
     url: http://uber.github.io/jaeger/
     icon: false
+
+  - name: Hawkular
+    url: http://www.hawkular.org/hawkular-apm/
+    icon: false

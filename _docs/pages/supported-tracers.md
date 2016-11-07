@@ -33,3 +33,7 @@ For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/app
 ## LightStep
 
 [LightStep](http://lightstep.com/) runs a private beta with OpenTracing-native tracers in production environments. There are OpenTracing-compatible [LightStep Tracers](https://github.com/lightstep) available for Go, Python, Javasrcipt, Objective-C, Java, PHP, Ruby, and C++.
+
+## Hawkular
+
+[Hawkular APM](http://www.hawkular.org/hawkular-apm/) supports OpenTracing-Java and has plans to support other platforms in the near future.
