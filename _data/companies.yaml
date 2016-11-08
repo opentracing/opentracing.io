@@ -23,3 +23,7 @@ array:
   - name: Cockroach Labs
     url: https://www.cockroachlabs.com
     icon: img/companies/cockroach.png
+
+  - name: Sourcegraph
+    url: https://sourcegraph.com/
+    icon: img/companies/sourcegraph.png
