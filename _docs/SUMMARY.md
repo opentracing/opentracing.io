@@ -10,4 +10,4 @@
   * [Instrumenting Frameworks](pages/instrumentation/instrumenting-frameworks.md)
 * [Authors and Contributors](pages/authors-and-contributors.md)
 * [Supported Tracers](pages/supported-tracers.md)
-* [Other Language Documents](pages/other-language.md)
+* [Translations 🇨🇳](pages/translations.md)
