@@ -11,4 +11,5 @@
 * @pritianka (Priyanka Sharma)
 * @slimsag (Stephen Gutekanst)
 * @tschottdorf (Tobias Schottdorf)
+* @wu-sheng (Wu Sheng)
 * @yurishkuro (Yuri Shkuro)
