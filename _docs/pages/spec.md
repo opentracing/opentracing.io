@@ -56,9 +56,9 @@ For example, here are potential operation names for a Span that gets hypothetica
 
 <span id="references"></span>
 
-### Causal Span References
+### Inter-Span References
 
-A Span may reference zero or more Spans that are causally related. OpenTracing presently defines two types of references: `ChildOf` and `FollowsFrom`. **Both reference types specifically model direct causal relationships between a child Span and a parent Span.** In the future, OpenTracing may also support reference types for spans with non-causal relationships (e.g., Spans that are batched together, Spans that are stuck in the same queue, etc).
+A Span may reference zero or more other Spans that are causally related. OpenTracing presently defines two types of references: `ChildOf` and `FollowsFrom`. **Both reference types specifically model direct causal relationships between a child Span and a parent Span.** In the future, OpenTracing may also support reference types for spans with non-causal relationships (e.g., Spans that are batched together, Spans that are stuck in the same queue, etc).
 
 **`ChildOf` references:** A Span may be the "ChildOf" a parent Span. In a "ChildOf" reference, the parent Span depends on the child Span in some capacity. All of the following would constitute ChildOf relationships:
 
@@ -98,9 +98,9 @@ These can all be valid timing diagrams for children that "FollowFrom" a parent.
 
 ### Logs
 
-Every Span has zero or more **Logs**, each of which being a timestamped event name, optionally accompanied by a structured data payload of arbitrary size. The event name should be the stable identifier for some notable moment in the lifetime of a Span. For instance, a Span representing a browser page load might add an event for each field in [Performance.timing](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming).
+Every Span has zero or more **Logs**, each of which being a timestamped set of strongly-typed key:value fields.
 
-While it is not a formal requirement, specific event names should apply to many Span instances: tracing systems can use these event names (and timestamps) to analyze Spans in the aggregate.  For more information, see the [Data Conventions Guidelines](api/data-conventions).
+Some common logging use-cases and associated field keys are standardized and documented as part of the [Data Conventions Guidelines](api/data-conventions).
 
 <span id="tags"></span>
 
@@ -141,12 +141,7 @@ The `Span` interface must have the following capabilities:
 - **Finish** the (already-started) `Span`. With the exception of calls to retrieve the `SpanContext`, Finish must be the last call made to any span instance. **(py: `finish`, go: `Finish`)** Some implementations may record information about active `Span`s before they are Finished (e.g., for long-lived `Span` instances), or Finish may never be called due to host process failure or programming errors. Implementations should clearly document the `Span` durability guarantees they provide in such cases.
 - **Set a key:value tag on the `Span`.** The key must be a `string`, and the value must be either a `string`, a `boolean`, or a numeric type. Behavior for other value types is undefined. If multiple values are set to the same key (i.e., in multiple calls), implementation behavior is also undefined. **(py: `set_tag`, go: `SetTag`)**
 - **Add a new log event** to the `Span`, accepting an event name `string` and an optional structured payload argument. If specified, the payload argument may be of any type and arbitrary size, though implementations are not required to retain all payload arguments (or even all parts of all payload arguments). An optional timestamp can be used to specify a past timestamp. **(py: `log`, go: `Log`)**
-
-## The `SpanContext` Interface
-
-The `SpanContext` interface must have the following capabilities. The user acquires a reference to a `SpanContext` via an associated `Span` instance or via `Tracer`'s Extract capability.
-
-- **Set a Baggage item**, represented as a simple string:string pair. Note that newly-set Baggage items are only guaranteed to propagate to *future* children of the associated `Span`. See the diagram below. **(py: `set_baggage_item`, go: `SetBaggageItem`)**
+- **Set a Baggage item**, represented as a simple string:string pair. Note that newly-set Baggage items are only guaranteed to propagate to *future* children of the `Span`. See the diagram below. **(py: `set_baggage_item`, go: `SetBaggageItem`)**
 - **Get a Baggage item** by key. **(py: `get_baggage_item`, go: `BaggageItem`)**
 
 ~~~
@@ -167,6 +162,12 @@ The `SpanContext` interface must have the following capabilities. The user acqui
                  SPAN C), AS WELL AS SPANS F AND G.
 ~~~
 
+
+## The `SpanContext` Interface
+
+The `SpanContext` interface must have the following capabilities. The user acquires a reference to a `SpanContext` via an associated `Span` instance or via `Tracer`'s Extract capability.
+
+- **Iterate over all Baggage items** in a read-only fashion. **(py: `baggage`, go: `ForeachBaggageItem`)**
 - Though formally part of the `Tracer` interface, `SpanContext` is essential to [Inject and Extract](#inject-extract) below
 
 ## The `Tracer` Interface
