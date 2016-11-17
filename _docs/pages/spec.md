@@ -165,7 +165,7 @@ The `Span` interface must have the following capabilities:
 
 ## The `SpanContext` Interface
 
-The `SpanContext` interface must have the following capabilities. The user acquires a reference to a `SpanContext` via an associated `Span` instance or via `Tracer`'s Extract capability.
+The user acquires a reference to a `SpanContext` via an associated `Span` instance or via `Tracer`'s Extract capability. The `SpanContext` interface must have the following capabilities.
 
 - **Iterate over all Baggage items** in a read-only fashion. **(py: `baggage`, go: `ForeachBaggageItem`)**
 - Though formally part of the `Tracer` interface, `SpanContext` is essential to [Inject and Extract](#inject-extract) below
