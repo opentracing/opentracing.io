@@ -44,4 +44,4 @@ For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/app
 
 ## Instana
 
-[Instana](https://www.instana.com) provides an APM solution supporting [OpenTracing for Java](https://github.com/instana/instana-java-opentracing/blob/master/README.md), [Opentracing for NodeJs](https://github.com/instana/nodejs-sensor/blob/master/README.md#opentracing) and [Opentracing for Go](https://github.com/instana/golang-sensor/blob/master/README.md). The Instana OpenTracing tracers are interoperable with the other Instana out of the box tracers for Java, Scala, NodeJs, PHP and Ruby.
+[Instana](https://www.instana.com) provides an APM solution supporting OpenTracing in [Java](https://github.com/instana/instana-java-opentracing/blob/master/README.md), [Node.js](https://github.com/instana/nodejs-sensor/blob/master/README.md#opentracing) and [Go](https://github.com/instana/golang-sensor/blob/master/README.md). The Instana OpenTracing tracers are interoperable with the other Instana out of the box tracers for Java, Scala, NodeJs, PHP and Ruby.
