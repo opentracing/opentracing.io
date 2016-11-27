@@ -41,10 +41,10 @@ $ npm run dev
 $ open http://localhost:4000
 ```
 ## Pull Requests
-1. Create a branch from `master`.
-1. Make sure it builds without any issues.
+1. Create a branch from `master`
+1. Make sure it builds without any issues
 1. Write a [good commit message](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
-1. Push it to your fork.
+1. Push it to your fork
 1. Create a pull request [here](https://github.com/opentracing/opentracing.io/compare)
 
 ## License
@@ -56,22 +56,22 @@ under its [Apache 2.0 License](LICENSE.md).
 ## Project Structure
 
 #### _data
-collections of data that is used to render our liquid templates
+collections of data that is used to render our liquid templates.
 
 #### _docs
-The gitbook documentation that is then built into /documentation on build
+The gitbook documentation that is then built into /documentation on build.
 
 #### _includes, _layouts
-jekyll folders containing templates and layouts
+jekyll folders containing templates and layouts.
 
 #### _sass
-scss that is then preprocessed into /css on build
+scss that is then preprocessed into /css on build.
 
 #### _site
 Jekyll temp folder when running `jekyll serve`. You can ignore this.
 
 #### fonts, img
-static content
+static content.
 
 #### css, documentation
 post-build static assets. don't edit these.
