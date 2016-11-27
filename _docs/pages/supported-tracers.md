@@ -1,8 +1,12 @@
 # Supported Tracer Implementations
 
-## Zipkin and Jaeger
+## Zipkin
 
-Zipkin and its cousin, Jaeger, both support OpenTracing in various languages. There is also an experimental [bridge from Brave (Zipkin Java) instrumentation to OpenTracing](https://github.com/openzipkin/brave-opentracing). Links: [zipkin-go-opentracing](https://github.com/openzipkin/zipkin-go-opentracing), [jaeger-client-java](https://github.com/uber/jaeger-client-java), [jaeger-client-go](https://github.com/uber/jaeger-client-go), [jaeger-client-python](https://github.com/uber/jaeger-client-python), and [jaeger-client-node](https://github.com/uber/jaeger-client-node).
+[Zipkin](http://zipkin.io/) supports OpenTracing in various languages via community contributions. There is an experimental [bridge from Brave (Zipkin Java) instrumentation to OpenTracing](https://github.com/openzipkin/brave-opentracing) and a [Go implementation zipkin-go-opentracing](https://github.com/openzipkin/zipkin-go-opentracing). Some of Jaeger's client libraries (see below) can be configured to be compatible with Zipkin backend and wire format.
+
+## Jaeger
+
+[Jaeger \ˈyā-gər\](http://uber.github.io/jaeger) is Uber's distributed tracing system, built with OpenTracing support from inception. Jaeger includes OpenTracing client libraries in several languages: [Java](https://github.com/uber/jaeger-client-java), [Go](https://github.com/uber/jaeger-client-go), [Python](https://github.com/uber/jaeger-client-python), and [Node.js](https://github.com/uber/jaeger-client-node).
 
 
 ## Appdash
@@ -40,4 +44,4 @@ For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/app
 
 ## Instana
 
-[Instana](https://www.instana.com) provides an APM solution supporting [OpenTracing for Java](https://github.com/instana/instana-java-opentracing/blob/master/README.md), [Opentracing for NodeJs](https://github.com/instana/nodejs-sensor/blob/master/README.md#opentracing) and [Opentracing fo Go](https://github.com/instana/golang-sensor/blob/master/README.md). The Instana OpenTracing tracers are interoperable with the other Instana out of the box tracers for Java, Scala, NodeJs, PHP and Ruby.
+[Instana](https://www.instana.com) provides an APM solution supporting OpenTracing in [Java](https://github.com/instana/instana-java-opentracing/blob/master/README.md), [Node.js](https://github.com/instana/nodejs-sensor/blob/master/README.md#opentracing) and [Go](https://github.com/instana/golang-sensor/blob/master/README.md). The Instana OpenTracing tracers are interoperable with the other Instana out of the box tracers for Java, Scala, NodeJs, PHP and Ruby.
