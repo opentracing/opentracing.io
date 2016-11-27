@@ -34,15 +34,26 @@ $ nvm use
 $ npm install
 ```
 
-## Running Opentracing.io locally
+## Running opentracing.io locally
 
 ```
 $ npm run dev
 $ open http://localhost:4000
 ```
+## Pull Requests
+1. Create a branch from `master`.
+1. Make sure it builds without any issues.
+1. Write a [good commit message](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+1. Push it to your fork.
+1. Create a pull request [here](https://github.com/opentracing/opentracing.io/compare)
 
-<details>
-  <summary><b>Folder Structure</b></summary>
+## License
+
+By contributing to opentracing.io, you agree that your contributions will be licensed
+under its [Apache 2.0 License](LICENSE.md).
+
+
+## Project Structure
 
 #### _data
 collections of data that is used to render our liquid templates
@@ -65,17 +76,3 @@ static content
 #### css, documentation
 post-build static assets. don't edit these.
 
-</details>
-
-
-## Pull Requests
-1. Create a branch from `master`.
-1. Make sure it builds without any issues.
-1. Push it to your fork.
-1. Create a pull request [here](https://github.com/opentracing/opentracing.io/compare)
-
-
-## License
-
-By contributing to OpenTracing.io, you agree that your contributions will be licensed
-under its [MIT License](LICENSE.MD).
