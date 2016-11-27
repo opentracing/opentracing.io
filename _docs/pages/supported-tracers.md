@@ -32,8 +32,12 @@ For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/app
 
 ## LightStep
 
-[LightStep](http://lightstep.com/) runs a private beta with OpenTracing-native tracers in production environments. There are OpenTracing-compatible [LightStep Tracers](https://github.com/lightstep) available for Go, Python, Javasrcipt, Objective-C, Java, PHP, Ruby, and C++.
+[LightStep](http://lightstep.com/) runs a private beta with OpenTracing-native tracers in production environments. There are OpenTracing-compatible [LightStep Tracers](https://github.com/lightstep) available for Go, Python, Javascript, Objective-C, Java, PHP, Ruby, and C++.
 
 ## Hawkular
 
 [Hawkular APM](http://www.hawkular.org/hawkular-apm/) supports OpenTracing-Java and has plans to support other platforms in the near future.
+
+## Instana
+
+[Instana](https://www.instana.com) provides an APM solution supporting [OpenTracing for Java](https://github.com/instana/instana-java-opentracing/blob/master/README.md), [Opentracing for NodeJs](https://github.com/instana/nodejs-sensor/blob/master/README.md#opentracing) and [Opentracing fo Go](https://github.com/instana/golang-sensor/blob/master/README.md). The Instana OpenTracing tracers are interoperable with the other Instana out of the box tracers for Java, Scala, NodeJs, PHP and Ruby.
