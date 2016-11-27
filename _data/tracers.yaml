@@ -20,8 +20,10 @@ array:
     url: http://uber.github.io/jaeger/
     icon: false
 
-#  TODO: add a carousel so all of these can fit on the screen!
-#
-#  - name: Hawkular
-#    url: http://www.hawkular.org/hawkular-apm/
-#    icon: false
+  - name: Hawkular
+    url: http://www.hawkular.org/hawkular-apm/
+    icon: false
+
+  - name: Instana
+    url: https://www.instana.com
+    icon: https://www.instana.com/wp-content/uploads/2016/07/header-logo.svg
