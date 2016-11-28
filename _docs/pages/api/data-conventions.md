@@ -105,3 +105,11 @@ OpenTracing API does not enforce the notion of sampling, but most implementation
     - If 0, a hint to the tracer to not capture the trace.
     - If this tag is not provided, the tracer should use its default sampling mechanism.
 
+## Logs
+
+### Common fields
+
+Every Log record in OpenTracing has a timestamp and at least one key:value "field". The following fields are standardized:
+
+* `event` - string
+    - A stable identifier for some notable moment in the lifetime of a Span. For instance, a mutex lock acquisition or release or the sorts of lifetime events in a browser page load described in the [Performance.timing](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming) specification.

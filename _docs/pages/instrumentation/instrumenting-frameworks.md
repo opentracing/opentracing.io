@@ -178,7 +178,7 @@ def process_response(request, response):
 
 Enabling Client-side tracing is applicable to frameworks that have a client component that is able to initiate a request. The goal is to inject a span into the header of the request that can then be passed to the server-side portion of the framework. Just like with server-side tracing, you'll need to know how to alter how your clients send requests and receive responses. When done correctly, the trace of a request is visible end-to-end.
 
-Workflow for server side tracing:
+Workflow for client side tracing:
 
 * Prepare request
     * Load the current trace state
