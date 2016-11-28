@@ -6,7 +6,7 @@ array:
 
   - name: Lightstep
     url: http://lightstep.com
-    icon: http://lightstep.com/images/logo-white.png
+    icon: img/tracers/lightstep.png
 
   - name: Appdash
     url: https://github.com/sourcegraph/appdash
@@ -26,4 +26,4 @@ array:
 
   - name: Instana
     url: https://www.instana.com
-    icon: https://www.instana.com/wp-content/uploads/2016/07/header-logo.svg
+    icon: img/tracers/instana.svg
