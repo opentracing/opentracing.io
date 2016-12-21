@@ -19,3 +19,7 @@ array:
   - name: Dropwizard
     url: http://www.dropwizard.io/
     icon: false
+    
+  - name: Motan
+    url: https://github.com/weibocom/motan
+    icon: false
