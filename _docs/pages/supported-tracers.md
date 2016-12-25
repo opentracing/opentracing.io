@@ -6,30 +6,12 @@
 
 ## Jaeger
 
-[Jaeger \ˈyā-gər\](http://uber.github.io/jaeger) is Uber's distributed tracing system, built with OpenTracing support from inception. Jaeger includes OpenTracing client libraries in several languages: [Java](https://github.com/uber/jaeger-client-java), [Go](https://github.com/uber/jaeger-client-go), [Python](https://github.com/uber/jaeger-client-python), and [Node.js](https://github.com/uber/jaeger-client-node).
+[Jaeger \ˈyā-gər\ˈ](http://uber.github.io/jaeger) is Uber's distributed tracing system, built with OpenTracing support from inception. Jaeger includes OpenTracing client libraries in several languages: [Java](https://github.com/uber/jaeger-client-java), [Go](https://github.com/uber/jaeger-client-go), [Python](https://github.com/uber/jaeger-client-python), and [Node.js](https://github.com/uber/jaeger-client-node).
 
 
 ## Appdash
 
-Appdash ([background reading](https://sourcegraph.com/blog/announcing-appdash-an-open-source-perf-tracing/)) is a lightweight, Golang-based distributed tracing system, originally developed and since open-sourced by [sourcegraph](https://sourcegraph.com/). There is an OpenTracing-compatible `Tracer` implementation that uses Appdash as a backend; binding Appdash to OpenTracing instrumentation is trivial:
-
-```go
-import (
-    "github.com/sourcegraph/appdash"
-    appdashtracer "github.com/sourcegraph/appdash/opentracing"
-)
-
-func main() {
-    // Initialization with a local collector:
-    collector := appdash.NewLocalCollector(myAppdashStore)
-    chunkedCollector := appdash.NewChunkedCollector(collector)
-    tracer := appdashtracer.NewTracer(chunkedCollector)
-
-    // Initialization with a remote collector:
-    collector := appdash.NewRemoteCollector("localhost:8700")
-    tracer := appdashtracer.NewTracer(collector)
-}
-```
+Appdash ([background reading](https://sourcegraph.com/blog/announcing-appdash-an-open-source-perf-tracing/)) is a lightweight, Golang-based distributed tracing system, originally developed and since open-sourced by [sourcegraph](https://sourcegraph.com/). There is an OpenTracing-compatible `Tracer` implementation that uses Appdash as a backend.
 
 For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/appdash/opentracing).
 
@@ -38,9 +20,11 @@ For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/app
 
 [LightStep](http://lightstep.com/) runs a private beta with OpenTracing-native tracers in production environments. There are OpenTracing-compatible [LightStep Tracers](https://github.com/lightstep) available for Go, Python, Javascript, Objective-C, Java, PHP, Ruby, and C++.
 
+
 ## Hawkular
 
 [Hawkular APM](http://www.hawkular.org/hawkular-apm/) supports OpenTracing-Java and has plans to support other platforms in the near future.
+
 
 ## Instana
 
