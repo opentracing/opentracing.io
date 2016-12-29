@@ -1,6 +1,6 @@
 # Authors and Contributors
 
-(in alphabetical order)
+Incomplete, outdated, and in alphabetical order :)
 
 * @adriancole (Adrian Cole)
 * @bcronin (Ben Cronin)

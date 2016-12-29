@@ -2,17 +2,18 @@
 
 OpenTracing APIs are available for the following platforms:
 
-* Go - [https://github.com/opentracing/opentracing-go](https://github.com/opentracing/opentracing-go)
-* Python - [https://github.com/opentracing/opentracing-python](https://github.com/opentracing/opentracing-python)
-* Javascript - [https://github.com/opentracing/opentracing-javascript](https://github.com/opentracing/opentracing-javascript)
-* Objective-C - [https://github.com/opentracing/opentracing-objc](https://github.com/opentracing/opentracing-objc)
-* Java - [https://github.com/opentracing/opentracing-java](https://github.com/opentracing/opentracing-java)
-* C++ - [https://github.com/opentracing/opentracing-cpp](https://github.com/opentracing/opentracing-cpp)
+* Go - [opentracing-go](https://github.com/opentracing/opentracing-go)
+* Python - [opentracing-python](https://github.com/opentracing/opentracing-python)
+* Javascript - [opentracing-javascript](https://github.com/opentracing/opentracing-javascript)
+* Java - [opentracing-java](https://github.com/opentracing/opentracing-java)
+* C# - [opentracing-csharp](https://github.com/opentracing/opentracing-csharp)
+* Objective-C - [opentracing-objc](https://github.com/opentracing/opentracing-objc)
+* C++ - [opentracing-cpp](https://github.com/opentracing/opentracing-cpp)
+* Ruby - [opentracing-ruby](https://github.com/opentracing/opentracing-ruby)
 
 OpenTracing APIs are in progress for the following platforms:
 
 * PHP - link forthcoming
-* Ruby - link forthcoming
 
 Please refer to the README files in the respective per-platform repositories for usage examples.
 
