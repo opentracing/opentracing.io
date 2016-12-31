@@ -250,9 +250,9 @@ def process_response(request, response):
 
 If you'd like to highlight your project as OpenTracing-compatible, feel free to use our GitHub badge and link it to the OpenTracing website.
 
-[![OpenTracing badge](https://github.com/opentracing-contrib/meta/blob/master/badge/OpenTracing-enabled-blue.svg)](http://opentracing.io)
+[![OpenTracing Badge](https://img.shields.io/badge/OpenTracing-enabled-blue.svg)](http://opentracing.io)
 
-`[![OpenTracing Badge](https://github.com/opentracing-contrib/meta/blob/master/badge/OpenTracing-enabled-blue.svg)](http://opentracing.io)`
+`[![OpenTracing Badge](https://img.shields.io/badge/OpenTracing-enabled-blue.svg)](http://opentracing.io)`
 
 Once you've packaged your implementation, email us at [community@opentracing.io](mailto://community@opentracing.io) with your implementation details (platform, description, github username) and we'll create a repo for you under [opentracing-contrib](https://github.com/opentracing-contrib/), so that others will be able to find and use your integration. You can also find there concrete examples of OpenTracing integrations into different open source projects.
 
