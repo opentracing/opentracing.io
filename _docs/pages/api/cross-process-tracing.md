@@ -81,7 +81,7 @@ What the OpenTracing implementations choose to store in these Carriers is not fo
 
 ### Interoperability of OpenTracing implementations *across process boundaries*
 
-There is no expectation that different OpenTracing implementations `Inject` and `Extract` SpanContexts in compatible ways. Though OpenTracing is agnostic about the tracing implementation *across an entire distributed system*, for successful inter-process handoff it's essential that the processes on both sides of a propagation use the same tracing implementation.
+There is no expectation that different OpenTracing implementations `Inject` and `Extract` SpanContexts in compatible ways. Though OpenTracing is agnostic about the tracing implementation *across an entire distributed system*, for successful inter-process handoff it's essential that the processes on both sides of a propagation use the same tracing implementation. In order to enable live migration between different versions, tracing implementations should namespace whatever information they propagate in-band appropriately in a way that allows different implementations to overlap on a single carrier. For example, `MyTracer-SpanId` and `MyTracer-TraceId` is prefered over `span_id` and/or `trace_id` as keys for http-headers.
 
 <div id="custom-carriers"></div>
 
