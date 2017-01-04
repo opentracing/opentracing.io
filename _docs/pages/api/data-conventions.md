@@ -14,4 +14,4 @@ The guidelines provided here describe a common ground on which instrumentors and
 
 The complete list of standard instrumentation can be found in the [`specification`](https://github.com/opentracing/specification) repository's [`data_conventions.yaml`](https://github.com/opentracing/specification/blob/master/data_conventions.yaml) file.
 
-If you see an opportunity for additional standardization, please [file an issue against the `specifacition` repository](https://github.com/opentracing/specification/issues/new) or raise the point on [OpenTracing's public Gitter channel](https://gitter.im/opentracing/public).
+If you see an opportunity for additional standardization, please [file an issue against the `specification` repository](https://github.com/opentracing/specification/issues/new) or raise the point on [OpenTracing's public Gitter channel](https://gitter.im/opentracing/public).
