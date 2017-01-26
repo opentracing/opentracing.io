@@ -27,3 +27,7 @@ array:
   - name: Instana
     url: https://www.instana.com
     icon: img/tracers/instana.svg
+    
+  - name: Skywalking
+    url: http://wu-sheng.github.io/sky-walking/
+    icon: img/tracers/skywalking.png
