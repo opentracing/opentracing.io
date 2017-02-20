@@ -3,7 +3,7 @@
 Incomplete, outdated, and in alphabetical order :)
 
 * @bcronin (Ben Cronin)
-* @bensigelman (Ben Sigelman)
+* @bhs (Ben Sigelman)
 * @bg451 (Brandon Gonzalez)
 * @dkuebric (Dan Kuebrich)
 * @michaelsembwever (mck)
