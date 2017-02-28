@@ -10,8 +10,8 @@ As an example, consider the common case of a HTTP-based application server. The 
 
 The guidelines provided here describe a common ground on which instrumentors and tracer authors can build beyond pure data collection. Adherence to the guidelines is optional but highly recommended for instrumentors.
 
-## `data_conventions.yaml`
+## `semantic_conventions.md`
 
-The complete list of standard instrumentation can be found in the [`specification`](https://github.com/opentracing/specification) repository's [`data_conventions.yaml`](https://github.com/opentracing/specification/blob/master/data_conventions.yaml) file.
+The complete list of semantic conventions for instrumentation can be found in the [`specification`](https://github.com/opentracing/specification) repository's [`semantic_conventions.md`](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) file.
 
 If you see an opportunity for additional standardization, please [file an issue against the `specification` repository](https://github.com/opentracing/specification/issues/new) or raise the point on [OpenTracing's public Gitter channel](https://gitter.im/opentracing/public).
