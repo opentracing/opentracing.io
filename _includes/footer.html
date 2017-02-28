@@ -1,44 +1,60 @@
 <footer class="footer">
   <div class="footer__container">
-    <div class="footer__section documentation">
+    <div class="footer__section">
       <h4 class="footer__subtitle">Documentation</h4>
       <div class="footer__actions">
-        <a href="{{site.url}}/documentation">Overview</a>
-        <a href="{{site.url}}/documentation/pages/quick-start">Quickstart</a>
-        <a href="{{site.url}}/documentation/pages/api/">OpenTracing APIs</a>
-        <a href="{{site.url}}/documentation/pages/instrumentation">Best Practices</a>
-        <a href="{{site.url}}/documentation/pages/spec">Concepts and Terminology</a>
-        <a href="{{site.url}}/documentation/pages/instrumentation/instrumenting-frameworks">Instrumenting a framework</a>
+        {% for i in site.data.links.docs %}
+          {% if i.url %}
+            <a href="{{i.url}}">{{ i.name }}</a>
+          {% else %}
+            <a href="{{site.url}}{{i.localUrl}}">{{ i.name }}</a>
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
 
-    <div class="footer__section form">
+    <div class="footer__section">
+      <h4 class="footer__subtitle">Github</h4>
+      <div class="footer__actions">
+        {% for language in site.data.language.array %}
+          <a href="{{language.url}}">{{ language.name }}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="footer__section">
+      <h4 class="footer__subtitle">Community</h4>
+      <div class="footer__actions">
+        {% for i in site.data.links.community %}
+          {% if i.url %}
+            <a href="{{i.url}}">{{ i.name }}</a>
+          {% else %}
+            <a href="{{site.url}}{{i.localUrl}}">{{ i.name }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="footer__section">
+      <h4 class="footer__subtitle">Get Started</h4>
+      <div class="footer__actions">
+        {% for i in site.data.links.gettingStarted %}
+          {% if i.url %}
+            <a href="{{i.url}}">{{ i.name }}</a>
+          {% else %}
+            <a href="{{site.url}}{{i.localUrl}}">{{ i.name }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="footer__section ecosystem">
+      <h4 class="footer__subtitle">Ecosystem</h4>
       <div class="footer__social_icons">
         {% for social in site.data.social.array %}
           <a href="{{social.url}}"><img src="{{site.url}}/{{ social.icon }}" alt="" style="color: {{social.color}};"></a>
         {% endfor %}
       </div>
-
       <a class="footer__social_newsletter button white thin" href="https://groups.google.com/forum/#!forum/opentracing">Join the mailing list</a>
     </div>
-
-    <div class="footer__section resources">
-      <h4 class="footer__subtitle">Resources</h4>
-      <div class="footer__actions">
-        <a href="{{site.url}}/documentation/pages/authors-and-contributors">About</a>
-        <a href="https://medium.com/opentracing">Blog</a>
-        <a href="{{site.url}}/documentation/pages/supported-tracers">Supported Tracers</a>
-      </div>
-    </div>
-
-    <div class="footer__section ecosystem">
-      <h4 class="footer__subtitle">Ecosystem</h4>
-      <div class="footer__actions">
-        <a href="https://github.com/opentracing">Github</a>
-        <a href="https://groups.google.com/forum/#!forum/opentracing">Mailing list</a>
-        <a href="https://twitter.com/opentracing">Twitter</a>
-      </div>
-    </div>
-
   </div>
 </footer>

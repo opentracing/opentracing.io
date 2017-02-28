@@ -90,7 +90,7 @@ $list-padding: 10px;
     }
   }
 
-  @media (max-width: $medium) {
+  @media (max-width: 900px) {
     &__actions.right {
       display: none;
     }

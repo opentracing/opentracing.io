@@ -15,30 +15,13 @@ $line-width: 30%;
     display: flex;
     padding: 2.5rem;
     margin: 0 auto;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
   }
 
   &__section {
-    &.documentation {
-      flex: 2;
-      width: 200px;
-    }
-
-    &.form {
-      flex: 2;
-      text-align: center;
-    }
-
-    &.resources {
-      flex: 1;
-      width: 200px;
-    }
-
-    &.ecosystem {
-      flex: 1;
-      width: 200px;
-    }
-
+    border-left: 1px solid rgba(white, 0.3);
+    padding-left: 20px;
   }
 
   &__subtitle {
@@ -46,30 +29,8 @@ $line-width: 30%;
     font-size: 1rem;
     font-weight: 700;
     letter-spacing: 1px;
-
-    &:not(.no-line):after {
-      position: relative;
-      content:'';
-      display: block;
-      height: 1px;
-      margin: 15px 0;
-      width: $line-width;
-      background: rgba(white, 0.5);
-    }
-
-    &.full-width-line:after {
-      margin-left:  calc( (100% - #{ $line-width }) / 2);
-      margin-right: calc( (100% - #{ $line-width }) / 2);
-    }
-
-    .resources &,
-    .ecosystem & {
-      text-align: right;
-
-      &:after {
-        margin-left: 100% - $line-width;
-      }
-    }
+    margin-bottom: 20px;
+    text-transform: uppercase;
   }
 
   &__social_icons {
@@ -101,16 +62,11 @@ $line-width: 30%;
     flex-direction: column;
     flex-wrap: wrap;
 
-    .resources &,
-    .ecosystem & {
-      align-items: flex-end;
-    }
-
     a {
       font-size: 1rem;
       font-family: 'bariolthin';
       letter-spacing: 1px;
-      padding: 5px 5px;
+      padding: 5px 0;
       text-transform: capitalize;
     }
   }
@@ -122,13 +78,14 @@ $line-width: 30%;
       text-align: center;
     }
 
-    &__actions {
+    &__section {
+      border-left: none;
+      padding-left: 0;
+      margin-top: 20px;
+    }
 
+    &__actions {
       align-items: center;
-      .resources &,
-      .ecosystem & {
-        align-items: center;
-      }
 
       a {
         font-weight: 600;
@@ -142,50 +99,10 @@ $line-width: 30%;
       margin-top: 4rem;
       width: 100%;
 
-      .resources &,
-      .ecosystem & {
-        text-align: center;
-      }
-
-      &:not(.no-line):after {
-        margin-left: 0;
-        margin-right: 0;
-        width: 100%;
-      }
-    }
-
-    .documentation {
-      order: 1;
-    }
-
-    .form {
-      order: 0;
-    }
-
-    .resources {
-      order: 2;
     }
 
     .ecosystem {
-      order: 3;
-    }
-  }
-
-  @media (min-width: $large) {
-    .documentation {
-      flex: 2;
-    }
-
-    &__actions {
-      max-height: 200px;
-
-      .documentation & {
-        max-height: 100px;
-      }
-
-      .ecosystem  & {
-        max-height: 125px;
-      }
+      order: -1;
     }
   }
 }
