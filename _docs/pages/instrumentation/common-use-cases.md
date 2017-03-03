@@ -258,14 +258,12 @@ if request.get('debug'):
 
 There are two messaging styles that should be handled, Message Queues and Publish/Subscribe (Topics).
 
-The main distinction between these styles is that a message written to a queue can only be consumed by **at most** one consumer, whereas a message published on a topic can be consumed by zero or more subscribers. The other point to note is that although a message can be sent/published by a producer, that does not guarantee that it will be consumed - messaging systems are asynchronous and therefore the producer has no visibility of when or if the message was delivered.
-
 From a tracing perspective, the messaging style is not important, only that the span context associated with the producer is propagated to the zero or more consumers of the message. It is then the responsibility of the consumer(s) to create a span to encapsulate processing of the consumed message and establish a _FollowsFrom_ reference to the propagated span context.
 
 As with the RPC client example, a messaging producer is expected to start a new tracing Span before sending a message, and propagate the new Span along with that message. The following example shows how it can be done.
 
 ```python
-def traced_request(message, operation, producer):
+def traced_send(message, operation):
     # retrieve current span from propagated message context
     parent_span = get_current_span()
 
@@ -282,17 +280,15 @@ def traced_request(message, operation, producer):
         format=opentracing.TEXT_MAP_FORMAT,
         carrier=message.headers)
 
-    try:
+    with span:
         messaging_client.send(message)
     except Exception e:
         span.log(event='general exception', payload=e)
         span.set_tag('error', true)
-        span.finish()
         raise
 ```
 
   * The `get_current_span()` function is not a part of the OpenTracing API. It is meant to represent some util method of retrieving the current Span from the current request context propagated implicitly (as is often the case in Python).
-  * Because the messaging client may throw an exception, we use a try/catch block to finish the Span in all circumstances, to ensure it is reported and avoid leaking resources.
 
 The following is an example of a message consumer checking whether an incoming message contains a span context. If it does, this will be used to establish a relationship with the message producer's Span.
 
