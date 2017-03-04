@@ -254,11 +254,11 @@ if request.get('debug'):
     )
 ```
 
-### Tracing Messaging Scenarios
+### Tracing Message Bus Scenarios
 
-There are two messaging styles that should be handled, Message Queues and Publish/Subscribe (Topics).
+There are two message bus styles that should be handled, Message Queues and Publish/Subscribe (Topics).
 
-From a tracing perspective, the messaging style is not important, only that the span context associated with the producer is propagated to the zero or more consumers of the message. It is then the responsibility of the consumer(s) to create a span to encapsulate processing of the consumed message and establish a _FollowsFrom_ reference to the propagated span context.
+From a tracing perspective, the message bus style is not important, only that the span context associated with the producer is propagated to the zero or more consumers of the message. It is then the responsibility of the consumer(s) to create a span to encapsulate processing of the consumed message and establish a _FollowsFrom_ reference to the propagated span context.
 
 As with the RPC client example, a messaging producer is expected to start a new tracing Span before sending a message, and propagate the new Span along with that message. The following example shows how it can be done.
 
@@ -297,10 +297,7 @@ extracted_context = tracer.extract(
     format=opentracing.TEXT_MAP_FORMAT,
     carrier=message.headers
 )
-if extracted_context is None:
-    span = tracer.start_span(operation_name=operation)
-else:
-    span = tracer.start_span(operation_name=operation, follows_from=extracted_context)
+span = tracer.start_span(operation_name=operation, follows_from=extracted_context)
 span.set_tag('message.destination', message.destination)
 ```
 
