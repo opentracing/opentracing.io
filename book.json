@@ -10,7 +10,6 @@
     },
      "scripts": {
         "files": [
-          "scripts/injectLogo.js",
           "scripts/analytics.js",
           "scripts/linkedHeadings.js"
         ]
