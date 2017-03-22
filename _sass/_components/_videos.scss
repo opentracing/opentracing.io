@@ -1,0 +1,147 @@
+@import '../variables';
+
+$video-spacing: 15px;
+
+.videos {
+  margin: 40px auto;
+  width: 100vw;
+  max-width: ($max-width - 200px);
+  position: relative;
+  padding: 0 30px;
+  flex-wrap: wrap;
+  font-family: 'bariolthin';
+
+  &__header {
+    color: $dark-blue;
+    font-size: 3.5rem;
+    text-align: center;
+    margin: 3rem 0 2rem;;
+
+    &--small {
+      font-size: 2.5rem;
+      text-align: left;
+    }
+  }
+
+  &__section {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    text-align: left;
+
+    &--list,
+    &--featured {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-top: $video-spacing*4;
+      padding-top: $video-spacing/2;
+      border-top: 1px solid rgba($blue, 0.2);
+      position: relative;
+
+      &:before {
+        position: absolute;
+        left: 0;
+        top: -20px;
+        opacity: 0.75;
+        color: #45c1de;
+        font-size: 1rem;
+        content: 'Other videos and talks';
+      }
+
+       & > div {
+        max-width: calc(33% - #{$video-spacing});
+        margin-top: $video-spacing;
+        margin-bottom: $video-spacing;
+      }
+
+      @media (max-width: $medium) {
+        margin-top: $video-spacing*2;
+
+
+
+        & > div {
+          max-width: calc(50% - #{$video-spacing});
+        }
+      }
+    }
+     &--featured {
+      &:before {
+        content: 'Featured videos and talks';
+      }
+
+     }
+  }
+
+  &__content {
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 160px;
+
+    a:hover {
+     opacity: 1;
+    }
+
+    .videos__section--list &:last-child:not(:nth-child(odd)),
+    .videos__section--featured &:last-child:not(:nth-child(odd)) {
+      @media (min-width: $medium) {
+        margin-right: calc(33% + #{$video-spacing});
+      }
+    }
+
+    img {
+      border: 1px solid rgba(0,0,0, 0.15);
+    }
+
+    iframe {
+      height: 600px;
+      margin-top: 15px;
+
+      @media (max-width: $medium) { height: 350px; }
+      @media (max-width: $small) { height: 250px; }
+    }
+
+    &__date {
+      opacity: 0.75;
+      font-size: 0.9rem;
+      margin: 5px 0;
+      line-height: 0.9rem;
+
+    }
+
+    &__title {
+      color: $dark-blue;
+      font-size: 1.8rem;
+      margin-bottom: 0;
+      font-weight: 800;
+
+      &--large {
+        margin-top: 10px;
+      }
+
+      &--small {
+        font-size: 1.4rem;
+      }
+    }
+
+    &__paragraphs {
+      margin-top: 10px;
+
+      p {
+        font-weight: 500;
+        margin-top: 15px;
+      }
+
+      &--padding {
+        margin-top: 30px;
+      }
+
+    }
+  }
+}

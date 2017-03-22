@@ -13,6 +13,11 @@ author:
   name: The OpenTracing Authors
   url:  http://opentracing.io
 
+collections:
+  talks_and_videos:
+    output: true
+    permalink: /talks-and-videos/:slug
+
 exclude:
   - node_modules
   - vendor

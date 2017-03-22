@@ -1,0 +1,56 @@
+---
+permalink: /talks-and-videos/
+title: 'Talks and Videos'
+layout: default-with-header
+---
+
+{% assign reversed = site.talks_and_videos | reverse | sort: 'order'  %}
+{% assign featuredVideos = reversed | where:"featured", "list"  %}
+{% assign otherVideo = reversed | where:"featured", ""  %}
+
+{% assign featuredVideo = (reversed | where:"featured", "big") | first  %}
+
+
+
+{% capture with_read_more %} {{featuredVideo.content | truncatewords: 45 | strip_html }}  <a href="{{ site.url }}/talks-and-videos/{{ featuredVideo.slug }}">..more</a> {% endcapture %}
+
+<section class="videos">
+  <h1 class="videos__header">Videos and Talks</h1>
+  <section class="videos__section">
+    <div class="videos__content">
+      <a href="{{ site.url }}/talks-and-videos/{{ featuredVideo.slug }}">
+        <img src="{{featuredVideo.thumbnail}}" alt="{{featuredVideo.title}}">
+        <h2 class="videos__content__title videos__content__title--large">{{featuredVideo.title}}</h2>
+
+      </a>
+      <div class="videos__content__paragraphs">
+        {{ with_read_more }}
+      </div>
+    </div>
+  </section>
+
+  <section class="videos__section--featured">
+    {% for video in featuredVideos %}
+      <div class="videos__content">
+        <a href="{{ site.url }}/talks-and-videos/{{ video.slug }}">
+          <img src="{{video.thumbnail}}" alt="{{video.title}}">
+          <h3 class="videos__content__title videos__content__title--small">{{video.title}}</h3>
+          <p class="videos__content__date">{{video.date | date: "%-d %B, %Y" }}</p>
+        </a>
+      </div>
+    {% endfor %}
+  </section>
+
+  <section class="videos__section--list">
+    {% for video in otherVideo %}
+      <div class="videos__content">
+        <a href="{{ site.url }}/talks-and-videos/{{ video.slug }}">
+          <img src="{{video.thumbnail}}" alt="{{video.title}}">
+          <h3 class="videos__content__title videos__content__title--small">{{video.title}}</h3>
+          <p class="videos__content__date">{{video.date | date: "%-d %B, %Y" }}</p>
+        </a>
+      </div>
+    {% endfor %}
+  </section>
+
+</section>
