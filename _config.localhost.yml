@@ -1,4 +1,3 @@
-safe: false
 permalink: pretty
 markdown: kramdown
 kramdown:
