@@ -1,0 +1,17 @@
+---
+layout: default-with-header
+---
+
+<section class="videos">
+  <h1 class="videos__header videos__header--small">{{page.title}}</h1>
+  <p class="videos__content__date">{{page.date | date: "%-d %B, %Y" }}</p>
+  <section class="videos__section">
+    <div class="videos__content">
+      <iframe width="100%" src="{{page.videoUrl}}" frameborder="0" allowfullscreen></iframe>
+
+      <div class="videos__content__paragraphs videos__content__paragraphs--padding">
+        {{page.content}}
+      </div>
+    </div>
+  </section>
+</section>

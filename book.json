@@ -10,7 +10,6 @@
     },
      "scripts": {
         "files": [
-          "scripts/injectLogo.js",
           "scripts/analytics.js",
           "scripts/linkedHeadings.js"
         ]
@@ -28,5 +27,101 @@
     "ga": {
       "token": "UA-79528055-1"
     }
+  },
+  "variables":  {
+    "docs": [
+      {
+        "localUrl": "/documentation/pages/quick-start",
+        "name": "Quick Start"
+      },
+      {
+        "localUrl": "/documentation/pages/spec",
+        "name": "Concepts and Terminology"
+      },
+      {
+        "localUrl": "/documentation/pages/api/index",
+        "name": "APIs"
+      },
+      {
+        "localUrl": "/documentation/pages/instrumentation/index",
+        "name": "Best Practices"
+      },
+      {
+        "localUrl": "/documentation/pages/authors-and-contributors",
+        "name": "Authors and Contributors"
+      },
+      {
+        "localUrl": "/documentation/pages/supported-tracers",
+        "name": "Supported Tracers"
+      },
+      {
+        "localUrl": "/documentation/pages/translations",
+        "name": "Translations"
+      }
+    ],
+    "gettingStarted": [
+      {
+        "localUrl": "/documentation/pages/quick-start.html",
+        "name": "A QuickStart Guide to OpenTracing</a>"
+      },
+      {
+        "localUrl": "/documentation/pages/instrumentation/instrumenting-frameworks.html",
+        "name": "Framework and Library Maintainers</a>"
+      },
+      {
+        "localUrl": "/documentation/pages/supported-tracers.html",
+        "name": "Available Tracers, Frameworks and Libraries</a>"
+      },
+      {
+        "localUrl": "/FAQ",
+        "name": "FAQ</a>"
+      }
+    ],
+    "community": [
+      {
+        "url": "//gitter.im/opentracing/public",
+        "name": "Gitter</a>"
+      },
+      {
+        "url": "//groups.google.com/forum/#!forum/opentracing",
+        "name": "Mailing List</a>"
+      },
+      {
+        "url": "//github.com/opentracing-contrib/meta#opentracing-contributions",
+        "name": "Become a Contributor</a>"
+      }
+    ],
+    "languages": [
+      {
+        "name": "Go",
+        "url": "//github.com/opentracing/opentracing-go",
+        "icon": ""
+      },
+      {
+        "name": "JavaScript",
+        "url": "//github.com/opentracing/opentracing-javascript",
+        "icon": ""
+      },
+      {
+        "name": "Java",
+        "url": "//github.com/opentracing/opentracing-java",
+        "icon": ""
+      },
+      {
+        "name": "Python",
+        "url": "//github.com/opentracing/opentracing-python",
+        "icon": ""
+      },
+      {
+        "name": "Objective-C",
+        "url": "//github.com/opentracing/opentracing-objc",
+        "icon": ""
+      },
+      {
+        "name": "C++",
+        "url": "//github.com/opentracing/opentracing-cpp",
+        "icon": ""
+      }
+    ]
   }
 }

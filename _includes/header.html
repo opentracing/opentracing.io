@@ -7,11 +7,13 @@
       <div class="dropdown">
         <a class="dropdown__button" href="{{site.url}}/documentation">Docs</a>
         <div class="dropdown__content docs">
-          <a href="{{site.url}}/documentation">Overview</a>
-          <a href="{{site.url}}/documentation/pages/quick-start">Quickstart</a>
-          <a href="{{site.url}}/documentation/pages/spec">Concepts and Terminology</a>
-          <a href="{{site.url}}/documentation/pages/api/">OpenTracing APIs</a>
-          <a href="{{site.url}}/documentation/pages/instrumentation">Best Practices</a>
+          {% for doc in site.data.links.docs %}
+            {% if doc.url %}
+              <a href="{{doc.url}}">{{ doc.name }}</a>
+            {% else %}
+              <a href="{{site.url}}{{doc.localUrl}}">{{ doc.name }}</a>
+            {% endif %}
+          {% endfor %}
         </div>
       </div>
       <div class="dropdown">
@@ -25,6 +27,32 @@
         </div>
       </div>
 
+      <div class="dropdown">
+        <a class="dropdown__button" href="{{site.url}}/documentation">Community</a>
+        <div class="dropdown__content docs">
+          {% for c in site.data.links.community %}
+            {% if c.url %}
+              <a href="{{c.url}}">{{ c.name }}</a>
+            {% else %}
+              <a href="{{site.url}}{{c.localUrl}}">{{ c.name }}</a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <a class="dropdown__button" href="{{site.url}}/documentation">Getting Started</a>
+        <div class="dropdown__content docs">
+          {% for g in site.data.links.gettingStarted %}
+            {% if g.url %}
+              <a href="{{g.url}}">{{ g.name }}</a>
+            {% else %}
+              <a href="{{site.url}}{{g.localUrl}}">{{ g.name }}</a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
       <a href="https://medium.com/opentracing">Blog</a>
     </div>
     <div class="header__actions right">
@@ -34,23 +62,44 @@
 
   <div class="header__container__mobile">
     <div class="header__logo">
-      <a href="http://opentracing.io"><img src="img/logo.png"></a>
+      <a href="http://opentracing.io"><img src="{{site.url}}/img/logo.png"></a>
     </div>
     <div class="header__hamburger__button">☰</div>
     <div class="dropdown__content mobile">
       <div class="header__close__button">✕</div>
 
       <h3>Docs</h3>
-        <a href="{{site.url}}/documentation">Overview</a>
-        <a href="{{site.url}}/documentation/pages/quick-start">Quickstart</a>
-        <a href="{{site.url}}/documentation/pages/spec">Concepts and Terminology</a>
-        <a href="{{site.url}}/documentation/pages/api/">OpenTracing APIs</a>
-        <a href="{{site.url}}/documentation/pages/instrumentation">Best Practices</a>
+      {% for doc in site.data.links.docs %}
+        {% if doc.url %}
+          <a href="{{doc.url}}">{{ doc.name }}</a>
+        {% else %}
+          <a href="{{site.url}}{{doc.localUrl}}">{{ doc.name }}</a>
+        {% endif %}
+      {% endfor %}
 
       <h3>Github</h3>
       {% for language in site.data.language.array %}
         <a href="{{language.url}}">{{ language.name }}</a>
       {% endfor %}
+
+      <h3>Community</h3>
+      {% for c in site.data.links.community %}
+        {% if c.url %}
+          <a href="{{c.url}}">{{ c.name }}</a>
+        {% else %}
+          <a href="{{site.url}}{{c.localUrl}}">{{ c.name }}</a>
+        {% endif %}
+      {% endfor %}
+
+      <h3>Getting Started</h3>
+      {% for g in site.data.links.gettingStarted %}
+        {% if g.url %}
+          <a href="{{g.url}}">{{ g.name }}</a>
+        {% else %}
+          <a href="{{site.url}}{{g.localUrl}}">{{ g.name }}</a>
+        {% endif %}
+      {% endfor %}
+
       <hr/>
       <a href="https://github.com/opentracing-contrib/meta">Contributions</a>
 
