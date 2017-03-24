@@ -30,9 +30,6 @@ gettingStarted:
   - localUrl: /documentation/pages/supported-tracers.html
     name: Available Tracers, Frameworks and Libraries</a>
 
-  - localUrl: /FAQ
-    name: FAQ</a>
-
 community:
   - localUrl: /talks-and-videos
     name: Talks and Videos</a>
