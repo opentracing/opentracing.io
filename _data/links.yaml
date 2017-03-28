@@ -22,23 +22,23 @@ docs:
 
 gettingStarted:
   - localUrl: /documentation/pages/quick-start.html
-    name: A QuickStart Guide to OpenTracing</a>
+    name: A QuickStart Guide to OpenTracing
 
   - localUrl: /documentation/pages/instrumentation/instrumenting-frameworks.html
-    name: Framework and Library Maintainers</a>
+    name: Framework and Library Maintainers
 
   - localUrl: /documentation/pages/supported-tracers.html
-    name: Available Tracers, Frameworks and Libraries</a>
+    name: Available Tracers, Frameworks and Libraries
 
 community:
   - localUrl: /talks-and-videos
-    name: Talks and Videos</a>
+    name: Talks and Videos
 
   - url: //gitter.im/opentracing/public
-    name: Gitter</a>
+    name: Gitter
 
   - url: //groups.google.com/forum/#!forum/opentracing
-    name: Mailing List</a>
+    name: Mailing List
 
   - url: //github.com/opentracing-contrib/meta#opentracing-contributions
-    name: Become a Contributor</a>
+    name: Become a Contributor
