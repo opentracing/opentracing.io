@@ -71,10 +71,6 @@
       {
         "localUrl": "/documentation/pages/supported-tracers.html",
         "name": "Available Tracers, Frameworks and Libraries"
-      },
-      {
-        "localUrl": "/FAQ",
-        "name": "FAQ"
       }
     ],
     "community": [
