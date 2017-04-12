@@ -1,7 +1,7 @@
 ---
 title: "Operational and Business Insights from Tracing Distributed Microservices"
-videoUrl: https://www.youtube.com/embed/utCOfSz202o
-thumbnail: https://img.youtube.com/vi/utCOfSz202o/maxresdefault.jpg
+videoUrl: https://www.youtube.com/embed/dmMWaTZE5gQ
+thumbnail: https://img.youtube.com/vi/dmMWaTZE5gQ/maxresdefault.jpg
 layout: video
 featured: false
 ---
