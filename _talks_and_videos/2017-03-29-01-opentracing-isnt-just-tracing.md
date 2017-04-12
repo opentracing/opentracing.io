@@ -1,7 +1,7 @@
 ---
 title: "OpenTracing Isn't Just Tracing: Measure Twice, Instrument Once"
-videoUrl: https://www.youtube.com/embed/Jx422QnSKeg
-thumbnail: https://img.youtube.com/vi/Jx422QnSKeg/maxresdefault.jpg
+videoUrl: https://www.youtube.com/embed/NyySNe6Rr_g
+thumbnail: https://img.youtube.com/vi/NyySNe6Rr_g/maxresdefault.jpg
 layout: video
 featured: false
 ---
