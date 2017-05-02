@@ -260,7 +260,7 @@ There are two message bus styles that should be handled, Message Queues and Publ
 
 From a tracing perspective, the message bus style is not important, only that the span context associated with the producer is propagated to the zero or more consumers of the message. It is then the responsibility of the consumer(s) to create a span to encapsulate processing of the consumed message and establish a _FollowsFrom_ reference to the propagated span context.
 
-As with the RPC client example, a messaging producer is expected to start a new tracing Span before sending a message, and propagate the new Span along with that message. The following example shows how it can be done.
+As with the RPC client example, a messaging producer is expected to start a new tracing Span before sending a message, and propagate the new Span's SpanContext along with that message. The Span will then be finished after the message has been enqueued/published on the message bus. The following example shows how it can be done.
 
 ```python
 def traced_send(message, operation):
@@ -283,8 +283,7 @@ def traced_send(message, operation):
     with span:
         messaging_client.send(message)
     except Exception e:
-        span.log(event='general exception', payload=e)
-        span.set_tag('error', true)
+        ...
         raise
 ```
 
@@ -297,11 +296,11 @@ extracted_context = tracer.extract(
     format=opentracing.TEXT_MAP_FORMAT,
     carrier=message.headers
 )
-span = tracer.start_span(operation_name=operation, follows_from=extracted_context)
+span = tracer.start_span(operation_name=operation, references=follows_from(extracted_context))
 span.set_tag('message.destination', message.destination)
 ```
 
-#### Synchronous request response over queues
+#### Synchronous request-response over queues
 
 Although not necessarily used a great deal, some messaging platforms/standards (e.g. JMS) support the ability to provide a _ReplyTo_ destination in the header of a message. When the consumer receives the message it returns a result message to the nominated destination. 
 
