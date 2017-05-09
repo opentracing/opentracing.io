@@ -45,6 +45,7 @@ try (Span parent = GlobalTracer.get()
 ```go
 import (
     "github.com/opentracing/opentracing-go"
+    "github.com/uber/jaeger-client-go"
     "github.com/uber/jaeger-client-go/config"
 )
 
@@ -58,13 +59,18 @@ func main() {
 	    Param: 1,
 	},
 	Reporter: &config.ReporterConfig{
-	    LogSpans:            false,
+	    LogSpans:            true,
 	    BufferFlushInterval: 1 * time.Second,
 	},
     }
-    tracer, closer, err := cfg.New("your_service_name")
+    tracer, closer, err := cfg.New(
+        "your_service_name",
+        config.Logger(jaeger.StdLogger),
+    )
     opentracing.SetGlobalTracer(tracer)
     defer closer.Close()
+
+    someFunction()
     ...
 }
 
