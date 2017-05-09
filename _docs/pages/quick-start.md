@@ -50,26 +50,33 @@ import (
 
 ...
 
-cfg := config.Configuration{
-    Sampler: &config.SamplerConfig{
-        Type:  "const",
-        Param: 1,
-    },
-    Reporter: &config.ReporterConfig{
-        LogSpans:            false,
-        BufferFlushInterval: 1 * time.Second,
-    },
+func main() {
+    ...
+    cfg := config.Configuration{
+	Sampler: &config.SamplerConfig{
+	    Type:  "const",
+	    Param: 1,
+	},
+	Reporter: &config.ReporterConfig{
+	    LogSpans:            false,
+	    BufferFlushInterval: 1 * time.Second,
+	},
+    }
+    tracer, closer, err := cfg.New("your_service_name")
+    opentracing.SetGlobalTracer(tracer)
+    defer closer.Close()
+    ...
 }
-tracer, _, err := cfg.New("your_service_name")
-opentracing.SetGlobalTracer(tracer)
 
 ...
 
-parent := opentracing.GlobalTracer().StartSpan("hello")
-defer parent.Finish()
-child := opentracing.GlobalTracer().StartSpan(
-    "world", opentracing.ChildOf(parent.Context()))
-defer child.Finish()
+func someFunction() {
+    parent := opentracing.GlobalTracer().StartSpan("hello")
+    defer parent.Finish()
+    child := opentracing.GlobalTracer().StartSpan(
+	"world", opentracing.ChildOf(parent.Context()))
+    defer child.Finish()
+}
 ```
 
 ## Self-Guided Walkthrough Tutorials
