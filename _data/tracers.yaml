@@ -31,3 +31,8 @@ array:
   - name: Skywalking
     url: http://wu-sheng.github.io/sky-walking/
     icon: img/tracers/skywalking.png
+
+  - name: inspectIT
+    url: http://www.inspectit.rocks
+    icon: img/tracers/inspectit.png
+
