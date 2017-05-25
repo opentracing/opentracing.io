@@ -32,4 +32,9 @@ For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/app
 
 ## sky-walking
 
-[sky-walking](https://github.com/wu-sheng/sky-walking) is an open-source tracer in Java, based on auto-instrumentation mechenism. Support OpenTracing-Java by [sky-walking application toolkit](https://github.com/wu-sheng/sky-walking/wiki/sky-walking-application-toolkit).
+[sky-walking](https://github.com/wu-sheng/sky-walking) is an open-source tracer in Java, based on auto-instrumentation mechanism. Support OpenTracing-Java by [sky-walking application toolkit](https://github.com/wu-sheng/sky-walking/wiki/sky-walking-application-toolkit).
+
+## inspectIT
+
+[inspectIT](http://www.inspectit.rocks) aims to be an End-to-End APM solution for Java with support for OpenTracing. The instrumentation capability allows to set up inspectIT in no time with an extensive support for different frameworks and application servers. For more information, take a look at the [documentation](https://inspectit-performance.atlassian.net/wiki/spaces/DOC).
+
