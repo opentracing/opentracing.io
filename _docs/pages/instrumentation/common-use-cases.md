@@ -253,3 +253,61 @@ if request.get('debug'):
         tags={tags.SAMPLING_PRIORITY: 1}
     )
 ```
+
+### Tracing Message Bus Scenarios
+
+There are two message bus styles that should be handled, Message Queues and Publish/Subscribe (Topics).
+
+From a tracing perspective, the message bus style is not important, only that the span context associated with the producer is propagated to the zero or more consumers of the message. It is then the responsibility of the consumer(s) to create a span to encapsulate processing of the consumed message and establish a _FollowsFrom_ reference to the propagated span context.
+
+As with the RPC client example, a messaging producer is expected to start a new tracing Span before sending a message, and propagate the new Span's SpanContext along with that message. The Span will then be finished after the message has been enqueued/published on the message bus. The following example shows how it can be done.
+
+```python
+def traced_send(message, operation):
+    # retrieve current span from propagated message context
+    parent_span = get_current_span()
+
+    # start a new span to represent the message producer
+    span = tracer.start_span(
+        operation_name=operation,
+        child_of=parent_span.context,
+        tags={'message.destination': message.destination}
+    )
+
+    # propagate the Span via message headers
+    tracer.inject(
+        span.context,
+        format=opentracing.TEXT_MAP_FORMAT,
+        carrier=message.headers)
+
+    with span:
+        messaging_client.send(message)
+    except Exception e:
+        ...
+        raise
+```
+
+  * The `get_current_span()` function is not a part of the OpenTracing API. It is meant to represent some util method of retrieving the current Span from the current request context propagated implicitly (as is often the case in Python).
+
+The following is an example of a message consumer checking whether an incoming message contains a span context. If it does, this will be used to establish a relationship with the message producer's Span.
+
+```python
+extracted_context = tracer.extract(
+    format=opentracing.TEXT_MAP_FORMAT,
+    carrier=message.headers
+)
+span = tracer.start_span(operation_name=operation, references=follows_from(extracted_context))
+span.set_tag('message.destination', message.destination)
+```
+
+#### Synchronous request-response over queues
+
+Although not necessarily used a great deal, some messaging platforms/standards (e.g. JMS) support the ability to provide a _ReplyTo_ destination in the header of a message. When the consumer receives the message it returns a result message to the nominated destination. 
+
+This pattern could be used to simulate a synchronous request/response, in which case the relationship type between the consumer and producer spans should technically be _Child Of_. 
+
+However this pattern could also be used for delegation to indicate a third party that should be informed of the result. In which case it would be treated as two separate message exchanges with _Follows From_ relationship types linking each stage.
+
+As it would be difficult to distinguish between these two scenarios, and the use of message oriented middleware for synchronous request/response pattern should be discouraged, it is recommended that the request/response scenario be ignored from a tracing perspective. 
+
+
