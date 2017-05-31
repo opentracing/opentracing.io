@@ -16,10 +16,18 @@ array:
     url: //github.com/opentracing/opentracing-python
     icon: ''
 
+  - name: Ruby
+    url: //github.com/opentracing/opentracing-ruby
+    icon: ''
+
   - name: Objective-C
     url: //github.com/opentracing/opentracing-objc
     icon: ''
 
   - name: C++
     url: //github.com/opentracing/opentracing-cpp
+    icon: ''
+
+  - name: C#
+    url: //github.com/opentracing/opentracing-csharp
     icon: ''
