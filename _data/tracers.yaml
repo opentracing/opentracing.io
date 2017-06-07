@@ -36,3 +36,7 @@ array:
     url: http://www.inspectit.rocks
     icon: img/tracers/inspectit.png
 
+  - name: stagemonitor
+    url: http://www.stagemonitor.org/
+    icon: img/tracers/stagemonitor.png
+
