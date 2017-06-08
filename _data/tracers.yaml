@@ -29,7 +29,7 @@ array:
     icon: img/tracers/instana.svg
     
   - name: Skywalking
-    url: http://wu-sheng.github.io/sky-walking/
+    url: http://skywalking.org
     icon: img/tracers/skywalking.png
 
   - name: inspectIT
