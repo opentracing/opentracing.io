@@ -38,3 +38,5 @@ For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/app
 
 [inspectIT](http://www.inspectit.rocks) aims to be an End-to-End APM solution for Java with support for OpenTracing. The instrumentation capability allows to set up inspectIT in no time with an extensive support for different frameworks and application servers. For more information, take a look at the [documentation](https://inspectit-performance.atlassian.net/wiki/spaces/DOC).
 
+## stagemonitor
+[Stagemonitor](http://www.stagemonitor.org/) is an open-source tracing, profiling and metrics solution for Java applications. It uses byte code manipulation to automatically trace your application without code changes. Stagemonitor is compatible with various OpenTracing implementations and can report to multiple back-ends like [Elasticsearch](https://www.elastic.co/products/elasticsearch) and [Zipkin](http://zipkin.io/). It also tracks metrics, like response time and error rates.
