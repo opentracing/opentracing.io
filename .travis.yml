@@ -4,7 +4,7 @@ node_js:
 before_install:
   - rvm install 2.0.0
 install:
-  - gem install jekyll
+  - gem install jekyll:3.4.3
   - npm install
 script:
   - bash ./deploy.sh

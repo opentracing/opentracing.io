@@ -18,7 +18,7 @@ $ npm --version
 2.15.9
 
 $ jekyll --version
-jekyll 3.1.2
+jekyll 3.4.3
 ```
 
 
