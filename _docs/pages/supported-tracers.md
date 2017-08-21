@@ -28,7 +28,11 @@ For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/app
 
 ## Instana
 
-[Instana](https://www.instana.com) provides an APM solution supporting OpenTracing in [Java](https://github.com/instana/instana-java-opentracing/blob/master/README.md), [Node.js](https://github.com/instana/nodejs-sensor/blob/master/README.md#opentracing) and [Go](https://github.com/instana/golang-sensor/blob/master/README.md). The Instana OpenTracing tracers are interoperable with the other Instana out of the box tracers for Java, Scala, NodeJs, PHP and Ruby.
+[Instana](https://www.instana.com) provides an APM solution supporting OpenTracing in 
+[Crystal](https://github.com/instana/crystal-sensor/blob/master/README.md),
+[Go](https://github.com/instana/golang-sensor/blob/master/README.md), [Java](https://github.com/instana/instana-java-opentracing/blob/master/README.md), [Node.js](https://github.com/instana/nodejs-sensor/blob/master/README.md),
+[Python](https://github.com/instana/python-sensor/blob/master/README.md) and
+[Ruby](https://github.com/instana/ruby-sensor/blob/master/README.md). The Instana OpenTracing tracers are interoperable with the other Instana out of the box tracers for .Net, Crystal, Java, Scala, NodeJs, PHP, Python and Ruby.
 
 ## sky-walking
 
