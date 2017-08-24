@@ -20,6 +20,10 @@ array:
     url: //github.com/opentracing/opentracing-ruby
     icon: ''
 
+  - name: PHP
+    url: //github.com/opentracing/opentracing-php
+    icon: ''
+
   - name: Objective-C
     url: //github.com/opentracing/opentracing-objc
     icon: ''
