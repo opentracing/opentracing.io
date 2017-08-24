@@ -10,10 +10,7 @@ OpenTracing APIs are available for the following platforms:
 * Objective-C - [opentracing-objc](https://github.com/opentracing/opentracing-objc)
 * C++ - [opentracing-cpp](https://github.com/opentracing/opentracing-cpp)
 * Ruby - [opentracing-ruby](https://github.com/opentracing/opentracing-ruby)
-
-OpenTracing APIs are in progress for the following platforms:
-
-* PHP - link forthcoming
+* PHP - [opentracing-php](https://github.com/opentracing/opentracing-php)
 
 Please refer to the README files in the respective per-platform repositories for usage examples.
 
