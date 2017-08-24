@@ -44,3 +44,6 @@ For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/app
 
 ## stagemonitor
 [Stagemonitor](http://www.stagemonitor.org/) is an open-source tracing, profiling and metrics solution for Java applications. It uses byte code manipulation to automatically trace your application without code changes. Stagemonitor is compatible with various OpenTracing implementations and can report to multiple back-ends like [Elasticsearch](https://www.elastic.co/products/elasticsearch) and [Zipkin](http://zipkin.io/). It also tracks metrics, like response time and error rates.
+
+## molten
+[Molten](https://github.com/chuan-yun/Molten/) is an open-source tracer in PHP,  to solve PHP performance problem. It monitor PHP running time call stack to automatically tracing your PHP application without code changes. Currently it traces typical module in PHP， like PDO mysqli redis and so on. the tracing output of it conform to [Zipkin](http://zipkin.io/) format,  so It can build distributed tracing system with zipkin server. More detail is here [documentation](https://github.com/chuan-yun/Molten).
