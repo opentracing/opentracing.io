@@ -40,12 +40,22 @@ $ npm install
 $ npm run dev
 $ open http://localhost:4000
 ```
+
 ## Pull Requests
+
 1. Create a branch from `master`
 1. Make sure it builds without any issues
 1. Write a [good commit message](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
 1. Push it to your fork
 1. Create a pull request [here](https://github.com/opentracing/opentracing.io/compare)
+
+## Deploy Changes
+
+We use [Travis](https://www.travis.org) to make sure PR's builds properly, but also to deploy them once merged into master.
+1. Make sure PR builds properly
+1. Merge PR
+1. Wait for Travis to build and deploy changes to the `gh-pages` branch
+1. Visit [http://opentracing.io](http://opentracing.io) to see deployed changes
 
 ## License
 
