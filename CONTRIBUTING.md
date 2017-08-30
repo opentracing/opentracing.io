@@ -51,7 +51,11 @@ $ open http://localhost:4000
 
 ## Deploy Changes
 
-We use [Travis](https://www.travis.org) to make sure PR's builds properly, but also to deploy them once merged into master.
+We use [Travis](https://www.travis.org) to make sure pull requests builds properly, but also to deploy them once merged into `master`.
+Travis will run [deploy.sh](https://github.com/opentracing/opentracing.io/blob/master/deploy.sh) on every pull request and can be configured by editing [travis.yml](https://github.com/opentracing/opentracing.io/blob/master/.travis.yml).
+
+Once a pull request is merged, the deploy script will build and bundle the page and push it to the `gh-pages` branch. This will trigger Github to update our [Github Pages](https://pages.github.com/).
+
 1. Make sure PR builds properly
 1. Merge PR
 1. Wait for Travis to build and deploy changes to the `gh-pages` branch
