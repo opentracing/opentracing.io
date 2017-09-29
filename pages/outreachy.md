@@ -6,9 +6,9 @@ title: 'Outreachy'
 
 # Outreachy
 
-The OpenTracing and Jaeger projects are happy to announce our participation on the Outreachy program, running
+The OpenTracing and Jaeger projects are happy to announce our participation in the Outreachy program, running
 from December 2017 to March 2018. As part of this joint effort, we'll be collecting ideas for tasks related to
-OpenTracing, Jaeger or both.
+OpenTracing, Jaeger or both that would be appropriate for an intern to work on
 
 ## What is OpenTracing
 
@@ -24,7 +24,7 @@ starting point to understand what is Jaeger and how to start using it.
 ## Schedule
 - October 23: - application deadline
 - November 9: - selection decisions are made
-- December 5 - March 5: - internships
+- December 5 - March 5: - internship
 
 ## Coordination
 
@@ -37,7 +37,7 @@ OpenTracing or Jaeger, as both coordinators are present on both mailing lists:
 * [OpenTracing Mailing List](https://groups.google.com/forum/#!forum/opentracing)
 * [Jaeger Mailing List](https://groups.google.com/forum/#!forum/jaeger-tracing)
 
-Another option is to use Gitter:
+Another option is to use Gitter, which is the chat platform used by both the OpenTracing and Jaeger projects:
 
 * [OpenTracing Gitter Channel](http://gitter.im/opentracing/public)
 * [Jaeger Gitter Channel](https://gitter.im/jaegertracing/Lobby)
@@ -65,7 +65,7 @@ even better, volunteer for mentoring an intern during the work on your idea!
 
 ## Code of Conduct
 
-Both OpenTracing and Jaeger are part of the Cloud Native Computing Foundation (CNCF) and adopt its 
+Both OpenTracing and Jaeger are part of the Cloud Native Computing Foundation (CNCF) and have adopted its 
 [Code of Conduct](https://github.com/cncf/foundation/blob/master/code-of-conduct.md).
 
 {% include cncf-foundation.html %}
