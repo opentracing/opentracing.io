@@ -1,6 +1,6 @@
 ---
 permalink: /outreachy.html
-layout: default
+layout: page-containing-markup
 title: 'Outreachy'
 ---
 
@@ -12,13 +12,13 @@ OpenTracing, Jaeger or both that would be appropriate for an intern to work on
 
 ## What is OpenTracing
 
-OpenTracing is a vendor-neutral open standard for distributed tracing. For the motivation behind OpenTracing, 
-we recommend watching the presentations available at the page [Talks and Videos](/talks-and-videos)
+OpenTracing is a vendor-neutral open standard for distributed tracing. For the motivation behind OpenTracing,
+we recommend watching the presentations available at the page [Talks and Videos](/talks-and-videos).
 
 ## What is Jaeger
 
 Jaeger is a concrete set of tracers and a trace storage backend, for usage on applications and microservices
-instrumented with OpenTracing. Its [GitHub main readme](https://github.com/jaegertracing/jaeger) is a good 
+instrumented with OpenTracing. Its [GitHub main readme](https://github.com/jaegertracing/jaeger) is a good
 starting point to understand what is Jaeger and how to start using it.
 
 ## Schedule
@@ -31,7 +31,7 @@ starting point to understand what is Jaeger and how to start using it.
 * [Juraci Paixão Kröhling](https://github.com/jpkrohling)
 * [Gary Brown](https://github.com/objectiser)
 
-The coordinators can be contacted at any time. The easiest way is to send a message to the mailing list of either 
+The coordinators can be contacted at any time. The easiest way is to send a message to the mailing list of either
 OpenTracing or Jaeger, as both coordinators are present on both mailing lists:
 
 * [OpenTracing Mailing List](https://groups.google.com/forum/#!forum/opentracing)
@@ -65,7 +65,7 @@ even better, volunteer for mentoring an intern during the work on your idea!
 
 ## Code of Conduct
 
-Both OpenTracing and Jaeger are part of the Cloud Native Computing Foundation (CNCF) and have adopted its 
+Both OpenTracing and Jaeger are part of the Cloud Native Computing Foundation (CNCF) and have adopted its
 [Code of Conduct](https://github.com/cncf/foundation/blob/master/code-of-conduct.md).
 
 {% include cncf-foundation.html %}
