@@ -1,0 +1,41 @@
+@import '../variables';
+
+.markup {
+  margin: 40px auto;
+  width: 100vw;
+  max-width: ($max-width - 200px);
+  position: relative;
+  padding: 0 30px;
+  flex-wrap: wrap;
+  font-family: 'bariolthin';
+
+  a {
+    font-family: 'bariol';
+    color: $dark-blue;
+    font-weight: 400;
+  }
+
+  h1, h2 {
+    color: $dark-blue;
+    font-weight: bold;
+    font-size: 3.5rem;
+    text-align: center;
+    margin: 3rem 0 2rem;;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    text-align: left;
+  }
+
+  p {
+    margin-top: 10px;
+    font-weight: 500;
+    margin-top: 15px;
+  }
+
+  h1 + ul,
+  h2 + ul {
+    margin-top: -1.5em;
+  }
+}
