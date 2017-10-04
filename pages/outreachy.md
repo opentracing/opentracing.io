@@ -8,7 +8,10 @@ title: 'Outreachy'
 
 The OpenTracing and Jaeger projects are happy to announce our participation in the Outreachy program, running
 from December 2017 to March 2018. As part of this joint effort, we'll be collecting ideas for tasks related to
-OpenTracing, Jaeger or both that would be appropriate for an intern to work on
+OpenTracing, Jaeger or both that would be appropriate for an intern to work on.
+
+Please see the main [program page](https://outreachy.org) for the general information about the program, such
+as its purpose, timeline, eligibility requirements, and how to apply.
 
 ## What is OpenTracing
 
@@ -54,8 +57,56 @@ Interested in becoming a mentor? Contact one of the coordinators!
 
 ## Available tasks
 
-Coming soon. At this moment, we recommend looking at the following issue trackers for smaller tasks that might
-give a sense of what's coming:
+### Instrumentation for mobile applications
+
+Mentor: Gary Brown
+
+* Collect ideas on what's possible and what's desirable for mobile applications
+* Decide and experiment with different options for an optimized mobile experience, like, which sampling strategies
+make more sense
+* Create the missing pieces, like OpenTracing framework integration for some Android component, or a specific Jaeger
+tracer for mobile usage
+* Documentation + examples
+* The end result would be: a trace starts when a user opens the app on the phone and backend microservices are called
+
+### Split the JavaScript OT library: NodeJS and Browser
+
+Mentor: Pavol Loffay
+
+* HttpSender which works in a web browser
+* Intercept web browser events (maybe can be done as OpenTracing instrumentation)
+
+### Drive consensus on a common format for reporting trace/span data
+
+Mentor: Gary Brown
+
+### OpenTracing MockTracer JUnit rule.
+
+Mentor: Pavol Loffay
+
+* Clear reported spans between tests. Automatically assert on errors.
+
+### Move community Jaeger tracers to the jaegertracing organization.
+
+Mentor: Gary Brown
+
+* This task include writing xdock tests, missing reporters..
+
+### Create OpenTracing API for language not currently supported
+
+Mentor: Pavol Loffay
+
+* For instance, for missing Android parts.
+
+### Write Jaeger tracer implementation for any OpenTracing API.
+
+Mentor: Gary Brown
+
+* C#
+* Kotlin for Android
+
+Additionally to the tasks above, we recommend looking at the following issue trackers. You might want to pick
+an easy one before applying, to get a better sense of what the projects are about.
 
 * [OpenTracing issue tracker](https://github.com/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+org%3Aopentracing)
 * [Jaeger issue tracker](https://github.com/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+org%3Ajaegertracing)
