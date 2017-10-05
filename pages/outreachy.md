@@ -115,7 +115,7 @@ Desired skills: Java
 
 Mentor: Gary Brown
 
-This task include writing xdock tests, missing reporters. Candidates include:
+This task include writing integration tests, missing reporters. Candidates include:
 
 * [Ruby](https://github.com/salemove/jaeger-client-ruby)
 * [PHP](https://github.com/jukylin/jaeger-php)
