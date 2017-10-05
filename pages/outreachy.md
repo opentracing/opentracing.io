@@ -69,16 +69,39 @@ tracer for mobile usage
 * Documentation + examples
 * The end result would be: a trace starts when a user opens the app on the phone and backend microservices are called
 
-### Split the JavaScript OT library: NodeJS and Browser
+Desired skills: Java
+
+Optional skills: Building android applications
+
+### Split the Jaeger JavaScript OT library: NodeJS and Browser
 
 Mentor: Pavol Loffay
 
 * HttpSender which works in a web browser
 * Intercept web browser events (maybe can be done as OpenTracing instrumentation)
 
-### Drive consensus on a common format for reporting trace/span data
+Desired skills: Javascript
+
+### Document the feasibility or infeasibility of candidate format standards for trace/span data
 
 Mentor: Gary Brown
+
+The OpenTracing standard provides a programmatic API to enable applications to report tracing data in a vendor
+neutral way. Applications bind to tracing system specific tracers which report the tracing data to their own
+backend system in a vendor specific format.
+
+In some situations it would also be desirable to have a vendor neutral tracer bound in the application, reporting
+the tracing data in a standard format, which can then be consumed by different tracing systems.
+
+This project will be to conduct a survey of existing potential standard formats and document their suitability
+to represent the information captured via the OpenTracing API. The project will also include the development of
+a tracer (in any OpenTracing API supported language) to report the standard format, and a backend adapter
+to convert it for storage in Jaeger (written as a gateway in language of choice - although Go preferred).
+
+Desired skills: Any programming language with an OpenTracing API
+
+Optional skills: Go preferred for backend adapter, although will initially be implemented as separate gateway so other
+languages could be used.
 
 ### OpenTracing MockTracer JUnit rule.
 
@@ -86,11 +109,18 @@ Mentor: Pavol Loffay
 
 * Clear reported spans between tests. Automatically assert on errors.
 
+Desired skills: Java
+
 ### Move community Jaeger tracers to the jaegertracing organization.
 
 Mentor: Gary Brown
 
-* This task include writing xdock tests, missing reporters..
+This task include writing integration tests, missing reporters. Candidates include:
+
+* [Ruby](https://github.com/salemove/jaeger-client-ruby)
+* [PHP](https://github.com/jukylin/jaeger-php)
+
+Desired skills: Proficiency in the relevant language
 
 ### Create OpenTracing API for language not currently supported
 
@@ -98,12 +128,30 @@ Mentor: Pavol Loffay
 
 * For instance, for missing Android parts.
 
+Desired skills: Proficiency in the chosen language
+
 ### Write Jaeger tracer implementation for any OpenTracing API.
 
 Mentor: Gary Brown
 
 * C#
 * Kotlin for Android
+
+Desired skills: Proficiency in the chosen language
+
+
+### Conformance Test Suite for OpenTracing API
+
+Mentor: Pavol Loffay
+
+This project will provide a Conformance Test Suite for the OpenTracing API. This will involve:
+
+* Defining the conformance tests to be implemented
+* For one or more languages, implementing the tests
+* Demonstrate use of the test suite against multiple tracers
+
+Desired skills: Proficiency in the chosen language(s)
+
 
 Additionally to the tasks above, we recommend looking at the following issue trackers. You might want to pick
 an easy one before applying, to get a better sense of what the projects are about.
