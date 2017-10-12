@@ -55,6 +55,28 @@ the mailing lists or Gitter channels.
 
 Interested in becoming a mentor? Contact one of the coordinators!
 
+## Contribute
+
+As part of the application process, the Outreachy program recommends that candidates make 
+[small contributions](https://www.outreachy.org/apply/make-contributions/) to the project they intend to apply for.
+
+The following [GitHub query](https://github.com/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+org%3Aopentracing+org%3Aopentracing-contrib+org%3Ajaegertracing+label%3Aoutreachy+) 
+gives a non-comprehensive list of tasks that might be suitable for that:
+
+`is:open is:issue org:opentracing org:opentracing-contrib org:jaegertracing label:outreachy`
+
+As a general rule, though, candidates are free to choose any issue within any repository belonging to the
+following organizations:
+
+* [opentracing](https://github.com/opentracing/)
+* [opentracing-contrib](https://github.com/opentracing-contrib/)
+* [jaegertracing](https://github.com/jaegertracing/)
+
+[All the issues](https://github.com/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+org%3Aopentracing+org%3Aopentracing-contrib+org%3Ajaegertracing) 
+from these three organizations can be seen with this query:
+
+`is:open is:issue org:opentracing org:opentracing-contrib org:jaegertracing`
+
 ## Available tasks
 
 ### Instrumentation for mobile applications
@@ -69,9 +91,9 @@ tracer for mobile usage
 * Documentation + examples
 * The end result would be: a trace starts when a user opens the app on the phone and backend microservices are called
 
-Desired skills: Java
+Desired skills: Android, Java
 
-Optional skills: Building android applications
+Optional skills: Building android applications, Kotlin
 
 ### Split the Jaeger JavaScript OT library: NodeJS and Browser
 
