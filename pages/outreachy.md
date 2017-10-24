@@ -25,7 +25,7 @@ instrumented with OpenTracing. Its [GitHub main readme](https://github.com/jaege
 starting point to understand what is Jaeger and how to start using it.
 
 ## Schedule
-- October 23: - application deadline
+- October ~~23~~ 30: - application deadline
 - November 9: - selection decisions are made
 - December 5 - March 5: - internship
 
