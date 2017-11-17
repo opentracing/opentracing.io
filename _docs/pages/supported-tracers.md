@@ -2,7 +2,7 @@
 
 ## Zipkin
 
-[Zipkin](http://zipkin.io/) supports OpenTracing in various languages via community contributions. There is an experimental [bridge from Brave (Zipkin Java) instrumentation to OpenTracing](https://github.com/openzipkin/brave-opentracing) and a [Go implementation zipkin-go-opentracing](https://github.com/openzipkin/zipkin-go-opentracing). Some of Jaeger's client libraries (see below) can be configured to be compatible with Zipkin backend and wire format.
+[Zipkin](http://zipkin.io/) supports OpenTracing in various languages via community contributions. There is an experimental [bridge from Brave (Zipkin Java) instrumentation to OpenTracing](https://github.com/openzipkin/brave-opentracing), a [Javascript implementation](https://github.com/costacruise/zipkin-javascript-opentracing) and a [Go implementation zipkin-go-opentracing](https://github.com/openzipkin/zipkin-go-opentracing). Some of Jaeger's client libraries (see below) can be configured to be compatible with Zipkin backend and wire format.
 
 ## Jaeger
 
