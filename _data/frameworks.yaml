@@ -27,3 +27,7 @@ array:
   - name: Hprose
     url: http://hprose.com
     icon: img/frameworks/hprose.svg
+    
+  - name: ShardingJDBC
+    url: https://github.com/shardingjdbc/sharding-jdbc
+    icon: img/frameworks/sharding_jdbc.png
