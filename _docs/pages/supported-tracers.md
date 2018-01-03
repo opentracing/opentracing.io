@@ -36,7 +36,7 @@ For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/app
 
 ## Apache SkyWalking
 
-[Apache SkyWalking](https://github.com/apache/incubator-skywalking) is an APM (application performance monitor) tool for distributed systems, especially designed for microservices, cloud native and container-based (Docker, K8s, Mesos) architectures. Underlying technology is a distributed tracing system. The SkyWalking javaagent is interoperable with OpenTracing-java APIs.
+[Apache SkyWalking](https://github.com/apache/incubator-skywalking) is an APM (application performance monitor) tool for distributed systems, specially designed for microservices, cloud native and container-based (Docker, K8s, Mesos) architectures. Underlying technology is a distributed tracing system. The SkyWalking javaagent is interoperable with OpenTracing-java APIs.
 
 ## inspectIT
 
