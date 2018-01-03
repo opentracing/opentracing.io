@@ -6,7 +6,7 @@
 
 ## Jaeger
 
-[Jaeger \\ˈyā-gər\\](http://uber.github.io/jaeger) is Uber's distributed tracing system, built with OpenTracing support from inception. Jaeger includes OpenTracing client libraries in several languages: [Java](https://github.com/uber/jaeger-client-java), [Go](https://github.com/uber/jaeger-client-go), [Python](https://github.com/uber/jaeger-client-python), and [Node.js](https://github.com/uber/jaeger-client-node).
+[Jaeger \\ˈyā-gər\\](http://jaegertracing.io) is Uber's distributed tracing system, built with OpenTracing support from inception. Jaeger includes OpenTracing client libraries in several languages: [Java](https://github.com/uber/jaeger-client-java), [Go](https://github.com/uber/jaeger-client-go), [Python](https://github.com/uber/jaeger-client-python), [Node.js](https://github.com/uber/jaeger-client-node), and [C++](https://github.com/jaegertracing/cpp-client).
 
 
 ## Appdash
