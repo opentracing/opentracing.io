@@ -31,3 +31,7 @@ array:
   - name: Sourcegraph
     url: https://sourcegraph.com/
     icon: img/companies/sourcegraph.png
+
+  - name: Stream
+    url: https://getstream.io/
+    icon: img/companies/stream.png
