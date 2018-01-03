@@ -35,9 +35,9 @@ For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/app
 [Python](https://github.com/instana/python-sensor/blob/master/README.md) and
 [Ruby](https://github.com/instana/ruby-sensor/blob/master/README.md). The Instana OpenTracing tracers are interoperable with the other Instana out of the box tracers for .Net, Crystal, Java, Scala, NodeJs, PHP, Python and Ruby.
 
-## sky-walking
+## Apache SkyWalking
 
-[sky-walking](https://github.com/wu-sheng/sky-walking) is an open-source tracer in Java, based on auto-instrumentation mechanism. Support OpenTracing-Java by [sky-walking application toolkit](https://github.com/wu-sheng/sky-walking/wiki/sky-walking-application-toolkit).
+[Apache SkyWalking](https://github.com/apache/incubator-skywalking) is an APM (application performance monitor) tool for distributed systems, specially designed for microservices, cloud native and container-based (Docker, K8s, Mesos) architectures. Underlying technology is a distributed tracing system. The SkyWalking javaagent is interoperable with OpenTracing-java APIs.
 
 ## inspectIT
 
