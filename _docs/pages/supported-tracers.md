@@ -4,9 +4,10 @@
 
 [Zipkin](http://zipkin.io/) supports OpenTracing in various languages via community contributions. There is an experimental [bridge from Brave (Zipkin Java) instrumentation to OpenTracing](https://github.com/openzipkin/brave-opentracing), a [Javascript implementation](https://github.com/costacruise/zipkin-javascript-opentracing) and a [Go implementation zipkin-go-opentracing](https://github.com/openzipkin/zipkin-go-opentracing). Some of Jaeger's client libraries (see below) can be configured to be compatible with Zipkin backend and wire format.
 
-## Jaeger
 
-[Jaeger \\ˈyā-gər\\](http://jaegertracing.io) is Uber's distributed tracing system, built with OpenTracing support from inception. Jaeger includes OpenTracing client libraries in several languages: [Java](https://github.com/uber/jaeger-client-java), [Go](https://github.com/uber/jaeger-client-go), [Python](https://github.com/uber/jaeger-client-python), [Node.js](https://github.com/uber/jaeger-client-node), and [C++](https://github.com/jaegertracing/cpp-client).
+## CNCF Jaeger
+
+[Jaeger \\ˈyā-gər\\](http://jaegertracing.io) is a distributed tracing system, originally open sourced by [Uber Technologies](https://eng.uber.com/distributed-tracing/). It provides distributed context propagation, distributed transaction monitoring, root cause analysis, service dependency analysis, and performance / latency optimization. Built with OpenTracing support from inception, Jaeger includes OpenTracing client libraries in several languages, including [Java](https://github.com/uber/jaeger-client-java), [Go](https://github.com/uber/jaeger-client-go), [Python](https://github.com/uber/jaeger-client-python), [Node.js](https://github.com/uber/jaeger-client-node), and [C++](https://github.com/jaegertracing/cpp-client). It is a [Cloud Native Computing Foundation](https://www.cncf.io/) member project.
 
 
 ## Appdash
