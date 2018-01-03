@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - '4.6.0'
 before_install:
-  - rvm install 2.1.0
+  - rvm install 2.2.5
 install:
   - gem install jekyll:3.6.2
   - npm install
