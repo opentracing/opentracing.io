@@ -40,3 +40,6 @@ array:
     url: http://www.stagemonitor.org/
     icon: img/tracers/stagemonitor.png
 
+  - name: datadog
+    url: https://www.datadoghq.com/
+    icon: img/tracers/datadog.png
