@@ -73,9 +73,9 @@ $logo-bar-scale: 14px;
       }
 
       img, svg {
-          max-width: $logo-bar-scale * 8;
-          height: $logo-bar-scale;
-          max-height: $logo-bar-scale * 1.25;
+        max-width: $logo-bar-scale * 8;
+        height: $logo-bar-scale;
+        max-height: $logo-bar-scale * 1.25;
 
         &[src*="flask.svg"] {
           max-height: $logo-bar-scale * 1.25;
@@ -88,6 +88,11 @@ $logo-bar-scale: 14px;
         &[src*="zipkin_small.png"],
         &[src*="instana"] {
           max-height: $logo-bar-scale * 0.8;
+        }
+
+        &[src*="datadog.png"] {
+          max-height: $logo-bar-scale * 1.3;
+          height: $logo-bar-scale + 8;
         }
 
         &[src*="appdash.png"] {
