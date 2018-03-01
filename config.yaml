@@ -1,6 +1,5 @@
 title: The OpenTracing project
 baseURL: /
-theme: tracer
 
 params:
   description: Consistent, expressive, vendor-neutral APIs for distributed tracing and context propagation
