@@ -2,6 +2,7 @@
 <html lang="{{ .Site.LanguageCode }}">
   <head>
     <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+    {{ partial "head.html" . }}
   </head>
   <body>
     {{ block "main" . }}
