@@ -1,10 +1,18 @@
 {{ define "main" }}
 <ul>
   <h1>{{ .Data.Plural | title }}</h1>
-  {{ range .Data.Pages }}
-  {{ .Render "li" }}
+  {{ range $key, $value := .Data.Terms.Alphabetical }}
+  {{ $url := printf "/%s/%s" $.Data.Plural $value.Name }}
+  <li><a href="{{ $url }}">{{ $value.Name }}</a> ({{ $value.Count }})</li>
   {{ end }}
 
-  {{ .Content }}
+  <h4>Other taxonomies</h4>
+  <ul>
+    {{ range $key, $value := .Site.Taxonomies }}
+    {{ if ne $key $.Data.Plural }}
+    <li><a href="/{{ $key }}">{{ $key | title }}</a></li>
+    {{ end }}
+    {{ end }}
+  </ul>
 </ul>
 {{ end }}
