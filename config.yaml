@@ -4,3 +4,5 @@ languageCode: en-us
 
 params:
   description: Consistent, expressive, vendor-neutral APIs for distributed tracing and context propagation
+  assets:
+    js:
