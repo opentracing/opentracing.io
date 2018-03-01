@@ -1,10 +1,8 @@
 {{ define "main" }}
+<h1>Pages with the {{ .Data.Singular }} {{ .Data.Term }}</h1>
 <ul>
-  <h1>{{ .Section | title }}</h1>
   {{ range .Data.Pages }}
   {{ .Render "li" }}
   {{ end }}
-
-  {{ .Content }}
 </ul>
 {{ end }}
