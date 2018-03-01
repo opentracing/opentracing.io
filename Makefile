@@ -1,11 +1,14 @@
 HUGO  := hugo
 THEME := tracer
 
-build:
+clean:
+	rm -rf public
+
+build: clean
 	ENV=production $(HUGO) \
 		--theme $(THEME)
 
-serve:
+serve: clean
 	ENV=development	$(HUGO) serve \
 		--theme $(THEME) \
 		--buildFuture \
