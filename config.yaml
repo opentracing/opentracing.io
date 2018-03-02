@@ -3,8 +3,8 @@ baseURL: /
 languageCode: en-us
 
 taxonomies:
-  tag: "tags"
-  category: "categories"
+  tag: tags
+  category: categories
 
 params:
   description: Consistent, expressive, vendor-neutral APIs for distributed tracing and context propagation
