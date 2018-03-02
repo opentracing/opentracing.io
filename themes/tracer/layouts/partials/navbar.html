@@ -1,0 +1,6 @@
+<ul>
+  {{ range .Site.Data.navbar.links }}
+  <li><a href="{{ .url }}">{{ .title }}</a></li>
+  {{ end }}
+</ul>
+<hr />
