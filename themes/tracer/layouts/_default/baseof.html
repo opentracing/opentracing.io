@@ -3,11 +3,11 @@
   <head>
     <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
     {{ partial "head.html" . }}
+    {{ partial "seo.html" . }}
   </head>
   <body>
     {{ partial "navbar.html" . }}
-    {{ block "main" . }}
-    {{ end }}
+    {{ block "main" . }}{{ end }}
 
     {{ partial "javascript.html" . }}
   </body>

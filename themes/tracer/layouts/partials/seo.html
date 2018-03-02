@@ -1,0 +1,17 @@
+{{ $keywords := .Params.keywords }}
+{{ with $keywords }}<meta property="keywords" content="{{ delimit . ", " }}" />{{ end }}
+
+<!-- OpenGraph -->
+<meta property="og:title" content="{{ .Title }}" />
+{{ with .Description }}<meta property="og:description" content="{{ . }}" />{{ end }}
+{{ $type := cond (isset .Params "type") .Params.type "website" }}<meta proerty="og:type" content="{{ $type }}" />
+<meta property="og:url" content="{{ .Permalink }}" />
+
+<!-- schema.org -->
+<meta itemprop="name" content="{{ .Title }}">
+{{ with .Description }}<meta itemprop="description" content="{{ . }}" />{{ end }}
+{{ with $keywords }}<meta itemprop="keywords" content="{{ delimit . ", "}}" />{{ end }}
+<meta itemprop="wordCount" content="{{ .WordCount }}" />
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="{{ .Title }}"/>
