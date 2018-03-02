@@ -5,11 +5,11 @@ clean:
 	rm -rf public
 
 build: clean
-	ENV=production $(HUGO) \
+	$(HUGO) \
 		--theme $(THEME)
 
 serve: clean
-	ENV=development	$(HUGO) serve \
+	$(HUGO) serve \
 		--theme $(THEME) \
 		--buildFuture \
 		--buildDrafts \
