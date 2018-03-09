@@ -83,7 +83,7 @@ See [CONTRIBUTING.md](https://github.com/opentracing/opentracing.io/blob/master/
 * Fork the Repo [opentracing/opentracing.io](https://github.com/opentracing/opentracing.io)
 * Clone the Repo
 * Explore the [project structure](https://github.com/opentracing/opentracing.io/blob/master/CONTRIBUTING.md#project-structure)
-* Run opentracing.io locally
+* Run opentracing.io [locally](https://github.com/opentracing/opentracing.io/blob/master/CONTRIBUTING.md#running-opentracing.io-locally)
 * Create a branch
 * Make a small change to a document/page (find a typo, spelling, or grammar error)
 * Write a good commit message
@@ -116,7 +116,7 @@ Write a README file that includes at least the following information:
 
 1. The name of the repository.
 1. A short description of what is in the repository
-1. The license that the covers the contents of the repository.
+1. The license that covers the contents of the repository.
 
 ## Internship tasks
 
@@ -189,7 +189,7 @@ Monitor communication channels and issues and add new topics to the [FAQ](https:
 
 OpenTracing and Jaeger participated in the following Outreachy programs:
 
-* [December 2017 to March 2018](/outreachy-201702)
+* [December 2017 to March 2018](https://github.com/opentracing/opentracing.io/blob/master/pages/outreachy-201702.md)
 
 ## Code of Conduct
 
