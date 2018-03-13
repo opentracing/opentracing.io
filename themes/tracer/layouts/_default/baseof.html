@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
   <head>
-    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+    <title>{{ block "title" . }}{{ $pageTitle := cond (eq .Kind "home") .Site.Title .Title }}{{ $pageTitle }}{{ end }}</title>
     {{ partial "head.html" . }}
     {{ partial "seo.html" . }}
+    {{ partial "css.html" . }}
   </head>
   <body>
-    {{ partial "navbar.html" . }}
+    {{ partial "header.html" . }}
     {{ block "main" . }}{{ end }}
 
     {{ partial "javascript.html" . }}
