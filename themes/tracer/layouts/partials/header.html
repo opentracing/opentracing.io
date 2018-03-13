@@ -1,6 +1,99 @@
-<ul>
-  {{ range .Site.Data.navbar.links }}
-  <li><a href="{{ .url }}">{{ .title }}</a></li>
-  {{ end }}
-</ul>
-<hr />
+<header class="header">
+  <div class="header__container">
+    <div class="header__logo">
+      <a href="/"><img src="/img/logo.png"></a>
+    </div>
+    <div class="header__actions">
+      <div class="dropdown">
+        <a class="dropdown__button" href="/documentation">Docs</a>
+        <div class="dropdown__content docs">
+
+        </div>
+      </div>
+      <div class="dropdown">
+        <a class="dropdown__button" href="https://github.com/opentracing">Github</a>
+        <div class="dropdown__content language">
+
+          <hr/>
+          <a href="https://github.com/opentracing-contrib/meta">Contributions</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <a class="dropdown__button" href="/documentation">Community</a>
+        <div class="dropdown__content docs">
+
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <a class="dropdown__button" href="/documentation">Getting Started</a>
+        <div class="dropdown__content docs">
+
+        </div>
+      </div>
+
+      <a href="https://medium.com/opentracing">Blog</a>
+    </div>
+    <div class="header__actions right">
+      <a class="button white" href="https://groups.google.com/forum/#!forum/opentracing">Join the mailing list</a>
+    </div>
+  </div>
+
+  <div class="header__container__mobile">
+    <div class="header__logo">
+      <a href="http://opentracing.io"><img src="/img/logo.png"></a>
+    </div>
+    <div class="header__hamburger__button">☰</div>
+    <div class="dropdown__content mobile">
+      <div class="header__close__button">✕</div>
+
+      <h3>Docs</h3>
+
+
+      <h3>Github</h3>
+
+
+      <h3>Community</h3>
+
+
+      <h3>Getting Started</h3>
+
+      <hr/>
+      <a href="https://github.com/opentracing-contrib/meta">Contributions</a>
+
+      <h3>Mailing List</h3>
+      <a href="https://groups.google.com/forum/#!forum/opentracing">Join!</a>
+    </div>
+  </div>
+</header>
+
+<script type="text/javascript">
+
+var _mobileMenuVisible = false;
+var _mobileMenuContent = document.querySelector('.header__container__mobile');
+var _openButton = document.querySelector('.header__hamburger__button');
+var _closeButton = document.querySelector('.header__close__button');
+
+function setState(state, classList) {
+  _mobileMenuContent.setAttribute('class', classList);
+  _mobileMenuVisible = state;
+}
+
+_openButton.addEventListener('click', function() {
+  var classes = _mobileMenuContent.getAttribute('class')
+
+  if(!_mobileMenuVisible) {
+    setState(true, classes + ' active ');
+  }
+})
+
+_closeButton.addEventListener('click', function() {
+  var classes = _mobileMenuContent.getAttribute('class')
+
+  if(_mobileMenuVisible) {
+    setState(false, classes.replace(' active ', '') );
+  }
+})
+
+</script>
