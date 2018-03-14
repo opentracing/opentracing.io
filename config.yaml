@@ -2,6 +2,7 @@ title: The OpenTracing project
 baseURL: /
 languageCode: en-us
 enableRobotsTXT: true
+theme: tracer
 
 taxonomies:
   tag: tags
