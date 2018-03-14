@@ -6,7 +6,7 @@
 
 The audience for this guide are developers interested in adding [OpenTracing](http://opentracing.io/) instrumentation to a web, RPC, or other framework that makes requests and/or receives responses. This instrumentation makes it easy for developers using the framework to incorporate end-to-end (distributed) tracing.
 
-Distributed tracing provides insight about individual requests as they propagate throughout a system. OpenTracing is an open-source standard API for consistent distributed tracing of requests across processes, from web and mobile client platforms to the storage systems and custom backends at the bottom of an application stack. Once OpenTracing integrates across  the entire application stack, it’s easy to trace requests across the distributed system. This allows developers and operators much-needed visibility optimize and stabilize production services.
+Distributed tracing provides insight about individual requests as they propagate throughout a system. OpenTracing is an open-source standard API for consistent distributed tracing of requests across processes, from web and mobile client platforms to the storage systems and custom backends at the bottom of an application stack. Once OpenTracing integrates across  the entire application stack, it’s easy to trace requests across the distributed system. This allows developers and operators much-needed visibility to optimize and stabilize production services.
 
 Before you begin, check [here](/pages/api/api-implementations) to make sure that there's a working OpenTracing API for your platform.
 
