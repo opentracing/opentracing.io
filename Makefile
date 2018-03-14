@@ -3,13 +3,22 @@ THEME := tracer
 THEME_DIR := themes/$(THEME)
 NODE_BIN := node_modules/.bin
 GULP := $(NODE_BIN)/gulp
+FIREBASE_PROJECT := opentracing-website
+FIREBASE_URL := https://$(FIREBASE_PROJECT).firebaseapp.com
+FIREBASE := $(NODE_BIN)/firebase
 
 clean:
 	rm -rf public
 
-build: clean
+build: clean build-assets
 	$(HUGO) \
 		--theme $(THEME)
+
+deploy: clean build-assets
+	$(HUGO) \
+		--theme $(THEME) \
+		--baseURL $(FIREBASE_URL)
+
 
 serve: clean
 	$(HUGO) serve \
@@ -17,6 +26,9 @@ serve: clean
 		--buildFuture \
 		--buildDrafts \
 		--disableFastRender
+
+build-assets:
+	(cd $(THEME_DIR) && $(GULP) build)
 
 develop-assets:
 	(cd $(THEME_DIR) && $(GULP) dev)
