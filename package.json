@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "firebase-tools": "^3.17.6"
+  }
+}

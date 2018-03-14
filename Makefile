@@ -18,6 +18,10 @@ deploy: clean build-assets
 	$(HUGO) \
 		--theme $(THEME) \
 		--baseURL $(FIREBASE_URL)
+	$(FIREBASE) deploy \
+		--only hosting \
+		--token $(FIREBASE_TOKEN) \
+		--project $(FIREBASE_PROJECT)
 
 
 serve: clean
