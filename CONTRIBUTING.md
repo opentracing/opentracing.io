@@ -88,5 +88,5 @@ Jekyll temp folder when running `jekyll serve`. You can ignore this.
 static content.
 
 #### css, documentation
-post-build static assets. don't edit these.
+post-build static assets. Don't edit these.
 
