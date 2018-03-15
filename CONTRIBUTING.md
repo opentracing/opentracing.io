@@ -14,6 +14,9 @@ You need to have [Node.js](https://nodejs.org/en/), [NVM](https://github.com/cre
 $ node --version
 v4.6.0
 
+$ nvm --version
+0.33.0
+
 $ npm --version
 2.15.9
 
