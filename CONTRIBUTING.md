@@ -1,4 +1,4 @@
-CONTRIBUTING
+#Hereby I start contributing.
 ============
 
 Contributions are always welcome, no matter how large or small. Before contributing,
@@ -40,6 +40,7 @@ $ npm install
 ## Running opentracing.io locally
 
 ```
+
 $ npm run dev
 $ open http://localhost:4000
 ```
