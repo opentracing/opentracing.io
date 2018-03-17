@@ -11,3 +11,9 @@ Contributions are always welcome, no matter how large or small. Before contribut
 please read the [code of conduct](code-of-conduct.md).
 
 See [Contributing](CONTRIBUTING.md).
+
+## License
+
+Copyright (c) 2016 The OpenTracing Authors.
+
+Licensed under the [Apache License](LICENSE.md), Version 2.0.
