@@ -14,6 +14,6 @@ See [Contributing](CONTRIBUTING.md).
 
 ## License
 
-Copyright (c) 2016 The OpenTracing Authors.
+Copyright (c) 2016-present, The OpenTracing Authors.
 
 Licensed under the [Apache License](LICENSE.md), Version 2.0.
