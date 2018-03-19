@@ -1,33 +1,33 @@
 docs:
-  - localUrl: /documentation/pages/quick-start
+  - localUrl: /documentation/quick-start
     name: Quick Start
 
-  - localUrl: /documentation/pages/spec
+  - localUrl: /documentation/spec
     name: Concepts and Terminology
 
-  - localUrl: /documentation/pages/api/index
+  - localUrl: /documentation/api
     name: APIs
 
-  - localUrl: /documentation/pages/instrumentation/index
+  - localUrl: /documentation/instrumentation/index
     name: Best Practices
 
-  - localUrl: /documentation/pages/authors-and-contributors
+  - localUrl: /documentation/authors-and-contributors
     name: Authors and Contributors
 
-  - localUrl: /documentation/pages/supported-tracers
+  - localUrl: /documentation/supported-tracers
     name: Supported Tracers
 
-  - localUrl: /documentation/pages/translations
+  - localUrl: /documentation/translations
     name: Translations
 
 gettingStarted:
-  - localUrl: /documentation/pages/quick-start.html
+  - localUrl: /documentation/quick-start
     name: A QuickStart Guide to OpenTracing
 
-  - localUrl: /documentation/pages/instrumentation/instrumenting-frameworks.html
+  - localUrl: /documentation/instrumentation/instrumenting-frameworks
     name: Framework and Library Maintainers
 
-  - localUrl: /documentation/pages/supported-tracers.html
+  - localUrl: /documentation/supported-tracers
     name: Available Tracers, Frameworks and Libraries
 
 community:
