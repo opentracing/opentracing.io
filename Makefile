@@ -3,6 +3,7 @@ THEME := tracer
 THEME_DIR := themes/$(THEME)
 NODE_BIN := node_modules/.bin
 GULP := $(NODE_BIN)/gulp
+CONCURRENTLY := $(NODE_BIN)/concurrently
 FIREBASE_PROJECT := opentracing-website
 FIREBASE_URL := https://$(FIREBASE_PROJECT).firebaseapp.com
 FIREBASE := $(NODE_BIN)/firebase
@@ -36,6 +37,9 @@ build-assets:
 
 develop-assets:
 	(cd $(THEME_DIR) && $(GULP) dev)
+
+dev:
+	$(CONCURRENTLY) "make serve" "make develop-assets"
 
 setup:
 	yarn

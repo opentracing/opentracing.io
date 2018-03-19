@@ -1,0 +1,19 @@
+<section class="hero landing-page">
+  <div class="hero__content">
+
+    {{ partial "home/bash-window.html" . }}
+
+    <section class="hero__copy">
+      <a href="/outreachy">OpenTracing joins the Outreachy internship program!</a>
+      <h1 class="bariol-thin">A vendor-neutral open standard for distributed tracing.</h1>
+      <h2 class="dark-blue">Libraries available in {{ len .Site.Data.language.array }} languages</h2>
+      <p class="dark-blue">
+      {{- range $idx, $elem := .Site.Data.language.array }}
+      <a href="{{ $elem.url }}">{{ $elem.name }}</a>{{ if ne (add $idx 1) (len $.Site.Data.language.array) }},{{ end }}
+      {{- end }}
+      </p>
+    </section>
+  </div>
+
+  {{ partial "home/logo-bar.html" . }}
+</section>

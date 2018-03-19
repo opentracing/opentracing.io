@@ -1,0 +1,9 @@
+<section class="companies">
+  <div class="companies__content">
+    <div class="companies__logos">
+      {{- range .Site.Data.companies.array }}
+      <a href="{{ .url }}"><img src="{{ .icon }}" alt=""></a>
+      {{- end }}
+    </div>
+  </div>
+</section>

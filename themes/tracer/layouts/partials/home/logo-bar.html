@@ -1,30 +1,29 @@
 <section class="logo-bar logo-bar--bottom">
   <div class="logo-bar__content">
     <div class="logo-bar__logos tracers">
-      {% for tracer in site.data.tracers.array %}
-        <a href="{{tracer.url}}">
-          {% if tracer.icon %}
-            <img src="{{ tracer.icon }}" alt="{{ tracer.name }} logo">
-          {% else %}
-            {{ tracer.name }}
-          {% endif %}
-        </a>
-      {% endfor %}
+      {{- range .Site.Data.tracers.array }}
+      <a href="{{ .url }}">
+        {{- if .icon }}
+        <img src="{{ .icon }}" alt="{{ .name }} logo">
+        {{- else }}
+        {{ .name }}
+        {{- end }}
+      </a>
+      {{- end }}
     </div>
     <div class="logo-bar__logos frameworks">
-      {% for framework in site.data.frameworks.array %}
-        <a href="{{framework.url}}">
-          {% if framework.icon %}
-            <img src="{{ framework.icon }}" alt="{{ framework.name }} logo">
-          {% else %}
-            {{ framework.name }}
-          {% endif %}
-        </a>
-      {% endfor %}
+      {{- range .Site.Data.frameworks.array }}
+      <a href="{{ .url }}">
+        {{- if .icon }}
+        <img src="{{ .icon }}" alt="{{ .name }} logo">
+        {{- else }}
+        {{ .name }}
+        {{- end }}
+      </a>
+      {{- end }}
     </div>
   </div>
 </section>
-
 
 <script>
 function Carousel(selector, perSlide) {

@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "concurrently": "^3.5.1",
     "firebase-tools": "^3.17.6"
   }
 }
