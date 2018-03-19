@@ -7,13 +7,21 @@
       <div class="dropdown">
         <a class="dropdown__button" href="/documentation">Docs</a>
         <div class="dropdown__content docs">
-
+          {{- range .Site.Data.links.docs }}
+          {{- if .url }}
+          <a href="{{ .url }}">{{ .name }}</a>
+          {{- else }}
+          <a href="{{ .localUrl }}">{{ .name }}</a>
+          {{- end }}
+          {{- end }}
         </div>
       </div>
       <div class="dropdown">
         <a class="dropdown__button" href="https://github.com/opentracing">Github</a>
         <div class="dropdown__content language">
-
+          {{- range .Site.Data.language.array }}
+          <a href="{{ .url }}">{{ .name }}</a>
+          {{- end }}
           <hr/>
           <a href="https://github.com/opentracing-contrib/meta">Contributions</a>
         </div>
@@ -22,14 +30,26 @@
       <div class="dropdown">
         <a class="dropdown__button" href="/documentation">Community</a>
         <div class="dropdown__content docs">
-
+          {{- range .Site.Data.links.community }}
+          {{- if .url }}
+          <a href="{{ .url }}">{{ .name }}</a>
+          {{- else }}
+          <a href="{ .localUrl }}">{{ .name }}</a>
+          {{- end }}
+          {{- end }}
         </div>
       </div>
 
       <div class="dropdown">
         <a class="dropdown__button" href="/documentation">Getting Started</a>
         <div class="dropdown__content docs">
-
+          {{- range .Site.Data.links.gettingStarted }}
+          {{- if .url }}
+          <a href="{{ .url }}">{{ .name }}</a>
+          {{- else }}
+          <a href="{ .localUrl }}">{{ .name }}</a>
+          {{- end }}
+          {{- end }}
         </div>
       </div>
 
