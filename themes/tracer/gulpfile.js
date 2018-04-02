@@ -8,6 +8,7 @@ var gulp     = require("gulp"),
 
 var SRCS = {
   scss: ["source/scss/style.scss"],
+  scssWatch: ["source/scss/**/*.scss"],
   js: ["node_modules/anchor-js/anchor.js", "source/js/app.js"]
 }
 
@@ -30,7 +31,7 @@ gulp.task('sass', (done) => {
 });
 
 gulp.task('sass:watch', () => {
-  gulp.watch(SRCS.scss, gulp.series('sass'));
+  gulp.watch(SRCS.scssWatch, gulp.series('sass'));
 });
 
 gulp.task('js', (done) => {
