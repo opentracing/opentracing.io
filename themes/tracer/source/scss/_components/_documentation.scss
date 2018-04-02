@@ -1,0 +1,20 @@
+@import '../variables';
+
+.documentation {
+  position: relative;
+  width: 100%;
+  display: block;
+  z-index: 10;
+  flex: none;
+
+  &__content {
+    max-width: $max-width/1.5;
+    display: flex;
+    padding: 2.5rem 0;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+}
