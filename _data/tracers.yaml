@@ -1,9 +1,5 @@
 category: Tracers
 array:
-  - name: Zipkin
-    url: http://zipkin.io
-    icon: img/tracers/zipkin_small.png
-
   - name: Lightstep
     url: http://lightstep.com
     icon: img/tracers/lightstep.png
