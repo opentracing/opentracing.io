@@ -35,3 +35,7 @@ array:
   - name: Stream
     url: https://getstream.io/
     icon: img/companies/stream.png
+
+  - name: Couchbase
+    url: https://couchbase.com/
+    icon: img/companies/couchbase.png
