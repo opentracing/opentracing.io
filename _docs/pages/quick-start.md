@@ -8,7 +8,7 @@ Both of these examples assume that Jaeger is running locally via Docker:
 $ docker run -d -p 5775:5775/udp -p 16686:16686 jaegertracing/all-in-one:latest
 ```
 
-These can be adapted to use Zipkin or any other OpenTracing-compatible Tracer easily by adjusting the initialization code to match the particular implementation.
+These can be adapted to use other OpenTracing-compatible Tracer easily by adjusting the initialization code to match the particular implementation.
 
 ### Java
 
