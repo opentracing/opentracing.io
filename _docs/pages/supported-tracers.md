@@ -2,7 +2,7 @@
 
 ## CNCF Jaeger
 
-[Jaeger \\ˈyā-gər\\](http://jaegertracing.io) is a distributed tracing system, originally open sourced by [Uber Technologies](https://eng.uber.com/distributed-tracing/). It provides distributed context propagation, distributed transaction monitoring, root cause analysis, service dependency analysis, and performance / latency optimization. Built with OpenTracing support from inception, Jaeger includes OpenTracing client libraries in several languages, including [Java](https://github.com/uber/jaeger-client-java), [Go](https://github.com/uber/jaeger-client-go), [Python](https://github.com/uber/jaeger-client-python), [Node.js](https://github.com/uber/jaeger-client-node), and [C++](https://github.com/jaegertracing/cpp-client). It is a [Cloud Native Computing Foundation](https://www.cncf.io/) member project.
+[Jaeger \\ˈyā-gər\\](https://jaegertracing.io) is a distributed tracing system, originally open sourced by [Uber Technologies](https://eng.uber.com/distributed-tracing/). It provides distributed context propagation, distributed transaction monitoring, root cause analysis, service dependency analysis, and performance / latency optimization. Built with OpenTracing support from inception, Jaeger includes OpenTracing client libraries in several languages, including [Java](https://github.com/uber/jaeger-client-java), [Go](https://github.com/uber/jaeger-client-go), [Python](https://github.com/uber/jaeger-client-python), [Node.js](https://github.com/uber/jaeger-client-node), and [C++](https://github.com/jaegertracing/cpp-client). It is a [Cloud Native Computing Foundation](https://www.cncf.io/) member project.
 
 
 ## Appdash
