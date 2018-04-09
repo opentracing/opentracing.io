@@ -26,6 +26,7 @@ $hero-height: 75vh;
     flex-wrap: wrap;
     height: $hero-height;
     max-width: $max-width - 100px;
+    flex: 1;
     flex-wrap: wrap;
     display: flex;
     align-items: center;
