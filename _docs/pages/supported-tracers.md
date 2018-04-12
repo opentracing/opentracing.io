@@ -40,3 +40,6 @@ For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/app
 
 ## stagemonitor
 [Stagemonitor](http://www.stagemonitor.org/) is an open-source tracing, profiling and metrics solution for Java applications. It uses byte code manipulation to automatically trace your application without code changes. Stagemonitor is compatible with various OpenTracing implementations and can report to multiple back-ends like [Elasticsearch](https://www.elastic.co/products/elasticsearch) and [Zipkin](http://zipkin.io/). It also tracks metrics, like response time and error rates.
+
+## Datadog
+[Datadog APM](https://www.datadoghq.com/apm/) supports OpenTracing, and aims to provide [OpenTracing-compatible tracers](https://www.datadoghq.com/blog/opentracing-datadog-cncf/) for all supported languages.
