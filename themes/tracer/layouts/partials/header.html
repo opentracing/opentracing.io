@@ -72,31 +72,43 @@
     <div class="dropdown__content mobile">
       <div class="header__close__button">✕</div>
 
-      <h3>
-        <a href="/documentation">Docs</a>
-      </h3>
+      <h3>Docs</h3>
+      {{- range .Site.Data.links.docs }}
+      {{- if .url }}
+      <a href="{{ .url }}">{{ .name }}</a>
+      {{- else }}
+      <a href="{{ .localUrl }}">{{ .name }}</a>
+      {{- end }}
+      {{- end }}
 
-      <h3>
-        <a href="https://github.com/opentracing">Github</a>
-      </h3>
+      <h3>GitHub</h3>
+      {{- range .Site.Data.language.array }}
+      <a href="{{ .url }}">{{ .name }}</a>
+      {{- end }}
+      <hr/>
 
-      <h3>
-        <a href="/documentation">Community</a>
-      </h3>
+      <h3>Community</h3>
+      {{- range .Site.Data.links.community }}
+      {{- if .url }}
+      <a href="{{ .url }}">{{ .name }}</a>
+      {{- else }}
+      <a href="{ .localUrl }}">{{ .name }}</a>
+      {{- end -}}
+      {{- end -}}
 
-
-      <h3>
-        <a href="/documentation">Getting Started</a>
-      </h3>
+      <h3>Getting started</h3>
+      {{- range .Site.Data.links.gettingStarted }}
+      {{- if .url }}
+      <a href="{{ .url }}">{{ .name }}</a>
+      {{- else }}
+      <a href="{ .localUrl }}">{{ .name }}</a>
+      {{- end -}}
+      {{- end -}}
+      <a href="https://github.com/opentracing-contrib/meta">Contributions</a>
 
       <hr/>
-      <h3>
-        <a href="https://github.com/opentracing-contrib/meta">Contributions</a>
-      </h3>
-
-      <h3>
-        <a href="https://groups.google.com/forum/#!forum/opentracing">Join the mailing list!</a>
-      </h3>
+      <h3>Mailing list</h3>
+      <a href="https://groups.google.com/forum/#!forum/opentracing">Join!</a>
     </div>
   </div>
 </header>
