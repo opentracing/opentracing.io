@@ -17,7 +17,7 @@
     <div class="footer__section">
       <h4 class="footer__subtitle">Github</h4>
       <div class="footer__actions">
-        {{- range $social }}
+        {{- range .Site.Data.language.array }}
         <a href="{{ .url }}">{{ .name }}</a>
         {{- end }}
       </div>
@@ -51,11 +51,11 @@
     <div class="footer__section ecosystem">
       <h4 class="footer__subtitle">Ecosystem</h4>
       <div class="footer__social_icons">
-        {{- range $social }}
+        {{- range $social -}}
         <a href="{{ .url }}">
           <img src="/{{ .icon }}" alt="" style="color: {{ .color }};">
         </a>
-        {{- end }}
+        {{- end -}}
       </div>
       <a class="footer__social_newsletter button white thin" href="https://groups.google.com/forum/#!forum/opentracing">Join the mailing list</a>
     </div>
