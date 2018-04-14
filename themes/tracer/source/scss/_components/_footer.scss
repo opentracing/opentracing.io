@@ -10,6 +10,16 @@ $line-width: 30%;
   z-index: 10;
   flex: none;
 
+  a {
+    color: white;
+    margin: 0;
+    padding: 0;
+
+    & + a {
+      margin-top: .25rem;
+    }
+  }
+
   &__container {
     max-width: $max-width;
     display: flex;
@@ -20,6 +30,7 @@ $line-width: 30%;
   }
 
   &__section {
+    padding: .6rem 0 .6rem 1.25rem;
     border-left: 1px solid rgba(white, 0.3);
     padding-left: 20px;
   }

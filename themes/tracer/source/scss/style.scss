@@ -23,19 +23,8 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
 .footer {
-  &__section {
-    padding: .6rem 0 .6rem 1.25rem;
-  }
 
-  a {
-    color: white;
-    margin: 0;
-    padding: 0;
 
-    & + a {
-      margin-top: .25rem;
-    }
-  }
 }
 
 body {
