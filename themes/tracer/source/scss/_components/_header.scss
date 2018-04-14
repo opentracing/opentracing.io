@@ -24,10 +24,6 @@ header:before {
   flex: none;
   font-family: 'bariolthin';
 
-  .dropdown__button a {
-    color: white !important;
-  }
-
   .dropdown__content {
     a {
       color: $dark-blue !important;
@@ -136,6 +132,12 @@ header:before {
   .dropdown {
     position: relative;
     display: inline-block;
+
+    &.no-link {
+      a {
+        color: white;
+      }
+    }
 
     &__content {
       position: absolute;
