@@ -9,3 +9,8 @@ taxonomies:
 
 params:
   description: Consistent, expressive, vendor-neutral APIs for distributed tracing and context propagation
+  hero:
+    tagline: Vendor-neutral APIs and instrumentation for distributed tracing
+    update:
+      title: "February 2018: OpenTracing Project Update"
+      url: https://medium.com/opentracing/february-2018-opentracing-monthly-newsletter-7700560e9b04
