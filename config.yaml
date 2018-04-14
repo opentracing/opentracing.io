@@ -14,6 +14,23 @@ params:
     update:
       title: "February 2018: OpenTracing Project Update"
       url: https://medium.com/opentracing/february-2018-opentracing-monthly-newsletter-7700560e9b04
+    bashWindowText: |
+      # Start Jaeger locally
+      $ docker run -d -p 5775:5775/udp -p 16686:16686 jaegertracing/all-in-one:latest
+      $ export DOCKER_IP=`docker-machine ip $(docker-machine active)`
+      $ cd $GOPATH/src
+
+      # Grab a simple, self-contained OpenTracing example
+      $ go get github.com/opentracing-contrib/examples/go
+      $ cd github.com/opentracing-contrib/examples/go
+      $ go run ./trivial.go $DOCKER_IP
+
+      # Visualize the tracing instrumentation in Jaeger by
+      # clicking on "Find Traces" in the UI.
+      $ open http://$DOCKER_IP:16686/
+
+      # Read the source!
+      $ vim trivial.go
   companies:
   - name: Uber
     url: https://eng.uber.com

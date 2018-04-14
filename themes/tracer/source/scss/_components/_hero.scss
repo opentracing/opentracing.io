@@ -57,7 +57,14 @@ $hero-height: 75vh;
       margin-bottom: 45px;
 
       a {
+        color: $blue-black;
         font-size: 1.2rem;
+      }
+    }
+
+    .update {
+      a {
+        color: white;
       }
     }
 

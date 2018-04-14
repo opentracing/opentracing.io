@@ -24,6 +24,16 @@ header:before {
   flex: none;
   font-family: 'bariolthin';
 
+  .dropdown__button a {
+    color: white !important;
+  }
+
+  .dropdown__content {
+    a {
+      color: $dark-blue !important;
+    }
+  }
+
   &__container {
     display: flex;
     align-items: center;
@@ -94,7 +104,7 @@ header:before {
     a {
       letter-spacing: 1px;
       display: inline-block;
-      color: white !important;
+      color: white;
       text-transform: uppercase;
       text-decoration: none;
       font-size: 1rem;
