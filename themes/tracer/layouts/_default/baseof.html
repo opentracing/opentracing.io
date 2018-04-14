@@ -8,8 +8,9 @@
   </head>
   <body>
     {{ partial "header.html" . }}
-    {{ block "main" . }}{{ end }}
-
+    <main>
+      {{ block "main" . }}{{ end }}
+    </main>
     {{ partial "footer.html" . }}
     {{ partial "javascript.html" . }}
   </body>

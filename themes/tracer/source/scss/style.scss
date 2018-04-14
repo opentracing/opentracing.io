@@ -19,3 +19,13 @@
 @import '_components/companies';
 @import '_components/cncf-foundation';
 @import '_components/button';
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+  main {
+    flex: 1;
+  }
+}
