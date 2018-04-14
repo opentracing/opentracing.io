@@ -4,14 +4,16 @@
     {% include bash-window.html %}
 
     <section class="hero__copy">
-      <a href="{{site.url}}/outreachy">OpenTracing joins the Outreachy internship program!</a>
-      <h1 class="bariol-thin">A vendor-neutral open standard for distributed tracing.</h1>
+      <h1 class="bariol-thin">Vendor-neutral APIs and instrumentation for distributed tracing</h1>
+      <div class="libraries">
       <h2 class="dark-blue">Libraries available in {{ site.data.language.array.size }} languages</h2>
       <p class="dark-blue">
       {% for language in site.data.language.array %}
         <a href="{{language.url}}">{{ language.name }}</a>{% if forloop.last == false %},{% endif %}
       {% endfor %}
       </p>
+      </div>
+      <a href="https://medium.com/opentracing/february-2018-opentracing-monthly-newsletter-7700560e9b04" target="_blank">February 2018: OpenTracing Project Update</a>
     </section>
   </div>
 

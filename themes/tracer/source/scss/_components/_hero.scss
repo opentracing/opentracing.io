@@ -26,6 +26,7 @@ $hero-height: 75vh;
     flex-wrap: wrap;
     height: $hero-height;
     max-width: $max-width - 100px;
+    flex: 1;
     flex-wrap: wrap;
     display: flex;
     align-items: center;
@@ -43,19 +44,26 @@ $hero-height: 75vh;
     max-width: 600px;
     flex: 1;
 
-    h2 {
-      font-family: 'bariolthin';
-      font-weight: 600;
-      display: inline-block;
-      border-top: 1px solid rgba(white, 0.25);
-      padding-top: 35px;
-      margin-top: 25px;
-      font-size: 1.74rem;
+    .libraries {
+      h2 {
+        font-family: 'bariolthin';
+        font-weight: 600;
+        display: inline-block;
+        border-top: 1px solid rgba(white, 0.25);
+        padding-top: 20px;
+        margin-top: 10px;
+        font-size: 1.74rem;
+      }
+      margin-bottom: 45px;
+
+      a {
+        font-size: 1.2rem;
+      }
     }
 
     a {
       text-decoration: underline;
-      font-size: 1.3rem;
+      font-size: 1.5rem;
     }
   }
 
@@ -72,7 +80,7 @@ $hero-height: 75vh;
     z-index: 1;
   }
 
-  @media (max-width: $small) {
+  @media (max-width: $medium) {
 
     &__content {
       //padding: 20vh 0;

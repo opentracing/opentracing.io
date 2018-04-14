@@ -8,8 +8,8 @@
 
   <div class="bash-window__content">
     <pre>
-# Start Zipkin locally
-$ docker run -d -p 9411:9411 openzipkin/zipkin
+# Start Jaeger locally
+$ docker run -d -p 5775:5775/udp -p 16686:16686 jaegertracing/all-in-one:latest
 $ export DOCKER_IP=`docker-machine ip $(docker-machine active)`
 $ cd $GOPATH/src
 
@@ -18,9 +18,9 @@ $ go get github.com/opentracing-contrib/examples/go
 $ cd github.com/opentracing-contrib/examples/go
 $ go run ./trivial.go $DOCKER_IP
 
-# Visualize the tracing instrumentation in Zipkin by
+# Visualize the tracing instrumentation in Jaeger by
 # clicking on "Find Traces" in the UI.
-$ open http://$DOCKER_IP:9411/
+$ open http://$DOCKER_IP:16686/
 
 # Read the source!
 $ vim trivial.go

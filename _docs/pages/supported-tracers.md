@@ -1,13 +1,8 @@
 # Supported Tracer Implementations
 
-## Zipkin
-
-[Zipkin](http://zipkin.io/) supports OpenTracing in various languages via community contributions. There is an experimental [bridge from Brave (Zipkin Java) instrumentation to OpenTracing](https://github.com/openzipkin/brave-opentracing), a [Javascript implementation](https://github.com/costacruise/zipkin-javascript-opentracing) and a [Go implementation zipkin-go-opentracing](https://github.com/openzipkin/zipkin-go-opentracing). Some of Jaeger's client libraries (see below) can be configured to be compatible with Zipkin backend and wire format.
-
-
 ## CNCF Jaeger
 
-[Jaeger \\ˈyā-gər\\](http://jaegertracing.io) is a distributed tracing system, originally open sourced by [Uber Technologies](https://eng.uber.com/distributed-tracing/). It provides distributed context propagation, distributed transaction monitoring, root cause analysis, service dependency analysis, and performance / latency optimization. Built with OpenTracing support from inception, Jaeger includes OpenTracing client libraries in several languages, including [Java](https://github.com/uber/jaeger-client-java), [Go](https://github.com/uber/jaeger-client-go), [Python](https://github.com/uber/jaeger-client-python), [Node.js](https://github.com/uber/jaeger-client-node), and [C++](https://github.com/jaegertracing/cpp-client). It is a [Cloud Native Computing Foundation](https://www.cncf.io/) member project.
+[Jaeger \\ˈyā-gər\\](https://jaegertracing.io) is a distributed tracing system, originally open sourced by [Uber Technologies](https://eng.uber.com/distributed-tracing/). It provides distributed context propagation, distributed transaction monitoring, root cause analysis, service dependency analysis, and performance / latency optimization. Built with OpenTracing support from inception, Jaeger includes OpenTracing client libraries in several languages, including [Java](https://github.com/uber/jaeger-client-java), [Go](https://github.com/uber/jaeger-client-go), [Python](https://github.com/uber/jaeger-client-python), [Node.js](https://github.com/uber/jaeger-client-node), and [C++](https://github.com/jaegertracing/cpp-client). It is a [Cloud Native Computing Foundation](https://www.cncf.io/) member project.
 
 
 ## Appdash
@@ -45,3 +40,6 @@ For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/app
 
 ## stagemonitor
 [Stagemonitor](http://www.stagemonitor.org/) is an open-source tracing, profiling and metrics solution for Java applications. It uses byte code manipulation to automatically trace your application without code changes. Stagemonitor is compatible with various OpenTracing implementations and can report to multiple back-ends like [Elasticsearch](https://www.elastic.co/products/elasticsearch) and [Zipkin](http://zipkin.io/). It also tracks metrics, like response time and error rates.
+
+## Datadog
+[Datadog APM](https://www.datadoghq.com/apm/) supports OpenTracing, and aims to provide [OpenTracing-compatible tracers](https://www.datadoghq.com/blog/opentracing-datadog-cncf/) for all supported languages.

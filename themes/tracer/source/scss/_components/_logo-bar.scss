@@ -85,7 +85,6 @@ $logo-bar-scale: 14px;
           margin-right: 10px;
         }
 
-        &[src*="zipkin_small.png"],
         &[src*="instana"] {
           max-height: $logo-bar-scale * 0.8;
         }
@@ -139,7 +138,6 @@ $logo-bar-scale: 14px;
             max-height: $logo-bar-scale * 1.25;
           }
 
-          &[src*="zipkin_small.png"],
           &[src*="instana"] {
             max-height: $logo-bar-scale * 0.6;
           }
