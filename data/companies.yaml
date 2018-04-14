@@ -2,7 +2,7 @@ category: Companies
 array:
   - name: Uber
     url: https://eng.uber.com
-    icon: img/companies/uber.png
+    icon: /img/companies/uber.png
 
   - name: Apple
     url: https://apple.com
@@ -14,7 +14,7 @@ array:
 
   - name: Pinterest
     url: https://pinterest.com
-    icon: img/companies/pinterest.png
+    icon: /img/companies/pinterest.png
 
   - name: Workiva
     url: https://workiva.com
@@ -22,16 +22,16 @@ array:
 
   - name: Joyent
     url: https://www.joyent.com
-    icon: img/companies/joyent.png
+    icon: /img/companies/joyent.png
 
   - name: Cockroach Labs
     url: https://www.cockroachlabs.com
-    icon: img/companies/cockroach.png
+    icon: /img/companies/cockroach.png
 
   - name: Sourcegraph
     url: https://sourcegraph.com/
-    icon: img/companies/sourcegraph.png
+    icon: /img/companies/sourcegraph.png
 
   - name: Stream
     url: https://getstream.io/
-    icon: img/companies/stream.png
+    icon: /img/companies/stream.png
