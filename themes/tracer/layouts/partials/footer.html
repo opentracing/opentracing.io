@@ -1,3 +1,4 @@
+{{- $social := .Site.Params.social }}
 <footer class="footer">
   <div class="footer__container">
     <div class="footer__section">
@@ -16,7 +17,7 @@
     <div class="footer__section">
       <h4 class="footer__subtitle">Github</h4>
       <div class="footer__actions">
-        {{- range .Site.Data.language.array }}
+        {{- range $social }}
         <a href="{{ .url }}">{{ .name }}</a>
         {{- end }}
       </div>
@@ -50,8 +51,10 @@
     <div class="footer__section ecosystem">
       <h4 class="footer__subtitle">Ecosystem</h4>
       <div class="footer__social_icons">
-        {{- range .Site.Data.social.array }}
-        <a href="{{ .url }}"><img src="/{{ .icon }}" alt="" style="color: {{ .color }};"></a>
+        {{- range $social }}
+        <a href="{{ .url }}">
+          <img src="/{{ .icon }}" alt="" style="color: {{ .color }};">
+        </a>
         {{- end }}
       </div>
       <a class="footer__social_newsletter button white thin" href="https://groups.google.com/forum/#!forum/opentracing">Join the mailing list</a>

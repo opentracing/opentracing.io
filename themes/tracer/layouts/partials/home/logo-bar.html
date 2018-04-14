@@ -1,7 +1,9 @@
+{{- $tracers := .Site.Params.tracers -}}
+{{- $frameworks := .Site.Params.frameworks -}}
 <section class="logo-bar logo-bar--bottom">
   <div class="logo-bar__content">
     <div class="logo-bar__logos tracers">
-      {{- range .Site.Data.tracers.array }}
+      {{- range $tracers }}
       <a href="{{ .url }}">
         {{- if .icon }}
         <img src="{{ .icon }}" alt="{{ .name }} logo">
@@ -12,7 +14,7 @@
       {{- end }}
     </div>
     <div class="logo-bar__logos frameworks">
-      {{- range .Site.Data.frameworks.array }}
+      {{- range $frameworks }}
       <a href="{{ .url }}">
         {{- if .icon }}
         <img src="{{ .icon }}" alt="{{ .name }} logo">
