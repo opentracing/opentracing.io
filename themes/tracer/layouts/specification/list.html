@@ -1,0 +1,21 @@
+{{ define "main" }}
+{{- $filename := printf "/specification/%s.md" .Params.filename }}
+<div class="docs container">
+  <section class="docs__main row">
+    <nav class="docs__nav col-3">
+      <h3>Specification table of contents</h3>
+      <div class="docs__nav__list">
+        {{ range where .Site.Pages "Section" "specification" }}
+        <a href="{{ .Permalink }}">{{ .Title }}</a><br />
+        {{ end }}
+      </div>
+    </nav>
+
+    <article class="docs__article col-9">
+      <section class="docs__article__content">
+        {{ readFile $filename | markdownify }}
+      </section>
+    </article>
+  </section>
+</div>
+{{ end }}

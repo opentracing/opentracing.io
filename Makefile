@@ -30,7 +30,8 @@ serve: clean
 		--theme $(THEME) \
 		--buildFuture \
 		--buildDrafts \
-		--disableFastRender
+		--disableFastRender \
+		--ignoreCache
 
 build-assets:
 	(cd $(THEME_DIR) && $(GULP) build)
@@ -43,4 +44,10 @@ dev:
 
 setup:
 	yarn
-	npm rebuild node-sass
+	git submodule update
+	git submodule update --recursive --remote
+	cp specification/{project_organization,rfc_process,rfc_template,semantic_conventions,specification}.md content/specification
+	mv content/specification/project_organization.md content/specification/project-organization.md
+	mv content/specification/rfc_process.md content/specification/rfc-process.md
+	mv content/specification/rfc_template.md content/specification/rfc-template.md
+	mv content/specification/semantic_conventions.md content/specification/semantic-conventions.md
