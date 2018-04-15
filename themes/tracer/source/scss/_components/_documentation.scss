@@ -35,6 +35,16 @@
 
     .docs__article {
       padding: 0 $docs-article-horizontal-padding;
+
+      &__content {
+        figure {
+
+
+          img {
+
+          }
+        }
+      }
     }
   }
 }
