@@ -1,5 +1,29 @@
 @import '../variables';
 
-.docs__container {
+.docs {
+  display: block;
+  min-width: 100%;
 
+  &__main {
+    margin: $docs-vertical-margin 0;
+
+    .docs__nav {
+      top: 100;
+      border-right: 1px solid grey;
+
+      a {
+        color: $docs-nav-link-color;
+        font-size: $docs-nav-link-font-size;
+        line-height: 110%;
+
+        & + a {
+          padding-top: 2rem;
+        }
+      }
+    }
+
+    .docs__article {
+      padding: 0 $docs-article-horizontal-padding;
+    }
+  }
 }

@@ -1,11 +1,11 @@
 
 
-//Global variables
+// Global variables
 $header-padding: 1.25rem;
 $max-width: 1300px;
 
 
-//Colors
+// Colors
 $blue-black: #26324c;
 $blue:  #45c1de;
 $dark-blue: #39a9da;
@@ -17,9 +17,15 @@ $orange: #fab92d;
 $green: #26c53e;
 
 
-//Breakpoints
+// Breakpoints
 $xlarge: 1400px;
 $large: 1000px;
 $medium: 768px;
 $small: 500px;
 $xsmall: 400px;
+
+//Documentation
+$docs-vertical-margin: 4rem;
+$docs-article-horizontal-padding: 2rem;
+$docs-nav-link-color: $dark-blue;
+$docs-nav-link-font-size: 1.5rem;
