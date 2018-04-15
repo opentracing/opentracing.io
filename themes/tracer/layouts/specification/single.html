@@ -3,11 +3,9 @@
 <div class="docs container">
   <section class="docs__main row">
     <nav class="docs__nav col-3">
-      <h3>Specification table of contents</h3>
       <div class="docs__nav__list">
-        {{ range (where .Site.Pages "Section" "specification").ByWeight }}
-        <a href="{{ .Permalink }}">{{ .Title }}</a><br />
-        {{ end }}
+        <h3>Specification table of contents</h3>
+        {{ partial "nav.html" (where .Site.Pages "Section" "specification").ByWeight }}
       </div>
     </nav>
 

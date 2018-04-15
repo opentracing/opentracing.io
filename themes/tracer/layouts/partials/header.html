@@ -18,6 +18,16 @@
           {{- end }}
         </div>
       </div>
+
+      <div class="dropdown">
+        <a class="dropdown__button" href="/specification">Specification</a>
+        <div class="dropdown__content docs">
+          {{- range (where .Site.Pages "Section" "specification").ByWeight }}
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+          {{- end }}
+        </div>
+      </div>
+
       <div class="dropdown">
         <a class="dropdown__button" href="https://github.com/opentracing">Github</a>
         <div class="dropdown__content language">

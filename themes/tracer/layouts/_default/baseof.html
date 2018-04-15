@@ -8,7 +8,7 @@
   </head>
   <body>
     {{ partial "header.html" . }}
-    <main>
+    <main class="{{ cond (eq .Kind "home") "home" .Section }}">
       {{ block "main" . }}{{ end }}
     </main>
     {{ partial "footer.html" . }}

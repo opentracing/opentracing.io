@@ -11,13 +11,24 @@
       top: 100;
       border-right: 1px solid grey;
 
-      a {
-        color: $docs-nav-link-color;
-        font-size: $docs-nav-link-font-size;
-        line-height: 110%;
+      &__list {
+        max-width: 90%;
 
-        & + a {
-          padding-top: 2rem;
+        ul {
+          list-style-type: none;
+          margin: 1rem 0 0 -2.5rem;
+
+          li {
+            a {
+              color: $docs-nav-link-color;
+              font-size: $docs-nav-link-font-size;
+              line-height: 110%;
+            }
+
+            & + li {
+              margin-top: .75rem;
+            }
+          }
         }
       }
     }

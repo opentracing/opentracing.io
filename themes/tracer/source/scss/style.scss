@@ -29,6 +29,10 @@ body {
 
   main {
     flex: 1;
-    width: 60%;
+
+    &.docs, &.api {
+      min-width: 60%;
+      width: 60%;
+    }
   }
 }
