@@ -25,7 +25,7 @@ array:
     icon: img/tracers/instana.svg
     
   - name: Skywalking
-    url: http://skywalking.org
+    url: http://skywalking.apache.org
     icon: img/tracers/skywalking.png
 
   - name: inspectIT
