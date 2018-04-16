@@ -6,4 +6,3 @@ node_modules
 Gemfile
 public/
 firebase-debug.log
-content/specification/*.md
