@@ -16,6 +16,9 @@ build: clean build-assets
 	$(HUGO) \
 		--theme $(THEME)
 
+netlify-setup:
+	(cd $(THEME_DIR) && npm install)
+
 netlify-build: clean build-assets
 	$(HUGO) \
 		--theme $(THEME) \
