@@ -19,12 +19,12 @@ build: clean build-assets
 netlify-setup:
 	(cd $(THEME_DIR) && npm install)
 
-netlify-build: clean build-assets
+netlify-build: netlify-setup clean build-assets
 	$(HUGO) \
 		--theme $(THEME) \
 		--baseURL $(NETLIFY_URL)
 
-netlify-build-preview: clean build-assets
+netlify-build-preview: netlify-setup clean build-assets
 	$(HUGO) \
 		--theme $(THEME)
 
