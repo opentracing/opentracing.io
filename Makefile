@@ -7,11 +7,21 @@ CONCURRENTLY := $(NODE_BIN)/concurrently
 FIREBASE_PROJECT := opentracing-website
 FIREBASE_URL := https://$(FIREBASE_PROJECT).firebaseapp.com
 FIREBASE := $(NODE_BIN)/firebase
+NETLIFY_URL = https://opentracing.netlify.com
 
 clean:
 	rm -rf public
 
 build: clean build-assets
+	$(HUGO) \
+		--theme $(THEME)
+
+netlify-build: clean build-assets
+	$(HUGO) \
+		--theme $(THEME) \
+		--baseURL $(NETLIFY_URL)
+
+netlify-build-preview: clean build-assets
 	$(HUGO) \
 		--theme $(THEME)
 
