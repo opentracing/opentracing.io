@@ -1,5 +1,5 @@
 ---
-title: OpenTracing project organization
+title: Project organization
 filename: project_organization
 weight: 2
 ---
