@@ -1,5 +1,5 @@
 ---
 title: Versioning process
 filename: rfc_process
-weight: 2
+weight: 3
 ---

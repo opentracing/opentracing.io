@@ -6,7 +6,7 @@
     {{ partial "seo.html" . }}
     {{ partial "css.html" . }}
   </head>
-  <body>
+  <body class="">
     {{ partial "header.html" . }}
     <main class="{{ cond (eq .Kind "home") "home" .Section }}">
       {{ block "main" . }}{{ end }}

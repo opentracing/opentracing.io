@@ -22,6 +22,7 @@
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
+// Guarantees sticky footer
 body {
   display: flex;
   min-height: 100vh;
