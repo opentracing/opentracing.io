@@ -3,7 +3,7 @@
 $padding: 30px;
 $list-padding: 10px;
 
-header:before {
+.header:before {
   content: '';
   width: 100%;
   height: 80px;
@@ -15,7 +15,18 @@ header:before {
   z-index: -1;
 }
 
-.header {
+.header--home:before {
+  content: '';
+  width: 100%;
+  height: 80px;
+  top: 0;
+  left: 0;
+  display: block;
+  position: absolute;
+  z-index: -1;
+}
+
+.header, .header--home {
   max-width: $max-width;
   padding: $header-padding;
   width: 100%;
