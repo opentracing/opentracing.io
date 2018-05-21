@@ -23,7 +23,8 @@ netlify-build: netlify-setup clean build-assets
 
 netlify-build-preview: netlify-setup clean build-assets
 	$(HUGO) \
-		--theme $(THEME)
+		--theme $(THEME) \
+		--baseURL $(DEPLOY_PRIME_URL)
 
 serve: clean
 	$(HUGO) serve \
