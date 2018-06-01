@@ -1,0 +1,16 @@
+{{- $bashWindowText := .Site.Params.hero.bashWindowText -}}
+<section class="bash-window">
+  <header class="bash-window__header">
+    <div class="bash-window__header__button__red"></div>
+    <div class="bash-window__header__button__orange"></div>
+    <div class="bash-window__header__button__green"></div>
+    <div class="bash-window__header__title">bash</div>
+  </header>
+
+  <div class="bash-window__content">
+    <pre>
+{{ $bashWindowText }}
+    </pre>
+
+  </div>
+</section>

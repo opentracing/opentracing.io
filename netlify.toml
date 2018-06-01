@@ -1,0 +1,13 @@
+[build]
+publish = "public"
+command = "make netlify-build"
+
+[context.deploy-preview]
+publish = "public"
+command = "make netlify-build-preview"
+
+[context.production.environment]
+HUGO_VERSION = "0.39"
+
+[context.deploy-preview.environment]
+HUGO_VERSION = "0.39"

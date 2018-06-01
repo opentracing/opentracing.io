@@ -1,0 +1,10 @@
+{{- $companies := .Site.Params.companies -}}
+<section class="companies">
+  <div class="companies__content">
+    <div class="companies__logos">
+      {{- range $companies }}
+      <a href="{{ .url }}"><img src="/img/companies/{{ .icon }}" alt=""></a>
+      {{- end }}
+    </div>
+  </div>
+</section>

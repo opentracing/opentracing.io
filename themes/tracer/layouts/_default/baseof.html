@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+  <head>
+    <title>{{ block "title" . }}{{ $pageTitle := cond (eq .Kind "home") .Site.Title .Title }}{{ $pageTitle }}{{ end }}</title>
+    {{ partial "head.html" . }}
+    {{ partial "seo.html" . }}
+    {{ partial "css.html" . }}
+  </head>
+  <body class="">
+    {{ partial "header.html" . }}
+    <main class="{{ cond (eq .Kind "home") "home" .Section }}">
+      {{ block "main" . }}{{ end }}
+    </main>
+    {{ partial "footer.html" . }}
+    {{ partial "javascript.html" . }}
+  </body>
+</html>

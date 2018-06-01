@@ -1,0 +1,8 @@
+{{- $pages := . }}
+<ul>
+  {{- range $pages -}}
+  <li>
+    <a href="{{ .Permalink }}">{{ .Title }}</a>
+  </li>
+  {{- end -}}
+</ul>

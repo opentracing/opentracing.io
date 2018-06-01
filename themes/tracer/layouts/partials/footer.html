@@ -1,0 +1,63 @@
+{{- $social := .Site.Params.social }}
+<footer class="footer">
+  <div class="footer__container">
+    <div class="footer__section">
+      <h4 class="footer__subtitle">Documentation</h4>
+      <div class="footer__actions">
+        {{- range .Site.Data.links.docs }}
+        {{- if .url }}
+        <a href="{{ .url }}">{{ .name }}</a>
+        {{- else }}
+        <a href="{{ .localUrl }}">{{ .name }}</a>
+        {{- end }}
+        {{- end }}
+      </div>
+    </div>
+
+    <div class="footer__section">
+      <h4 class="footer__subtitle">Github</h4>
+      <div class="footer__actions">
+        {{- range .Site.Data.language.array }}
+        <a href="{{ .url }}">{{ .name }}</a>
+        {{- end }}
+      </div>
+    </div>
+
+    <div class="footer__section">
+      <h4 class="footer__subtitle">Community</h4>
+      <div class="footer__actions">
+        {{- range .Site.Data.links.community }}
+        {{- if .url }}
+        <a href="{{ .url }}">{{ .name }}</a>
+        {{- else }}
+        <a href="{ .localUrl }}">{{ .name }}</a>
+        {{- end }}
+        {{- end }}
+      </div>
+    </div>
+
+    <div class="footer__section">
+      <h4 class="footer__subtitle">Get Started</h4>
+      <div class="footer__actions">
+        {{- range .Site.Data.links.gettingStarted }}
+        {{- if .url }}
+        <a href="{{ .url }}">{{ .name }}</a>
+        {{- else }}
+        <a href="{ .localUrl }}">{{ .name }}</a>
+        {{- end }}
+        {{- end }}
+      </div>
+    </div>
+    <div class="footer__section ecosystem">
+      <h4 class="footer__subtitle">Ecosystem</h4>
+      <div class="footer__social_icons">
+        {{- range $social -}}
+        <a href="{{ .url }}">
+          <img src="/img/social/{{ .icon }}" alt="" style="color: {{ .color }};">
+        </a>
+        {{- end -}}
+      </div>
+      <a class="footer__social_newsletter button white thin" href="https://groups.google.com/forum/#!forum/opentracing">Join the mailing list</a>
+    </div>
+  </div>
+</footer>

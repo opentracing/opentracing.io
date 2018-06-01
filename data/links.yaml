@@ -1,0 +1,44 @@
+docs:
+  - localUrl: /documentation/quick-start
+    name: Quick Start
+
+  - localUrl: /documentation/spec
+    name: Concepts and Terminology
+
+  - localUrl: /documentation/api
+    name: APIs
+
+  - localUrl: /documentation/instrumentation/index
+    name: Best Practices
+
+  - localUrl: /documentation/authors-and-contributors
+    name: Authors and Contributors
+
+  - localUrl: /documentation/supported-tracers
+    name: Supported Tracers
+
+  - localUrl: /documentation/translations
+    name: Translations
+
+gettingStarted:
+  - localUrl: /documentation/quick-start
+    name: A QuickStart Guide to OpenTracing
+
+  - localUrl: /documentation/instrumentation/instrumenting-frameworks
+    name: Framework and Library Maintainers
+
+  - localUrl: /documentation/supported-tracers
+    name: Available Tracers, Frameworks and Libraries
+
+community:
+  - localUrl: /talks-and-videos
+    name: Talks and Videos
+
+  - url: //gitter.im/opentracing/public
+    name: Gitter
+
+  - url: //groups.google.com/forum/#!forum/opentracing
+    name: Mailing List
+
+  - url: //github.com/opentracing-contrib/meta#opentracing-contributions
+    name: Become a Contributor

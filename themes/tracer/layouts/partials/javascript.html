@@ -1,0 +1,5 @@
+{{- $jsFilename := index .Site.Data.assetHashes "app.js" }}
+{{- range .Site.Params.assets.js -}}
+<script type="text/javascript" src="{{ . }}"></script>
+{{- end }}
+<script type="text/javascript" src="/js/{{ $jsFilename }}"></script>
