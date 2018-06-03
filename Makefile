@@ -44,7 +44,7 @@ dev:
 	$(CONCURRENTLY) "make serve" "make develop-assets"
 
 get-spec-docs:
-	git submodule update --recursive --remote
+	git submodule update --init --recursive --remote
 
 setup: get-spec-docs
 	npm install
