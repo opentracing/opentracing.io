@@ -41,8 +41,8 @@ $ npm install
 
 ```
 $ npm run dev
-$ open http://localhost:4000
 ```
+Wait until it says "Server running...", and then open on your browser http://localhost:4000.
 
 ## Pull Requests
 
