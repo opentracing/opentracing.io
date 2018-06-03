@@ -48,3 +48,4 @@ get-spec-docs:
 
 setup: get-spec-docs
 	npm install
+	(cd $(THEME_DIR) && npm install)
