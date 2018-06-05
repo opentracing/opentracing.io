@@ -13,7 +13,7 @@ array:
     icon: false
 
   - name: Jaeger
-    url: https://www.jaegertracing.io/
+    url: https://jaegertracing.io/
     icon: false
 
   - name: Hawkular
