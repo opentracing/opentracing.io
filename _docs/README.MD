@@ -14,6 +14,12 @@ Contemporary distributed tracing systems (e.g., Zipkin, Dapper, HTrace, X-Trace,
 # Why OpenTracing?
 Enter OpenTracing: by offering consistent, expressive, vendor-neutral APIs for popular platforms, OpenTracing makes it easy for developers to add (or switch) tracing implementations with an O(1) configuration change. OpenTracing also offers a lingua franca for OSS instrumentation and platform-specific tracing helper libraries. Please refer to the Semantic Specification.
 
+# OpenTracing Architecture
+OpenTracing is an API that sits in the middle where on one side sits the actual application and the other side is the tracing implementation used (viz Zipkin, Jaeger, Lightstep etc.). OpenTracing provides the path for data to be taken out of your system, and sends it to the tracers on the other side.
+It can be visualized with the following diagram : 
+
+![](images/OTOV_00.png)
+
 # What is a Trace?
 
 At the highest level, a trace tells the story of a transaction or workflow as it propagates through a (potentially distributed) system. In OpenTracing, a trace is a directed acyclic graph (DAG) of "spans": named, timed operations representing a contiguous segment of work in that trace.
