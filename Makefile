@@ -5,13 +5,12 @@ NODE_BIN := node_modules/.bin
 GULP := $(NODE_BIN)/gulp
 CONCURRENTLY := $(NODE_BIN)/concurrently
 NPM := $(shell bash -l -c "nvm use 2>&1 > /dev/null && which npm")
+NETLIFY_URL = https://opentracing.netlify.com
 
 .PHONY: build
 build: setup build-assets netlify-build
 	$(HUGO) \
 		--theme $(THEME)
-
-include $(THEME_DIR)/rules.mk
 
 .PHONY: clean
 clean:
@@ -50,3 +49,19 @@ get-spec-docs:
 .PHONY: setup
 setup: get-spec-docs netlify-setup
 	$(NPM_INSTALL)
+
+.PHONY: netlify-setup
+netlify-setup:
+	(cd $(THEME_DIR) && $(NPM) install)
+
+.PHONY: netlify-build
+netlify-build: netlify-setup clean build-assets
+	$(HUGO) \
+		--theme $(THEME) \
+		--baseURL $(NETLIFY_URL)
+
+.PHONY: netlify-build-preview
+netlify-build-preview: netlify-setup clean build-assets
+	$(HUGO) \
+		--theme $(THEME) \
+		--baseURL $(DEPLOY_PRIME_URL)
