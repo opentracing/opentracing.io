@@ -22,8 +22,7 @@ Once the above dependencies are installed, you can install the website. First, o
 
 ```
 git checkout v2.0
-make setup
-make build
+make
 ```
 
 To start the site locally in development mode, run the following:
