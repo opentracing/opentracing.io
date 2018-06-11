@@ -1,4 +1,21 @@
 ---
 title: Authors and Contributors
+date: 2018-06-11T14:43:29-04:00
+draft: false
 ---
-This docs page hasn't been written yet. Would you like to give us a hand writing it?
+# Authors and Contributors
+
+Incomplete, outdated, and in alphabetical order :)
+
+* @bcronin (Ben Cronin)
+* @bhs (Ben Sigelman)
+* @bg451 (Brandon Gonzalez)
+* @dkuebric (Dan Kuebrich)
+* @michaelsembwever (mck)
+* @pavolloffay (Pavol Loffay)
+* @pritianka (Priyanka Sharma)
+* @slimsag (Stephen Gutekanst)
+* @tschottdorf (Tobias Schottdorf)
+* @wu-sheng (Wu Sheng)
+* @yurishkuro (Yuri Shkuro)
+

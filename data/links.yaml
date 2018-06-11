@@ -8,7 +8,7 @@ docs:
   - localUrl: /documentation/api
     name: APIs
 
-  - localUrl: /documentation/instrumentation/practices
+  - localUrl: /documentation/best-practices
     name: Best Practices
 
   - localUrl: /documentation/authors-and-contributors
@@ -31,7 +31,7 @@ gettingStarted:
     name: Available Tracers, Frameworks and Libraries
 
 community:
-  - localUrl: /talks-and-videos
+  - localUrl: /talks-and-videos.html
     name: Talks and Videos
 
   - url: //gitter.im/opentracing/public
