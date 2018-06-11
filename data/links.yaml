@@ -8,7 +8,7 @@ docs:
   - localUrl: /documentation/api
     name: APIs
 
-  - localUrl: /documentation/instrumentation/index
+  - localUrl: /documentation/instrumentation/practices
     name: Best Practices
 
   - localUrl: /documentation/authors-and-contributors
