@@ -7,7 +7,7 @@
     </div>
     <div class="header__actions">
       <div class="dropdown">
-        <a class="dropdown__button" href="/documentation">Docs</a>
+        <a class="dropdown__button" href="/docs/getting-started/intro">Docs</a>
         <div class="dropdown__content docs">
           {{- range .Site.Data.links.docs }}
           {{- if .url }}
@@ -20,10 +20,45 @@
       </div>
 
       <div class="dropdown">
-        <a class="dropdown__button" href="/specification">Specification</a>
+        <a class="dropdown__button" href="/guides/intro">Guides</a>
+        <div class="dropdown__content docs">
+          {{- range .Site.Data.links.guides }}
+          <a href="{{ .localUrl }}">{{ .name }}</a>
+          {{- end }}
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <a class="dropdown__button" href="/specification">Project</a>
         <div class="dropdown__content docs">
           {{- range (where .Site.Pages "Section" "specification").ByWeight }}
           <a href="{{ .Permalink }}">{{ .Title }}</a>
+          {{- end }}
+        </div>
+      </div>
+
+      <div class="dropdown no-link">
+        <a class="dropdown__button">Find Us</a>
+        <div class="dropdown__content docs">
+          {{- range .Site.Data.links.findUs }}
+          {{- if .url }}
+          <a href="{{ .url }}">{{ .name }}</a>
+          {{- else }}
+          <a href="{{ .localUrl }}">{{ .name }}</a>
+          {{- end }}
+          {{- end }}
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <a class="dropdown__button" href="/documentation">Get Involved</a>
+        <div class="dropdown__content docs">
+          {{- range .Site.Data.links.getInvolved }}
+          {{- if .url }}
+          <a href="{{ .url }}">{{ .name }}</a>
+          {{- else }}
+          <a href="{{ .localUrl }}">{{ .name }}</a>
+          {{- end }}
           {{- end }}
         </div>
       </div>
@@ -35,40 +70,15 @@
           <a href="{{ .url }}">{{ .name }}</a>
           {{- end }}
           <hr/>
-          <a href="https://github.com/opentracing-contrib/meta">Contributions</a>
-        </div>
-      </div>
-
-      <div class="dropdown no-link">
-        <a class="dropdown__button">Community</a>
-        <div class="dropdown__content docs">
-          {{- range .Site.Data.links.community }}
-          {{- if .url }}
-          <a href="{{ .url }}">{{ .name }}</a>
-          {{- else }}
-          <a href="{ .localUrl }}">{{ .name }}</a>
-          {{- end }}
-          {{- end }}
-        </div>
-      </div>
-
-      <div class="dropdown">
-        <a class="dropdown__button" href="/documentation">Getting Started</a>
-        <div class="dropdown__content docs">
-          {{- range .Site.Data.links.gettingStarted }}
-          {{- if .url }}
-          <a href="{{ .url }}">{{ .name }}</a>
-          {{- else }}
-          <a href="{{ .localUrl }}">{{ .name }}</a>
-          {{- end }}
-          {{- end }}
+          <a href="https://github.com/opentracing/specification">Specification</a>
+          <a href="https://github.com/opentracing-contrib/">Contributions</a>
         </div>
       </div>
 
       <a href="https://medium.com/opentracing">Blog</a>
     </div>
     <div class="header__actions right">
-      <a class="button white" href="https://groups.google.com/forum/#!forum/opentracing">Join the mailing list</a>
+      <a class="button white" href="https://gitter.im/opentracing/public">Say hi on Gitter</a>
     </div>
   </div>
 
@@ -91,14 +101,22 @@
       {{- end }}
       {{- end }}
 
-      <h3>GitHub</h3>
-      {{- range .Site.Data.language.array }}
+      <h3>Guides</h3>
+      {{- range .Site.Data.links.guides }}
+      {{- if .url }}
       <a href="{{ .url }}">{{ .name }}</a>
+      {{- else }}
+      <a href="{{ .localUrl }}">{{ .name }}</a>
       {{- end }}
-      <hr/>
+      {{- end }}
 
-      <h3>Community</h3>
-      {{- range .Site.Data.links.community }}
+      <h3>Project</h3>
+      {{- range (where .Site.Pages "Section" "specification").ByWeight }}
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+      {{- end }}
+
+      <h3>Find Us</h3>
+      {{- range .Site.Data.links.findUs }}
       {{- if .url }}
       <a href="{{ .url }}">{{ .name }}</a>
       {{- else }}
@@ -106,17 +124,26 @@
       {{- end -}}
       {{- end -}}
 
-      <h3>Getting started</h3>
-      {{- range .Site.Data.links.gettingStarted }}
+      <h3>Get Involved</h3>
+      {{- range .Site.Data.links.getInvolved }}
       {{- if .url }}
       <a href="{{ .url }}">{{ .name }}</a>
       {{- else }}
-      <a href="{ .localUrl }}">{{ .name }}</a>
+      <a href="{{ .localUrl }}">{{ .name }}</a>
       {{- end -}}
       {{- end -}}
-      <a href="https://github.com/opentracing-contrib/meta">Contributions</a>
 
+      <h3>GitHub</h3>
+      {{- range .Site.Data.language.array }}
+      <a href="{{ .url }}">{{ .name }}</a>
+      {{- end }}
       <hr/>
+
+      <h3>
+      <a class="button white" href="https://gitter.im/opentracing/public">Say hi on Gitter</a>
+      </h3>
+      <hr/>
+      
       <h3>Mailing list</h3>
       <a href="https://groups.google.com/forum/#!forum/opentracing">Join!</a>
     </div>

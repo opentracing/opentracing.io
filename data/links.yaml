@@ -1,44 +1,73 @@
+# TOP LEVEL NAVIGATION
 docs:
-  - localUrl: /documentation/quick-start
-    name: Quick Start
-
-  - localUrl: /documentation/spec
-    name: Concepts and Terminology
-
-  - localUrl: /documentation/api
-    name: APIs
-
-  - localUrl: /documentation/best-practices
+  - localUrl: /docs/getting-started/quick-start
+    name: Getting Started
+  - localUrl: /docs/overview/what-is-tracing
+    name: Overview
+  - localUrl: /docs/best-practices/standards-and-conventions
     name: Best Practices
-
-  - localUrl: /documentation/authors-and-contributors
-    name: Authors and Contributors
-
-  - localUrl: /documentation/supported-tracers
+  - localUrl: /docs/supported-tracers
     name: Supported Tracers
-
-  - localUrl: /documentation/translations
+  - localUrl: /docs/translations
     name: Translations
+  - localUrl: /docs/faq
+    name: FAQ
 
-gettingStarted:
-  - localUrl: /documentation/quick-start
-    name: A QuickStart Guide to OpenTracing
+guides:
+  - localUrl: /guides/golang/intro
+    name: Golang
+  - localUrl: /guides/java/intro
+    name: Java
+  - localUrl: /guides/python/intro
+    name: Python
+  - localUrl: /guides/ruby/intro
+    name: Ruby
+  - localUrl: /guides/javascript/intro
+    name: Javascript
+  - localUrl: /guides/service-mesh/dynamic-linking
+    name: Service Mesh
 
-  - localUrl: /documentation/instrumentation/instrumenting-frameworks
-    name: Framework and Library Maintainers
+getInvolved:
+  - localUrl: /get-involved/join-ot-contrib
+    name: Join OT-Contrib
+  - localUrl: /get-involved/join-a-working-group
+    name: Join a Working Group
+  - localUrl: /get-involved/create-a-rfc
+    name: Create a RFC
 
-  - localUrl: /documentation/supported-tracers
-    name: Available Tracers, Frameworks and Libraries
-
-community:
+findUs:
+  - url: //gitter.im/opentracing/public
+    name: Gitter
+  - url: //groups.google.com/forum/#!forum/opentracing
+    name: Mailing List
   - localUrl: /talks-and-videos.html
     name: Talks and Videos
 
-  - url: //gitter.im/opentracing/public
-    name: Gitter
+# SIDEBAR NAVIGATION
+gettingStarted:
+  - localUrl: /docs/getting-started/intro
+    name: A QuickStart Guide to OpenTracing
+  - localUrl: /docs/getting-started/katacoda
+    name: Katacoda walkthroughs
 
-  - url: //groups.google.com/forum/#!forum/opentracing
-    name: Mailing List
+overview:
+  - localUrl: /docs/overview/what-is-tracing
+    name: What is Distributed Tracing?
+  - localUrl: /docs/overview/tracers
+    name: Tracers
+  - localUrl: /docs/overview/spans
+    name: Spans
+  - localUrl: /docs/overview/tags-logs-baggage
+    name: Tags, Logs and Baggage
+  - localUrl: /docs/overview/inject-extract
+    name: Inject and Extract
 
-  - url: //github.com/opentracing-contrib/meta#opentracing-contributions
-    name: Become a Contributor
+bestPractices:
+  - localUrl: /docs/best-practices/standards-and-conventions
+    name: Standards and Conventions
+  - localUrl: /docs/best-practices/common-patterns
+    name: Common Patterns
+  - localUrl: /docs/best-practices/instrumenting-your-application
+    name: Instrumenting Your Application
+  - localUrl: /docs/best-practices/instrumenting-frameworks
+    name: Instrumenting Libraries and Frameworks
