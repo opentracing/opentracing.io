@@ -51,14 +51,17 @@
       </div>
 
       <div class="dropdown">
-        <a class="dropdown__button" href="/documentation">Get Involved</a>
+        <a class="dropdown__button" href="/get-involved">Get Involved</a>
         <div class="dropdown__content docs">
-          {{- range .Site.Data.links.getInvolved }}
+          <!-- {{- range .Site.Data.links.getInvolved }}
           {{- if .url }}
           <a href="{{ .url }}">{{ .name }}</a>
           {{- else }}
           <a href="{{ .localUrl }}">{{ .name }}</a>
           {{- end }}
+          {{- end }} -->
+          {{- range (where .Site.RegularPages "Section" "get-involved").ByWeight }}
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
           {{- end }}
         </div>
       </div>
@@ -143,7 +146,7 @@
       <a class="button white" href="https://gitter.im/opentracing/public">Say hi on Gitter</a>
       </h3>
       <hr/>
-      
+
       <h3>Mailing list</h3>
       <a href="https://groups.google.com/forum/#!forum/opentracing">Join!</a>
     </div>

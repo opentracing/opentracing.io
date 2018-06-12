@@ -34,6 +34,8 @@ getInvolved:
     name: Join a Working Group
   - localUrl: /get-involved/create-a-rfc
     name: Create a RFC
+  - localUrl: /get-involved/register-your-project
+    name: Register your Project
 
 findUs:
   - url: //gitter.im/opentracing/public
