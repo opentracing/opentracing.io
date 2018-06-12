@@ -1,7 +1,3 @@
----
-title: Register your Project
----
-
 # OpenTracing Contributions
 
 ## New contributions
@@ -61,4 +57,3 @@ We are particularly interested in the following events:
 ## License
 
 [Apache 2.0 License](./LICENSE).
-
