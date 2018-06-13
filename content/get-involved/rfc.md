@@ -1,5 +1,5 @@
 ---
-title: Create a RFC
+title: Create an RFC
 filename: create-a-rfc
 weight: 3
 ---
