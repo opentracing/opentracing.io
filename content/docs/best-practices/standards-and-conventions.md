@@ -1,8 +1,6 @@
 ---
-title: "Standards and Conventions"
+title: Standards and conventions
 ---
-
-# Data Conventions
 
 ## Background
 

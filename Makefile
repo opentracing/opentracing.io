@@ -40,7 +40,7 @@ develop-assets:
 
 .PHONY: dev
 dev:
-	$(CONCURRENTLY) "make serve" "make develop-assets"
+	$(CONCURRENTLY) "make develop-assets" "make serve"
 
 .PHONY: get-spec-docs
 get-spec-docs:

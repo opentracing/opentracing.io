@@ -1,0 +1,25 @@
+{{ define "main" }}
+<div class="docs container">
+  <section class="docs__main row">
+    <nav class="docs__nav col-3">
+      <div class="docs__nav__list">
+        <h3>Docs</h3>
+        {{ partial "nav.html" (where .Site.RegularPages "Section" "guides").ByWeight }}
+      </div>
+    </nav>
+
+    <article class="docs__article col-9">
+      <h1>{{ .Title }}</h1>
+      {{- with .Params.description }}
+      <h4>{{ .Params.description | markdownify }}</h4>
+      {{- end }}
+
+      <hr />
+
+      <section class="docs__article__content">
+        {{ .Content }}
+      </section>
+    </article>
+  </section>
+</div>
+{{ end }}
