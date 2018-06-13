@@ -1,33 +1,34 @@
 ---
-title: What is distributed tracing?
-weight: 2
+title: "What is Distributed Tracing?"
 ---
 
-## Concepts and Terminology
+Distributed tracing, also called distributed request tracing, is a method used to profile and monitor applications, especially those built using a microservices architecture. Distributed tracing helps pinpoint where failures occur and what causes poor performance.
 
-All language-specific OpenTracing APIs share core concepts and terminology. These concepts are so central and important to the project that they have their own repository ([github.com/opentracing/specification](https://github.com/opentracing/specification)) and semver scheme.
+# Who Uses Distributed Tracing?
+
+IT and DevOps teams can use distributed tracing to monitor applications.  Distributed tracing is particularly well-suited to debugging and monitoring modern distributed software architectures, such as microservices.
+
+Developers can use distributed tracing to help debug and optimize their code.
+
+# What is OpenTracing?
+
+It is probably easier to start with what OpenTracing is NOT.
+
+* OpenTracing is not a download or a program.  Distributed tracing requires that software developers add instrumentation to the code of an application, or to the frameworks used in the application.  
+
+* OpenTracing is not a standard. The Cloud Native Computing Foundation (CNCF) is not an official standards body.  The OpenTracing API project is working towards creating more standardized APIs and instrumentation for distributed tracing.  
+
+OpenTracing is comprised of an API specification, frameworks and libraries that have implemented the specification, and documentation for the project.   OpenTracing allows developers to add instrumentation to their application code using APIs that do not lock them into any one particular product or vendor.
+
+For more information about where OpenTracing has already been implemented, see the [list of languages] ({{< ref "/supported-languages.md" >}}) and the  [list of tracers ]({{< ref "/supported-tracers.md" >}}) that support the OpenTracing specification.
+
+# Concepts and Terminology
+
+All language-specific OpenTracing APIs share some core concepts and terminology. These concepts are so central and important to the project that they have their own repository ([github.com/opentracing/specification](https://github.com/opentracing/specification)) and semver scheme.
 
 This `specification` repository houses two important files:
 
 1. [`specification.md`](https://github.com/opentracing/specification/blob/master/specification.md) is a versioned description of the current pan-language OpenTracing standard
 1. [`semantic_conventions.md`](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) describes conventional Span tags and log keys for common semantic scenarios
 
-Both are versioned and the github repository is tagged according to the rules described by [the versioning policy](https://github.com/opentracing/specification/blob/master/specification.md#versioning-policy).
-
-## OpenTracing Language Support
-
-OpenTracing APIs are available for the following platforms:
-
-* Go - [opentracing-go](https://github.com/opentracing/opentracing-go)
-* Python - [opentracing-python](https://github.com/opentracing/opentracing-python)
-* Javascript - [opentracing-javascript](https://github.com/opentracing/opentracing-javascript)
-* Java - [opentracing-java](https://github.com/opentracing/opentracing-java)
-* C# - [opentracing-csharp](https://github.com/opentracing/opentracing-csharp)
-* Objective-C - [opentracing-objc](https://github.com/opentracing/opentracing-objc)
-* C++ - [opentracing-cpp](https://github.com/opentracing/opentracing-cpp)
-* Ruby - [opentracing-ruby](https://github.com/opentracing/opentracing-ruby)
-* PHP - [opentracing-php](https://github.com/opentracing/opentracing-php)
-
-Please refer to the README files in the respective per-platform repositories for usage examples.
-
-Community contributions are welcome for other languages at any time.
+Both files are versioned and the GitHub repository is tagged according to the rules described by [the versioning policy](https://github.com/opentracing/specification/blob/master/specification.md#versioning-policy).
