@@ -1,9 +1,9 @@
 # TOP LEVEL NAVIGATION
 docs:
-  - localUrl: /docs/getting-started/quick-start
-    name: Getting Started
   - localUrl: /docs/overview/what-is-tracing
     name: Overview
+  - localUrl: /docs/getting-started/quick-start
+    name: Getting Started
   - localUrl: /docs/best-practices/standards-and-conventions
     name: Best Practices
   - localUrl: /docs/supported-tracers
