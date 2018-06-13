@@ -1,8 +1,7 @@
 ---
 title: Quick Start
+weight: 1
 ---
-
-# OpenTracing quick-start materials
 
 ## Hello World examples
 

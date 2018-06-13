@@ -1,7 +1,6 @@
 ---
-title: Instrumenting Frameworks
+title: Instrumenting frameworks
 ---
-# Instrumenting Frameworks
 
 *Trace all the things!*
 

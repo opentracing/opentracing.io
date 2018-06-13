@@ -13,8 +13,7 @@ title: "Golang: Context"
 * When not to use context
   * Tracing Long-lived Objects
 * Higher level APIs
-  * Context-only APIs 
+  * Context-only APIs
     * StartSpanFromContext(ctx context.Context, operationName string, opts ...StartSpanOption) (Span, context.Context)
     * Tag(context.Context)
     * Log(context.Context)
-    

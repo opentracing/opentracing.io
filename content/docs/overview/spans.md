@@ -1,3 +1,3 @@
 ---
-title: "Spans"
+title: Spans
 ---
