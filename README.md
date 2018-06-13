@@ -16,10 +16,7 @@ under its [Apache 2.0 License](LICENSE.md).
 ## Local Development
 If youu'd like to work on the website locally, first install the site dependencies:
 * Install NPM: https://nodejs.org/en/ (NPM comes with NodeJS)
-* Install Hugo:
-  * **Note** The latest version of hugo (v0.42) has a bug. v0.41 is recommended.
-  * To install v0.41, first download it here: https://github.com/gohugoio/hugo/releases/tag/v0.41
-  * Then copy the `hugo` binary to `/usr/local/bin/`
+* Install Hugo: https://gohugo.io/getting-started/installing/#quick-install
 
 Once the above dependencies are installed, you can install the website. First, open up a terminal, navigate to the directory you would like to work in, and clone your fork of this repository. Then checkout the `v2.0` branch and install the website with the following commands:
 
