@@ -1,7 +1,6 @@
 ---
-title: Supported Tracers
+title: Supported tracers
 ---
-# Supported Tracer Implementations
 
 ## CNCF Jaeger
 
@@ -27,7 +26,7 @@ For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/app
 
 ## Instana
 
-[Instana](https://www.instana.com) provides an APM solution supporting OpenTracing in 
+[Instana](https://www.instana.com) provides an APM solution supporting OpenTracing in
 [Crystal](https://github.com/instana/crystal-sensor/blob/master/README.md),
 [Go](https://github.com/instana/golang-sensor/blob/master/README.md), [Java](https://github.com/instana/instana-java-opentracing/blob/master/README.md), [Node.js](https://github.com/instana/nodejs-sensor/blob/master/README.md),
 [Python](https://github.com/instana/python-sensor/blob/master/README.md) and

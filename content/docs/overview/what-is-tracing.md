@@ -1,8 +1,9 @@
 ---
-title: "What is Distributed Tracing?"
+title: What is distributed tracing?
+weight: 2
 ---
 
-# Concepts and Terminology
+## Concepts and Terminology
 
 All language-specific OpenTracing APIs share core concepts and terminology. These concepts are so central and important to the project that they have their own repository ([github.com/opentracing/specification](https://github.com/opentracing/specification)) and semver scheme.
 
@@ -13,7 +14,7 @@ This `specification` repository houses two important files:
 
 Both are versioned and the github repository is tagged according to the rules described by [the versioning policy](https://github.com/opentracing/specification/blob/master/specification.md#versioning-policy).
 
-# OpenTracing Language Support
+## OpenTracing Language Support
 
 OpenTracing APIs are available for the following platforms:
 

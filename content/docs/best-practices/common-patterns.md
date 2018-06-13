@@ -1,7 +1,7 @@
 ---
-title: "Common Patterns"
+title: Common patterns
+weight: 3
 ---
-# Common use cases
 
 This page aims to illustrate common use cases that developers who instrument their applications and libraries with OpenTracing API need to deal with.
 
@@ -305,12 +305,12 @@ span.set_tag('message.destination', message.destination)
 
 #### Synchronous request-response over queues
 
-Although not necessarily used a great deal, some messaging platforms/standards (e.g. JMS) support the ability to provide a _ReplyTo_ destination in the header of a message. When the consumer receives the message it returns a result message to the nominated destination. 
+Although not necessarily used a great deal, some messaging platforms/standards (e.g. JMS) support the ability to provide a _ReplyTo_ destination in the header of a message. When the consumer receives the message it returns a result message to the nominated destination.
 
-This pattern could be used to simulate a synchronous request/response, in which case the relationship type between the consumer and producer spans should technically be _Child Of_. 
+This pattern could be used to simulate a synchronous request/response, in which case the relationship type between the consumer and producer spans should technically be _Child Of_.
 
 However this pattern could also be used for delegation to indicate a third party that should be informed of the result. In which case it would be treated as two separate message exchanges with _Follows From_ relationship types linking each stage.
 
-As it would be difficult to distinguish between these two scenarios, and the use of message oriented middleware for synchronous request/response pattern should be discouraged, it is recommended that the request/response scenario be ignored from a tracing perspective. 
+As it would be difficult to distinguish between these two scenarios, and the use of message oriented middleware for synchronous request/response pattern should be discouraged, it is recommended that the request/response scenario be ignored from a tracing perspective.
 
 

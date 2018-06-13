@@ -3,6 +3,9 @@ baseURL: /
 languageCode: en-us
 enableRobotsTXT: true
 
+pygmentsUseClasses: true
+pygmentsCodefences: true
+
 theme:
   - tracer
 

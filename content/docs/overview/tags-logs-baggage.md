@@ -1,3 +1,3 @@
 ---
-title: "Tags, Logs and Baggage"
+title: Tags, logs and baggage
 ---
