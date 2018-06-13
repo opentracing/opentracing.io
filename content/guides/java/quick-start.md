@@ -1,8 +1,8 @@
 ---
-title: "Golang: Quick Start"
+title: "Java: Quick Start"
 ---
 
-* Link to GO walkthroughs / tutorials
+* Link to Java walkthroughs / tutorials
 * Setting up your tracer
 * Start a Trace
 * Create a Child Span
