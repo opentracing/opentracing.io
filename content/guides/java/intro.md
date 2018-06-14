@@ -46,4 +46,33 @@ The main OpenTracing API declares all the main components as interfaces, which a
 
 Consumers will most of the time consume only this part of the API, with potentially using the `opentracing-mock` artifact for testing.
 
-**Next:** [Quick start](../quick-start/)
+#### Quick Start
+
+An easy way to get quickly started, and get familiar with the API is to use **io.opentracing.mock.MockTracer** to create **Span**s and inspect them afterwards, as the resulting **MockSpan**s will expose a lot of information that a normal **Span** would not.
+
+```java
+  import java.util.Map;
+  import io.opentracing.mock.MockTracer;
+  import io.opentracing.mock.MockSpan;
+  import io.opentracing.tags.Tags;
+
+  // Initialize MockTracer with the default values.
+  MockTracer tracer = new MockTracer();
+
+  // Create a new Span, representing an operation.
+  MockSpan span = tracer.buildSpan("foo").start();
+
+  // Add a tag to the Span.
+  span.setTag(Tags.COMPONENT, "my-own-application");
+
+  // Finish the Span.
+  span.finish();
+
+  // Analize the saved Span.
+  System.out.println("Operation name = " + span.operationName());
+  System.out.println("Start = " + span.startMicros());
+  System.out.println("Finish = " + span.finishMicros());
+
+  // Inspect the Span's tags.
+  Map<String, Object> tags = span.tags();
+```
