@@ -2,6 +2,8 @@
 title: "Python: Quick Start"
 ---
 
+Most of this quick start guide is based upon the great [opentracing tutorial](https://github.com/yurishkuro/opentracing-tutorial/tree/master/python) by [Yuri Shkuro](https://github.com/yurishkuro). Once you've got a feel for how OpenTracing works here, feel free to reference his repo to learn more.
+
 # Installing an OpenTracing Platform
 
 In order to see and ship our traces, we'll first need to have a place to send them to and then visualize the results.
