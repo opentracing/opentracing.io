@@ -6,6 +6,7 @@ Most of this quick start guide is based upon the great [opentracing tutorial](ht
 
 There's also a [Katakoda lesson](https://www.katacoda.com/courses/opentracing) that follows the tutorial, if you don't want to install and setup Docker on your local system just yet.
 
+
 # Installing an OpenTracing Platform
 
 In order to see and ship our traces, we'll first need to have a place to send them to and then visualize the results.
@@ -21,6 +22,7 @@ $ docker run -d -p5775:5775/udp -p6831:6831/udp -p6832:6832/udp -p5778:5778 -p16
 Once the container spins up,the Jaeger UI will be at [http://localhost:16686](http://localhost:16686). You should now be ready to start sending traces to your local computer. 
 
 ![Jaeger Frontend](/img/python-quickstart/jaeger.png)
+
 
 # Installing an OpenTracing Library for Python
 
@@ -51,6 +53,7 @@ $ pip install ipython
 Followed by typing `ipython` in a shell. The rest of the code snippets in this tutorial will assume you're typing or pasting them directly into the `ipython` shell in one session.
 
 # Configuring the Tracer
+=======
 
 Now we have a way to ship our Traces from Python, and can jump in and configure a program to be instrumented.
 
@@ -200,3 +203,4 @@ With this, we can now see each of the Company names as the spans for the request
 Finally, we'll add some tags to see which of our web requests worked, and which ones didn't. This will mean adding tags to our requests, and filtering them on our backend.
 
 To do this, we simply set tags for our requests in the proper `try` and `except` states.
+
