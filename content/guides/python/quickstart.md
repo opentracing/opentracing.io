@@ -16,7 +16,7 @@ So, if you've got Docker already installed, you can just run the following comma
 $ docker run -d -p5775:5775/udp -p6831:6831/udp -p6832:6832/udp -p5778:5778 -p16686:16686 -p14268:14268 -p9411:9411 jaegertracing/all-in-one:0.8.0
 ```
 
-... and once the container spins up,the Jaeger UI will be at [http://localhost:16686](http://localhost:16686). You should now be ready to start sending traces to your local computer. 
+Once the container spins up,the Jaeger UI will be at [http://localhost:16686](http://localhost:16686). You should now be ready to start sending traces to your local computer. 
 
 # Installing an OpenTracing Library for Python
 
@@ -30,11 +30,13 @@ $ pip install jaeger-client
 
 >**Wait, why am I not installing opentracing-python?!**
 
->Again, [opentracing-python](https://github.com/opentracing/opentracing-python) is just a reference API. It's up to the shipping platforms themselves to implement and extend the API to ship to their APIs. 
+>[opentracing-python](https://github.com/opentracing/opentracing-python) is just a reference API. It's an empty shell, if you will, that each OpenTracing platform must then implement themselves. Changing platforms should just mean changing the configuration of your tracer object, and the rest of your code should stay the same.
+
+It's up to the shipping platforms themselves to implement and extend the API to ship traces to their APIs. 
 
 Since we're using Jaeger, we'll use Jaeger's library to ship our traces.
 
-But if we were using Datadog's APM, or Lightstep's tracer, we'd use their libraries instead.
+If we were using Datadog or Lightstep's tracers, we'd use their libraries instead. The same applies to any other platform that implements the OpenTracing API.
 
 Finally, since we're just playing around with sending traces, let's use an `iPython` shell to interactively send traces by hand. To install `iPython`, it's just another:
 
@@ -43,6 +45,8 @@ $ pip install ipython
 ```
 
 Followed by typing `ipython` in a shell.
+
+# Configuring the Tracer
 
 Now we have a way to ship our Traces from Python, and can jump in and configure a program to be instrumented.
 
@@ -80,7 +84,9 @@ Next, we initialize this tracer, by creating sending the name of our new service
 tracer = init_tracer('first-service')
 ```
 
-With this, we can then ship our first trace, using a context:
+# Creating Our First Span
+
+With our new `tracer`, we can now ship our first trace, using a context:
 
 ```python
 with tracer.start_span('first-span') as span:
@@ -89,9 +95,15 @@ with tracer.start_span('first-span') as span:
 
 Typing these lines into the iPython session, we should then see a line that says the span is being reported. 
 
-Next, we can reload the Jaeger page at localhost, and see our service in the list of services, along with the trace and span.
+One important note here, the tracer **does not** flush immediately. If you were to run this in a program, it might exit before the tracer gets a chance to flush, and may not actually end up sending your trace.
 
-From here, we can start to poke around at the edges of the OpenTracing API, and understand how things work. What happens if we start a `span` within another span? Just type it out and try it. See what changes in the Jaeger dashboard.
+In most web / API applications, this shouldn't matter, as your program will be long running. But if you're trying to trace a smaller application, it helps to be aware of this caveat.
+
+Next, we can reload the Jaeger page at `localhost`, and see our service in the list of services, along with the trace and span.
+
+From here, we can start to poke around at the edges of the OpenTracing API, and understand how things work. 
+
+What happens if we start a `span` within another `span`? Just type it out and try it. See what changes in the Jaeger dashboard.
 
 ```
 with tracer.start_span('second-span') as span2:
@@ -117,7 +129,15 @@ After running this code in our `ipython` repl, we can now go into Jaeger, and se
 
 Try putting some delays between our `span`s to see how this affects your timeline. You'll start to get a feel for how spans show different delays of time.
 
-In order to link our two spans, 
+# Tracing an HTTP Request
+
+Tracing is most useful when we get to see what's going on in our systems. Let's do two HTTP requests that rely on each other, and see how tracing allows us to visualize the process.
+
+
+
+# Viewing Traces
+
+
 * Link to Python walkthroughs / tutorials
 * Setting up your tracer
 * Start a Trace
