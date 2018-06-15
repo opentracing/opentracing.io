@@ -20,6 +20,8 @@ $ docker run -d -p5775:5775/udp -p6831:6831/udp -p6832:6832/udp -p5778:5778 -p16
 
 Once the container spins up,the Jaeger UI will be at [http://localhost:16686](http://localhost:16686). You should now be ready to start sending traces to your local computer. 
 
+![Jaeger Frontend](/img/python-quickstart/jaeger.png)
+
 # Installing an OpenTracing Library for Python
 
 With the Jaeger server running, we've now got a place to ship our traces to. We'll now need to set up Python to be able to ship traces.
@@ -88,6 +90,7 @@ tracer = init_tracer('first-service')
 
 If you're stuck, this is what your `ipython` shell should now look like:
 
+![iPython shell](/img/python-quickstart/ipython.png)
 
 # Creating Our First Span
 
@@ -104,7 +107,9 @@ One important note here, the tracer **does not** flush immediately. If you were 
 
 In most web / API applications, this shouldn't matter, as your program will be long running. But if you're trying to trace a smaller application, it helps to be aware of this caveat.
 
-Next, we can reload the Jaeger page at `localhost`, and see our service in the list of services, along with the trace and span.
+Next, we can reload the Jaeger page at `localhost`, and see our service in the list of services, along with the trace and span. You may need to click the `Find Traces` button to see your traces.
+
+![Jaeger Frontend with Span](/img/python-quickstart/first-span-jaeger.png)
 
 From here, we can start to poke around at the edges of the OpenTracing API, and understand how things work. 
 
@@ -119,6 +124,8 @@ with tracer.start_span('second-span') as span2:
 
 If we look in the Jaeger dashboard, we can see our three spans show up separately. There is no link between the spans as we set them. This is because in order to link our spans, we need to set them up as child spans.
 
+![Jaeger Fontend with Span inside of Span](/img/python-quickstart/second-span-no-child.png)
+
 # Creating A Child Span 
 
 Creating a child is done by creating tracer span as a `child_of` the parent span. Let's try that now, and see how it changes our `span`s in Jaeger:
@@ -132,7 +139,10 @@ with tracer.start_span('fourth-span') as span4:
 
 After running this code in our `ipython` repl, we can now go into Jaeger, and see our `fifth-span` successfully made a child of `fourth-span`. 
 
+![Fourth Span with Child](/img/python-quickstart/fourth-span-child.png)
+
 Try putting some delays between our `span`s to see how this affects your timeline. You'll start to get a feel for how spans show different delays of time.
+
 
 # Tracing a HTTP Requests
 
@@ -183,13 +193,8 @@ with tracer.start_span('get-python-jobs') as span:
 
 With this, we can now see each of the Company names as the spans for the requests. When we go into the traces for them, we can see how long each company's page takes to be loaded.
 
+![Child Spans in Web Requests](/img/python-quickstart/child-spans-web-request.png)
 
 # Viewing Traces
 
-
-* Link to Python walkthroughs / tutorials
-* Setting up your tracer
-* Start a Trace
-* Create a Child Span
-* Make An HTTP request
-* View your trace
+Finally, we'll add some tags to see which of our web requests worked, and which ones didn't. This will mean adding tags to our requests, and filtering them on our backend.
