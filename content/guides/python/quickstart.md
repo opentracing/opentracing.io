@@ -198,3 +198,5 @@ With this, we can now see each of the Company names as the spans for the request
 # Viewing Traces
 
 Finally, we'll add some tags to see which of our web requests worked, and which ones didn't. This will mean adding tags to our requests, and filtering them on our backend.
+
+To do this, we simply set tags for our requests in the proper `try` and `except` states.
