@@ -53,7 +53,6 @@ $ pip install ipython
 Followed by typing `ipython` in a shell. The rest of the code snippets in this tutorial will assume you're typing or pasting them directly into the `ipython` shell in one session.
 
 # Configuring the Tracer
-=======
 
 Now we have a way to ship our Traces from Python, and can jump in and configure a program to be instrumented.
 
