@@ -4,6 +4,8 @@ title: "Java: Tracers"
 
 #### Setting up your Tracer
 
+A **Tracer** is the actual implementation that will record the **Span**s and publish them somewhere. How your application handles the actual **Tracer** is up to you: either consume it directly throughout your application or store it in the **GlobalTracer** for easier usage with instrumented frameworks.
+
 Different **Tracer** implementations vary in how and what parameters they receive at initialization time, such as:
 
 * Component name for this application's traces.
@@ -12,7 +14,7 @@ Different **Tracer** implementations vary in how and what parameters they receiv
 * Sampling strategy.
 
 
-For example, initializing the **Tracer** implementation of `Jaeger` looks like this:
+For example, initializing the **Tracer** implementation of `Jaeger` might look like this:
 
 ```java
   import io.opentracing.Tracer;
@@ -25,7 +27,13 @@ For example, initializing the **Tracer** implementation of `Jaeger` looks like t
   Tracer tracer = config.getTracer();
 ```
 
-One a **Tracer** instance is obtained, it can be used to manually create **Span**, or pass it to existing instrumentation for frameworks and libraries:
+If your **Tracer** supports it, the [TracerResolver](https://github.com/opentracing-contrib/java-tracerresolver) can also be used. With this approach, there's no **Tracer**-specific initialization code in your application:
+
+```java
+  Tracer tracer = TracerResolver.resolveTracer();
+```
+
+Once a **Tracer** instance is obtained, it can be used to manually create **Span**, or pass it to existing instrumentation for frameworks and libraries:
 
 ```java
   // OpenTracing Redis client. It can be *any* OT-compatible tracer.
@@ -35,7 +43,7 @@ One a **Tracer** instance is obtained, it can be used to manually create **Span*
 
 #### Global Tracer
 
-In order to not force the user to keep around a **Tracer**, the **io.opentracing.util** artifact includes a helper **GlobalTracer** class implementing the **io.opentracing.Tracer**, which, as the name implies, acts as as a global instance that can be used from anywhere. It works by forwarding all operations to another underlying **Tracer**, that will get registered at some future point.
+In order to not force the user to keep around a **Tracer**, the **io.opentracing.util** artifact includes a helper **GlobalTracer** class implementing the **io.opentracing.Tracer** interface, which, as the name implies, acts as as a global instance that can be used from anywhere. It works by forwarding all operations to another underlying **Tracer**, that will get registered at some future point.
 
 By default, the underlying **Tracer** is a no-nop implementation.
 
