@@ -4,6 +4,8 @@ title: "Python: Quick Start"
 
 Most of this quick start guide is based upon the great [opentracing tutorial](https://github.com/yurishkuro/opentracing-tutorial/tree/master/python) by [Yuri Shkuro](https://github.com/yurishkuro). Once you've got a feel for how OpenTracing works here, feel free to reference his repo to learn more.
 
+There's also a [Katakoda lesson](https://www.katacoda.com/courses/opentracing) that follows the tutorial, if you don't want to install and setup Docker on your local system just yet.
+
 # Installing an OpenTracing Platform
 
 In order to see and ship our traces, we'll first need to have a place to send them to and then visualize the results.
@@ -16,7 +18,9 @@ So, if you've got Docker already installed, you can just run the following comma
 $ docker run -d -p5775:5775/udp -p6831:6831/udp -p6832:6832/udp -p5778:5778 -p16686:16686 -p14268:14268 -p9411:9411 jaegertracing/all-in-one:0.8.0
 ```
 
-... and once the container spins up,the Jaeger UI will be at [http://localhost:16686](http://localhost:16686). You should now be ready to start sending traces to your local computer. 
+Once the container spins up,the Jaeger UI will be at [http://localhost:16686](http://localhost:16686). You should now be ready to start sending traces to your local computer. 
+
+![Jaeger Frontend](/img/python-quickstart/jaeger.png)
 
 # Installing an OpenTracing Library for Python
 
@@ -30,11 +34,13 @@ $ pip install jaeger-client
 
 >**Wait, why am I not installing opentracing-python?!**
 
->Again, [opentracing-python](https://github.com/opentracing/opentracing-python) is just a reference API. It's up to the shipping platforms themselves to implement and extend the API to ship to their APIs. 
+>[opentracing-python](https://github.com/opentracing/opentracing-python) is just a reference API. It's an empty shell if you will, that each OpenTracing platform must then implement themselves. Changing platforms should just mean changing the initialization of your `tracer` object, and the rest of your code should stay the same.
+
+It's up to the shipping platforms themselves to implement and extend the API to ship traces to their APIs. 
 
 Since we're using Jaeger, we'll use Jaeger's library to ship our traces.
 
-But if we were using Datadog's APM, or Lightstep's tracer, we'd use their libraries instead.
+If we were using Datadog or Lightstep's tracers, we'd use their libraries instead. The same applies to any other platform that implements the OpenTracing API.
 
 Finally, since we're just playing around with sending traces, let's use an `iPython` shell to interactively send traces by hand. To install `iPython`, it's just another:
 
@@ -42,7 +48,9 @@ Finally, since we're just playing around with sending traces, let's use an `iPyt
 $ pip install ipython
 ```
 
-Followed by typing `ipython` in a shell.
+Followed by typing `ipython` in a shell. The rest of the code snippets in this tutorial will assume you're typing or pasting them directly into the `ipython` shell in one session.
+
+# Configuring the Tracer
 
 Now we have a way to ship our Traces from Python, and can jump in and configure a program to be instrumented.
 
@@ -72,7 +80,7 @@ def init_tracer(service):
     return config.initialize_tracer()
 ```
 
-You can copy the above text and paste it into iPython's interactive shell with a `%paste`.
+You can copy the above text and paste it into iPython's interactive shell by using the `%paste` command.
 
 Next, we initialize this tracer, by creating sending the name of our new service to trace:
 
@@ -80,7 +88,13 @@ Next, we initialize this tracer, by creating sending the name of our new service
 tracer = init_tracer('first-service')
 ```
 
-With this, we can then ship our first trace, using a context:
+If you're stuck, this is what your `ipython` shell should now look like:
+
+![iPython shell](/img/python-quickstart/ipython.png)
+
+# Creating Our First Span
+
+With our new `tracer`, we can now ship our first trace, using a context:
 
 ```python
 with tracer.start_span('first-span') as span:
@@ -89,9 +103,17 @@ with tracer.start_span('first-span') as span:
 
 Typing these lines into the iPython session, we should then see a line that says the span is being reported. 
 
-Next, we can reload the Jaeger page at localhost, and see our service in the list of services, along with the trace and span.
+One important note here, the tracer **does not** flush immediately. If you were to run this in a program, it might exit before the tracer gets a chance to flush, and may not actually end up sending your trace.
 
-From here, we can start to poke around at the edges of the OpenTracing API, and understand how things work. What happens if we start a `span` within another span? Just type it out and try it. See what changes in the Jaeger dashboard.
+In most web / API applications, this shouldn't matter, as your program will be long running. But if you're trying to trace a smaller application, it helps to be aware of this caveat.
+
+Next, we can reload the Jaeger page at `localhost`, and see our service in the list of services, along with the trace and span. You may need to click the `Find Traces` button to see your traces.
+
+![Jaeger Frontend with Span](/img/python-quickstart/first-span-jaeger.png)
+
+From here, we can start to poke around at the edges of the OpenTracing API, and understand how things work. 
+
+What happens if we start a span within another span? Just type it out and try it. See what changes in the Jaeger dashboard.
 
 ```
 with tracer.start_span('second-span') as span2:
@@ -100,7 +122,9 @@ with tracer.start_span('second-span') as span2:
         span3.set_tag('third-tag', '80')
 ```
 
-If we look in the Jaeger dashboard, we can see our three spans show up separately. There is no link between the spans as we set them. This is because in order to link our `span`s, we need to set them up as child spans.
+If we look in the Jaeger dashboard, we can see our three spans show up separately. There is no link between the spans as we set them. This is because in order to link our spans, we need to set them up as child spans.
+
+![Jaeger Fontend with Span inside of Span](/img/python-quickstart/second-span-no-child.png)
 
 # Creating A Child Span 
 
@@ -115,12 +139,88 @@ with tracer.start_span('fourth-span') as span4:
 
 After running this code in our `ipython` repl, we can now go into Jaeger, and see our `fifth-span` successfully made a child of `fourth-span`. 
 
+![Fourth Span with Child](/img/python-quickstart/fourth-span-child.png)
+
 Try putting some delays between our `span`s to see how this affects your timeline. You'll start to get a feel for how spans show different delays of time.
 
-In order to link our two spans, 
-* Link to Python walkthroughs / tutorials
-* Setting up your tracer
-* Start a Trace
-* Create a Child Span
-* Make An HTTP request
-* View your trace
+
+# Tracing a HTTP Requests
+
+Tracing is most useful when we get to see what's going on in our systems. Let's do two HTTP requests that rely on each other, and see how tracing allows us to visualize the process.
+
+Depending on your setup, you might be able to `pip install requests` directly in your `ipython` shell. Just use the `!` shortcut directly in `ipython`:
+
+```
+In [6]: !pip install requests
+```
+
+If this command fails, you can always run it in another shell instance and see what went wrong.
+
+Next, we still need to import requests. We can do that immediately, in the same interactive shell:
+
+```
+In [7]: import requests
+```
+
+We'll use `requests` to query the [Github jobs API](https://jobs.github.com/api) for Python jobs, and then get each Company's listed website.
+
+```
+homepages = []
+res = requests.get('https://jobs.github.com/positions.json?description=python')
+for result in res.json():
+    print('Getting website for %s' % result['company'])
+    try:
+        homepages.append(requests.get(result['company_url']))
+    except:
+        print('Unable to get site for %s' % result['company'])
+```
+
+We can now wrap both of these requests in spans, and make each of the child websites a child span of our main request:
+
+```
+with tracer.start_span('get-python-jobs') as span:
+    homepages = []
+    res = requests.get('https://jobs.github.com/positions.json?description=python')
+    span.set_tag('jobs-count', len(res.json()))
+    for result in res.json():
+        with tracer.start_span(result['company'], child_of=span) as site_span:
+            print('Getting website for %s' % result['company'])
+            try:
+                homepages.append(requests.get(result['company_url']))
+            except:
+                print('Unable to get site for %s' % result['company'])
+```
+
+With this, we can now see each of the Company names as the spans for the requests. When we go into the traces for them, we can see how long each company's page takes to be loaded.
+
+![Child Spans in Web Requests](/img/python-quickstart/child-spans-web-request.png)
+
+# Viewing Traces
+ 
+When we run the previous code, a lot of our companies won't have websites, and our web requests will fail.
+
+In order to see the failures, we'll need to add tagging to our traces.
+
+Once they're properly tagged, we'll be able to see them in Jaeger.
+
+To do this, we simply set tags for our requests in the proper `try` and `except` states.
+
+```
+with tracer.start_span('get-python-jobs') as span:
+    homepages = []
+    res = requests.get('https://jobs.github.com/positions.json?description=python')
+    span.set_tag('jobs-count', len(res.json()))
+    for result in res.json():
+        with tracer.start_span(result['company'], child_of=span) as site_span:
+            print('Getting website for %s' % result['company'])
+            try:
+                homepages.append(requests.get(result['company_url']))
+                site_span.set_tag('request-type', 'Success')
+            except:
+                print('Unable to get site for %s' % result['company'])
+                site_span.set_tag('request-type', 'Failure')
+```
+
+After we run this, we can then jump into Jaeger and see the results of our new `tags`, and see which requests work and which don't:
+
+![Child Spans with Tags](/img/python-quickstart/child-spans-tagged.png)
