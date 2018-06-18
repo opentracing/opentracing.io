@@ -2,14 +2,14 @@
 title: Guide to Java
 ---
 
-The Java OpenTracing API lives in https://github.com/opentracing/opentracing-java and closely follows the naming of the components as defined in the specification.
+The [OpenTracing Java API](https://github.com/opentracing/opentracing-java) lives and closely follows the naming of the components as defined in the specification.
 
 The repository contains four main artifacts:
 
 * `opentracing-api`: the main API. No dependencies.
 * `opentracing-noop`: no-op implementation of the interfaces of the main API, which, as the name implies, do nothing. Depends on `opentracing-api`.
 * `opentracing-mock`: mock layer for testing. Contains a **MockTracer** that simply saves the **Span**s to memory. Depends on `opentracing-api` and `opentracing.noop`.
-* `opentracing-util`: Utility classes, such as a global **Tracer** and a default implementation of **ScopeManager** based on thread-local storage. Depends on all the previous artifacts.
+* `opentracing-util`: Utility classes, such as the **GlobalTracer** and a default implementation of **ScopeManager** based on thread-local storage. Depends on all the previous artifacts.
 
 An additional artifact exists for testing and trying out new features of the API, called `opentracing-testbed`, which can be used when developing the main API, but otherwise of no use for the OpenTracing consumers.
 
@@ -37,14 +37,13 @@ Replace `opentracing-api` with the `opentracing-noop`, `opentracing-mock` or `op
 
 #### Main API
 
-The main OpenTracing API declares all the main components as interfaces, which additional helper classes.
+The main [OpenTracing API](http://javadoc.io/doc/io.opentracing/opentracing-api/0.31.0) declares all the main components as interfaces, which additional helper classes, such as **Tracer**, **Span**, **SpanContext**, **Scope**, **ScopeManager** and **Format** (used to define common **SpanContext** extraction/injection formats).
 
-* **io.opentracing**: Main package, containing the essential interfaces, such as **Tracer**, **Span**, **SpanContext**, **Scope** and **ScopeManager**.
-* **io.opentracing.log**: Package containing helper classes for logging (through **Span.log()**).
-* **io.opentracing.propagation**: Package containing interfaces and helper classes for injection and extraction of **SpanContext**, as well as for defining the formats used for it.
-* **io.opentracing.tag**: Package containing helper classes for **Span** tags.
+Consumers will most of the time consume only this part of the API, with potentially using the `opentracing-mock` artifact for testing and `opentracing-util` for utility classes.
 
-Consumers will most of the time consume only this part of the API, with potentially using the `opentracing-mock` artifact for testing.
+#### Opentracing Contrib.
+
+Besides the official API, there are also several libraries under [opentracing-contrib](https://github.com/opentracing-contrib), including generic helpers like the [TracerResolver](https://github.com/opentracing-contrib/java-tracerresolver) and framework instrumentation libraries, such as [Java Web Servlet Filter](https://github.com/opentracing-contrib/java-web-servlet-filter) and [Spring Cloud](https://github.com/opentracing-contrib/java-spring-cloud).
 
 #### Quick Start
 
