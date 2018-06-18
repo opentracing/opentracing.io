@@ -196,7 +196,31 @@ With this, we can now see each of the Company names as the spans for the request
 ![Child Spans in Web Requests](/img/python-quickstart/child-spans-web-request.png)
 
 # Viewing Traces
+ 
+When we run the previous code, a lot of our companies won't have websites, and our web requests will fail.
 
-Finally, we'll add some tags to see which of our web requests worked, and which ones didn't. This will mean adding tags to our requests, and filtering them on our backend.
+In order to see the failures, we'll need to add tagging to our traces.
+
+Once they're properly tagged, we'll be able to see them in Jaeger.
 
 To do this, we simply set tags for our requests in the proper `try` and `except` states.
+
+```
+with tracer.start_span('get-python-jobs') as span:
+    homepages = []
+    res = requests.get('https://jobs.github.com/positions.json?description=python')
+    span.set_tag('jobs-count', len(res.json()))
+    for result in res.json():
+        with tracer.start_span(result['company'], child_of=span) as site_span:
+            print('Getting website for %s' % result['company'])
+            try:
+                homepages.append(requests.get(result['company_url']))
+                site_span.set_tag('request-type', 'Success')
+            except:
+                print('Unable to get site for %s' % result['company'])
+                site_span.set_tag('request-type', 'Failure')
+```
+
+After we run this, we can then jump into Jaeger and see the results of our new `tags`, and see which requests work and which don't:
+
+![Child Spans with Tags](/img/python-quickstart/child-spans-tagged.png)
