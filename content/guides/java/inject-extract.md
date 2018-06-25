@@ -81,7 +81,7 @@ In the above example, instead of using a dedicated adapter class to convert JAXR
 ## Injecting and Extracting TextMap
 The process of injecting and extracting `TextMap` is similar to that of HTTP. Given below are some elaborated code examples of injecting and extracting tracing information using `TextMap` format.
 
-```
+```java
 protected void attachTraceInfo(Tracer tracer, Span span, final Invocation inv) {
     tracer.inject(span.context(), Format.Builtin.TEXT_MAP, new TextMap() {
 
@@ -99,7 +99,7 @@ protected void attachTraceInfo(Tracer tracer, Span span, final Invocation inv) {
 ```
 The above method injects the invocation information into the span’s context on the consumer side. The `TextMap` interface has been implemented to create a `TextMap` of invocation attachments.
 
-```
+```java
 protected Span extractTraceInfo(Tracer tracer, Invoker<?> invoker, Invocation inv) {
 
     Tracer.SpanBuilder span = tracer.buildSpan(“Operation_Name_Here”);
@@ -107,7 +107,7 @@ protected Span extractTraceInfo(Tracer tracer, Invoker<?> invoker, Invocation in
         SpanContext spanContext = tracer.extract(Format.Builtin.TEXT_MAP, new TextMapExtractAdapter(inv.getAttachments()));
         if (spanContext != null) {
             //if spanContext is extracted, the spanContext is propagated to the new span
-              
+
             span.asChildOf(spanContext);
         }
     } catch (Exception e) {
