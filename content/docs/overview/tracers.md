@@ -10,11 +10,11 @@ OpenTracing provides an open, vendor-neutral standard API for describing distrib
 - encoding and decoding the metadata context for transmitting it over the network for inter-process communications
 - causality tracking: parent-child, forks, joins
 
-OpenTracing abstracts away the differences among numerous tracer implementations. This means that instrumentation would remain the same irrespective of the tracer system being used by the developer. In order to instrument a web application using OpenTracing specification, a compatible OpenTracing tracer must be deployed and listening for incoming span requests. A list of the all the supported tracers is available [here](./../../supported-tracers).
+OpenTracing abstracts away the differences among numerous tracer implementations. This means that instrumentation would remain the same irrespective of the tracer system being used by the developer. In order to instrument an application using OpenTracing specification, a compatible OpenTracing tracer must be deployed. A list of the all the supported tracers is available [here](./../../supported-tracers).
 
 ### Tracer Interface
 
-The `Tracer` interface creates `Spans` and understands how to `Inject` (serialize) and `Extract` (deserialize) them across process boundaries. It has the following capabilities:
+The `Tracer` interface creates `Spans` and understands how to `Inject` (serialize) and `Extract` (deserialize) their metadata across process boundaries. It has the following capabilities:
 
 - Start a new `Span`
 - `Inject` a `SpanContext` into a carrier
