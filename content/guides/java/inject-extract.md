@@ -91,7 +91,7 @@ In the above example, instead of using a dedicated adapter class to convert JAX-
 The complete tutorial is available [here](https://github.com/yurishkuro/opentracing-tutorial/tree/master/java/src/main/java/lesson03).
 
 ## Injecting and Extracting TextMap
-The process of injecting and extracting `TextMap` is similar to that of HTTP. Given below are some elaborated code examples of [injecting](https://www.programcreek.com/java-api-examples/?code=yangfuhai/jboot/jboot-master/src/main/java/io/jboot/core/rpc/dubbo/JbootDubboConsumerTracingFilter.java) and [extracting](https://www.programcreek.com/java-api-examples/?code=yangfuhai/jboot/jboot-master/src/main/java/io/jboot/core/rpc/dubbo/JbootDubboProviderTracingFilter.java) tracing information using `TextMap` format.
+The process of injecting and extracting `TextMap` is similar to that of HTTP. Given below are some elaborated code examples of [injecting](https://github.com/opentracing-contrib/java-kafka-client/blob/master/opentracing-kafka-client/src/main/java/io/opentracing/contrib/kafka/TracingKafkaUtils.java) and [extracting](https://github.com/opentracing-contrib/java-kafka-client/blob/master/opentracing-kafka-client/src/main/java/io/opentracing/contrib/kafka/TracingKafkaUtils.java) tracing information using `TextMap` format.
 
 ```java
 protected void attachTraceInfo(Tracer tracer, Span span, final Invocation inv) {
@@ -109,7 +109,7 @@ protected void attachTraceInfo(Tracer tracer, Span span, final Invocation inv) {
     });
 }
 ```
-The above method injects the invocation information into the `spanContext` on the consumer side.
+The above method injects the `spanContext` into the carrier on the consumer side.
 
 ```java
 protected Span extractTraceInfo(Tracer tracer, Invoker<?> invoker, Invocation inv) {
