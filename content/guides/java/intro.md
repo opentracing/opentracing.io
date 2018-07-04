@@ -37,11 +37,11 @@ Replace `opentracing-api` with the `opentracing-noop`, `opentracing-mock` or `op
 
 #### Main API
 
-The main [OpenTracing API](http://javadoc.io/doc/io.opentracing/opentracing-api/0.31.0) declares all the main components as interfaces, which additional helper classes, such as **Tracer**, **Span**, **SpanContext**, **Scope**, **ScopeManager** and **Format** (used to define common **SpanContext** extraction/injection formats).
+The main [OpenTracing API](http://javadoc.io/doc/io.opentracing/opentracing-api) declares all the main components as interfaces, which additional helper classes, such as **Tracer**, **Span**, **SpanContext**, **Scope**, **ScopeManager** and **Format** (used to define common **SpanContext** extraction/injection formats).
 
 Consumers will most of the time consume only this part of the API, with potentially using the `opentracing-mock` artifact for testing and `opentracing-util` for utility classes.
 
-#### Opentracing Contrib.
+#### OpenTracing Community Contributions.
 
 Besides the official API, there are also several libraries under [opentracing-contrib](https://github.com/opentracing-contrib), including generic helpers like the [TracerResolver](https://github.com/opentracing-contrib/java-tracerresolver) and framework instrumentation libraries, such as [Java Web Servlet Filter](https://github.com/opentracing-contrib/java-web-servlet-filter) and [Spring Cloud](https://github.com/opentracing-contrib/java-spring-cloud).
 
