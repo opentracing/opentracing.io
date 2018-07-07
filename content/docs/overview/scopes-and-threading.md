@@ -24,12 +24,13 @@ As it is inconvenient to pass an active `Span` from function to function manuall
 
 ## Moving a span between threads
 Using the OpenTracing API, a developer can transfer the spans among different threads. A `Span`’s lifetime might start in one thread and end in another. Passing of scopes to another thread or callback is not supported.
-The internal timing breakdown of a Span might look like as shown below.
-
+The internal timing breakdown of a `Span` might look like as shown below.
+```
 [ ServiceHandlerSpan                                 ]
- |·FunctionA·|·····waiting on an RPC······|·FunctionB·|
+|·FunctionA·|·····waiting on an RPC······|·FunctionB·|
 
----------------------------------------------------------> time
+--------------------------------------------------> time
+```
 
 The “ServiceHandlerSpan” is active while it’s running in FunctionA and FunctionB, but remains inactive while waiting on an Remote Procedure Call (RPC). The RPC will presumably have a `Span` of its own, however, we are only concerned with the propagation of “ServiceHandlerSpan” from FunctionA to FunctionB.
 Using the `ScopeManager` API it is possible to fetch the `span()` in FunctionA and re-activate it in FunctionB after RPC terminates. The steps are as below:
