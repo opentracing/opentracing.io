@@ -92,6 +92,42 @@ if scope is not None:
 In order to trace across process boundaries in distributed systems, services need to be able to continue the trace injected by the client that sent each request. OpenTracing allows this to happen by providing inject and extract methods that encode a span's context into a carrier.
 The `inject` method allows for the `SpanContext` to be passed on to a carrier. The `extract` method does the exact opposite. It extracts the `SpanContext` from the carrier.
 
-Implemented examples of inject/extract and details can be found [here](./inject-extract).
+#### Injecting/Extracting the `spanContext` using HTTP format
+In order to pass a `spanContext` over the HTTP request, the developer needs to call the `tracer.inject` before building the HTTP request, like so:
+
+```python
+from opentracing.ext import tags
+from opentracing.propagation import Format
+
+def http_get(port, path, param, value):
+    url = 'http://localhost:%s/%s' % (port, path)
+
+    span = get_current_span()
+    span.set_tag(tags.HTTP_METHOD, 'GET')
+    span.set_tag(tags.HTTP_URL, url)
+    span.set_tag(tags.SPAN_KIND, tags.SPAN_KIND_RPC_CLIENT)
+    headers = {}
+    tracer.inject(span, Format.HTTP_HEADERS, headers)
+
+    r = requests.get(url, params={param: value}, headers=headers)
+    assert r.status_code == 200
+    return r.text
+
+```
+
+The logic on the server side instrumentation is similar, the only difference is that `tracer.extract` is used and the `span` is tagged as `span.kind=server`.
+
+```python
+@app.route("/format")
+def format():
+    span_ctx = tracer.extract(Format.HTTP_HEADERS, request.headers)
+    span_tags = {tags.SPAN_KIND: tags.SPAN_KIND_RPC_SERVER}
+    with tracer.start_span('format', child_of=span_ctx, tags=span_tags):
+        hello_to = request.args.get('helloTo')
+        return 'Hello, %s!' % hello_to
+
+```
+
+Other implemented examples of inject/extract and details can be found [here](./inject-extract).
 
 ![Trace Propagation](/img/overview:tracers/Extract.png)
