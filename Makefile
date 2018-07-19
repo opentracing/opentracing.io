@@ -1,14 +1,11 @@
 HUGO  := hugo
 THEME := tracer
 THEME_DIR := themes/$(THEME)
-NODE_BIN := node_modules/.bin
-GULP := $(NODE_BIN)/gulp
-CONCURRENTLY := $(NODE_BIN)/concurrently
 NPM := npm
 NETLIFY_URL = https://opentracing.netlify.com
 
 .PHONY: build
-build: setup build-assets netlify-build
+build: setup netlify-build
 	$(HUGO) \
 		--theme $(THEME)
 
@@ -30,18 +27,6 @@ serve: clean
 		--disableFastRender \
 		--ignoreCache
 
-.PHONY: build-assets
-build-assets:
-	(cd $(THEME_DIR) && $(GULP) build)
-
-.PHONY: develop-assets
-develop-assets:
-	(cd $(THEME_DIR) && $(GULP) dev)
-
-.PHONY: dev
-dev:
-	$(CONCURRENTLY) "make develop-assets" "make serve"
-
 .PHONY: get-spec-docs
 get-spec-docs:
 	git submodule update --init --recursive --remote
@@ -55,13 +40,13 @@ netlify-setup:
 	(cd $(THEME_DIR) && $(NPM) install)
 
 .PHONY: netlify-build
-netlify-build: netlify-setup clean build-assets
+netlify-build: netlify-setup clean
 	$(HUGO) \
 		--theme $(THEME) \
 		--baseURL $(NETLIFY_URL)
 
 .PHONY: netlify-build-preview
-netlify-build-preview: netlify-setup clean build-assets
+netlify-build-preview: netlify-setup clean
 	$(HUGO) \
 		--theme $(THEME) \
 		--baseURL $(DEPLOY_PRIME_URL)

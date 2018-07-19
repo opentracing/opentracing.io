@@ -28,7 +28,7 @@ make
 To start the site locally in development mode, run the following:
 
 ```
-make dev
+make serve
 ```
 
 Navigate to http://localhost:1313/ to see the site. Any content changes you make will automatically appear.
