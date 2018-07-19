@@ -4,5 +4,4 @@ _site
 node_modules
 Gemfile
 public/
-resources/
 firebase-debug.log
