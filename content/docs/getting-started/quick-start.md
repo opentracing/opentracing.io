@@ -8,7 +8,7 @@ weight: 1
 Both of these examples assume that Jaeger is running locally via Docker:
 
 ```sh
-$ docker run -d -p 5775:5775/udp -p 16686:16686 jaegertracing/all-in-one:latest
+docker run -d -p 5775:5775/udp -p 16686:16686 jaegertracing/all-in-one:latest
 ```
 
 These can be adapted to use other OpenTracing-compatible Tracer easily by adjusting the initialization code to match the particular implementation.
@@ -88,12 +88,18 @@ func someFunction() {
 }
 ```
 
-## Self-Guided Walkthrough Tutorials
+## Self-guided Walkthrough Tutorials
 
-Go: [Take OpenTracing for a HotROD Ride](https://medium.com/opentracing/take-opentracing-for-a-hotrod-ride-f6e3141f7941) involves successive optimizations of a Go-based Ride-on-Demand demonstration service, all informed by tracing data.
+### Go
 
-Java: [MicroDonuts](https://github.com/opentracing-contrib/java-opentracing-walkthrough) shows the reader how to get tracing instrumentation added to a multi-service app, and includes properly-configured initialization of several OpenTracing-compatible Tracers.
+[Take OpenTracing for a HotROD Ride](https://medium.com/opentracing/take-opentracing-for-a-hotrod-ride-f6e3141f7941) involves successive optimizations of a Go-based Ride-on-Demand demonstration service, all informed by tracing data.
 
-Multiple languages (Go, Java, Python, Node.js): [OpenTracing Tutorial](https://github.com/yurishkuro/opentracing-tutorial)
+### Java
+
+[MicroDonuts](https://github.com/opentracing-contrib/java-opentracing-walkthrough) shows the reader how to get tracing instrumentation added to a multi-service app, and includes properly-configured initialization of several OpenTracing-compatible Tracers.
+
+### Multiple languages
+
+The [OpenTracing Tutorial](https://github.com/yurishkuro/opentracing-tutorial) provides an example combining Go, Java, Python, and Node.js.
 
 
