@@ -56,14 +56,6 @@ The `inject` method allows for the `SpanContext` to be passed on to a carrier. F
 
 ## Tracing Systems
 
-The following table lists all currently known OpenTracing `Tracers`:
+The following table lists all currently known OpenTracing Tracers:
 
-Tracing System | Supported Languages
------------- | -------------
-Appdash | [Go](https://github.com/sourcegraph/appdash)
-CNCF Jaeger | [Java](https://github.com/jaegertracing/jaeger-client-java), [Go](https://github.com/jaegertracing/jaeger-client-go), [Python](https://github.com/jaegertracing/jaeger-client-python), [Node.js](https://github.com/jaegertracing/jaeger-client-node), [C++](https://github.com/jaegertracing/cpp-client), [C#](https://github.com/jaegertracing/jaeger-client-csharp)
-Datadog | [Go](https://github.com/DataDog/dd-opentracing-go)
-inspectIT | [Java](https://github.com/inspectIT/inspectIT)
-Instana | [Crystal](https://github.com/instana/crystal-sensor/blob/master/README.md), [Go](https://github.com/instana/golang-sensor/blob/master/README.md), [Java](https://github.com/instana/instana-java-opentracing/blob/master/README.md), [Node.js](https://github.com/instana/nodejs-sensor/blob/master/README.md), [Python](https://github.com/instana/python-sensor/blob/master/README.md), [Ruby](https://github.com/instana/ruby-sensor/blob/master/README.md)
-LightStep | [Go](https://github.com/lightstep/lightstep-tracer-go), [Python](https://github.com/lightstep/lightstep-tracer-python), [Javascript](https://github.com/lightstep/lightstep-tracer-javascript), [Objective-C](https://github.com/lightstep/lightstep-tracer-objc), [Java](https://github.com/lightstep/lightstep-tracer-java), [PHP](https://github.com/lightstep/lightstep-tracer-php), [Ruby](https://github.com/lightstep/lightstep-tracer-ruby), [C++](https://github.com/lightstep/lightstep-tracer-cpp)
-stagemonitor | [Java](https://github.com/stagemonitor/stagemonitor)
+{{< current-tracers >}}

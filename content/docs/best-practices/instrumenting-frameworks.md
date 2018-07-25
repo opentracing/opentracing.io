@@ -49,7 +49,7 @@ Some users may want to trace every request while other may want only specific re
 
 Users may also want to track information about the requests without having to manually access the span and set the tags themselves. It's helpful to provide a way for users to specify properties of the request they want to trace, and then automatically trace these features. Ideally, this would be similar to the Span Decorator function in gRPC:
 
-```
+```golang
 // SpanDecorator binds a function that decorates gRPC Spans.
 func SpanDecorator(decorator SpanDecoratorFunc) Option {
 	return func(o *options) {
@@ -60,7 +60,7 @@ func SpanDecorator(decorator SpanDecoratorFunc) Option {
 
 Another approach could have a setting `TRACED_REQUEST_ATTRIBUTES` that the user can pass a list of attributes (such as `URL`, `METHOD`, or `HEADERS`), and then in your tracing filters, you would include the following:
 
-```
+```python
 for attr in settings.TRACED_REQUEST_ATTRIBUTES:
     if hasattr(request, attr):
         payload = str(getattr(request, attr))
@@ -86,13 +86,13 @@ In order to trace across process boundaries in distributed systems, services nee
 
 If there was an active request on the client side, the span context will already be injected into the the request. Your job is to then extract that span context using the io.opentracing.Tracer.extract method. The carrier that you'll extract from depends on which type of service you're using; web servers, for example, use HTTP headers as the carrier for HTTP requests (as shown below):
 
-Python:
+#### Python
 
-```Python
+```python
 span_ctx = tracer.extract(opentracing.Format.HTTP_HEADERS, request.headers)
 ```
 
-Java:
+#### Java
 
 ```Java
 import io.opentracing.propagation.Format;
@@ -109,7 +109,7 @@ OpenTracing can throw errors when an extract fails due to no span being present,
 
 Once you receive a request and extract any existing span context, you should immediately start a span representing the lifetime of the request to the server. If there is an extracted span context present, then the new server span should be created with a ChildOf reference to the extracted span, signifying the relationship between the client request and server response. If there was no injected span, you'll just start a new span with no references.
 
-Python:
+#### Python
 
 ```Python
 if(extracted_span_ctx):
@@ -119,7 +119,7 @@ else:
     span = tracer.start_span(operation_name=operation_name)
 ```
 
-Java:
+#### Java
 
 ```Java
 if(parentSpan == null){
@@ -135,7 +135,7 @@ It's important for users to be able to access the current span context while pro
 
 1. Use of request context: If your framework has a request context that can store arbitrary values, then you can store the current span in the request context for the duration of the processing of a request. This works particularly well if your framework has filters that can alter how requests are processed. For example, if you have a request context called ctx, you could apply a filter similar to this:
 
-```
+```python
 def filter(request):
     span = # extract / start span from request
     with (ctx.active_span = span):
@@ -147,15 +147,18 @@ def filter(request):
 
 4. Map Requests to their associated span: You may not have a request context available, or you may use filters that have separate methods for preprocessing and postprocessing requests. If this is the case, you can instead create a mapping of requests to the span that represents its lifetime. One way that you could do this is to create a framework-specific tracer wrapper that stores this mapping. For example:
 
-```
+```python
 class MyFrameworkTracer:
     def __init__(opentracing_tracer):
         self.internal_tracer = opentracing_tracer
         self.active_spans = {}
+
     def add_span(request, span):
         self.active_spans[request] = span
+
     def get_span(request):
         return self.active_spans[request]
+
     def finish_span(request):
         span = self.active_spans[request]
         span.finish()
@@ -166,10 +169,11 @@ class MyFrameworkTracer:
 
 6. The filters would then be applied along these lines:
 
-```
+```python
 def process_request(request):
     span = # extract / start span from request
     tracer.add_span(request, span)
+
 def process_response(request, response):
     tracer.finish_span(request)
 ```
@@ -178,9 +182,9 @@ def process_response(request, response):
 
 ## Client-side tracing
 
-Enabling Client-side tracing is applicable to frameworks that have a client component that is able to initiate a request. The goal is to inject a span into the header of the request that can then be passed to the server-side portion of the framework. Just like with server-side tracing, you'll need to know how to alter how your clients send requests and receive responses. When done correctly, the trace of a request is visible end-to-end.
+Enabling client-side tracing is applicable to frameworks that have a client component that is able to initiate a request. The goal is to inject a span into the header of the request that can then be passed to the server-side portion of the framework. Just like with server-side tracing, you'll need to know how to alter how your clients send requests and receive responses. When done correctly, the trace of a request is visible end-to-end.
 
-Workflow for client side tracing:
+Workflow for client-side tracing:
 
 * Prepare request
     * Load the current trace state
@@ -196,7 +200,7 @@ Just like on the server side, we have to recognize whether we need to start a ne
 
 How you recognize whether there is an active trace depends on how you're storing active spans. If you're using a request context, then you can do something like this:
 
-```
+```python
 if hasattr(ctx, active_span):
     parent_span = getattr(ctx, active_span)
     span = tracer.start_span(operation_name=operation_name,
@@ -207,7 +211,7 @@ else:
 
 If you're using the request-to-span mapping technique, your approach might look like:
 
-```
+```python
 parent_span = tracer.get_span(request)
 span = tracer.start_span(
     operation_name=operation_name,
@@ -227,7 +231,7 @@ span = # start span from the current trace state
 
 When you receive a response, you want to end the span to signify that the client request is finished. Just like on the server side, how you do this depends on how your client request/response processing happens. If your filter wraps the request directly you can just do this:
 
-```
+```python
 def filter(request, response):
     span = # start span from the current trace state
     tracer.inject(span, opentracing.Format.HTTP_HEADERS, request.headers)
@@ -239,7 +243,7 @@ def filter(request, response):
 
 Otherwise, if you have ways to process the request and response separately, you might extend your tracer to include a mapping of client requests to spans, and your implementation would look more like this:
 
-```
+```python
 def process_request(request):
     span = # start span from the current trace state
     tracer.inject(span. opentracing.Format.HTTP_HEADERS, request.headers)
@@ -253,8 +257,6 @@ def process_response(request, response):
 If you'd like to highlight your project as OpenTracing-compatible, feel free to use our GitHub badge and link it to the OpenTracing website.
 
 [![OpenTracing Badge](https://img.shields.io/badge/OpenTracing-enabled-blue.svg)](http://opentracing.io)
-
-`[![OpenTracing Badge](https://img.shields.io/badge/OpenTracing-enabled-blue.svg)](http://opentracing.io)`
 
 Once you've packaged your implementation, email us at [community@opentracing.io](mailto://community@opentracing.io) with your implementation details (platform, description, github username) and we'll create a repo for you under [opentracing-contrib](https://github.com/opentracing-contrib/), so that others will be able to find and use your integration. You can also find there concrete examples of OpenTracing integrations into different open source projects.
 

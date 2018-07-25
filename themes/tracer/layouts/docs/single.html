@@ -11,14 +11,20 @@
       </nav>
 
       <article class="docs__article col-9">
-        <h1>{{ .Title }}</h1>
-        {{- with .Params.description }}
-        <h4>{{ .Params.description | markdownify }}</h4>
-        {{- end }}
+        <section class="docs__article--title">
+          <h1>{{ .Title }}</h1>
+          {{- with .Params.description }}
+          <h4>{{ .Params.description | markdownify }}</h4>
+          {{- end }}
+        </section>
+
+        <div class="docs__article--toc">
+          {{ .TableOfContents }}
+        </div>
 
         <hr />
 
-        <section class="docs__article__content">
+        <section class="docs__article--content">
           {{ .Content }}
         </section>
       </article>

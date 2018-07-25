@@ -1,0 +1,25 @@
+{{- $tracers := .Site.Data.tracers }}
+<table>
+  <thead>
+    <tr>
+      <th>Tracing system</th>
+      <th>Supported languages</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{- range $tracers }}
+    <tr>
+      <td>
+        <strong>{{ .system }}</strong>
+      </td>
+      <td>
+        {{- $numLanguages := len .languages }}
+        {{- range $idx, $lang := .languages }}
+        {{- $lastElement := eq $numLanguages (add $idx 1) }}
+        <a href="{{ $lang.repo }}">{{ $lang.language }}</a>{{ if not $lastElement }},{{ end }}
+        {{- end }}
+      </td>
+    </tr>
+    {{- end }}
+  </tbody>
+</table>

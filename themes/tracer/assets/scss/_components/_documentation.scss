@@ -38,14 +38,45 @@
     .docs__article {
       padding: 0 $docs-article-horizontal-padding;
 
-      &__content {
+      hr {
+        margin: 1.5rem 0;
+      }
+
+      &--title + .docs__article--toc {
+        margin-top: 1.25rem;
+      }
+
+      &--toc {
+        ul {
+          list-style-type: none;
+          margin-left: -1.75rem;
+
+          ul {
+            list-style-type: square;
+
+            ul {
+              list-style-type: disc;
+
+              ul {
+                list-style-type: circle;
+
+                ul {
+                  list-style-type: square;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &--content {
         h2 {
           margin-top: 2rem;
         }
 
-        blockquote {
+        blockquote p {
           margin: 1.5rem 0;
-          background-color: lighten(grey, 35%);
+          background-color: $light-grey;
           padding: 1rem;
         }
 

@@ -4,4 +4,4 @@ title: OpenTracing Guides
 
 Welcome to the OpenTracing Guides!
 
-Guides are "how-to manuals" for leveraging OpenTracing. Unlike the Overview, they are language-specific. Each guide describes common scenarios and use cases you many encounter in that environment.
+Guides are "how-to manuals" for using OpenTracing. Unlike the [Overview](/docs/overview/what-), guides are language specific, describing common scenarios and use cases that you many encounter in that environment.
