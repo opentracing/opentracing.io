@@ -103,7 +103,8 @@ defer childSpan.finish()
 To get traces across service boundaries, we propgagte [context](https://golang.org/pkg/context/) by injecting the context into http headers. Once the downstream service recieves the http request, it must extract the context and continue the trace. (The code example doesn't handle errors correctly, please don't do this in production code; this is just an example)
 
 The upstream(client) service:
-```
+
+```golang
 import (
     "net/http"
 
@@ -132,7 +133,8 @@ resp, _ := http.DefaultClient.Do(req)
 ```
 
 The downstream(server) service:
-```
+
+```golang
 import (
     "log"
     "net/http"
@@ -142,9 +144,9 @@ import (
 )
 
 func main() {
-    
+
     // Tracer initialization, etc.
- 
+
     ...
 
     http.HandleFunc("/publish", func(w http.ResponseWriter, r *http.Request) {

@@ -1,14 +1,15 @@
+{{- $pageClass := cond (eq .Kind "home") "home" .Section }}
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
   <head>
-    <title>{{ block "title" . }}{{ $pageTitle := cond (eq .Kind "home") .Site.Title .Title }}{{ $pageTitle }}{{ end }}</title>
+    <title>{{ block "title" . }}{{ $defaultPageTitle := cond (eq .Kind "home") .Site.Title .Title }}{{ $defaultPageTitle }}{{ end }}</title>
     {{ partial "head.html" . }}
     {{ partial "seo.html" . }}
     {{ partial "css.html" . }}
   </head>
-  <body class="">
+  <body>
     {{ partial "header.html" . }}
-    <main class="{{ cond (eq .Kind "home") "home" .Section }}">
+    <main class="page page--{{ $pageClass }}">
       {{ block "main" . }}{{ end }}
     </main>
     {{ partial "footer.html" . }}

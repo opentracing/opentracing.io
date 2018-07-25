@@ -7,6 +7,7 @@ title: "Python: Inject and Extract"
 In order to trace across process boundaries and RPC calls in distributed systems, `spanContext` needs to propagated over the wire. The OpenTracing Python API provides two functions in the Tracer interface to do just that, `inject(SpanContext, format, carrier)` and `extract(format, carrier)`.
 
 ## Format Options and Carriers
+
 The **format** parameter refers to one of the three standard encodings the OpenTracing API defines:
 
 1. `TEXT_MAP` where `spanContext` is encoded as a collection of string key-value pairs,
