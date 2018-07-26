@@ -40,16 +40,25 @@ In order to not force the user to keep around a `Tracer`, the `io.opentracing.ut
 By default, the underlying `Tracer` is a `no-nop` implementation.
 
 ### Starting a new Trace
+
 A new trace is started whenever a new `Span` is created without references to a parent `Span`. When creating a new `Span`, you need to specify an "operation name", which is a free-format string that you can use to help you identify the code this `Span` relates to.
 The next `Span` from our new trace will probably be a child `Span` and can be seen as a representation of a sub-routine that is executed "within" the main `Span`. This child `Span` has, therefore, a `ChildOf` relationship with the parent.
 Another type of relationship is the `FollowsFrom` and is used in special cases where the new `Span` is independent of the parent `Span`, such as in asynchronous processes.
 
 
 ### Accessing the Active Span
+
 `Tracer` can be used for enabling access to the `ActiveSpan`. `ActiveSpans` can also be accessed through a `scopeManager` in some languages. Refer to the specific language guide for more implementation details.
 
 ### Propagating a Trace with Inject/Extract
+
 In order to trace across process boundaries in distributed systems, services need to be able to continue the trace injected by the client that sent each request. OpenTracing allows this to happen by providing inject and extract methods that encode a span's context into a carrier.
 The `inject` method allows for the `SpanContext` to be passed on to a carrier. For example, passing the trace information into the client's request so that the server you send it to can continue the trace. The `extract` method does the exact opposite. It extract the `SpanContext` from the carrier. For example, if there was an active request on the client side, the developer must extract the `SpanContext` using the `io.opentracing.Tracer.extract` method.
 
 ![Trace Propagation](/img/overview:tracers/Extract.png)
+
+## Tracing Systems
+
+The following table lists all currently known OpenTracing Tracers:
+
+{{< current-tracers >}}

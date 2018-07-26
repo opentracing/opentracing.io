@@ -1,25 +1,34 @@
 {{ define "main" }}
+{{- $allDocs := (where .Site.RegularPages "Section" "docs").ByWeight }}
 <div class="docs container">
-  <section class="docs__main row">
-    <nav class="docs__nav col-3">
-      <div class="docs__nav__list">
-        <h3>Docs</h3>
-        {{ partial "nav.html" (where .Site.RegularPages "Section" "docs").ByWeight }}
-      </div>
-    </nav>
+  <div class="row">
+    <section class="docs__main row">
+      <nav class="docs__nav col-3">
+        <div class="docs__nav__list">
+          <h3>Docs</h3>
+          {{ partial "nav.html" $allDocs }}
+        </div>
+      </nav>
 
-    <article class="docs__article col-9">
-      <h1>{{ .Title }}</h1>
-      {{- with .Params.description }}
-      <h4>{{ .Params.description | markdownify }}</h4>
-      {{- end }}
+      <article class="docs__article col-9">
+        <section class="docs__article--title">
+          <h1>{{ .Title }}</h1>
+          {{- with .Params.description }}
+          <h4>{{ .Params.description | markdownify }}</h4>
+          {{- end }}
+        </section>
 
-      <hr />
+        <div class="docs__article--toc">
+          {{ .TableOfContents }}
+        </div>
 
-      <section class="docs__article__content">
-        {{ .Content }}
-      </section>
-    </article>
-  </section>
+        <hr />
+
+        <section class="docs__article--content">
+          {{ .Content }}
+        </section>
+      </article>
+    </section>
+  </div>
 </div>
 {{ end }}

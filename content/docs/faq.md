@@ -2,30 +2,33 @@
 title: "FAQs"
 ---
 
-# Why do I need OpenTracing?
+## Why do I need OpenTracing?
+
 IT and DevOps teams can use distributed tracing to monitor applications.  Distributed tracing is particularly well-suited to debugging and monitoring modern distributed software architectures, such as microservices. Developers can use distributed tracing to help debug and optimize their code.
 
-# How do I download OpenTracing?
+## How do I download OpenTracing?
+
 OpenTracing is not a download or a program.  Distributed tracing requires that software developers add instrumentation to the code of an application, or to the frameworks used in the application.
 
-# Is there an official Tracer for OpenTracing? Which tracers are supported?
+## Is there an official Tracer for OpenTracing? Which tracers are supported?
+
 OpenTracing is vendor neutral, so there is not an official tracer.
 
-Here is the [list of tracers ]({{< ref "/supported-tracers.md" >}}) that support the OpenTracing specification.
+Here is the [list of tracers ](/docs/supported-tracers) that support the OpenTracing specification.
 
-# Which languages are supported?
+## Which languages are supported?
 
 * Go
 * C++
 * C#
 * Java
 * Javascript
-* Objective-C 
+* Objective-C
 * PHP
-* Python 
+* Python
 * Ruby
 
-# How can I contribute to OpenTracing?
+## How can I contribute to OpenTracing?
 
 There are many ways that you can contribute to the OpenTracing project.
 
@@ -35,16 +38,16 @@ There are many ways that you can contribute to the OpenTracing project.
 
 * Log issues against the [appropriate repository](https://github.com/opentracing).
 
-* [Join OpenTracing Contrib]({{< ref "/get-involved/contrib.md" >}}).
+* [Join OpenTracing Contrib](/get-involved/contrib).
 
 * Log issues against the [contrib repositories](https://github.com/opentracing-contrib/).
 
-* [Join a Working Group] ({{< ref "/get-involved/working-group.md" >}}).
+* [Join a Working Group] (/get-involved/working-group).
 
-* [Create a Request for Comments (RFC)]({{< ref "/get-involved/rfc.md" >}}).
+* [Create a Request for Comments (RFC)](/get-involved/rfc).
 
-* Register your project ({{< ref "/get-involved/register.md" >}}).
+* [Register your project](/get-involved/register).
 
 * Write or edit [documentation](https://github.com/opentracing/opentracing.io).
 
-* Contribute to the language-specific [tutorials] (https://github.com/yurishkuro/opentracing-tutorial) or to the [Katacode scenarios](https://github.com/katacoda-scenarios/opentracing-scenarios).
+* Contribute to the language-specific [tutorials](https://github.com/yurishkuro/opentracing-tutorial) or to the [Katacoda scenarios](https://github.com/katacoda-scenarios/opentracing-scenarios).

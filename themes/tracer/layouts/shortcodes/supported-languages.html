@@ -1,0 +1,8 @@
+{{- $languages := .Site.Data.language.array }}
+<ul>
+  {{- range $languages }}
+  <li>
+    <a href="{{ .url }}">{{ .name }}</a>
+  </li>
+  {{- end }}
+</ul>

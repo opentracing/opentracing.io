@@ -1,22 +1,10 @@
 ---
-title: "Supported Languages"
-date: 2018-06-13T15:00:41-04:00
-draft: false
+title: OpenTracing Language Support
 ---
-
-# OpenTracing Language Support
 
 OpenTracing APIs are available for the following platforms:
 
-* Go - [opentracing-go](https://github.com/opentracing/opentracing-go)
-* Python - [opentracing-python](https://github.com/opentracing/opentracing-python)
-* Javascript - [opentracing-javascript](https://github.com/opentracing/opentracing-javascript)
-* Java - [opentracing-java](https://github.com/opentracing/opentracing-java)
-* C# - [opentracing-csharp](https://github.com/opentracing/opentracing-csharp)
-* Objective-C - [opentracing-objc](https://github.com/opentracing/opentracing-objc)
-* C++ - [opentracing-cpp](https://github.com/opentracing/opentracing-cpp)
-* Ruby - [opentracing-ruby](https://github.com/opentracing/opentracing-ruby)
-* PHP - [opentracing-php](https://github.com/opentracing/opentracing-php)
+{{< supported-languages >}}
 
 Please refer to the README files in the respective per-platform repositories for usage examples.
 

@@ -13,11 +13,6 @@ build: setup netlify-build
 clean:
 	rm -rf public
 
-.PHONY: distclean
-distclean: clean
-	rm -rf node_modules
-	rm -rf themes/tracer/node_modules
-
 .PHONY: serve
 serve: clean
 	$(HUGO) serve \

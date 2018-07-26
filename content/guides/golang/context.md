@@ -1,5 +1,6 @@
 ---
 title: "Golang: Context"
+draft: true
 ---
 
 * Using Context

@@ -1,10 +1,11 @@
 {{ define "main" }}
+{{- $allGuides := (where .Site.RegularPages "Section" "guides").ByWeight }}
 <div class="docs container">
-  <section class="docs__main row">
+  <section class="docs__main row w-100">
     <nav class="docs__nav col-3">
       <div class="docs__nav__list">
-        <h3>Docs</h3>
-        {{ partial "nav.html" (where .Site.RegularPages "Section" "guides").ByWeight }}
+        <h3>Guides</h3>
+        {{ partial "nav.html" $allGuides }}
       </div>
     </nav>
 
@@ -16,7 +17,7 @@
 
       <hr />
 
-      <section class="docs__article__content">
+      <section class="docs__article--content">
         {{ .Content }}
       </section>
     </article>

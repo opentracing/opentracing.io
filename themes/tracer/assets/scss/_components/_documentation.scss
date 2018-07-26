@@ -2,14 +2,16 @@
 
 .docs {
   display: block;
-  min-width: 100%;
 
   &__main {
+    min-width: 100%;
     margin: $docs-vertical-margin 0;
 
     .docs__nav {
       top: 100;
       border-right: 1px solid grey;
+      padding-bottom: 2%;
+      height: 100%;
 
       &__list {
         max-width: 90%;
@@ -36,7 +38,48 @@
     .docs__article {
       padding: 0 $docs-article-horizontal-padding;
 
-      &__content {
+      hr {
+        margin: 1.5rem 0;
+      }
+
+      &--title + .docs__article--toc {
+        margin-top: 1.25rem;
+      }
+
+      &--toc {
+        ul {
+          list-style-type: none;
+          margin-left: -1.75rem;
+
+          ul {
+            list-style-type: square;
+
+            ul {
+              list-style-type: disc;
+
+              ul {
+                list-style-type: circle;
+
+                ul {
+                  list-style-type: square;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &--content {
+        h2 {
+          margin-top: 2rem;
+        }
+
+        blockquote p {
+          margin: 1.5rem 0;
+          background-color: $light-grey;
+          padding: 1rem;
+        }
+
         table {
           width: 100%;
           margin: 1.5rem 0;
