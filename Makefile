@@ -1,13 +1,7 @@
 HUGO  := hugo
 THEME := tracer
 THEME_DIR := themes/$(THEME)
-NPM := npm
 NETLIFY_URL = https://opentracing.netlify.com
-
-.PHONY: build
-build: setup netlify-build
-	$(HUGO) \
-		--theme $(THEME)
 
 .PHONY: clean
 clean:
@@ -24,24 +18,19 @@ serve: clean
 
 .PHONY: get-spec-docs
 get-spec-docs:
-	git submodule update --init --recursive --remote
+	git submodule update
 
 .PHONY: setup
-setup: get-spec-docs netlify-setup
-	$(NPM) install
+setup: clean get-spec-docs
 
-.PHONY: netlify-setup
-netlify-setup:
-	(cd $(THEME_DIR) && $(NPM) install)
-
-.PHONY: netlify-build
-netlify-build: netlify-setup clean
+.PHONY: build
+build: setup
 	$(HUGO) \
 		--theme $(THEME) \
 		--baseURL $(NETLIFY_URL)
 
-.PHONY: netlify-build-preview
-netlify-build-preview: netlify-setup clean
+.PHONY: build-preview
+build-preview: setup
 	$(HUGO) \
 		--theme $(THEME) \
 		--baseURL $(DEPLOY_PRIME_URL)
