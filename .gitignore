@@ -1,7 +1,5 @@
-css
-_site
+# macOS artifacts
 .DS_Store
-node_modules
-Gemfile
+
+# Hugo artifacts
 public/
-firebase-debug.log
