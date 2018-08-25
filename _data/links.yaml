@@ -42,3 +42,6 @@ community:
 
   - url: //github.com/opentracing-contrib/meta#opentracing-contributions
     name: Become a Contributor
+
+  - url: /outreachy
+    name: Outreachy

@@ -1,5 +1,5 @@
 ---
-permalink: /outreachy.html
+permalink: /outreachy-201702.html
 layout: page-containing-markup
 title: 'Outreachy'
 ---
