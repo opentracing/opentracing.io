@@ -8,10 +8,6 @@ array:
     url: https://apple.com
     icon: https://simpleicons.org/icons/apple.svg
 
-  - name: Yelp
-    url: https://yelp.com
-    icon: https://upload.wikimedia.org/wikipedia/commons/a/ad/Yelp_Logo.svg
-
   - name: Pinterest
     url: https://pinterest.com
     icon: img/companies/pinterest.png
