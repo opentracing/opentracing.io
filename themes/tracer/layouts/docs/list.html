@@ -1,10 +1,11 @@
 {{ define "main" }}
+{{ printf "%#v" . | jsonify }}
 <div class="docs container">
   <section class="docs__main row">
     <nav class="docs__nav col-3">
       <div class="docs__nav__list">
         <h3>Docs</h3>
-        {{ partial "nav.html" (where .Site.RegularPages "Section" "docs").ByWeight }}
+        {{ partial "menu.html" . }}
       </div>
     </nav>
 
