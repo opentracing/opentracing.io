@@ -1,19 +1,19 @@
 {{ if .Pages }}
 <li>
-    <a href="#{{ .Params.anchor }}">{{ .Title }}</a>
-    <ul>
+    <a href="{{ .Permalink }}">{{ .Title }}</a>
+    <ul class="submenu">
         {{ if .Sections }}
             {{ range .Sections.ByWeight }}
                 {{ partial "menu_page_list.html" . }}
             {{ end }}
         {{ end }}
         {{ range .Pages.ByWeight }}
-            <li><a href="#{{ .Params.anchor }}">{{ .Title }}</a></li>
+            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
         {{ end }}
     </ul>
 </li>
 {{ else }}
 <li>
-    <a href="#{{ .Params.anchor }}">{{ .Title }}</a>
+    <a href="{{ .Permalink }}">{{ .Title }}</a>
 </li>
 {{ end }}

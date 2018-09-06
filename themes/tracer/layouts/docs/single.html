@@ -1,11 +1,12 @@
 {{ define "main" }}
+{{- $sections := where .Site.Sections "Section" "=" "docs" }}
 <div class="docs container">
   <div class="row">
     <section class="docs__main row">
       <nav class="docs__nav col-3">
         <div class="docs__nav__list">
           <h3>Docs</h3>
-          {{ partial "menu.html" . }}
+          {{ partial "menu.html" $sections }}
         </div>
       </nav>
 
