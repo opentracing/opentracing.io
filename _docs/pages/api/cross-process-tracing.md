@@ -77,11 +77,11 @@ At a minimum, all platforms require OpenTracing implementations to support two C
 - The *text map* Carrier format is a platform-idiomatic map from (unicode) `string` to `string`
 - The *binary* Carrier format is an opaque byte array (and presumably more compact and efficient)
 
-What the OpenTracing implementations choose to store in these Carriers is not formally defined by the OpenTracing specification, but the presumption is that they find a way to encode "tracer state" about the propagated `SpanContext` (e.g., in Dapper this would include a `trace_id`, a `span_id`, and a bitmask representing the sampling status for the given trace) as well as any key:value Baggage items.
+What the OpenTracing implementations choose to store in these Carriers is not formally defined by the OpenTracing specification, but the presumption is that they find a way to encode "tracer state" about the propagated `SpanContext` (e.g., in Dapper this would include a `trace_id`, a `span_id` (see next section), and a bitmask representing the sampling status for the given trace) as well as any key:value Baggage items.
 
 ### Interoperability of OpenTracing implementations *across process boundaries*
 
-There is no expectation that different OpenTracing implementations `Inject` and `Extract` SpanContexts in compatible ways. Though OpenTracing is agnostic about the tracing implementation *across an entire distributed system*, for successful inter-process handoff it's essential that the processes on both sides of a propagation use the same tracing implementation.
+There is no expectation that different OpenTracing implementations `Inject` and `Extract` SpanContexts in compatible ways. Though OpenTracing is agnostic about the tracing implementation *across an entire distributed system*, for successful inter-process handoff it's essential that the processes on both sides of a propagation use the same tracing implementation. In order to enable live migration between different versions, tracing implementations should namespace whatever information they propagate in-band appropriately in a way that allows different implementations to overlap on a single carrier. For example, `MyTracer-SpanId`/`MyTracer-TraceId` is prefered over `span_id`/`trace_id` as keys for http-headers.
 
 <div id="custom-carriers"></div>
 
