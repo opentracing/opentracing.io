@@ -25,12 +25,21 @@
               color: $docs-nav-link-color;
               font-size: $docs-nav-link-font-size;
               line-height: 110%;
+              
             }
 
             & + li {
               margin-top: .75rem;
             }
           }
+        }
+      }
+
+      .submenu {
+        label:after { content: '\25BF' }
+        input:checked + label + ul { display: none; }
+        li {
+          margin-left: .75rem;
         }
       }
     }

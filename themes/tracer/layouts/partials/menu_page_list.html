@@ -1,6 +1,9 @@
 {{ if .Pages }}
 <li>
-    <a href="{{ .Permalink }}">{{ .Title }}</a>
+    <input checked type='checkbox' style='display: none' id="{{ .Title }}">
+    <label for='{{ .Title }}'>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </label>
     <ul class="submenu">
         {{ if .Sections }}
             {{ range .Sections.ByWeight }}
