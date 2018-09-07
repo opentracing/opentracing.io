@@ -3,6 +3,3 @@
 
 # Hugo artifacts
 public/
-
-# Generated resources
-resources/_gen/**
