@@ -4,6 +4,7 @@ videoUrl: https://www.youtube.com/embed/CUjTw7k_0RQ
 thumbnail: https://img.youtube.com/vi/CUjTw7k_0RQ/maxresdefault.jpg
 layout: video
 featured: false
+date: 2017-03-29
 ---
 
 Those building microservices at scale understand the role and importance of distributed tracing: it’s the most direct way to understand how and why a system is misbehaving. But distributed tracing has long harbored a dirty secret: the source code instrumentation can been complex, fragile, expensive, and difficult to maintain.

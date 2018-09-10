@@ -42,7 +42,7 @@ findUs:
     name: Gitter
   - url: //groups.google.com/forum/#!forum/opentracing
     name: Mailing List
-  - localUrl: /talks-and-videos.html
+  - localUrl: /media/
     name: Talks and Videos
 
 # SIDEBAR NAVIGATION

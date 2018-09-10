@@ -1,0 +1,17 @@
+{{ define "main" }}
+{{- $sections := where .Site.Sections "Section" "=" "media" }}
+<div class="videos container">
+  <section class="videos">
+    <h1 class="videos__header videos__header--small">{{ .Title }}</h1>
+    <section class="videos__section">
+      <section class="videos__content">
+          {{partial "movie.html" .Params.videoUrl }}
+        <div class="videos__content__paragraphs videos__content__paragraphs--padding">
+          {{ .Content }}
+        </div>
+      </section>
+    </section>
+    
+  </section>
+</div>
+{{ end }}
