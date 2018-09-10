@@ -18,6 +18,8 @@ guides:
     name: Golang
   - localUrl: /guides/java/intro
     name: Java
+  - localUrl: /guides/csharp/intro
+    name: C#
   - localUrl: /guides/python/intro
     name: Python
   - localUrl: /guides/ruby/intro

@@ -17,7 +17,12 @@
       <hr />
 
       <section class="docs__article--content">
-        {{ .Content }}
+        {{ if .Content }}
+          {{ .Content }}
+        {{ else }}
+          {{ partial "needhelpbanner" . }}
+        {{ end }}
+        
       </section>
     </article>
   </section>
