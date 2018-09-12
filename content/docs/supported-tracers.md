@@ -16,7 +16,7 @@ For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/app
 
 ## LightStep
 
-[LightStep](http://lightstep.com/) runs a private beta with OpenTracing-native tracers in production environments. There are OpenTracing-compatible [LightStep Tracers](https://github.com/lightstep) available for Go, Python, Javascript, Objective-C, Java, PHP, Ruby, and C++.
+[LightStep](http://lightstep.com/) operates a SaaS solution with OpenTracing-native tracers in production environments. There are OpenTracing-compatible [LightStep Tracers](https://github.com/lightstep) available for Go, Python, Javascript, Objective-C, Java, PHP, Ruby, and C++.
 
 
 ## Instana
