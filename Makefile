@@ -3,6 +3,18 @@ THEME := tracer
 THEME_DIR := themes/$(THEME)
 NETLIFY_URL = https://opentracing.netlify.com
 
+.PHONY: build
+build: setup
+	$(HUGO) \
+		--theme $(THEME) \
+		--baseURL $(NETLIFY_URL)
+
+.PHONY: build-preview
+build-preview: setup
+	$(HUGO) \
+		--theme $(THEME) \
+		--baseURL $(DEPLOY_PRIME_URL)
+
 .PHONY: clean
 clean:
 	rm -rf public
@@ -22,15 +34,3 @@ get-spec-docs:
 
 .PHONY: setup
 setup: clean get-spec-docs
-
-.PHONY: build
-build: setup
-	$(HUGO) \
-		--theme $(THEME) \
-		--baseURL $(NETLIFY_URL)
-
-.PHONY: build-preview
-build-preview: setup
-	$(HUGO) \
-		--theme $(THEME) \
-		--baseURL $(DEPLOY_PRIME_URL)

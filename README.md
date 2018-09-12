@@ -13,19 +13,27 @@ please read the [code of conduct](code-of-conduct.md).
 By contributing to opentracing.io, you agree that your contributions will be licensed
 under its [Apache 2.0 License](LICENSE.md).
 
-## Local Development
-If youu'd like to work on the website locally, first install the site dependencies:
-* Install NPM: https://nodejs.org/en/ (NPM comes with NodeJS)
-* Install Hugo: https://gohugo.io/getting-started/installing/#quick-install
 
-Once the above dependencies are installed, you can install the website. First, open up a terminal, navigate to the directory you would like to work in, and clone your fork of this repository. Then checkout the `v2.0` branch and install the website with the following commands:
+## Updating the Docs
+If you'd like to work on the website locally, first install Hugo and a fork this repository:
+* Install Hugo: https://gohugo.io/getting-started/installing/#quick-install
+* Fork this repository on GitHub: https://help.github.com/articles/fork-a-repo/
+
+Once `hugo` is installed, you can build the website. First, open up a terminal, navigate to the directory you would like to work in, and clone your fork of this repository. 
+
+```
+git clone https://github.com/YOUR_USERNAME/opentracing.io.git
+cd opentracing.io
+```
+
+Then checkout the `v2.0` branch and build the website using `make`:
 
 ```
 git checkout v2.0
 make
 ```
 
-To start the site locally in development mode, run the following:
+One the site is setup, you can start the site locally in development mode:
 
 ```
 make serve
@@ -33,4 +41,9 @@ make serve
 
 Navigate to http://localhost:1313/ to see the site. Any content changes you make will automatically appear.
 
-Most articles can be found in the `/content` directory, and are written in Markdown. For basic changes, simply fork the site, edit the markdown files directly, and make a pull request. For larger structral changes, please see the [Hugo Documentation](https://gohugo.io/documentation/).
+Thist's it! Most articles can be found in the `/content` directory, and are written in Markdown. For basic changes, use the following flow:
+* edit the markdown files directly 
+* commit and push to your fork
+* make a pull request
+
+For larger structral changes, please see the [Hugo Documentation](https://gohugo.io/documentation/).
