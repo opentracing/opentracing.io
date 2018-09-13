@@ -1,5 +1,6 @@
 ---
 title: Introduction to Distributed Tracing
+weight: 1
 ---
 
 ## Introduction

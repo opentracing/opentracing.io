@@ -10,6 +10,12 @@ document.addEventListener("DOMContentLoaded", function(){
     if (document.querySelectorAll(".submenu").length > 0) {
         var currentPage = document.querySelectorAll("a[href='" + currentUrl + "']")
         currentPage[0].style.fontWeight = 'bold';
-        currentPage[0].parentElement.parentElement.previousElementSibling.previousElementSibling.checked = false
+        if (currentPage[0].parentElement.previousElementSibling) {
+            currentPage[0].parentElement.previousElementSibling.checked = false;
+        } 
+        if (currentPage[0].parentElement.parentElement.previousElementSibling.previousElementSibling)
+        {
+            currentPage[0].parentElement.parentElement.previousElementSibling.previousElementSibling.checked = false;
+        }
     }
   });
