@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>The OpenTracing Project</title>
+ <link href="http://opentracing.io/atom.xml" rel="self"/>
+ <link href="http://opentracing.io/"/>
+ <updated>2018-09-21T20:55:05+00:00</updated>
+ <id>http://opentracing.io</id>
+ <author>
+   <name>The OpenTracing Authors</name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>weekly hangout: C#, HTTP encoding, key-value logging, reusing existing log instrumentation</title>
+   <link href="http://opentracing.io/2016/07/20/weekly-hangout/"/>
+   <updated>2016-07-20T00:00:00+00:00</updated>
+   <id>http://opentracing.io/2016/07/20/weekly-hangout</id>
+   <content type="html">&lt;p&gt;Attendees: @bg451, @pritianka, @bensigelman, @yurishkuro&lt;/p&gt;
+
+&lt;p&gt;Notes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Uber open-sourced their Java based tracer that uses OT. It’s compatible with Zipkin out-of-band but does not use the B3 header (adding support would not be difficult).&lt;/li&gt;
+  &lt;li&gt;Regarding open issues gating the non-RC OpenTracing 1.0 Spec:
+    &lt;ul&gt;
+      &lt;li&gt;https://github.com/opentracing/opentracing-java/issues/31: trying to decide on a String for the format vs something cleaner from a type standpoint. We will enumerate the options on the issue and go from there.&lt;/li&gt;
+      &lt;li&gt;https://github.com/opentracing/opentracing.github.io/issues/98:  We need to add HTTP support across the board. Present in some language APIs but not others right now.&lt;/li&gt;
+      &lt;li&gt;https://github.com/opentracing/opentracing.github.io/issues/99: SpanContext mostly done.&lt;/li&gt;
+      &lt;li&gt;https://github.com/opentracing/opentracing.github.io/issues/106: SpanContext immutability. Lots of discussion about this but there were too many tradeoffs to reach consensus. Will require more thought. Would be easier with a real workload since some of the motivating concerns are essentially about performance.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>weekly hangout: C#, HTTP encoding, key-value logging, reusing existing log instrumentation</title>
+   <link href="http://opentracing.io/2016/06/01/weekly-hangout/"/>
+   <updated>2016-06-01T00:00:00+00:00</updated>
+   <id>http://opentracing.io/2016/06/01/weekly-hangout</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;@bensigelman - C# OT proposal outstanding; has a different approach to inject/join since C# has real generics&lt;/li&gt;
+  &lt;li&gt;There was a discussion around HTTP and whether it deserves special treatment. In Go, URL encoding happens automatically (there’s an http carrier) but not so in other languages. Some tracers needs to have a policy about how various components get into and out of http headers. The trouble is that Tracer impls do not actually manage the HTTP encode/decode directly in present-day OpenTracing: should they?
+    &lt;ul&gt;
+      &lt;li&gt;Much followup discussion in https://github.com/opentracing/opentracing.github.io/issues/98&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;A logging proposal by @yurishkuro: if we agree to key-value logging API we should add it to the GH issue.&lt;/li&gt;
+  &lt;li&gt;@jmacd believes in key-value logging but thinks we need to show need/benefit before we invest further. It’s good that OT has not tried to pin down a context propagation spec because it will depend a lot on style.&lt;/li&gt;
+  &lt;li&gt;@jmacd proposed that we establish a context propagation idiom or library for each language. This way a non OT library can get OT context. Then we can add logging plugins to us the active OT span to redirect logs appropriately. That said, we need some way to guarantee that high-throughput logs are only serialized as-needed.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>multiple meetings and other stuff: baggage items, basictracer-js, and C, C++, AND C#</title>
+   <link href="http://opentracing.io/2016/05/26/backlog/"/>
+   <updated>2016-05-26T00:00:00+00:00</updated>
+   <id>http://opentracing.io/2016/05/26/backlog</id>
+   <content type="html">&lt;p&gt;Some meeting notes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Update on the C++ API/Tracer
+    &lt;ul&gt;
+      &lt;li&gt;Consensus: @lookfwd’s PR is modified and improved and we are moving on with it. It’s a C++98 classic API - span and tracer class making little use of C++ language features but relying on std::string to simplify memory management. Initially there were some thoughts about using C++11 for memory-management reasons but think we can offer those features as add-ons to the basic C++98 API.&lt;/li&gt;
+      &lt;li&gt;The implementation of the API may use C++11, since C++98 and its standard library lack many useful features. We are assuming people are using new-ish compilers and can build with C++11 features, even if their own code may not use C++11. Your compiler has to support C++11 to use the OT C++ basictracer.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;What we do want to do about the baggage item restrictions? (cannonicalization)
+    &lt;ul&gt;
+      &lt;li&gt;Consensus - We will go with @bensigelman’s suggestion and scrap the baggage item restrictions. The main reason it was incorporated was because basic support is not human readable on the header. But we are taking the hit because it is an edge case issue.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Community building and education updates (by @pritianka)
+    &lt;ul&gt;
+      &lt;li&gt;We are checking with @AdrianCole if we can host OT brainstorm session right before or after Zipkin workshop. Else, it will be held separately. The brainstorm session aims to bring together people interested in and with proficiency in distributed tracing to create a shortlist of top open source frameworks we want to instrument with OT.&lt;/li&gt;
+      &lt;li&gt;Blog post by @bensigelman coming out next week&lt;/li&gt;
+      &lt;li&gt;Nginx will likely co-promote OpenTracing in the future once they have looked at it in more detail&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;@jmacd’s open question for the community: Does anyone want a C API? If you do, what other restrictions do you have? (e.g., would a GLib dependency be acceptable?) Is it okay if it’s a C API backed by C++ code.&lt;/li&gt;
+  &lt;li&gt;Meeting notes from the previous two weeks have been lost to the sands of time, unfortunately… we did have some fun conversations but nobody was being a scribe. :(&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Also, we have a new basictracer-js repo: https://github.com/opentracing/basictracer-javascript&lt;/p&gt;
+
+&lt;p&gt;Also also, we have a proposal for C# OpenTracing and basictracer APIs: https://github.com/dawallin/opentracing-csharp&lt;/p&gt;
+
+&lt;p&gt;Also also also, there’s a fun discussion about OT-C++ starting around https://gitter.im/opentracing/opentracing-cpp?at=5745223763e41bd84bf03a1a&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>weekly hangout: progress updates, example app, blog posts</title>
+   <link href="http://opentracing.io/2016/05/04/weekly-hangout/"/>
+   <updated>2016-05-04T00:00:00+00:00</updated>
+   <id>http://opentracing.io/2016/05/04/weekly-hangout</id>
+   <content type="html">&lt;p&gt;meeting notes&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Java-wise, Kike finally got the Java version working with their services
+    &lt;ul&gt;
+      &lt;li&gt;Thread-locals kind of nasty&lt;/li&gt;
+      &lt;li&gt;No problems with the OpenTracing&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;@bensigelman to talk with colleagues releasing an OpenTracing .jar&lt;/li&gt;
+  &lt;li&gt;@bg451 was talking with the CTO of CoreOS; he was saying that a simple example app showing the benefits of tracing would make sense
+    &lt;ul&gt;
+      &lt;li&gt;The example app thing is roughly done and easily switch between tracers&lt;/li&gt;
+      &lt;li&gt;Should look for single-VM zipkin-docker container&lt;/li&gt;
+      &lt;li&gt;Good to get Appdash-python set up&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;@pritianka talked about OpenTracing blog and marketing materials
+    &lt;ul&gt;
+      &lt;li&gt;@yurishkuro was going to do some content marketing for Uber that would be good to cross-post&lt;/li&gt;
+      &lt;li&gt;@bg451 was talking about Jonathan Mace’s work adding PivotTracing to HDFS; something similar would be nice&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>weekly hangout: C++ progress, Maven Central, go-kit</title>
+   <link href="http://opentracing.io/2016/04/27/weekly-hangout/"/>
+   <updated>2016-04-27T00:00:00+00:00</updated>
+   <id>http://opentracing.io/2016/04/27/weekly-hangout</id>
+   <content type="html">&lt;p&gt;Rough notes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@lookfwd has been looking at automake and autoconf
+    &lt;ul&gt;
+      &lt;li&gt;actual OT library was fine, but would be hard to use the lib without the above tools&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;@jmacd has been working on a C++ lib with a customer; they understand that a syntactic migration is likely down the line and are ok with that. As such, proceeding with an “OT in spirit” implementation and will merge with OT C++ proper in a few weeks.&lt;/li&gt;
+  &lt;li&gt;we talked about custom allocators&lt;/li&gt;
+  &lt;li&gt;@lookfwd will clean things up this weekend&lt;/li&gt;
+  &lt;li&gt;@jmacd to coordinate with @lookfwd&lt;/li&gt;
+  &lt;li&gt;@yurishkuro is continuing work on Java&lt;/li&gt;
+  &lt;li&gt;@bensigelman reports that @bcronin is learning about Maven Central Repo madness which will hopefully help with the OT-Java artifact as well&lt;/li&gt;
+  &lt;li&gt;@bensigelman to send something to the go-kit folks in the next week per https://github.com/go-kit/kit/issues/237&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>weekly hangout: metadata standard, sync.Pool, Uber's OT-Zipkin bridge</title>
+   <link href="http://opentracing.io/2016/04/20/weekly-hangout/"/>
+   <updated>2016-04-20T00:00:00+00:00</updated>
+   <id>http://opentracing.io/2016/04/20/weekly-hangout</id>
+   <content type="html">&lt;p&gt;Rough notes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;6 minutes of futzing with Hangouts technology :)&lt;/li&gt;
+  &lt;li&gt;Re @dkuebric’s PR:
+    &lt;ul&gt;
+      &lt;li&gt;payload specification for error events&lt;/li&gt;
+      &lt;li&gt;payloads would need to be key:value based&lt;/li&gt;
+      &lt;li&gt;or should we just drop it for now?&lt;/li&gt;
+      &lt;li&gt;resolution is to leave this as “future work” for now&lt;/li&gt;
+      &lt;li&gt;need a link from semantic spec page&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Uber Go issue with sync.Pool and invalid Spans
+    &lt;ul&gt;
+      &lt;li&gt;async tasks are still troublesome… how do we want to represent them?&lt;/li&gt;
+      &lt;li&gt;@dkuebric: how to represent big traces with lots of async behavior?
+        &lt;ul&gt;
+          &lt;li&gt;10m limit is fine for web-based systems&lt;/li&gt;
+          &lt;li&gt;how to “chop up” long traces with periods of intense activity / subtraces?&lt;/li&gt;
+          &lt;li&gt;i.e., metatraces ^^^&lt;/li&gt;
+          &lt;li&gt;how about using Join with JoinOptions to express the type of parent pointer?&lt;/li&gt;
+          &lt;li&gt;relative agreement that this is a tricky thing to get “right” and may wait until OT has more of an integrated base&lt;/li&gt;
+          &lt;li&gt;next-ish step after this PR will be codegen for the standard tags&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;@bensigelman’s Twitter talk: core Finagle team interested in talking more about OpenTracing/etc&lt;/li&gt;
+  &lt;li&gt;re Uber OSS’ing OT-to-Zipkin bindings:
+    &lt;ul&gt;
+      &lt;li&gt;@yurishkuro wants that to be done this quarter… repos are created, sorting out some dependencies&lt;/li&gt;
+      &lt;li&gt;Getting rid of TChannel dependency and doing localhost UDP&lt;/li&gt;
+      &lt;li&gt;Definitely coming once the above is done… probably next ~3 weeks&lt;/li&gt;
+      &lt;li&gt;Not using the B3 header, though that could be addressed with a custom carrier if need be&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>weekly hangout: DAG tracing, span errors, basictracer-py</title>
+   <link href="http://opentracing.io/2016/04/14/weekly-hangout/"/>
+   <updated>2016-04-14T00:00:00+00:00</updated>
+   <id>http://opentracing.io/2016/04/14/weekly-hangout</id>
+   <content type="html">&lt;p&gt;Dimitris (@lookfwd) joined us from London at 12:45am local time (!!!) to talk about &lt;a href=&quot;https://github.com/opentracing/opentracing.github.io/issues/85&quot;&gt;opentracing.github.io/issues/85&lt;/a&gt;. Thanks!&lt;/p&gt;
+
+&lt;p&gt;Rough notes (not in chronological order, and not complete):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@lookfwd wants spans to record in the underlying tracing system even before they’ve been finished. Everyone agreed that this was a reasonable thing to want in certain scenarios, though there is still the question of whether OT should have explicit methods to force per-span &lt;code class=&quot;highlighter-rouge&quot;&gt;flush()&lt;/code&gt; or similar. For now we are going to leave this sort of detail purely in the API implementation.&lt;/li&gt;
+  &lt;li&gt;@lookfwd also wants to record the causal relationship between spans that do not overlap in time (e.g., perhaps a user request returns as soon as a single replica returns success, but as a developer it’s also important to trace the second/third/etc replica write success). Those on the hangout agreed that this was something OT should be able to represent. When we inject a span into a carrier, the carrier contents can be used as a “pointer” value from some other span… but where to record those pointers? &lt;code class=&quot;highlighter-rouge&quot;&gt;join&lt;/code&gt;? &lt;code class=&quot;highlighter-rouge&quot;&gt;setTag&lt;/code&gt;? Something else? People will make proposals on &lt;a href=&quot;https://github.com/opentracing/opentracing.github.io/issues/85&quot;&gt;opentracing.github.io/issues/85&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;@bg451: basictracer getting close to being ready in python!&lt;/li&gt;
+  &lt;li&gt;span errors: we need to decide on how to represent them
+    &lt;ul&gt;
+      &lt;li&gt;could add a span method, use some standard span tag, or infer from a log record in an error state&lt;/li&gt;
+      &lt;li&gt;TL;DR: we will formalize a tag name+value (&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;error&quot;: true&lt;/code&gt;, most likely) for span errors&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;cloud sleuth: @bensigelman to talk with Marcin about future plans&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>overdue updates: appdash, brave, C++, DAG tracing</title>
+   <link href="http://opentracing.io/2016/04/11/appdash-etc/"/>
+   <updated>2016-04-11T00:00:00+00:00</updated>
+   <id>http://opentracing.io/2016/04/11/appdash-etc</id>
+   <content type="html">&lt;p&gt;We’ve been lazy about meeting notes lately (shame on @bensigelman) and, as such, we have overdue updates about a variety of things:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@bg451 built an OpenTracing &lt;code class=&quot;highlighter-rouge&quot;&gt;Tracer&lt;/code&gt; for &lt;a href=&quot;https://github.com/sourcegraph/appdash&quot;&gt;Appdash&lt;/a&gt;. Here’s &lt;a href=&quot;https://github.com/sourcegraph/appdash/tree/master/opentracing&quot;&gt;the code&lt;/a&gt;. Thanks to @slimsag for the review.&lt;/li&gt;
+  &lt;li&gt;@michaelsembwever sent out &lt;a href=&quot;https://github.com/opentracing/opentracing-java/pull/25&quot;&gt;an OpenTracing-Brave bridge PR&lt;/a&gt; which @kristofa (&lt;a href=&quot;https://github.com/openzipkin/brave&quot;&gt;Brave&lt;/a&gt; lead) is looking at&lt;/li&gt;
+  &lt;li&gt;@lookfwd sent out an &lt;a href=&quot;https://github.com/lookfwd/opentracing-cpp/pull/1&quot;&gt;C++ OpenTracing API PR&lt;/a&gt; which has spawned a variety of other more fundamental discussions…
+    &lt;ul&gt;
+      &lt;li&gt;Of particular interest is the &lt;a href=&quot;https://github.com/opentracing/opentracing.github.io/issues/85&quot;&gt;issue about unfinished spans and generalized causality DAG annotations&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>weekly hangout: inject/join, ot-java discussion, appdash</title>
+   <link href="http://opentracing.io/2016/03/16/weekly-hangout/"/>
+   <updated>2016-03-16T00:00:00+00:00</updated>
+   <id>http://opentracing.io/2016/03/16/weekly-hangout</id>
+   <content type="html">&lt;ul&gt;
+  &lt;li&gt;talking about inject/join/carrier stuff (sadly without Adrian who fell victim to US DST changes)
+    &lt;ul&gt;
+      &lt;li&gt;TL;DR: specific examples implemented for this stuff would be enormously useful ( hence opentracing/opentracing.github.io#79)&lt;/li&gt;
+      &lt;li&gt;some confusion about the DI aspects of Adrian’s concerns above (in Gitter)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;@michaelsembwever is going to work on the PR 11 in ot-java a bit
+    &lt;ul&gt;
+      &lt;li&gt;re log-builder in Java: mck says “first and foremost, just an RFC”; also, it doesn’t need to feel exactly like a “normal” logging API… can be more like an event-based API. The builder approach emphasizes that.&lt;/li&gt;
+      &lt;li&gt;another idea would be to add a notion / awareness of events as plumbing and various logging-style methods “on top”&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;could be an argument to add a clean/porcelain API later since it’s easier to get wrong&lt;/li&gt;
+  &lt;li&gt;what would prevent someone from binding OT to Cassandra ~now… mck says “very little” (and sent a link above in Gitter).&lt;/li&gt;
+  &lt;li&gt;hoping to get some Docker code into their master branch next quarter&lt;/li&gt;
+  &lt;li&gt;Brandon’s Appdash change is almost in&lt;/li&gt;
+  &lt;li&gt;going to actually do this: opentracing/opentracing.github.io#78&lt;/li&gt;
+  &lt;li&gt;need to reach out to @kristofa the Brave maintainer to understand OT blockers&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>weekly hangout: cassandra, inject/join, java status</title>
+   <link href="http://opentracing.io/2016/02/24/weekly-hangout/"/>
+   <updated>2016-02-24T00:00:00+00:00</updated>
+   <id>http://opentracing.io/2016/02/24/weekly-hangout</id>
+   <content type="html">&lt;p&gt;Rough notes from our weekly hangout:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;present: @adriancole @michaelsembwever @yurishkuro @adriancole&lt;/li&gt;
+  &lt;li&gt;general banter, etc, etc; notes not recorded for this part :)&lt;/li&gt;
+  &lt;li&gt;discussed @michaelsembwever’s work on https://issues.apache.org/jira/browse/CASSANDRA-10392
+    &lt;ul&gt;
+      &lt;li&gt;pretty neat: it basically creates an abstraction layer that makes distributed tracing within Cassandra pluggable&lt;/li&gt;
+      &lt;li&gt;mck has bound that abstraction layer to zipkin successfully, thus allowing organizations to integrate distributed traces between callers of Cassandra and the underlying Cassandra internals&lt;/li&gt;
+      &lt;li&gt;mck suggested that it would likely be possible to bind OT at that layer as well (and if not, that might indicate a design problem with OT)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;re opentracing/opentracing.github.io#70:
+    &lt;ul&gt;
+      &lt;li&gt;general consensus that Injector/Extractor and/or various registration mechanisms make sense for OT implementations, but nobody had any compelling use cases for keeping these concepts in the public OT API&lt;/li&gt;
+      &lt;li&gt;as such, general consensus that the simplified API (with fewer moving parts/layers) is probably a better path forward… @bensigelman will add a note on the github issue and give folks 48h to object before moving forward with that simplification&lt;/li&gt;
+      &lt;li&gt;see also @adriancole’s messages above ^^^ (which were from the meeting)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;status of the Java port more generally (https://github.com/opentracing/opentracing-java):
+    &lt;ul&gt;
+      &lt;li&gt;@michaelsembwever expects to polish up the existing PRs in the next day or so&lt;/li&gt;
+      &lt;li&gt;@bensigelman brought up the fact that we’d like to support Android as well as server-side Java
+        &lt;ul&gt;
+          &lt;li&gt;using Java 8 is a problem on that front&lt;/li&gt;
+          &lt;li&gt;unclear whether we will be able to have a single opentracing-java repo or if opentracing-android will have to get forked off (or maybe they would both depend on some core… hard to say at this point). TBD.&lt;/li&gt;
+          &lt;li&gt;there may be some special semantics for mobile client tracing instrumentation, too, which warrant inclusion at the OT layer (since there’s a unique end-user associated with every Span, for instance)… though perhaps those details can be handled by the Tracer implementations on Android.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;mck is hoping to give a talk in Vancouver about tracing in general and would like to discuss OpenTracing at same&lt;/li&gt;
+  &lt;li&gt;meta: we talked about creating a wiki, or maybe just having a less-formal area of the Jekyll site, or maybe having a blog (perhaps for things like these weekly notes)&lt;/li&gt;
+  &lt;li&gt;meta: we may move to alternating times for alternating weeks… that way at least 50% of the meetings will be convenient for everyone (rather than the current arrangement where 100% of the meetings are a little rough for both the Oceanic people and the NYC/Boston people)&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>weekly hangout: 1.0rc milestone, standardtracer, tag standardization</title>
+   <link href="http://opentracing.io/2016/02/17/weekly-hangout/"/>
+   <updated>2016-02-17T00:00:00+00:00</updated>
+   <id>http://opentracing.io/2016/02/17/weekly-hangout</id>
+   <content type="html">&lt;p&gt;Very rough notes from our weekly hangout:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;attendees: @yurishkuro @tschottdorf @bg451 @dkuebric @bensigelman&lt;/li&gt;
+  &lt;li&gt;OT1.0RC is a thing: congrats/thanks all&lt;/li&gt;
+  &lt;li&gt;what to do about standardtracer?
+    &lt;ul&gt;
+      &lt;li&gt;the rough consensus was that it’s going to be hard to write a generalized set of impl helpers until we have more impls to generalize from.&lt;/li&gt;
+      &lt;li&gt;fine to move the standard tracer out of the opentracing-go repo&lt;/li&gt;
+      &lt;li&gt;fine to tightly-couple the standard tracer to some particular tracing backend&lt;/li&gt;
+      &lt;li&gt;seems like appdash or perhaps (?) risingstack’s new Trace thing would be possible endpoints for same (note that the latter is a fork of the former, though)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;@dkuebric’s opentracing/opentracing.github.io#61
+    &lt;ul&gt;
+      &lt;li&gt;briefly, we will proceed with standardization of tags and concepts that commonly show up in individual traces&lt;/li&gt;
+      &lt;li&gt;we will make less of an (perhaps no) effort trying to standardize things that affect trace aggregation and timeseries analysis since those areas are far more divergent across tracers&lt;/li&gt;
+      &lt;li&gt;there is also the larger topic of in-process context propagation, but we’ll deal with that later&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;meta: we’d like to move the meeting a few hours earlier since it’s mostly NYC/Boston people&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+
+</feed>

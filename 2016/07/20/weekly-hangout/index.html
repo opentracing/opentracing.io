@@ -1,0 +1,15 @@
+<p>Attendees: @bg451, @pritianka, @bensigelman, @yurishkuro</p>
+
+<p>Notes:</p>
+
+<ul>
+  <li>Uber open-sourced their Java based tracer that uses OT. It’s compatible with Zipkin out-of-band but does not use the B3 header (adding support would not be difficult).</li>
+  <li>Regarding open issues gating the non-RC OpenTracing 1.0 Spec:
+    <ul>
+      <li>https://github.com/opentracing/opentracing-java/issues/31: trying to decide on a String for the format vs something cleaner from a type standpoint. We will enumerate the options on the issue and go from there.</li>
+      <li>https://github.com/opentracing/opentracing.github.io/issues/98:  We need to add HTTP support across the board. Present in some language APIs but not others right now.</li>
+      <li>https://github.com/opentracing/opentracing.github.io/issues/99: SpanContext mostly done.</li>
+      <li>https://github.com/opentracing/opentracing.github.io/issues/106: SpanContext immutability. Lots of discussion about this but there were too many tradeoffs to reach consensus. Will require more thought. Would be easier with a real workload since some of the motivating concerns are essentially about performance.</li>
+    </ul>
+  </li>
+</ul>

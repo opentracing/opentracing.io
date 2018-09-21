@@ -1,0 +1,46 @@
+@font-face {
+    font-family: 'bariol_regular';
+    src: url('../../fonts/bariol_regular-webfont.eot');
+    src: url('../../fonts/bariol_regular-webfont.eot') format('embedded-opentype'),
+         url('../../fonts/bariol_regular-webfont.woff') format('woff'),
+         url('../../fonts/bariol_regular-webfont.ttf') format('truetype'),
+         url('../../fonts/bariol_regular-webfont.svg#bariol_regular') format('svg');
+}
+
+body, html {
+  font-family: "bariol_regular" !important;
+}
+
+h1, h2, h3, h4 {
+  color: #0979b9 !important;
+}
+
+a:hover {
+  opacity: 0.7 !important;
+}
+
+.book-summary {
+  background-color: #70b7d5 !important;
+}
+
+.book-summary .opentracing-logo img {
+  height: 33px;
+  margin: 15px 12px;
+}
+
+.book-summary ul.summary li a, .book-summary ul.summary li.active a {
+  font-weight: 700;
+  color: white !important;
+}
+
+.book-summary ul.summary li.active > a {
+  text-decoration: underline;
+}
+
+
+
+
+
+h1, h2, h3, h4, p, a {
+  font-family: "bariol_regular";
+}

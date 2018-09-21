@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>opentracing.io  | Operational and Business Insights from Tracing Distributed Microservices</title>
+  <meta http-equiv="cache-control" content="max-age=0" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="expires" content="0" />
+  <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta charset='UTF-8'/>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <link href='http://opentracing.io/css/main.css' rel='stylesheet' />
+  <link rel="apple-touch-icon" sizes="180x180" href="http://opentracing.io/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="http://opentracing.io/img/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="http://opentracing.io/img/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="http://opentracing.io/img/manifest.json">
+  <link rel="mask-icon" href="http://opentracing.io/img/safari-pinned-tab.svg" color="#5bbad5 ">
+  <meta name="theme-color" content="#ffffff ">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-79528055-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+
+  <body class="">
+    <header class="header">
+  <div class="header__container">
+    <div class="header__logo">
+      <a href="http://opentracing.io"><img src="http://opentracing.io/img/logo.png"></a>
+    </div>
+    <div class="header__actions">
+      <div class="dropdown">
+        <a class="dropdown__button" href="http://opentracing.io/documentation">Docs</a>
+        <div class="dropdown__content docs">
+          
+            
+              <a href="http://opentracing.io/documentation/pages/quick-start">Quick Start</a>
+            
+          
+            
+              <a href="http://opentracing.io/documentation/pages/spec">Concepts and Terminology</a>
+            
+          
+            
+              <a href="http://opentracing.io/documentation/pages/api/index">APIs</a>
+            
+          
+            
+              <a href="http://opentracing.io/documentation/pages/instrumentation/index">Best Practices</a>
+            
+          
+            
+              <a href="http://opentracing.io/documentation/pages/authors-and-contributors">Authors and Contributors</a>
+            
+          
+            
+              <a href="http://opentracing.io/documentation/pages/supported-tracers">Supported Tracers</a>
+            
+          
+            
+              <a href="http://opentracing.io/documentation/pages/translations">Translations</a>
+            
+          
+        </div>
+      </div>
+      <div class="dropdown">
+        <a class="dropdown__button" href="https://github.com/opentracing">Github</a>
+        <div class="dropdown__content language">
+          
+            <a href="//github.com/opentracing/opentracing-go">Go</a>
+          
+            <a href="//github.com/opentracing/opentracing-javascript">JavaScript</a>
+          
+            <a href="//github.com/opentracing/opentracing-java">Java</a>
+          
+            <a href="//github.com/opentracing/opentracing-python">Python</a>
+          
+            <a href="//github.com/opentracing/opentracing-ruby">Ruby</a>
+          
+            <a href="//github.com/opentracing/opentracing-php">PHP</a>
+          
+            <a href="//github.com/opentracing/opentracing-objc">Objective-C</a>
+          
+            <a href="//github.com/opentracing/opentracing-cpp">C++</a>
+          
+            <a href="//github.com/opentracing/opentracing-csharp">C#</a>
+          
+          <hr/>
+          <a href="https://github.com/opentracing-contrib/meta">Contributions</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <a class="dropdown__button" href="http://opentracing.io/documentation">Community</a>
+        <div class="dropdown__content docs">
+          
+            
+              <a href="http://opentracing.io/talks-and-videos">Talks and Videos</a>
+            
+          
+            
+              <a href="//gitter.im/opentracing/public">Gitter</a>
+            
+          
+            
+              <a href="//groups.google.com/forum/#!forum/opentracing">Mailing List</a>
+            
+          
+            
+              <a href="//github.com/opentracing-contrib/meta#opentracing-contributions">Become a Contributor</a>
+            
+          
+            
+              <a href="/outreachy">Outreachy</a>
+            
+          
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <a class="dropdown__button" href="http://opentracing.io/documentation">Getting Started</a>
+        <div class="dropdown__content docs">
+          
+            
+              <a href="http://opentracing.io/documentation/pages/quick-start.html">A QuickStart Guide to OpenTracing</a>
+            
+          
+            
+              <a href="http://opentracing.io/documentation/pages/instrumentation/instrumenting-frameworks.html">Framework and Library Maintainers</a>
+            
+          
+            
+              <a href="http://opentracing.io/documentation/pages/supported-tracers.html">Available Tracers, Frameworks and Libraries</a>
+            
+          
+        </div>
+      </div>
+
+      <a href="https://medium.com/opentracing">Blog</a>
+    </div>
+    <div class="header__actions right">
+      <a class="button white" href="https://groups.google.com/forum/#!forum/opentracing">Join the mailing list</a>
+    </div>
+  </div>
+
+  <div class="header__container__mobile">
+    <div class="header__logo">
+      <a href="http://opentracing.io"><img src="http://opentracing.io/img/logo.png"></a>
+    </div>
+    <div class="header__hamburger__button">☰</div>
+    <div class="dropdown__content mobile">
+      <div class="header__close__button">✕</div>
+
+      <h3>Docs</h3>
+      
+        
+          <a href="http://opentracing.io/documentation/pages/quick-start">Quick Start</a>
+        
+      
+        
+          <a href="http://opentracing.io/documentation/pages/spec">Concepts and Terminology</a>
+        
+      
+        
+          <a href="http://opentracing.io/documentation/pages/api/index">APIs</a>
+        
+      
+        
+          <a href="http://opentracing.io/documentation/pages/instrumentation/index">Best Practices</a>
+        
+      
+        
+          <a href="http://opentracing.io/documentation/pages/authors-and-contributors">Authors and Contributors</a>
+        
+      
+        
+          <a href="http://opentracing.io/documentation/pages/supported-tracers">Supported Tracers</a>
+        
+      
+        
+          <a href="http://opentracing.io/documentation/pages/translations">Translations</a>
+        
+      
+
+      <h3>Github</h3>
+      
+        <a href="//github.com/opentracing/opentracing-go">Go</a>
+      
+        <a href="//github.com/opentracing/opentracing-javascript">JavaScript</a>
+      
+        <a href="//github.com/opentracing/opentracing-java">Java</a>
+      
+        <a href="//github.com/opentracing/opentracing-python">Python</a>
+      
+        <a href="//github.com/opentracing/opentracing-ruby">Ruby</a>
+      
+        <a href="//github.com/opentracing/opentracing-php">PHP</a>
+      
+        <a href="//github.com/opentracing/opentracing-objc">Objective-C</a>
+      
+        <a href="//github.com/opentracing/opentracing-cpp">C++</a>
+      
+        <a href="//github.com/opentracing/opentracing-csharp">C#</a>
+      
+
+      <h3>Community</h3>
+      
+        
+          <a href="http://opentracing.io/talks-and-videos">Talks and Videos</a>
+        
+      
+        
+          <a href="//gitter.im/opentracing/public">Gitter</a>
+        
+      
+        
+          <a href="//groups.google.com/forum/#!forum/opentracing">Mailing List</a>
+        
+      
+        
+          <a href="//github.com/opentracing-contrib/meta#opentracing-contributions">Become a Contributor</a>
+        
+      
+        
+          <a href="/outreachy">Outreachy</a>
+        
+      
+
+      <h3>Getting Started</h3>
+      
+        
+          <a href="http://opentracing.io/documentation/pages/quick-start.html">A QuickStart Guide to OpenTracing</a>
+        
+      
+        
+          <a href="http://opentracing.io/documentation/pages/instrumentation/instrumenting-frameworks.html">Framework and Library Maintainers</a>
+        
+      
+        
+          <a href="http://opentracing.io/documentation/pages/supported-tracers.html">Available Tracers, Frameworks and Libraries</a>
+        
+      
+
+      <hr/>
+      <a href="https://github.com/opentracing-contrib/meta">Contributions</a>
+
+      <h3>Mailing List</h3>
+      <a href="https://groups.google.com/forum/#!forum/opentracing">Join!</a>
+    </div>
+  </div>
+</header>
+
+<script type="text/javascript">
+
+var _mobileMenuVisible = false;
+var _mobileMenuContent = document.querySelector('.header__container__mobile');
+var _openButton = document.querySelector('.header__hamburger__button');
+var _closeButton = document.querySelector('.header__close__button');
+
+function setState(state, classList) {
+  _mobileMenuContent.setAttribute('class', classList);
+  _mobileMenuVisible = state;
+}
+
+_openButton.addEventListener('click', function() {
+  var classes = _mobileMenuContent.getAttribute('class')
+
+  if(!_mobileMenuVisible) {
+    setState(true, classes + ' active ');
+  }
+})
+
+_closeButton.addEventListener('click', function() {
+  var classes = _mobileMenuContent.getAttribute('class')
+
+  if(_mobileMenuVisible) {
+    setState(false, classes.replace(' active ', '') );
+  }
+})
+
+</script>
+
+    <main>
+      <section class="videos">
+  <h1 class="videos__header videos__header--small">Operational and Business Insights from Tracing Distributed Microservices</h1>
+  <p class="videos__content__date">29 March, 2017</p>
+  <section class="videos__section">
+    <div class="videos__content">
+      <iframe width="100%" src="https://www.youtube.com/embed/dmMWaTZE5gQ" frameborder="0" allowfullscreen></iframe>
+
+      <div class="videos__content__paragraphs videos__content__paragraphs--padding">
+        <p>In this talk we will present Hawkular APM, an OpenTracing-compliant community project. We will demonstrate how the project can be used to monitor microservices in a cloud environment, capturing trace and business metric information, which can then be presented in both aggregated and individual trace views to provide useful insight for many roles within an organisation.</p>
+
+      </div>
+    </div>
+  </section>
+</section>
+
+
+<style>
+  header:before {
+    content: '';
+    width: 100%;
+    height: 80px;
+    top: 0;
+    left: 0;
+    display: block;
+    position: absolute;
+    background-color: #45c1de;
+    z-index: -1;
+  }
+</style>
+
+    </main>
+    <footer class="footer">
+  <div class="footer__container">
+    <div class="footer__section">
+      <h4 class="footer__subtitle">Documentation</h4>
+      <div class="footer__actions">
+        
+          
+            <a href="http://opentracing.io/documentation/pages/quick-start">Quick Start</a>
+          
+        
+          
+            <a href="http://opentracing.io/documentation/pages/spec">Concepts and Terminology</a>
+          
+        
+          
+            <a href="http://opentracing.io/documentation/pages/api/index">APIs</a>
+          
+        
+          
+            <a href="http://opentracing.io/documentation/pages/instrumentation/index">Best Practices</a>
+          
+        
+          
+            <a href="http://opentracing.io/documentation/pages/authors-and-contributors">Authors and Contributors</a>
+          
+        
+          
+            <a href="http://opentracing.io/documentation/pages/supported-tracers">Supported Tracers</a>
+          
+        
+          
+            <a href="http://opentracing.io/documentation/pages/translations">Translations</a>
+          
+        
+      </div>
+    </div>
+
+    <div class="footer__section">
+      <h4 class="footer__subtitle">Github</h4>
+      <div class="footer__actions">
+        
+          <a href="//github.com/opentracing/opentracing-go">Go</a>
+        
+          <a href="//github.com/opentracing/opentracing-javascript">JavaScript</a>
+        
+          <a href="//github.com/opentracing/opentracing-java">Java</a>
+        
+          <a href="//github.com/opentracing/opentracing-python">Python</a>
+        
+          <a href="//github.com/opentracing/opentracing-ruby">Ruby</a>
+        
+          <a href="//github.com/opentracing/opentracing-php">PHP</a>
+        
+          <a href="//github.com/opentracing/opentracing-objc">Objective-C</a>
+        
+          <a href="//github.com/opentracing/opentracing-cpp">C++</a>
+        
+          <a href="//github.com/opentracing/opentracing-csharp">C#</a>
+        
+      </div>
+    </div>
+
+    <div class="footer__section">
+      <h4 class="footer__subtitle">Community</h4>
+      <div class="footer__actions">
+        
+          
+            <a href="http://opentracing.io/talks-and-videos">Talks and Videos</a>
+          
+        
+          
+            <a href="//gitter.im/opentracing/public">Gitter</a>
+          
+        
+          
+            <a href="//groups.google.com/forum/#!forum/opentracing">Mailing List</a>
+          
+        
+          
+            <a href="//github.com/opentracing-contrib/meta#opentracing-contributions">Become a Contributor</a>
+          
+        
+          
+            <a href="/outreachy">Outreachy</a>
+          
+        
+      </div>
+    </div>
+
+    <div class="footer__section">
+      <h4 class="footer__subtitle">Get Started</h4>
+      <div class="footer__actions">
+        
+          
+            <a href="http://opentracing.io/documentation/pages/quick-start.html">A QuickStart Guide to OpenTracing</a>
+          
+        
+          
+            <a href="http://opentracing.io/documentation/pages/instrumentation/instrumenting-frameworks.html">Framework and Library Maintainers</a>
+          
+        
+          
+            <a href="http://opentracing.io/documentation/pages/supported-tracers.html">Available Tracers, Frameworks and Libraries</a>
+          
+        
+      </div>
+    </div>
+    <div class="footer__section ecosystem">
+      <h4 class="footer__subtitle">Ecosystem</h4>
+      <div class="footer__social_icons">
+        
+          <a href="//medium.com/opentracing"><img src="http://opentracing.io/img/social/medium.png" alt="" style="color: ;"></a>
+        
+          <a href="//github.com/opentracing"><img src="http://opentracing.io/img/social/github.png" alt="" style="color: ;"></a>
+        
+          <a href="//twitter.com/opentracing"><img src="http://opentracing.io/img/social/twitter.png" alt="" style="color: ;"></a>
+        
+          <a href="//gitter.im/opentracing/public"><img src="http://opentracing.io/img/social/gitter.png" alt="" style="color: ;"></a>
+        
+      </div>
+      <a class="footer__social_newsletter button white thin" href="https://groups.google.com/forum/#!forum/opentracing">Join the mailing list</a>
+    </div>
+  </div>
+</footer>
+
+    <script type="text/javascript">
+      var mailinglistLinks
+        = document.querySelectorAll('a[href="https://groups.google.com/forum/#!forum/opentracing"]');
+
+      Array.prototype.map.call(mailinglistLinks, function(link) {
+        link.addEventListener('click', function(event) {
+          event.preventDefault();
+
+          ga('send', {
+            hitType: 'event',
+            eventCategory: 'Mailinglist',
+            eventAction: 'Open',
+            hitCallback: function() {
+              window.location = event.target.href
+            }
+          });
+
+        });
+      });
+    </script>
+  </body>
+</html>

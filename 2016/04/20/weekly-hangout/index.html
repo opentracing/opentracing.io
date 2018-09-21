@@ -1,0 +1,39 @@
+<p>Rough notes:</p>
+
+<ul>
+  <li>6 minutes of futzing with Hangouts technology :)</li>
+  <li>Re @dkuebric’s PR:
+    <ul>
+      <li>payload specification for error events</li>
+      <li>payloads would need to be key:value based</li>
+      <li>or should we just drop it for now?</li>
+      <li>resolution is to leave this as “future work” for now</li>
+      <li>need a link from semantic spec page</li>
+    </ul>
+  </li>
+  <li>Uber Go issue with sync.Pool and invalid Spans
+    <ul>
+      <li>async tasks are still troublesome… how do we want to represent them?</li>
+      <li>@dkuebric: how to represent big traces with lots of async behavior?
+        <ul>
+          <li>10m limit is fine for web-based systems</li>
+          <li>how to “chop up” long traces with periods of intense activity / subtraces?</li>
+          <li>i.e., metatraces ^^^</li>
+          <li>how about using Join with JoinOptions to express the type of parent pointer?</li>
+          <li>relative agreement that this is a tricky thing to get “right” and may wait until OT has more of an integrated base</li>
+          <li>next-ish step after this PR will be codegen for the standard tags</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>@bensigelman’s Twitter talk: core Finagle team interested in talking more about OpenTracing/etc</li>
+  <li>re Uber OSS’ing OT-to-Zipkin bindings:
+    <ul>
+      <li>@yurishkuro wants that to be done this quarter… repos are created, sorting out some dependencies</li>
+      <li>Getting rid of TChannel dependency and doing localhost UDP</li>
+      <li>Definitely coming once the above is done… probably next ~3 weeks</li>
+      <li>Not using the B3 header, though that could be addressed with a custom carrier if need be</li>
+    </ul>
+  </li>
+</ul>
+

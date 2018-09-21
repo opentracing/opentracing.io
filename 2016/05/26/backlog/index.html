@@ -1,0 +1,31 @@
+<p>Some meeting notes:</p>
+
+<ul>
+  <li>Update on the C++ API/Tracer
+    <ul>
+      <li>Consensus: @lookfwd’s PR is modified and improved and we are moving on with it. It’s a C++98 classic API - span and tracer class making little use of C++ language features but relying on std::string to simplify memory management. Initially there were some thoughts about using C++11 for memory-management reasons but think we can offer those features as add-ons to the basic C++98 API.</li>
+      <li>The implementation of the API may use C++11, since C++98 and its standard library lack many useful features. We are assuming people are using new-ish compilers and can build with C++11 features, even if their own code may not use C++11. Your compiler has to support C++11 to use the OT C++ basictracer.</li>
+    </ul>
+  </li>
+  <li>What we do want to do about the baggage item restrictions? (cannonicalization)
+    <ul>
+      <li>Consensus - We will go with @bensigelman’s suggestion and scrap the baggage item restrictions. The main reason it was incorporated was because basic support is not human readable on the header. But we are taking the hit because it is an edge case issue.</li>
+    </ul>
+  </li>
+  <li>Community building and education updates (by @pritianka)
+    <ul>
+      <li>We are checking with @AdrianCole if we can host OT brainstorm session right before or after Zipkin workshop. Else, it will be held separately. The brainstorm session aims to bring together people interested in and with proficiency in distributed tracing to create a shortlist of top open source frameworks we want to instrument with OT.</li>
+      <li>Blog post by @bensigelman coming out next week</li>
+      <li>Nginx will likely co-promote OpenTracing in the future once they have looked at it in more detail</li>
+    </ul>
+  </li>
+  <li>@jmacd’s open question for the community: Does anyone want a C API? If you do, what other restrictions do you have? (e.g., would a GLib dependency be acceptable?) Is it okay if it’s a C API backed by C++ code.</li>
+  <li>Meeting notes from the previous two weeks have been lost to the sands of time, unfortunately… we did have some fun conversations but nobody was being a scribe. :(</li>
+</ul>
+
+<p>Also, we have a new basictracer-js repo: https://github.com/opentracing/basictracer-javascript</p>
+
+<p>Also also, we have a proposal for C# OpenTracing and basictracer APIs: https://github.com/dawallin/opentracing-csharp</p>
+
+<p>Also also also, there’s a fun discussion about OT-C++ starting around https://gitter.im/opentracing/opentracing-cpp?at=5745223763e41bd84bf03a1a</p>
+

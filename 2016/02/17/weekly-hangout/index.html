@@ -1,0 +1,22 @@
+<p>Very rough notes from our weekly hangout:</p>
+
+<ul>
+  <li>attendees: @yurishkuro @tschottdorf @bg451 @dkuebric @bensigelman</li>
+  <li>OT1.0RC is a thing: congrats/thanks all</li>
+  <li>what to do about standardtracer?
+    <ul>
+      <li>the rough consensus was that it’s going to be hard to write a generalized set of impl helpers until we have more impls to generalize from.</li>
+      <li>fine to move the standard tracer out of the opentracing-go repo</li>
+      <li>fine to tightly-couple the standard tracer to some particular tracing backend</li>
+      <li>seems like appdash or perhaps (?) risingstack’s new Trace thing would be possible endpoints for same (note that the latter is a fork of the former, though)</li>
+    </ul>
+  </li>
+  <li>@dkuebric’s opentracing/opentracing.github.io#61
+    <ul>
+      <li>briefly, we will proceed with standardization of tags and concepts that commonly show up in individual traces</li>
+      <li>we will make less of an (perhaps no) effort trying to standardize things that affect trace aggregation and timeseries analysis since those areas are far more divergent across tracers</li>
+      <li>there is also the larger topic of in-process context propagation, but we’ll deal with that later</li>
+    </ul>
+  </li>
+  <li>meta: we’d like to move the meeting a few hours earlier since it’s mostly NYC/Boston people</li>
+</ul>

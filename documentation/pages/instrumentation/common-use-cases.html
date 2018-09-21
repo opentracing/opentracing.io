@@ -1,0 +1,1158 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Common Use Cases · Opentracing</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="instrumenting-large-systems.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+  
+<div class="header-container">
+  <header class="header">
+    <div class="header__container">
+      <div class="header__logo">
+        <a href="http://opentracing.io"><img src="http://opentracing.io/img/logo.png"></a>
+      </div>
+      <div class="header__actions">
+        <div class="dropdown">
+          <a class="dropdown__button" href="http://opentracing.io/documentation">Docs</a>
+          <div class="dropdown__content docs">
+            
+              
+                <a href="http://opentracing.io/documentation/pages/quick-start">Quick Start</a>
+              
+            
+              
+                <a href="http://opentracing.io/documentation/pages/spec">Concepts and Terminology</a>
+              
+            
+              
+                <a href="http://opentracing.io/documentation/pages/api/index">APIs</a>
+              
+            
+              
+                <a href="http://opentracing.io/documentation/pages/instrumentation/index">Best Practices</a>
+              
+            
+              
+                <a href="http://opentracing.io/documentation/pages/authors-and-contributors">Authors and Contributors</a>
+              
+            
+              
+                <a href="http://opentracing.io/documentation/pages/supported-tracers">Supported Tracers</a>
+              
+            
+              
+                <a href="http://opentracing.io/documentation/pages/translations">Translations</a>
+              
+            
+          </div>
+        </div>
+        <div class="dropdown">
+          <a class="dropdown__button" href="https://github.com/opentracing">Github</a>
+          <div class="dropdown__content language">
+            
+              <a href="//github.com/opentracing/opentracing-go">Go</a>
+            
+              <a href="//github.com/opentracing/opentracing-javascript">JavaScript</a>
+            
+              <a href="//github.com/opentracing/opentracing-java">Java</a>
+            
+              <a href="//github.com/opentracing/opentracing-python">Python</a>
+            
+              <a href="//github.com/opentracing/opentracing-objc">Objective-C</a>
+            
+              <a href="//github.com/opentracing/opentracing-cpp">C++</a>
+            
+            <hr/>
+            <a href="https://github.com/opentracing-contrib/meta">Contributions</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a class="dropdown__button" href="http://opentracing.io/documentation">Community</a>
+          <div class="dropdown__content docs">
+            
+              
+                <a href="http://opentracing.io/talks-and-videos">Talks and Videos</a>
+              
+            
+              
+                <a href="//gitter.im/opentracing/public">Gitter</a>
+              
+            
+              
+                <a href="//groups.google.com/forum/#!forum/opentracing">Mailing List</a>
+              
+            
+              
+                <a href="//github.com/opentracing-contrib/meta#opentracing-contributions">Become a Contributor</a>
+              
+            
+              
+                <a href="http://opentracing.io/outreachy">Outreachy</a>
+              
+            
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a class="dropdown__button" href="http://opentracing.io/documentation">Getting Started</a>
+          <div class="dropdown__content docs">
+            
+              
+                <a href="http://opentracing.io/documentation/pages/quick-start.html">A QuickStart Guide to OpenTracing</a>
+              
+            
+              
+                <a href="http://opentracing.io/documentation/pages/instrumentation/instrumenting-frameworks.html">Framework and Library Maintainers</a>
+              
+            
+              
+                <a href="http://opentracing.io/documentation/pages/supported-tracers.html">Available Tracers, Frameworks and Libraries</a>
+              
+            
+          </div>
+        </div>
+
+        <a href="https://medium.com/opentracing">Blog</a>
+      </div>
+      <div class="header__actions right">
+        <a class="button-header white" href="https://groups.google.com/forum/#!forum/opentracing">Join the mailing list</a>
+      </div>
+    </div>
+
+    <div class="header__container__mobile">
+      <div class="header__logo">
+        <a href="http://opentracing.io"><img src="http://opentracing.io/img/logo.png"></a>
+      </div>
+      <div class="header__hamburger__button">☰</div>
+      <div class="dropdown__content mobile">
+        <div class="header__close__button">✕</div>
+
+        <h3>Docs</h3>
+        
+          
+            <a href="http://opentracing.io/documentation/pages/quick-start">Quick Start</a>
+          
+        
+          
+            <a href="http://opentracing.io/documentation/pages/spec">Concepts and Terminology</a>
+          
+        
+          
+            <a href="http://opentracing.io/documentation/pages/api/index">APIs</a>
+          
+        
+          
+            <a href="http://opentracing.io/documentation/pages/instrumentation/index">Best Practices</a>
+          
+        
+          
+            <a href="http://opentracing.io/documentation/pages/authors-and-contributors">Authors and Contributors</a>
+          
+        
+          
+            <a href="http://opentracing.io/documentation/pages/supported-tracers">Supported Tracers</a>
+          
+        
+          
+            <a href="http://opentracing.io/documentation/pages/translations">Translations</a>
+          
+        
+
+        <h3>Github</h3>
+        
+          <a href="//github.com/opentracing/opentracing-go">Go</a>
+        
+          <a href="//github.com/opentracing/opentracing-javascript">JavaScript</a>
+        
+          <a href="//github.com/opentracing/opentracing-java">Java</a>
+        
+          <a href="//github.com/opentracing/opentracing-python">Python</a>
+        
+          <a href="//github.com/opentracing/opentracing-objc">Objective-C</a>
+        
+          <a href="//github.com/opentracing/opentracing-cpp">C++</a>
+        
+
+        <h3>Community</h3>
+        
+          
+            <a href="http://opentracing.io/talks-and-videos">Talks and Videos</a>
+          
+        
+          
+            <a href="//gitter.im/opentracing/public">Gitter</a>
+          
+        
+          
+            <a href="//groups.google.com/forum/#!forum/opentracing">Mailing List</a>
+          
+        
+          
+            <a href="//github.com/opentracing-contrib/meta#opentracing-contributions">Become a Contributor</a>
+          
+        
+          
+            <a href="http://opentracing.io/outreachy">Outreachy</a>
+          
+        
+
+        <h3>Getting Started</h3>
+        
+          
+            <a href="http://opentracing.io/documentation/pages/quick-start.html">A QuickStart Guide to OpenTracing</a>
+          
+        
+          
+            <a href="http://opentracing.io/documentation/pages/instrumentation/instrumenting-frameworks.html">Framework and Library Maintainers</a>
+          
+        
+          
+            <a href="http://opentracing.io/documentation/pages/supported-tracers.html">Available Tracers, Frameworks and Libraries</a>
+          
+        
+
+        <hr/>
+        <a href="https://github.com/opentracing-contrib/meta">Contributions</a>
+
+        <h3>Mailing List</h3>
+        <a href="https://groups.google.com/forum/#!forum/opentracing">Join!</a>
+      </div>
+    </div>
+  </header>
+</div>
+
+<script type="text/javascript">
+
+var _mobileMenuVisible = false;
+var _mobileMenuContent = document.querySelector('.header__container__mobile');
+var _openButton = document.querySelector('.header__hamburger__button');
+var _closeButton = document.querySelector('.header__close__button');
+
+function setState(state, classList) {
+  _mobileMenuContent.setAttribute('class', classList);
+  _mobileMenuVisible = state;
+}
+
+_openButton.addEventListener('click', function() {
+  var classes = _mobileMenuContent.getAttribute('class')
+
+  if(!_mobileMenuVisible) {
+    setState(true, classes + ' active ');
+  }
+})
+
+_closeButton.addEventListener('click', function() {
+  var classes = _mobileMenuContent.getAttribute('class')
+
+  if(_mobileMenuVisible) {
+    setState(false, classes.replace(' active ', '') );
+  }
+})
+
+</script>
+
+
+<style>
+.book {
+  height: calc(100% - 70px);
+}
+
+body {
+  position: relative;
+  z-index: -1;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #70b7d5 !important;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  max-width: 1300px;
+  font-size: 100%;
+  z-index: 1;
+  position: relative;
+}
+
+img, svg {
+  max-width: 100%;
+  height: auto; }
+
+.header {
+  padding: 1.25em;
+  width: 100%;
+  display: block;
+  z-index: 10;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  font-family: 'bariolthin'; }
+  .header__container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    .header__container__mobile {
+      position: relative;
+      display: none; }
+      .header__container__mobile .dropdown__content.mobile {
+        display: none;
+        opacity: 0; }
+      .header__container__mobile.active .dropdown__content {
+        opacity: 1;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex; }
+  .header__hamburger__button {
+    cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    color: white;
+    font-size: 3em;
+    margin-top: -10px; }
+  .header__close__button {
+    cursor: pointer;
+    top: 20px;
+    right: 20px;
+    position: absolute;
+    text-align: right;
+    clear: both;
+    float: right;
+    font-size: 30px; }
+  .header__logo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    max-width: 225px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    .header__logo img {
+      vertical-align: text-top; }
+  .header__actions {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row; }
+    .header__actions.right {
+      -webkit-box-pack: end;
+          -ms-flex-pack: end;
+              justify-content: flex-end; }
+    .header__actions a {
+      letter-spacing: 1px;
+      display: inline-block;
+      color: white;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-size: 1em;
+      font-weight: 700;
+      padding-left: 1.5em; }
+  @media (max-width: 900px) {
+    .header__actions.right {
+      display: none; } }
+  @media (max-width: 500px) {
+    .header__container {
+      display: none; }
+    .header__container__mobile {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; } }
+  .header .dropdown:hover .dropdown__content {
+    opacity: 1;
+    pointer-events: all; }
+  .header .dropdown {
+    position: relative;
+    display: inline-block; }
+    .header .dropdown__content {
+      position: absolute;
+      min-width: auto;
+      left: -10px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      text-align: left;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+      margin-top: 10px;
+      padding: 20px 30px;
+      border-radius: 10px;
+      border: 2px solid #39a9da;
+      background-color: white;
+      box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      -webkit-transition: opacity 400ms;
+      transition: opacity 400ms;
+      pointer-events: none; }
+      .header .dropdown__content.mobile {
+        left: 0;
+        right: 0;
+        pointer-events: all; }
+        .header .dropdown__content.mobile h3 {
+          margin-top: 2em;
+          font-size: 2.5em; }
+        .header .dropdown__content.mobile a {
+          font-size: 1.7em; }
+        .header .dropdown__content.mobile :before, .header .dropdown__content.mobile :after {
+          display: none; }
+      .header .dropdown__content.docs {
+        min-width: 175px;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; }
+      .header .dropdown__content.language {
+        min-width: 175px;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; }
+      .header .dropdown__content a {
+        font-family: 'bariol_regular';
+        display: inline-block;
+        font-size: 1em;
+        -webkit-transition: 200ms;
+        transition: 200ms;
+        opacity: 0.7;
+        padding: 10px 0;
+        color: #39a9da;
+        text-transform: capitalize; }
+        .header .dropdown__content a:hover {
+          opacity: 1;
+          color: #39a9da; }
+      .header .dropdown__content :before {
+        content: '';
+        position: absolute;
+        top: -12px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+        background: transparent;
+        display: block; }
+      .header .dropdown__content :after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        padding-top: 10px;
+        left: 40px;
+        width: 20px;
+        height: 20px;
+        -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+        background: white;
+        display: block; }
+
+.button-header {
+  border-radius: 5px;
+  color: #39a9da;
+  cursor: pointer;
+  font-size: inherit;
+  font-weight: 700;
+  text-transform: uppercase; }
+  .button-header:hover:before {
+    margin-right: 15px; }
+  .button-header:before {
+    content: '->';
+    position: relative;
+    border: 5px;
+    font-size: inherit;
+    display: inline-block;
+    -webkit-transition: margin 200ms;
+    transition: margin 200ms;
+    padding: 0.075rem 1.25em;
+    color: #45c1de;
+    border: 1px solid #45c1de;
+    border-radius: 0.65em;
+    margin-right: 10px;
+    line-height: 1.5em; }
+  .button-header.white {
+    color: white; }
+    .button-header.white:before {
+      border-color: white;
+      color: white; }
+  @media (max-width: 768px) {
+    .button-header {
+      font-weight: 600;
+      line-height: 2em; }
+      .button-header:before {
+        line-height: 2em; } }
+</style>
+
+  
+<div class="book">
+    <div class="book-summary">
+        
+            
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../quick-start.html">
+            
+                <a href="../quick-start.html">
+            
+                    
+                        <b>1.2.</b>
+                    
+                    Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../spec.html">
+            
+                <a href="../spec.html">
+            
+                    
+                        <b>1.3.</b>
+                    
+                    Concepts and Terminology
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../api/">
+            
+                <a href="../api/">
+            
+                    
+                        <b>1.4.</b>
+                    
+                    OpenTracing APIs
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../api/api-implementations.html">
+            
+                <a href="../api/api-implementations.html">
+            
+                    
+                        <b>1.4.1.</b>
+                    
+                    OpenTracing Language Support
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../api/data-conventions.html">
+            
+                <a href="../api/data-conventions.html">
+            
+                    
+                        <b>1.4.2.</b>
+                    
+                    Data Conventions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../api/cross-process-tracing.html">
+            
+                <a href="../api/cross-process-tracing.html">
+            
+                    
+                        <b>1.4.3.</b>
+                    
+                    Cross-Process Tracing
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                        <b>1.5.</b>
+                    
+                    Best Practices
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.5.1" data-path="common-use-cases.html">
+            
+                <a href="common-use-cases.html">
+            
+                    
+                        <b>1.5.1.</b>
+                    
+                    Common Use Cases
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="instrumenting-large-systems.html">
+            
+                <a href="instrumenting-large-systems.html">
+            
+                    
+                        <b>1.5.2.</b>
+                    
+                    Instrumenting Large Systems
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="instrumenting-frameworks.html">
+            
+                <a href="instrumenting-frameworks.html">
+            
+                    
+                        <b>1.5.3.</b>
+                    
+                    Instrumenting Frameworks
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../authors-and-contributors.html">
+            
+                <a href="../authors-and-contributors.html">
+            
+                    
+                        <b>1.6.</b>
+                    
+                    Authors and Contributors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../supported-tracers.html">
+            
+                <a href="../supported-tracers.html">
+            
+                    
+                        <b>1.7.</b>
+                    
+                    Supported Tracers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../translations.html">
+            
+                <a href="../translations.html">
+            
+                    
+                        <b>1.8.</b>
+                    
+                    Translations 🇨🇳
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Common Use Cases</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="common-use-cases">Common use cases</h1>
+<p>This page aims to illustrate common use cases that developers who instrument their applications and libraries with OpenTracing API need to deal with.</p>
+<h2 id="stepping-back-who-is-opentracing-for">Stepping Back: Who is OpenTracing for?</h2>
+<p>OpenTracing is a thin standardization layer that sits between application/library code and various systems that consume tracing and causality data. Here is a diagram:</p>
+<pre><code>   +-------------+  +---------+  +----------+  +------------+
+   | Application |  | Library |  |   OSS    |  |  RPC/IPC   |
+   |    Code     |  |  Code   |  | Services |  | Frameworks |
+   +-------------+  +---------+  +----------+  +------------+
+          |              |             |             |
+          |              |             |             |
+          v              v             v             v
+     +-----------------------------------------------------+
+     | &#xB7; &#xB7; &#xB7; &#xB7; &#xB7; &#xB7; &#xB7; &#xB7; &#xB7; &#xB7; OpenTracing &#xB7; &#xB7; &#xB7; &#xB7; &#xB7; &#xB7; &#xB7; &#xB7; &#xB7; &#xB7; |
+     +-----------------------------------------------------+
+       |               |                |               |
+       |               |                |               |
+       v               v                v               v
+ +-----------+  +-------------+  +-------------+  +-----------+
+ |  Tracing  |  |   Logging   |  |   Metrics   |  |  Tracing  |
+ | System A  |  | Framework B |  | Framework C |  | System D  |
+ +-----------+  +-------------+  +-------------+  +-----------+
+</code></pre><p><strong>Application Code</strong>: Developers writing application code can use OpenTracing to describe causality, demarcate control flow, and add fine-grained logging information along the way.</p>
+<p><strong>Library Code</strong>: Similarly, libraries that take intermediate control of requests can integrate with OpenTracing for similar reasons. For instance, a web middleware library can use OpenTracing to create spans for request handling, or an ORM library can use OpenTracing to describe higher-level ORM semantics and measure execution for specific SQL queries.</p>
+<p><strong>OSS Services</strong>: Beyond embedded libraries, entire OSS services may adopt OpenTracing to integrate with distributed traces initiating in &#x2013; or propagating to &#x2013; other processes in a larger distributed system. For instance, an HTTP load balancer may use OpenTracing to decorate requests, or a distributed key:value store may use OpenTracing to explain the performance of reads and writes.</p>
+<p><strong>RPC/IPC Frameworks</strong>: Any subsystem tasked with crossing process boundaries may use OpenTracing to standardize the format of tracing state as it injects into and extracts from various wire formats and protocols.</p>
+<p>All of the above should be able to use OpenTracing to describe and propagate distributed traces <strong>without knowledge of the underlying OpenTracing implementation</strong>.</p>
+<h3 id="opentracing-priorities">OpenTracing priorities</h3>
+<p>Since there are many orders of magnitude more programmers and applications <em>above</em> the OpenTracing layer (rather than below it), the APIs and use cases prioritize ease-of-use in that direction. While there are certainly ample opportunities for helper libraries and other abstractions that save time and effort for OpenTracing implementors, the use cases in this document are restricted to callers (rather than callees) of OpenTracing APIs.</p>
+<p>Without further ado:</p>
+<h2 id="motivating-use-cases">Motivating Use Cases</h2>
+<h3 id="tracing-a-function">Tracing a Function</h3>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">top_level_function</span><span class="hljs-params">()</span>:</span>
+    span1 = tracer.start_span(<span class="hljs-string">&apos;top_level_function&apos;</span>)
+    <span class="hljs-keyword">try</span>:
+        . . . <span class="hljs-comment"># business logic</span>
+    <span class="hljs-keyword">finally</span>:
+        span1.finish()
+</code></pre>
+<p>As a follow-up, suppose that as part of the business logic above we call another <code>function2</code> that we also want to trace. In order to attach that function to the ongoing trace, we need a way to access <code>span1</code>. We discuss how it can be done later, for now let&apos;s assume we have a helper function <code>get_current_span</code> for that:</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">function2</span><span class="hljs-params">()</span>:</span>
+    span2 = get_current_span().start_child(<span class="hljs-string">&apos;function2&apos;</span>) \
+        <span class="hljs-keyword">if</span> get_current_span() <span class="hljs-keyword">else</span> <span class="hljs-keyword">None</span>
+    <span class="hljs-keyword">try</span>:
+        . . . <span class="hljs-comment"># business logic</span>
+    <span class="hljs-keyword">finally</span>:
+        <span class="hljs-keyword">if</span> span2:
+            span2.finish()
+</code></pre>
+<p>We assume that, for whatever reason, the developer does not want to start a new trace in this function if one hasn&apos;t been started by the caller already, so we account for <code>get_current_span</code> potentially returning <code>None</code>.</p>
+<p>These two examples are intentionally naive. Usually developers will not want to pollute their business functions directly with tracing code, but use other means like a <a href="https://github.com/uber-common/opentracing-python-instrumentation/blob/master/opentracing_instrumentation/local_span.py#L59" target="_blank">function decorator in Python</a>:</p>
+<pre><code class="lang-python"><span class="hljs-meta">@traced_function</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">top_level_function</span><span class="hljs-params">()</span>:</span>
+    ... <span class="hljs-comment"># business logic</span>
+</code></pre>
+<h3 id="tracing-server-endpoints">Tracing Server Endpoints</h3>
+<p>When a server wants to trace execution of a request, it generally needs to go through these steps:</p>
+<ol>
+<li>Attempt to extract a SpanContext that&apos;s been propagated alongside the incoming request (in case the trace has already been started by the client), or start a new trace if no such propagated SpanContext could be found.</li>
+<li>Store the newly created Span in some <em>request context</em> that is propagated throughout the application, either by application code, or by the RPC framework.</li>
+<li>Finally, close the Span using <code>span.finish()</code> when the server has finished processing the request.</li>
+</ol>
+<h4 id="extracting-a-spancontext-from-an-incoming-request">Extracting a SpanContext from an Incoming Request</h4>
+<p>Let&apos;s assume that we have an HTTP server, and the SpanContext is propagated from the client via HTTP headers, accessible via <code>request.headers</code>:</p>
+<pre><code class="lang-python">extracted_context = tracer.extract(
+    format=opentracing.HTTP_HEADER_FORMAT,
+    carrier=request.headers
+)
+</code></pre>
+<p>Here we use the <code>headers</code> map as the carrier. The Tracer object knows which headers it needs to read in order to reconstruct the tracer state and any Baggage.</p>
+<h4 id="continuing-or-starting-a-trace-from-an-incoming-request">Continuing or Starting a Trace from an Incoming Request</h4>
+<p>The <code>extracted_context</code> object above can be <code>None</code> if the Tracer did not find relevant headers in the incoming request: presumably because the client did not send them. In this case the server needs to start a brand new trace.</p>
+<pre><code class="lang-python">extracted_context = tracer.extract(
+    format=opentracing.HTTP_HEADER_FORMAT,
+    carrier=request.headers
+)
+<span class="hljs-keyword">if</span> extracted_context <span class="hljs-keyword">is</span> <span class="hljs-keyword">None</span>:
+    span = tracer.start_span(operation_name=operation)
+<span class="hljs-keyword">else</span>:
+    span = tracer.start_span(operation_name=operation, child_of=extracted_context)
+span.set_tag(<span class="hljs-string">&apos;http.method&apos;</span>, request.method)
+span.set_tag(<span class="hljs-string">&apos;http.url&apos;</span>, request.full_url)
+</code></pre>
+<p>The <code>set_tag</code> calls are examples of recording additional information in the Span about the request.</p>
+<p>The <code>operation</code> above refers to the name the server wants to give to the Span. For example, if the HTTP request was a POST against <code>/save_user/123</code>, the operation name can be set to <code>post:/save_user/</code>. The OpenTracing API does not dictate how applications name the spans.</p>
+<h4 id="in-process-request-context-propagation">In-Process Request Context Propagation</h4>
+<p>Request context propagation refers to application&apos;s ability to associate a certain <em>context</em> with the incoming request such that this context is accessible in all other layers of the application within the same process. It can be used to provide application layers with access to request-specific values such as the identity of the end user, authorization tokens, and the request&apos;s deadline. It can also be used for transporting the current tracing Span.</p>
+<p>Implementation of request context propagation is outside the scope of the OpenTracing API, but it is worth mentioning them here to better understand the following sections. There are two commonly used techniques of context propagation:</p>
+<h5 id="implicit-propagation">Implicit Propagation</h5>
+<p>In implicit propagation techniques the context is stored in platform-specific storage that allows it to be retrieved from any place in the application. Often used by RPC frameworks by utilizing such mechanisms as thread-local or continuation-local storage, or even global variables (in case of single-threaded processes).</p>
+<p>The downside of this approach is that it almost always has a performance penalty, and in platforms like Go that do not support thread-local storage implicit propagation is nearly impossible to implement.</p>
+<h5 id="explicit-propagation">Explicit Propagation</h5>
+<p>In explicit propagation techniques the application code is structured to pass around a certain <em>context</em> object:</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> HandleHttp(w http.ResponseWriter, req *http.Request) {
+    ctx := context.Background()
+    ...
+    BusinessFunction1(ctx, arg1, ...)
+}
+
+<span class="hljs-keyword">func</span> BusinessFunction1(ctx context.Context, arg1...) {
+    ...
+    BusinessFunction2(ctx, arg1, ...)
+}
+
+<span class="hljs-keyword">func</span> BusinessFunction2(ctx context.Context, arg1...) {
+    parentSpan := opentracing.SpanFromContext(ctx)
+    childSpan := opentracing.StartSpan(
+        <span class="hljs-string">&quot;...&quot;</span>, opentracing.ChildOf(parentSpan.Context()), ...)
+    ...
+}
+</code></pre>
+<p>The downside of explicit context propagation is that it leaks what could be considered an infrastructure concern into the application code. This <a href="https://blog.golang.org/context" target="_blank">Go blog post</a> provides an in-depth overview and justification of this approach.</p>
+<h3 id="tracing-client-calls">Tracing Client Calls</h3>
+<p>When an application acts as an RPC client, it is expected to start a new tracing Span before making an outgoing request, and propagate the new Span along with that request. The following example shows how it can be done for an HTTP request.</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">traced_request</span><span class="hljs-params">(request, operation, http_client)</span>:</span>
+    <span class="hljs-comment"># retrieve current span from propagated request context</span>
+    parent_span = get_current_span()
+
+    <span class="hljs-comment"># start a new span to represent the RPC</span>
+    span = tracer.start_span(
+        operation_name=operation,
+        child_of=parent_span.context,
+        tags={<span class="hljs-string">&apos;http.url&apos;</span>: request.full_url}
+    )
+
+    <span class="hljs-comment"># propagate the Span via HTTP request headers</span>
+    tracer.inject(
+        span.context,
+        format=opentracing.HTTP_HEADER_FORMAT,
+        carrier=request.headers)
+
+    <span class="hljs-comment"># define a callback where we can finish the span</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">on_done</span><span class="hljs-params">(future)</span>:</span>
+        <span class="hljs-keyword">if</span> future.exception():
+            span.log(event=<span class="hljs-string">&apos;rpc exception&apos;</span>, payload=exception)
+        span.set_tag(<span class="hljs-string">&apos;http.status_code&apos;</span>, future.result().status_code)
+        span.finish()
+
+    <span class="hljs-keyword">try</span>:
+        future = http_client.execute(request)
+        future.add_done_callback(on_done)
+        <span class="hljs-keyword">return</span> future
+    <span class="hljs-keyword">except</span> Exception e:
+        span.log(event=<span class="hljs-string">&apos;general exception&apos;</span>, payload=e)
+        span.finish()
+        <span class="hljs-keyword">raise</span>
+</code></pre>
+<ul>
+<li>The <code>get_current_span()</code> function is not a part of the OpenTracing API. It is meant to represent some util method of retrieving the current Span from the current request context propagated implicitly (as is often the case in Python).</li>
+<li>We assume the HTTP client is asynchronous, so it returns a Future, and we need to add an on-completion callback to be able to finish the current child Span.</li>
+<li>If the HTTP client returns a future with exception, we log the exception to the Span with <code>log</code> method.</li>
+<li>Because the HTTP client may throw an exception even before returning a Future, we use a try/catch block to finish the Span in all circumstances, to ensure it is reported and avoid leaking resources.</li>
+</ul>
+<h3 id="using-baggage--distributed-context-propagation">Using Baggage / Distributed Context Propagation</h3>
+<p>The client and server examples above propagated the Span/Trace over the wire, including any Baggage. The client may use the Baggage to pass additional data to the server and any other downstream server it might call.</p>
+<pre><code class="lang-python"><span class="hljs-comment"># client side</span>
+span.context.set_baggage_item(<span class="hljs-string">&apos;auth-token&apos;</span>, <span class="hljs-string">&apos;.....&apos;</span>)
+
+<span class="hljs-comment"># server side (one or more levels down from the client)</span>
+token = span.context.get_baggage_item(<span class="hljs-string">&apos;auth-token&apos;</span>)
+</code></pre>
+<h3 id="logging-events">Logging Events</h3>
+<p>We have already used <code>log</code> in the client Span use case. Events can be logged without a payload, and not just where the Span is being created / finished. For example, the application may record a cache miss event in the middle of execution, as long as it can get access to the current Span from the request context:</p>
+<pre><code class="lang-python">span = get_current_span()
+span.log(event=<span class="hljs-string">&apos;cache-miss&apos;</span>)
+</code></pre>
+<p>The tracer automatically records a timestamp of the event, in contrast with tags that apply to the entire Span. It is also possible to associate an externally provided timestamp with the event, e.g. see <a href="https://github.com/opentracing/opentracing-go/blob/ca5c92cf/span.go#L53" target="_blank">Log (Go)</a>.</p>
+<h3 id="recording-spans-with-external-timestamps">Recording Spans With External Timestamps</h3>
+<p>There are scenarios when it is impractical to incorporate an OpenTracing compatible tracer into a service, for various reasons. For example, a user may have a log file of what&apos;s essentially Span data coming from a black-box process (e.g. HAProxy). In order to get the data into an OpenTracing-compatible system, the API needs a way to record spans with externally defined timestamps.</p>
+<pre><code class="lang-python">explicit_span = tracer.start_span(
+    operation_name=external_format.operation,
+    start_time=external_format.start,
+    tags=external_format.tags
+)
+explicit_span.finish(
+    finish_time=external_format.finish,
+    bulk_logs=map(..., external_format.logs)
+)
+</code></pre>
+<h3 id="setting-sampling-priority-before-the-trace-starts">Setting Sampling Priority Before the Trace Starts</h3>
+<p>Most distributed tracing systems apply sampling to reduce the amount of trace data that needs to be recorded and processed. Sometimes developers want to have a way to ensure that a particular trace is going to be recorded (sampled) by the tracing system, e.g. by including a special parameter in the HTTP request, like <code>debug=true</code>. The OpenTracing API standardizes around some useful tags, and one of them is the so-called &quot;sampling priority&quot;: exact semantics are implementation-specific, but any value greater than zero (the default) indicates a trace of elevated importance. In order to pass this attribute to tracing systems that rely on pre-trace sampling, the following approach can be used:</p>
+<pre><code class="lang-python"><span class="hljs-keyword">if</span> request.get(<span class="hljs-string">&apos;debug&apos;</span>):
+    span = tracer.start_span(
+        operation_name=operation,
+        tags={tags.SAMPLING_PRIORITY: <span class="hljs-number">1</span>}
+    )
+</code></pre>
+<h3 id="tracing-message-bus-scenarios">Tracing Message Bus Scenarios</h3>
+<p>There are two message bus styles that should be handled, Message Queues and Publish/Subscribe (Topics).</p>
+<p>From a tracing perspective, the message bus style is not important, only that the span context associated with the producer is propagated to the zero or more consumers of the message. It is then the responsibility of the consumer(s) to create a span to encapsulate processing of the consumed message and establish a <em>FollowsFrom</em> reference to the propagated span context.</p>
+<p>As with the RPC client example, a messaging producer is expected to start a new tracing Span before sending a message, and propagate the new Span&apos;s SpanContext along with that message. The Span will then be finished after the message has been enqueued/published on the message bus. The following example shows how it can be done.</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">traced_send</span><span class="hljs-params">(message, operation)</span>:</span>
+    <span class="hljs-comment"># retrieve current span from propagated message context</span>
+    parent_span = get_current_span()
+
+    <span class="hljs-comment"># start a new span to represent the message producer</span>
+    span = tracer.start_span(
+        operation_name=operation,
+        child_of=parent_span.context,
+        tags={<span class="hljs-string">&apos;message.destination&apos;</span>: message.destination}
+    )
+
+    <span class="hljs-comment"># propagate the Span via message headers</span>
+    tracer.inject(
+        span.context,
+        format=opentracing.TEXT_MAP_FORMAT,
+        carrier=message.headers)
+
+    <span class="hljs-keyword">with</span> span:
+        messaging_client.send(message)
+    <span class="hljs-keyword">except</span> Exception e:
+        ...
+        <span class="hljs-keyword">raise</span>
+</code></pre>
+<ul>
+<li>The <code>get_current_span()</code> function is not a part of the OpenTracing API. It is meant to represent some util method of retrieving the current Span from the current request context propagated implicitly (as is often the case in Python).</li>
+</ul>
+<p>The following is an example of a message consumer checking whether an incoming message contains a span context. If it does, this will be used to establish a relationship with the message producer&apos;s Span.</p>
+<pre><code class="lang-python">extracted_context = tracer.extract(
+    format=opentracing.TEXT_MAP_FORMAT,
+    carrier=message.headers
+)
+span = tracer.start_span(operation_name=operation, references=follows_from(extracted_context))
+span.set_tag(<span class="hljs-string">&apos;message.destination&apos;</span>, message.destination)
+</code></pre>
+<h4 id="synchronous-request-response-over-queues">Synchronous request-response over queues</h4>
+<p>Although not necessarily used a great deal, some messaging platforms/standards (e.g. JMS) support the ability to provide a <em>ReplyTo</em> destination in the header of a message. When the consumer receives the message it returns a result message to the nominated destination. </p>
+<p>This pattern could be used to simulate a synchronous request/response, in which case the relationship type between the consumer and producer spans should technically be <em>Child Of</em>. </p>
+<p>However this pattern could also be used for delegation to indicate a third party that should be informed of the result. In which case it would be treated as two separate message exchanges with <em>Follows From</em> relationship types linking each stage.</p>
+<p>As it would be difficult to distinguish between these two scenarios, and the use of message oriented middleware for synchronous request/response pattern should be discouraged, it is recommended that the request/response scenario be ignored from a tracing perspective. </p>
+
+                                
+                                </section>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Best Practices">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="instrumenting-large-systems.html" class="navigation navigation-next " aria-label="Next page: Instrumenting Large Systems">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Common Use Cases","level":"1.5.1","depth":2,"next":{"title":"Instrumenting Large Systems","level":"1.5.2","depth":2,"path":"pages/instrumentation/instrumenting-large-systems.md","ref":"pages/instrumentation/instrumenting-large-systems.md","articles":[]},"previous":{"title":"Best Practices","level":"1.5","depth":1,"path":"pages/instrumentation/index.md","ref":"pages/instrumentation/index.md","articles":[{"title":"Common Use Cases","level":"1.5.1","depth":2,"path":"pages/instrumentation/common-use-cases.md","ref":"pages/instrumentation/common-use-cases.md","articles":[]},{"title":"Instrumenting Large Systems","level":"1.5.2","depth":2,"path":"pages/instrumentation/instrumenting-large-systems.md","ref":"pages/instrumentation/instrumenting-large-systems.md","articles":[]},{"title":"Instrumenting Frameworks","level":"1.5.3","depth":2,"path":"pages/instrumentation/instrumenting-frameworks.md","ref":"pages/instrumentation/instrumenting-frameworks.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["edit-link","fontsettings","github","-search","scripts"],"root":"_docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/opentracing"},"scripts":{"files":["scripts/analytics.js","scripts/linkedHeadings.js"]},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"theme":"white","size":3},"highlight":{},"ga":{"token":"UA-79528055-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/opentracing/opentracing.io/edit/master/_docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"docs":[{"localUrl":"/documentation/pages/quick-start","name":"Quick Start"},{"localUrl":"/documentation/pages/spec","name":"Concepts and Terminology"},{"localUrl":"/documentation/pages/api/index","name":"APIs"},{"localUrl":"/documentation/pages/instrumentation/index","name":"Best Practices"},{"localUrl":"/documentation/pages/authors-and-contributors","name":"Authors and Contributors"},{"localUrl":"/documentation/pages/supported-tracers","name":"Supported Tracers"},{"localUrl":"/documentation/pages/translations","name":"Translations"}],"gettingStarted":[{"localUrl":"/documentation/pages/quick-start.html","name":"A QuickStart Guide to OpenTracing"},{"localUrl":"/documentation/pages/instrumentation/instrumenting-frameworks.html","name":"Framework and Library Maintainers"},{"localUrl":"/documentation/pages/supported-tracers.html","name":"Available Tracers, Frameworks and Libraries"}],"community":[{"localUrl":"/talks-and-videos","name":"Talks and Videos"},{"url":"//gitter.im/opentracing/public","name":"Gitter"},{"url":"//groups.google.com/forum/#!forum/opentracing","name":"Mailing List"},{"url":"//github.com/opentracing-contrib/meta#opentracing-contributions","name":"Become a Contributor"},{"localUrl":"/outreachy","name":"Outreachy"}],"languages":[{"name":"Go","url":"//github.com/opentracing/opentracing-go","icon":""},{"name":"JavaScript","url":"//github.com/opentracing/opentracing-javascript","icon":""},{"name":"Java","url":"//github.com/opentracing/opentracing-java","icon":""},{"name":"Python","url":"//github.com/opentracing/opentracing-python","icon":""},{"name":"Objective-C","url":"//github.com/opentracing/opentracing-objc","icon":""},{"name":"C++","url":"//github.com/opentracing/opentracing-cpp","icon":""}]},"title":"Opentracing","gitbook":">=3.2.1"},"file":{"path":"pages/instrumentation/common-use-cases.md","mtime":"2018-09-21T20:49:56.735Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-21T20:54:53.556Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-scripts/5ed47a6894b851f561aea00030ab4671-analytics.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-scripts/942ad66d73b9d48a4a3d4963e2c2a6d2-linkedHeadings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+
+    </body>
+</html>
+
