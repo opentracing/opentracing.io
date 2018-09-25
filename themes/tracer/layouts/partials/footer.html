@@ -30,7 +30,7 @@
     <div class="footer__section">
       <h4 class="footer__subtitle">Project</h4>
       <div class="footer__actions">
-        {{- range (where .Site.Pages "Section" "specification").ByWeight }}
+        {{- range (where .Site.RegularPages "Section" "specification").ByWeight }}
         <a href="{{ .Permalink }}">{{ .Title }}</a>
         {{- end }}
       </div>
@@ -52,12 +52,8 @@
     <div class="footer__section">
       <h4 class="footer__subtitle">Get Involved</h4>
       <div class="footer__actions">
-        {{- range .Site.Data.links.getInvolved }}
-        {{- if .url }}
-        <a href="{{ .url }}">{{ .name }}</a>
-        {{- else }}
-        <a href="{ .localUrl }}">{{ .name }}</a>
-        {{- end }}
+        {{- range (where .Site.RegularPages "Section" "get-involved").ByWeight }}
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
         {{- end }}
       </div>
     </div>

@@ -30,13 +30,13 @@ guides:
     name: Service Mesh
 
 getInvolved:
-  - localUrl: /get-involved/join-ot-contrib
+  - localUrl: /get-involved/contrib
     name: Join OT-Contrib
-  - localUrl: /get-involved/join-a-working-group
+  - localUrl: /get-involved/working-group
     name: Join a Working Group
-  - localUrl: /get-involved/create-a-rfc
+  - localUrl: /get-involved/rfc
     name: Create a RFC
-  - localUrl: /get-involved/register-your-project
+  - localUrl: /get-involved/register
     name: Register your Project
   - localUrl: /get-involved/outreachy
     name: Outreachy
