@@ -38,6 +38,8 @@ getInvolved:
     name: Create a RFC
   - localUrl: /get-involved/register-your-project
     name: Register your Project
+  - localUrl: /get-involved/outreachy
+    name: Outreachy
 
 findUs:
   - url: //gitter.im/opentracing/public

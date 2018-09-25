@@ -11,7 +11,7 @@
 
     <article class="docs__article col-9">
       <section class="docs__article__content">
-        {{readFile $filename | markdownify }}
+        {{ .Content }}
       </section>
     </article>
   </section>
