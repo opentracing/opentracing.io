@@ -1,5 +1,7 @@
 ---
-title: "Go: Spans (Under Construction)"
+title: "Spans"
+underConstruction: true
+weight: 2
 ---
 
 The OpenTracing Go API allows for only one span in a thread to be active at any point in time. There can be other spans involved with the same thread, which satisfy the following conditions:

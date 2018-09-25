@@ -1,5 +1,6 @@
 ---
-title: "Python: Quick Start"
+title: "Quick Start"
+weight: 1
 ---
 
 Most of this quick start guide is based upon the great [opentracing tutorial](https://github.com/yurishkuro/opentracing-tutorial/tree/master/python) by [Yuri Shkuro](https://github.com/yurishkuro). Once you've got a feel for how OpenTracing works here, feel free to reference his repo to learn more.

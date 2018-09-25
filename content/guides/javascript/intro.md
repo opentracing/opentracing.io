@@ -1,3 +1,0 @@
----
-title: Guide to JavaScript
----

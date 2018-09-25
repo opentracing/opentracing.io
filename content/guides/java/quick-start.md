@@ -1,5 +1,7 @@
 ---
-title: "Java: Quick Start"
+title: "Quick Start"
+underConstruction: true
+weight: 1
 ---
 
 * Link to Java walkthroughs / tutorials

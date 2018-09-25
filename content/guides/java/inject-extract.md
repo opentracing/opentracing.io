@@ -1,5 +1,6 @@
 ---
-title: "Java: Inject and Extract"
+title: "Inject and Extract"
+weight: 3
 ---
 
 ## Introduction

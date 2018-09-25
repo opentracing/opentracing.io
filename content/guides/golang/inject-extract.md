@@ -1,5 +1,6 @@
 ---
-title: "Go: Inject and Extract (Under Construction)"
+title: "Inject and Extract"
+underConstruction: true
 ---
 
 ## Introduction

@@ -1,5 +1,6 @@
 ---
-title: "Java: Spans"
+title: "Spans"
+weight: 1
 ---
 
 * Starting and Finishing a Span

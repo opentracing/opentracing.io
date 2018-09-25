@@ -1,5 +1,7 @@
 ---
-title: "Ruby: Inject and Extract (Under Construction)"
+title: "Inject and Extract"
+underConstruction: true
+weight: 4
 ---
 
 ## Introduction

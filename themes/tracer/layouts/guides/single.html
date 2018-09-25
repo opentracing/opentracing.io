@@ -15,7 +15,9 @@
       {{- end }}
 
       <hr />
-
+      {{ if .Params.underConstruction }}
+        {{ partial "underconstruction" . }}
+      {{ end }}
       <section class="docs__article--content">
         {{ if .Content }}
           {{ .Content }}

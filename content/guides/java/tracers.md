@@ -1,5 +1,6 @@
 ---
-title: "Java: Tracers"
+title: "Tracers"
+weight: 4
 ---
 
 #### Setting up your Tracer

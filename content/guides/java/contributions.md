@@ -1,4 +1,7 @@
-# Java Contribution Guide
+---
+title: Contributions
+weight: 15
+---
 
 Contributors who would like host their java libraries in opentracing-contrib organization
 should abide following rules:

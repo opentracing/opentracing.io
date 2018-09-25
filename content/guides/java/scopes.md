@@ -1,5 +1,6 @@
 ---
-title: "Java: Scopes"
+title: "Scopes"
+weight: 5
 ---
 
 #### Setting a ScopeManager

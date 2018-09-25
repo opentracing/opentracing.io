@@ -1,5 +1,6 @@
 ---
-title: "Python: Spans"
+title: "Spans"
+weight: 2
 ---
 
 The OpenTracing Python API allows for only one span in a thread to be active at any point in time. There can be other spans involved with the same thread, which satisfy the following conditions:

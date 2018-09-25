@@ -1,5 +1,6 @@
 ---
-title: "Python: Tracers"
+title: "Tracers"
+weight: 4
 ---
 
 ### Tracer Interface

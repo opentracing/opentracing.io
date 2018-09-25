@@ -1,5 +1,6 @@
 ---
-title: "Golang: Quick Start"
+title: "Quick Start"
+weight: 1
 ---
 
 The examples on this page use [Jaeger](https://github.com/jaegertracing/jaeger-client-go)(an OpenTracing comptible tracer). These examples assume that [Jaeger all-in-one image](https://github.com/jaegertracing/jaeger) is running locally via Docker:

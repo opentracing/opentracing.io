@@ -1,5 +1,6 @@
 ---
-title: "Python: Inject and Extract"
+title: "Inject and Extract"
+weight: 2
 ---
 
 ## Introduction

@@ -1,5 +1,7 @@
 ---
-title: "Go: Tracers (Under Construction)"
+title: "Tracers"
+underConstruction: true
+weight: 5
 ---
 
 ### Tracer Interface
