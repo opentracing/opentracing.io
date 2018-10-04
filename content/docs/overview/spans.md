@@ -1,5 +1,6 @@
 ---
 title: Spans
+weight: 2
 ---
 
 ## What is a Span?

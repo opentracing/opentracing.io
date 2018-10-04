@@ -14,19 +14,19 @@ docs:
     name: FAQ
 
 guides:
-  - localUrl: /guides/golang/intro
+  - localUrl: /guides/golang/
     name: Golang
-  - localUrl: /guides/java/intro
+  - localUrl: /guides/java/
     name: Java
-  - localUrl: /guides/csharp/intro
+  - localUrl: /guides/csharp/
     name: C#
-  - localUrl: /guides/python/intro
+  - localUrl: /guides/python/
     name: Python
-  - localUrl: /guides/ruby/intro
+  - localUrl: /guides/ruby/
     name: Ruby
-  - localUrl: /guides/javascript/intro
+  - localUrl: /guides/javascript/
     name: Javascript
-  - localUrl: /guides/service-mesh/dynamic-linking
+  - localUrl: /guides/service-mesh/
     name: Service Mesh
 
 getInvolved:

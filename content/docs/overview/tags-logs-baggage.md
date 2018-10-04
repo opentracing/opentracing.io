@@ -1,5 +1,6 @@
 ---
 title: Tags, logs and baggage
+weight: 4
 ---
 
 ## Tags

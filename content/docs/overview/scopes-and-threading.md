@@ -1,5 +1,6 @@
 ---
 title: "Scopes and Threading"
+weight: 3
 ---
 ## Introduction
 

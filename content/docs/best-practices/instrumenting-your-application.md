@@ -2,23 +2,23 @@
 title: Instrumenting your application
 ---
 
-_Before getting onto recommendations on how to instrument your large-scale system with OpenTracing, be sure to read the [Specification overview](/pages/spec)._
+_Before getting onto recommendations on how to instrument your large-scale system with OpenTracing, be sure to read the [Specification overview](/specification)._
 
 ## Spans and Relationships
 
 The two fundamental aspects of implementing OpenTracing across your infrastructure are _Spans_ and the _Relationships_ between those spans:
 
-* **_[Spans](/pages/spec#spans)_** are logical units of work in a distributed system, and by definition they all have a name, a start time, and a duration. In a trace, Spans are associated with the distributed system component that generated them.
+* **_[Spans](/specification/#the-opentracing-data-model)_** are logical units of work in a distributed system, and by definition they all have a name, a start time, and a duration. In a trace, Spans are associated with the distributed system component that generated them.
 
   {{< figure src="/img/OTHT_0.png" alt="Image of spans in a system" >}}
 
-* **_[Relationships](/pages/spec/#causal-span-references)_** are the connections between Spans. A Span may reference zero or more other Spans that are causally related. These connections between Spans help describe the semantics of the running system, as well as the critical path for latency-sensitive (distributed) transactions.
+* **_[Relationships](/specification/#references-between-spans)_** are the connections between Spans. A Span may reference zero or more other Spans that are causally related. These connections between Spans help describe the semantics of the running system, as well as the critical path for latency-sensitive (distributed) transactions.
 
   {{< figure src="/img/OTHT_1.png" alt="Image of relationships in a system" >}}
 
 Your desired end state is to emit Spans for all or your code components along with the relationships between those Spans. When starting to build out your infrastructure with distributed tracing, the best practice is to start with service frameworks (e.g., an RPC layer) or other components known to have broad interaction with multiple execution paths.
 
-By using a service framework that is instrumented with OpenTracing ([gRPC](https://github.com/grpc/grpc-go), etc.) you can get a head start on this effort. However, if you are working with a non-instrumented framework you can get some assistance with this part by reading the [IPC/RPC Framework Guide](/pages/instrumentation/instrumenting-frameworks).
+By using a service framework that is instrumented with OpenTracing ([gRPC](https://github.com/grpc/grpc-go), etc.) you can get a head start on this effort. However, if you are working with a non-instrumented framework you can get some assistance with this part by reading the [IPC/RPC Framework Guide](/docs/best-practices/instrumenting-frameworks).
 
 ## Focus on Areas of Value
 

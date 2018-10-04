@@ -10,7 +10,7 @@ The audience for this guide are developers interested in adding [OpenTracing](ht
 
 Distributed tracing provides insight about individual requests as they propagate throughout a system. OpenTracing is an open-source standard API for consistent distributed tracing of requests across processes, from web and mobile client platforms to the storage systems and custom backends at the bottom of an application stack. Once OpenTracing integrates across  the entire application stack, it’s easy to trace requests across the distributed system. This allows developers and operators much-needed visibility to optimize and stabilize production services.
 
-Before you begin, check [here](/pages/api/api-implementations) to make sure that there's a working OpenTracing API for your platform.
+Before you begin, check [here](/docs/supported-languages) to make sure that there's a working OpenTracing API for your platform.
 
 ## Overview
 
@@ -33,7 +33,7 @@ Before we dive into implementation, here are a few important concepts and featur
 
 ### Operation Names
 
-You'll notice an operation_name variable floating around this tutorial. Every span is created with an operation name that should follow the guidelines outlined [here](/pages/spec). You should have a default operation name for each span, but also provide a way for the user to specify custom operation names.
+You'll notice an operation_name variable floating around this tutorial. Every span is created with an operation name that should follow the guidelines outlined [here](/specification/#start-a-new-span). You should have a default operation name for each span, but also provide a way for the user to specify custom operation names.
 
 Examples of default operation names:
 
