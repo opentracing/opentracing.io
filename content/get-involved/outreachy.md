@@ -14,7 +14,7 @@ as its purpose, timeline, eligibility requirements, and how to apply.
 ## What is OpenTracing
 
 OpenTracing is a vendor-neutral open standard for distributed tracing. For the motivation behind OpenTracing,
-we recommend watching the presentations available at the page [Talks and Videos](/talks-and-videos).
+we recommend watching the presentations available at the page [Talks and Videos](/media).
 
 ## What is Jaeger
 
@@ -120,8 +120,8 @@ Interested in this project? Here are a few tasks that might help you decide. If 
 
 OpenTracing and Jaeger participated in the following Outreachy programs:
 
-* [December 2017 to March 2018](/outreachy-201702)
-* [May 2018 to August 2018](/outreachy-201801)
+* [December 2017 to March 2018](/get-involved/outreachy)
+* [May 2018 to August 2018](/get-involved/outreachy)
 
 ## Code of Conduct
 

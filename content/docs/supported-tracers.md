@@ -9,7 +9,7 @@ title: Supported tracers
 
 ## Appdash
 
-Appdash ([background reading](https://sourcegraph.com/blog/announcing-appdash-an-open-source-perf-tracing/)) is a lightweight, Golang-based distributed tracing system, originally developed and since open-sourced by [sourcegraph](https://sourcegraph.com/). There is an OpenTracing-compatible `Tracer` implementation that uses Appdash as a backend.
+Appdash ([background reading](https://about.sourcegraph.com/blog/appdash-an-open-source-perf-tracing-suite/)) is a lightweight, Golang-based distributed tracing system, originally developed and since open-sourced by [sourcegraph](https://sourcegraph.com/). There is an OpenTracing-compatible `Tracer` implementation that uses Appdash as a backend.
 
 For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/appdash/opentracing).
 

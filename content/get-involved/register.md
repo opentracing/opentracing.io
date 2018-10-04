@@ -62,4 +62,4 @@ We are particularly interested in the following events:
 
 ## License
 
-[Apache 2.0 License](./LICENSE).
+[Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0).
