@@ -2,7 +2,7 @@
 docs:
   - localUrl: /docs/overview/what-is-tracing
     name: Overview
-  - localUrl: /docs/getting-started/quick-start
+  - localUrl: /docs/getting-started/
     name: Getting Started
   - localUrl: /docs/best-practices/standards-and-conventions
     name: Best Practices
