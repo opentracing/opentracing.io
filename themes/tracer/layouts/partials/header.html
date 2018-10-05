@@ -1,0 +1,184 @@
+<header class="header{{ if eq .Kind "home" }}--home{{ end }}">
+  <div class="header__container">
+    <div class="header__logo">
+      <a href="/">
+        <img src="/img/logo.png">
+      </a>
+    </div>
+    <div class="header__actions">
+      <div class="dropdown">
+        <a class="dropdown__button" href="/docs/">Docs</a>
+        <div class="dropdown__content docs">
+          {{- range .Site.Data.links.docs }}
+          {{- if .url }}
+          <a href="{{ .url }}">{{ .name }}</a>
+          {{- else }}
+          <a href="{{ .localUrl }}">{{ .name }}</a>
+          {{- end }}
+          {{- end }}
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <a class="dropdown__button" href="/guides/">Guides</a>
+        <div class="dropdown__content docs">
+          {{- range .Site.Data.links.guides }}
+          <a href="{{ .localUrl }}">{{ .name }}</a>
+          {{- end }}
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <a class="dropdown__button" href="/specification">Project</a>
+        <div class="dropdown__content docs">
+          {{- range (where .Site.Pages "Section" "specification").ByWeight }}
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+          {{- end }}
+        </div>
+      </div>
+
+      <div class="dropdown no-link">
+        <a class="dropdown__button">Find Us</a>
+        <div class="dropdown__content docs">
+          {{- range .Site.Data.links.findUs }}
+          {{- if .url }}
+          <a href="{{ .url }}">{{ .name }}</a>
+          {{- else }}
+          <a href="{{ .localUrl }}">{{ .name }}</a>
+          {{- end }}
+          {{- end }}
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <a class="dropdown__button" href="/get-involved">Get Involved</a>
+        <div class="dropdown__content docs">
+          <!-- {{- range .Site.Data.links.getInvolved }}
+          {{- if .url }}
+          <a href="{{ .url }}">{{ .name }}</a>
+          {{- else }}
+          <a href="{{ .localUrl }}">{{ .name }}</a>
+          {{- end }}
+          {{- end }} -->
+          {{- range (where .Site.RegularPages "Section" "get-involved").ByWeight }}
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+          {{- end }}
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <a class="dropdown__button" href="https://github.com/opentracing">Github</a>
+        <div class="dropdown__content language">
+          {{- range .Site.Data.language.array }}
+          <a href="{{ .url }}">{{ .name }}</a>
+          {{- end }}
+          <hr/>
+          <a href="https://github.com/opentracing/specification">Specification</a>
+          <a href="https://github.com/opentracing-contrib/">Contributions</a>
+        </div>
+      </div>
+
+      <a href="https://medium.com/opentracing">Blog</a>
+    </div>
+    <div class="header__actions right">
+      <a class="button white" href="https://gitter.im/opentracing/public">Say hi on Gitter</a>
+    </div>
+  </div>
+
+  <div class="header__container__mobile">
+    <div class="header__logo">
+      <a href="http://opentracing.io">
+        <img src="/img/logo.png">
+      </a>
+    </div>
+    <div class="header__hamburger__button">☰</div>
+    <div class="dropdown__content mobile">
+      <div class="header__close__button">✕</div>
+
+      <h3>Docs</h3>
+      {{- range .Site.Data.links.docs }}
+      {{- if .url }}
+      <a href="{{ .url }}">{{ .name }}</a>
+      {{- else }}
+      <a href="{{ .localUrl }}">{{ .name }}</a>
+      {{- end }}
+      {{- end }}
+
+      <h3>Guides</h3>
+      {{- range .Site.Data.links.guides }}
+      {{- if .url }}
+      <a href="{{ .url }}">{{ .name }}</a>
+      {{- else }}
+      <a href="{{ .localUrl }}">{{ .name }}</a>
+      {{- end }}
+      {{- end }}
+
+      <h3>Project</h3>
+      {{- range (where .Site.Pages "Section" "specification").ByWeight }}
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+      {{- end }}
+
+      <h3>Find Us</h3>
+      {{- range .Site.Data.links.findUs }}
+      {{- if .url }}
+      <a href="{{ .url }}">{{ .name }}</a>
+      {{- else }}
+      <a href="{{ .localUrl }}">{{ .name }}</a>
+      {{- end -}}
+      {{- end -}}
+
+      <h3>Get Involved</h3>
+      {{- range .Site.Data.links.getInvolved }}
+      {{- if .url }}
+      <a href="{{ .url }}">{{ .name }}</a>
+      {{- else }}
+      <a href="{{ .localUrl }}">{{ .name }}</a>
+      {{- end -}}
+      {{- end -}}
+
+      <h3>GitHub</h3>
+      {{- range .Site.Data.language.array }}
+      <a href="{{ .url }}">{{ .name }}</a>
+      {{- end }}
+      <hr/>
+
+      <h3>
+      <a class="button white" href="https://gitter.im/opentracing/public">Say hi on Gitter</a>
+      </h3>
+      <hr/>
+
+      <h3>Mailing list</h3>
+      <a href="https://groups.google.com/forum/#!forum/opentracing">Join!</a>
+    </div>
+  </div>
+</header>
+
+<script type="text/javascript">
+
+var _mobileMenuVisible = false;
+var _mobileMenuContent = document.querySelector('.header__container__mobile');
+var _openButton = document.querySelector('.header__hamburger__button');
+var _closeButton = document.querySelector('.header__close__button');
+
+function setState(state, classList) {
+  _mobileMenuContent.setAttribute('class', classList);
+  _mobileMenuVisible = state;
+}
+
+_openButton.addEventListener('click', function() {
+  var classes = _mobileMenuContent.getAttribute('class')
+
+  if(!_mobileMenuVisible) {
+    setState(true, classes + ' active ');
+  }
+})
+
+_closeButton.addEventListener('click', function() {
+  var classes = _mobileMenuContent.getAttribute('class')
+
+  if(_mobileMenuVisible) {
+    setState(false, classes.replace(' active ', '') );
+  }
+})
+
+</script>

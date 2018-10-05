@@ -1,0 +1,5 @@
+{{- $js := resources.Get "js/app.js" | minify | fingerprint }}
+{{- range .Site.Params.assets.js -}}
+<script type="text/javascript" src="{{ . }}"></script>
+{{- end }}
+<script type="text/javascript" src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>

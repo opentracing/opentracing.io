@@ -1,0 +1,82 @@
+{{- $social := .Site.Params.social }}
+<footer class="footer">
+  <div class="footer__container">
+    <div class="footer__section">
+      <h4 class="footer__subtitle">Documentation</h4>
+      <div class="footer__actions">
+        {{- range .Site.Data.links.docs }}
+        {{- if .url }}
+        <a href="{{ .url }}">{{ .name }}</a>
+        {{- else }}
+        <a href="{{ .localUrl }}">{{ .name }}</a>
+        {{- end }}
+        {{- end }}
+      </div>
+    </div>
+
+    <div class="footer__section">
+      <h4 class="footer__subtitle">Guides</h4>
+      <div class="footer__actions">
+        {{- range .Site.Data.links.guides }}
+        {{- if .url }}
+        <a href="{{ .url }}">{{ .name }}</a>
+        {{- else }}
+        <a href="{{ .localUrl }}">{{ .name }}</a>
+        {{- end }}
+        {{- end }}
+      </div>
+    </div>
+
+    <div class="footer__section">
+      <h4 class="footer__subtitle">Project</h4>
+      <div class="footer__actions">
+        {{- range (where .Site.RegularPages "Section" "specification").ByWeight }}
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+        {{- end }}
+      </div>
+    </div>
+
+    <div class="footer__section">
+      <h4 class="footer__subtitle">Find Us</h4>
+      <div class="footer__actions">
+        {{- range .Site.Data.links.findUs }}
+        {{- if .url }}
+        <a href="{{ .url }}">{{ .name }}</a>
+        {{- else }}
+        <a href="{{ .localUrl }}">{{ .name }}</a>
+        {{- end }}
+        {{- end }}
+      </div>
+    </div>
+
+    <div class="footer__section">
+      <h4 class="footer__subtitle">Get Involved</h4>
+      <div class="footer__actions">
+        {{- range (where .Site.RegularPages "Section" "get-involved").ByWeight }}
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+        {{- end }}
+      </div>
+    </div>
+
+    <div class="footer__section">
+        <h4 class="footer__subtitle">Github</h4>
+        <div class="footer__actions">
+          {{- range .Site.Data.language.array }}
+          <a href="{{ .url }}">{{ .name }}</a>
+          {{- end }}
+        </div>
+      </div>
+
+    <div class="footer__section ecosystem">
+      <h4 class="footer__subtitle">Ecosystem</h4>
+      <div class="footer__social_icons">
+        {{- range $social -}}
+        <a href="{{ .url }}">
+          <img src="/img/social/{{ .icon }}" alt="" style="color: {{ .color }};">
+        </a>
+        {{- end -}}
+      </div>
+      <a class="footer__social_newsletter button white thin" href="https://gitter.im/opentracing/public">Find us on Gitter</a>
+    </div>
+  </div>
+</footer>

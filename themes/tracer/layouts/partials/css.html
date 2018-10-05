@@ -1,0 +1,7 @@
+{{- $mainCssOpts := (dict "targetPath" "css/style.css" "enableSourceMaps" true) }}
+{{- $syntaxCssOpts := (dict "targetPath" "css/syntax.css" "enableSourceMaps" true) }}
+{{- $jsOpts := (dict "taretPath" "js/app.js") }}
+{{- $mainCss := resources.Get "scss/style.scss" | toCSS $mainCssOpts | minify | fingerprint }}
+{{- $syntaxCss := resources.Get "css/syntax.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $mainCss.Permalink }}" integrity="{{ $mainCss.Data.Integrity }}" media="screen">
+<link rel="stylesheet" href="{{ $syntaxCss.Permalink }}" integrity="{{ $syntaxCss.Data.Integrity }}" media="screen">

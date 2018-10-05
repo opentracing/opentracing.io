@@ -1,0 +1,79 @@
+# TOP LEVEL NAVIGATION
+docs:
+  - localUrl: /docs/overview/what-is-tracing
+    name: Overview
+  - localUrl: /docs/getting-started/
+    name: Getting Started
+  - localUrl: /docs/best-practices/standards-and-conventions
+    name: Best Practices
+  - localUrl: /docs/supported-tracers
+    name: Supported Tracers
+  - localUrl: /docs/translations
+    name: Translations
+  - localUrl: /docs/faq
+    name: FAQ
+
+guides:
+  - localUrl: /guides/golang/
+    name: Golang
+  - localUrl: /guides/java/
+    name: Java
+  - localUrl: /guides/csharp/
+    name: C#
+  - localUrl: /guides/python/
+    name: Python
+  - localUrl: /guides/ruby/
+    name: Ruby
+  - localUrl: /guides/javascript/
+    name: Javascript
+  - localUrl: /guides/service-mesh/
+    name: Service Mesh
+
+getInvolved:
+  - localUrl: /get-involved/contrib
+    name: Join OT-Contrib
+  - localUrl: /get-involved/working-group
+    name: Join a Working Group
+  - localUrl: /get-involved/rfc
+    name: Create a RFC
+  - localUrl: /get-involved/register
+    name: Register your Project
+  - localUrl: /get-involved/outreachy
+    name: Outreachy
+
+findUs:
+  - url: //gitter.im/opentracing/public
+    name: Gitter
+  - url: //groups.google.com/forum/#!forum/opentracing
+    name: Mailing List
+  - localUrl: /media/
+    name: Talks and Videos
+
+# SIDEBAR NAVIGATION
+gettingStarted:
+  - localUrl: /docs/getting-started/intro
+    name: A QuickStart Guide to OpenTracing
+  - localUrl: /docs/getting-started/katacoda
+    name: Katacoda walkthroughs
+
+overview:
+  - localUrl: /docs/overview/what-is-tracing
+    name: What is Distributed Tracing?
+  - localUrl: /docs/overview/tracers
+    name: Tracers
+  - localUrl: /docs/overview/spans
+    name: Spans
+  - localUrl: /docs/overview/tags-logs-baggage
+    name: Tags, Logs and Baggage
+  - localUrl: /docs/overview/inject-extract
+    name: Inject and Extract
+
+bestPractices:
+  - localUrl: /docs/best-practices/standards-and-conventions
+    name: Standards and Conventions
+  - localUrl: /docs/best-practices/common-patterns
+    name: Common Patterns
+  - localUrl: /docs/best-practices/instrumenting-your-application
+    name: Instrumenting Your Application
+  - localUrl: /docs/best-practices/instrumenting-frameworks
+    name: Instrumenting Libraries and Frameworks

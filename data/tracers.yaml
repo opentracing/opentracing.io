@@ -1,0 +1,62 @@
+- system: appdash
+  languages:
+  - language: Go
+    repo: https://github.com/sourcegraph/appdash
+- system: CNCF Jaeger
+  languages:
+  - language: Java
+    repo: https://github.com/jaegertracing/jaeger-client-java
+  - language: Go
+    repo: https://github.com/jaegertracing/jaeger-client-go
+  - language: Python
+    repo: https://github.com/jaegertracing/jaeger-client-python
+  - language: Node.js
+    repo: https://github.com/jaegertracing/jaeger-client-node
+  - language: C++
+    repo: https://github.com/jaegertracing/cpp-client
+  - language: C#
+    repo: https://github.com/jaegertracing/jaeger-client-csharp
+- system: Datadog
+  languages:
+  - language: Go
+    repo: https://github.com/DataDog/dd-opentracing-go
+- system: inspectIT
+  languages:
+  - language: Java
+    repo: https://github.com/inspectIT/inspectIT
+- system: Instana
+  languages:
+  - language: Crystal
+    repo: https://github.com/instana/crystal-sensor/blob/master/README.md
+  - language: Go
+    repo: https://github.com/instana/golang-sensor/blob/master/README.md
+  - language: Java
+    repo: https://github.com/instana/instana-java-opentracing/blob/master/README.md
+  - language: Node.js
+    repo: https://github.com/instana/nodejs-sensor/blob/master/README.md
+  - language: Python
+    repo: https://github.com/instana/python-sensor/blob/master/README.md
+  - language: Ruby
+    repo: https://github.com/instana/ruby-sensor/blob/master/README.md
+- system: LightStep
+  languages:
+  - language: Go
+    repo: https://github.com/lightstep/lightstep-tracer-go
+  - language: Python
+    repo: https://github.com/lightstep/lightstep-tracer-python
+  - language: JavaScript
+    repo: https://github.com/lightstep/lightstep-tracer-javascript
+  - language: Objective-C
+    repo: https://github.com/lightstep/lightstep-tracer-objc
+  - language: Java
+    repo: https://github.com/lightstep/lightstep-tracer-java
+  - language: PHP
+    repo: https://github.com/lightstep/lightstep-tracer-php
+  - language: Ruby
+    repo: https://github.com/lightstep/lightstep-tracer-ruby
+  - language: C++
+    repo: https://github.com/lightstep/lightstep-tracer-cpp
+- system: stagemonitor
+  languages:
+  - language: Java
+    repo: https://github.com/stagemonitor/stagemonitor

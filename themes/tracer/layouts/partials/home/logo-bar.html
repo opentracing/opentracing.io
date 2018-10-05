@@ -1,0 +1,115 @@
+{{- $tracers := .Site.Params.tracers -}}
+{{- $frameworks := .Site.Params.frameworks -}}
+<section class="logo-bar logo-bar--bottom">
+  <div class="logo-bar__content">
+    <div class="logo-bar__logos tracers">
+      {{- range $tracers }}
+      <a href="{{ .url }}">
+        {{- if .icon }}
+        <img src="/img/tracers/{{ .icon }}" alt="{{ .name }} logo">
+        {{- else }}
+        {{ .name }}
+        {{- end }}
+      </a>
+      {{- end }}
+    </div>
+    <div class="logo-bar__logos frameworks">
+      {{- range $frameworks }}
+      <a href="{{ .url }}">
+        {{- if .icon }}
+        <img src="/img/frameworks/{{ .icon }}" alt="{{ .name }} logo">
+        {{- else }}
+        {{ .name }}
+        {{- end }}
+      </a>
+      {{- end }}
+    </div>
+  </div>
+</section>
+
+<script>
+function Carousel(selector, perSlide) {
+  var container = document.querySelector(selector),
+      width = container.getBoundingClientRect().width,
+      firstEl = container.querySelector('a:first-child'),
+      els = container.querySelectorAll('a'),
+      nrOfEls = els.length,
+      timeout = false,
+
+      TRANSITION_DURATION = 500,
+      DELAY = 3000;
+
+  function _setOffset() {
+    firstEl.style.marginLeft = (-width) + 'px';
+  }
+
+  function _initiateElementList() {
+    for (var i = 0; i < perSlide * 2 - nrOfEls; i++) {
+      container.appendChild(els[i % (els.length-1)].cloneNode(true));
+    }
+
+    firstEl = container.querySelector('a:first-child');
+    els = container.querySelectorAll('a');
+    nrOfEls = els.length;
+  }
+
+  function _calcWidth() {
+    width = container.getBoundingClientRect().width;
+  }
+
+  function _rotateArray() {
+    firstEl.style.marginLeft = '';
+
+    for(var i = 0; i < perSlide; i++) {
+      var firstChild = container.removeChild(els[i]);
+
+      container.appendChild(firstChild);
+    }
+
+    els = container.querySelectorAll('a');
+    firstEl = container.querySelector('a:first-child');
+  }
+
+  function _moveLeft() {
+    _setOffset();
+
+    setTimeout(_rotateArray, TRANSITION_DURATION * 2);
+    timeout = setTimeout(_moveLeft, DELAY);
+  }
+
+  function _onResize() {
+    _calcWidth();
+    _setOffset();
+  }
+
+  _calcWidth();
+  _initiateElementList();
+
+  return {
+    start: function start() {
+      timeout = setTimeout(_moveLeft, DELAY)
+      window.addEventListener('resize', _onResize);
+
+    },
+    stop: function stop() {
+      clearTimeout(timeout);
+    }
+  };
+};
+
+var carousels = [Carousel('.tracers', 4), Carousel('.frameworks', 4)];
+
+function stopCarousels() {
+  carousels.map(function(c) { c.stop() });
+}
+
+function startCarousels() {
+  carousels.map(function(c) { c.start() });
+}
+
+document.querySelector('.logo-bar').addEventListener('mouseenter', stopCarousels);
+document.querySelector('.logo-bar').addEventListener('mouseleave', startCarousels);
+
+startCarousels();
+
+</script>
