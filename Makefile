@@ -1,7 +1,7 @@
 HUGO  := hugo
 THEME := tracer
 THEME_DIR := themes/$(THEME)
-NETLIFY_URL = https://opentracing.netlify.com
+NETLIFY_URL = https://opentracing.io
 
 .PHONY: build
 build: setup
