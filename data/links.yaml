@@ -12,6 +12,8 @@ docs:
     name: Translations
   - localUrl: /docs/faq
     name: FAQ
+  - url: //github.com/opentracing-contrib/meta
+    name: Registry
 
 guides:
   - localUrl: /guides/golang/
