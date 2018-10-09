@@ -1,0 +1,11 @@
+{{ define "main" }}
+<h1>{{ .Params.name }}</h1>
+<h1>{{ .Params.authors }}</h1>
+<i>{{ .Params.type }}</i>
+<ul>
+    {{ range .Params.tags }}
+    <li>{{ . }}</li>
+    {{ end }}
+</ul>
+<p>{{ .Params.description }}</p>
+{{ end }}
