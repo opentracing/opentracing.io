@@ -1,3 +1,10 @@
 {{ define "main" }}
-<h1>OpenTracing Registry</h1>
+<ul>
+  <h1>{{ .Section | title }}</h1>
+  {{ range .Data.Pages }}
+  {{ .Render "li" }}
+  {{ end }}
+
+  {{ .Content }}
+</ul>
 {{ end }}
