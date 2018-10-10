@@ -1,0 +1,9 @@
+{{- $.Scratch.Add "index" slice -}}
+{{- with .Site.GetPage "registry" -}}
+    {{- if .Pages -}}
+        {{- range .Pages.ByWeight -}}
+        {{- $.Scratch.Add "index" (dict "title" .Params.title "tags" .Params.tags "categories" .Params.categories "contents" .Plain "permalink" .Permalink) -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+{{- $.Scratch.Get "index" | jsonify -}}

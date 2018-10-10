@@ -6,6 +6,7 @@ NETLIFY_URL = https://opentracing.io
 .PHONY: build
 build: setup
 	$(HUGO) \
+		--verbose \
 		--theme $(THEME) \
 		--baseURL $(NETLIFY_URL)
 
