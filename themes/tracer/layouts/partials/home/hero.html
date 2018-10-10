@@ -1,0 +1,29 @@
+{{- $languages := .Site.Data.language.array -}}
+{{- $hero := .Site.Params.hero }}
+<section class="hero landing-page">
+  <div class="hero__content">
+
+    {{ partial "home/bash-window.html" . }}
+
+    <section class="hero__copy">
+      <h1 class="bariol-thin">{{ $hero.tagline }}</h1>
+      <div class="libraries">
+        <h2 class="dark-blue">Libraries available in {{ len $languages }} languages</h2>
+        <p class="dark-blue">
+          {{- range $idx, $elem := $languages }}
+          <a href="{{ $elem.url }}">{{ $elem.name }}</a>{{ if ne (add $idx 1) (len $.Site.Data.language.array) }},{{ end }}
+          {{- end }}
+        </p>
+      </div>
+      {{- with $hero.update -}}
+      <div class="update">
+        <a href="{{ .url }}" target="_blank">
+          {{ .title }}
+        </a>
+      </div>
+      {{- end -}}
+    </section>
+  </div>
+
+  {{ partial "home/logo-bar.html" . }}
+</section>

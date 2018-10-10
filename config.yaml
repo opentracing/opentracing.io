@@ -1,0 +1,142 @@
+title: The OpenTracing project
+baseURL: /
+languageCode: en-us
+enableRobotsTXT: true
+
+pygmentsUseClasses: true
+pygmentsCodefences: true
+
+theme:
+  - tracer
+
+taxonomies:
+  tag: tags
+  category: categories
+
+params:
+  description: Consistent, expressive, vendor-neutral APIs for distributed tracing and context propagation
+  hero:
+    tagline: Vendor-neutral APIs and instrumentation for distributed tracing
+    update:
+      title: "February 2018: OpenTracing Project Update"
+      url: https://medium.com/opentracing/february-2018-opentracing-monthly-newsletter-7700560e9b04
+    bashWindowText: |
+      # Start Jaeger locally
+      $ docker run -d -p 5775:5775/udp -p 16686:16686 jaegertracing/all-in-one:latest
+      $ export DOCKER_IP=`docker-machine ip $(docker-machine active)`
+      $ cd $GOPATH/src
+
+      # Grab a simple, self-contained OpenTracing example
+      $ go get github.com/opentracing-contrib/examples/go
+      $ cd github.com/opentracing-contrib/examples/go
+      $ go run ./trivial.go $DOCKER_IP
+
+      # Visualize the tracing instrumentation in Jaeger by
+      # clicking on "Find Traces" in the UI.
+      $ open http://$DOCKER_IP:16686/
+
+      # Read the source!
+      $ vim trivial.go
+  companies:
+  - name: Uber
+    url: https://eng.uber.com
+    icon: uber.png
+  - name: Apple
+    url: https://apple.com
+    icon: apple.svg
+  - name: Yelp
+    url: https://yelp.com
+    icon: yelp.svg
+  - name: Pinterest
+    url: https://pinterest.com
+    icon: pinterest.png
+  - name: Workiva
+    url: https://workiva.com
+    icon: workiva.png
+  - name: Joyent
+    url: https://www.joyent.com
+    icon: joyent.png
+  - name: Cockroach Labs
+    url: https://www.cockroachlabs.com
+    icon: cockroach.png
+  - name: Sourcegraph
+    url: https://sourcegraph.com/
+    icon: sourcegraph.png
+  - name: Stream
+    url: https://getstream.io/
+    icon: stream.png
+  - name: Couchbase
+    url: https://couchbase.com/
+    icon: couchbase.png
+  tracers:
+  - name: Zipkin
+    url: http://zipkin.io
+    icon: zipkin_small.png
+  - name: Lightstep
+    url: http://lightstep.com
+    icon: lightstep.png
+  - name: Appdash
+    url: https://github.com/sourcegraph/appdash
+    icon: appdash.png
+  - name: Tracer
+    url: https://github.com/tracer/tracer
+    icon: false
+  - name: Jaeger
+    url: http://uber.github.io/jaeger/
+    icon: false
+  - name: Hawkular
+    url: http://www.hawkular.org/hawkular-apm/
+    icon: hawkular.svg
+  - name: Instana
+    url: https://www.instana.com
+    icon: instana.svg
+  - name: Skywalking
+    url: http://skywalking.org
+    icon: skywalking.png
+  - name: inspectIT
+    url: http://www.inspectit.rocks
+    icon: inspectit.png
+  - name: stagemonitor
+    url: http://www.stagemonitor.org/
+    icon: stagemonitor.png
+  - name: datadog
+    url: https://www.datadoghq.com/
+    icon: datadog.png
+  frameworks:
+  - name: gRPC
+    url: http://grpc.io
+    icon: grpc.svg
+  - name: Flask
+    url: http://flask.pocoo.org/
+    icon: flask.svg
+  - name: go-kit
+    url: https://gokit.io/
+    icon: gokit.png
+  - name: Django
+    url: https://www.djangoproject.com
+    icon: django.svg
+  - name: Dropwizard
+    url: http://www.dropwizard.io/
+    icon: false
+  - name: Motan
+    url: https://github.com/weibocom/motan
+    icon: false
+  - name: Hprose
+    url: http://hprose.com
+    icon: hprose.svg
+  - name: ShardingJDBC
+    url: https://github.com/shardingjdbc/sharding-jdbc
+    icon: sharding-jdbc.png
+  social:
+  - name: Medium
+    url:  //medium.com/opentracing
+    icon: medium.png
+  - name: Github
+    url:  //github.com/opentracing
+    icon: github.png
+  - name: Twitter
+    url:  //twitter.com/opentracing
+    icon: twitter.png
+  - name: Gitter
+    url:  //gitter.im/opentracing/public
+    icon: gitter.png

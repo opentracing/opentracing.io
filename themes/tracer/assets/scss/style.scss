@@ -1,0 +1,46 @@
+@import url('_vendor/normalize');
+
+@import 'variables';
+@import 'elements';
+@import 'typography';
+@import 'fonts';
+
+@import '_elements/img';
+
+@import '_components/documentation';
+@import '_components/header';
+@import '_components/footer';
+@import '_components/hero';
+@import '_components/bash-window';
+@import '_components/logo-bar';
+@import '_components/videos';
+@import '_components/markup';
+@import '_components/why';
+@import '_components/companies';
+@import '_components/cncf-foundation';
+@import '_components/button';
+
+@import "_vendor/bootstrap/bootstrap";
+
+// Syntax highlighting
+.highlight {
+  .chroma {
+    padding: 1rem;
+  }
+}
+
+// Guarantees sticky footer
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+  main {
+    flex: 1;
+
+    &.docs, &.api {
+      min-width: 60%;
+      width: 60%;
+    }
+  }
+}

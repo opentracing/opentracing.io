@@ -1,0 +1,10 @@
+{{ define "main" }}
+<h1>Pages with the {{ .Data.Singular }} {{ .Data.Term }}</h1>
+<ul>
+  {{ range .Data.Pages }}
+  {{ .Render "li" }}
+  {{ end }}
+</ul>
+<hr />
+<h3><a href="/{{ .Data.Plural }}">All {{ .Data.Plural }}</a></h3>
+{{ end }}

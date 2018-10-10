@@ -1,0 +1,33 @@
+{{ define "main" }}
+{{- $sections := where .Site.Sections "Section" "=" "docs" }}
+<div class="docs container">
+  <div class="row">
+    <section class="docs__main row">
+      <nav class="docs__nav col-3">
+        <div class="docs__nav__list">
+          {{ partial "menu.html" $sections }}
+        </div>
+      </nav>
+
+      <article class="docs__article col-9">
+        <section class="docs__article--title">
+          <h1>{{ .Title }}</h1>
+          {{- with .Params.description }}
+          <h4>{{ .Params.description | markdownify }}</h4>
+          {{- end }}
+        </section>
+
+        <div class="docs__article--toc">
+          {{ .TableOfContents }}
+        </div>
+
+        <hr />
+        
+        <section class="docs__article--content">
+          {{ .Content }}
+        </section>
+      </article>
+    </section>
+  </div>
+</div>
+{{ end }}

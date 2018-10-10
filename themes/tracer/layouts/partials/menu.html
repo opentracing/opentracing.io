@@ -1,0 +1,7 @@
+<ul>
+    {{ with . }}
+        {{ range .ByWeight }}
+            {{ partial "menu_page_list.html" . }}
+        {{ end }}
+    {{ end }}
+</ul>

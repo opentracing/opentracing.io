@@ -1,0 +1,30 @@
+{{ define "main" }}
+<section class="videos">
+    <h1 class="videos__header">Talks and Videos</h1>
+    <section class="videos__section">
+        {{ range where .Pages ".Params.featured" "=" "big" }}
+        <div class="videos__content">
+                <a href="{{.Permalink}}">
+                    <img src="{{.Params.thumbnail}}" alt="{{.Params.title}}">
+                    <h2 class="videos__content__title videos__content__title--large">{{.Title}}</h2>   
+                </a>
+                <div class="videos__content__paragraphs">
+                    {{ .Content | truncate 300 }}
+                    <a href="{{.Permalink}}">More</a>
+                </div>
+            </div>
+        {{ end }}
+    </section>
+    <section class="videos__section--featured">
+        {{ range where .Pages ".Params.featured" "=" true }}
+            {{ partial "videosection" . }}
+        {{ end }}
+    </section>
+    <section class="videos__section--list">
+        {{ range where .Pages ".Params.featured" "=" false}}
+            {{ partial "videosection" . }}
+        {{ end }}
+    </section>
+</section>
+{{ end }}
+

@@ -1,6 +1,5 @@
-css
-documentation
-_site
+# macOS artifacts
 .DS_Store
-node_modules
-Gemfile
+
+# Hugo artifacts
+public/
