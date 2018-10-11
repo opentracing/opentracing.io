@@ -1,6 +1,6 @@
 ---
-title: Outreachy
-weight: 5
+title: Dec. 2018 - Mar. 2019
+weight: 20
 ---
 
 # Outreachy
@@ -120,8 +120,8 @@ Interested in this project? Here are a few tasks that might help you decide. If 
 
 OpenTracing and Jaeger participated in the following Outreachy programs:
 
-* [December 2017 to March 2018](/get-involved/outreachy)
-* [May 2018 to August 2018](/get-involved/outreachy)
+* [December 2017 to March 2018](/get-involved/outreachy/outreachy-201701)
+* [May 2018 to August 2018](/get-involved/outreachy/outreachy-201801)
 
 ## Code of Conduct
 
