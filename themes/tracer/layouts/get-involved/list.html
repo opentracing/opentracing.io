@@ -1,10 +1,10 @@
 {{ define "main" }}
-{{- $filename := printf "/get-involved/%s.md" .Params.filename }}
+{{- $sections := where .Site.Sections "Section" "=" "get-involved" }}
 <div class="docs container">
   <section class="docs__main row">
     <nav class="docs__nav col-3">
       <div class="docs__nav__list">
-        {{ partial "nav.html" (where .Site.RegularPages "Section" "get-involved") }}
+        {{partial "menu.html" $sections}}
       </div>
     </nav>
 
