@@ -1,10 +1,20 @@
 {{ define "main" }}
 <ul>
   <h1>{{ .Section | title }}</h1>
-  {{ range .Data.Pages }}
-  {{ .Render "li" }}
-  {{ end }}
-
+  <a href="/registry/search"><h2>Search the Registry</h2></a>
+  <div class="row">
+    <!-- ignore the search page in this section -->
+    {{ range where .Data.Pages "Params.layout" "!=" "search" }}
+    <div class="card col-sm-3">
+      <div class="card-body">
+        <a href={{ .Permalink }}><h4 class="card-title">{{ .Params.title }}</h4></a> 
+        <a href={{ .Params.repo }}><h5 class="card-subtitle mb-2 text-muted">View Repository</h5></a>
+        <p class="card-text">{{ .Params.description }}</p>
+        <span class="badge badge-{{.Params.registryType}}">{{ .Params.registryType }}</span>
+      </div>
+    </div>
+    {{ end }}
+  </div>
   {{ .Content }}
 </ul>
 {{ end }}
