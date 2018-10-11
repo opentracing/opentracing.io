@@ -1,7 +1,5 @@
 ---
-permalink: /outreachy-201801.html
-layout: page-containing-markup
-title: 'Outreachy'
+title: May 2018 - Aug. 2018
 ---
 
 # Outreachy
