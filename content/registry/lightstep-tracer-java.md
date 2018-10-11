@@ -1,6 +1,6 @@
 ---
-title: "LightStep Tracer for JRE and Android"
-registryType: "Tracer"
+title: LightStep Tracer for JRE and Android
+registryType: tracer
 tags:
   - java
   - lightstep

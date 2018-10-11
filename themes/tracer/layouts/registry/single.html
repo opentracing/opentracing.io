@@ -1,11 +1,19 @@
 {{ define "main" }}
-<h1>{{ .Params.name }}</h1>
-<h1>{{ .Params.authors }}</h1>
-<i>{{ .Params.type }}</i>
-<ul>
-    {{ range .Params.tags }}
-    <li>{{ . }}</li>
-    {{ end }}
-</ul>
-<p>{{ .Params.description }}</p>
+<div>
+    <a href="/registry">Go Back</a>
+    <h1>{{ .Params.title }}</h1>
+    <div>
+        <h5>{{ .Params.authors }} | {{ .Params.license }}</h5>
+        <span class="badge badge-{{ .Params.registryType }}">{{ .Params.registryType }}</span>
+    </div>
+    <p>{{ .Params.description }}</p> 
+    <figure>
+        <figcaption>Tags</figcaption>
+        <ul>
+            {{ range .Params.tags }}
+            <li>{{ . }}</li>
+            {{ end }}
+        </ul>
+    </figure>
+</div>
 {{ end }}
