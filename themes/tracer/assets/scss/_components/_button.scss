@@ -12,7 +12,13 @@ $font-size: 0.9rem;
 
   &:hover {
     &:before {
-      margin-right: 15px;
+      //margin-right: 15px;
+      color: $blue-black;
+      mix-blend-mode: difference;
+      outline: none;
+      -webkit-box-shadow: inset 0px 0px 5px $blue-black;
+         -moz-box-shadow: inset 0px 0px 5px $blue-black;
+              box-shadow: inset 0px 0px 5px $blue-black;
     }
   }
 

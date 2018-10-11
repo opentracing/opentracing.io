@@ -37,31 +37,15 @@
         </div>
       </div>
 
-      <div class="dropdown no-link">
-        <a class="dropdown__button">Find Us</a>
-        <div class="dropdown__content docs">
-          {{- range .Site.Data.links.findUs }}
-          {{- if .url }}
-          <a href="{{ .url }}">{{ .name }}</a>
-          {{- else }}
-          <a href="{{ .localUrl }}">{{ .name }}</a>
-          {{- end }}
-          {{- end }}
-        </div>
-      </div>
-
       <div class="dropdown">
         <a class="dropdown__button" href="/get-involved">Get Involved</a>
         <div class="dropdown__content docs">
-          <!-- {{- range .Site.Data.links.getInvolved }}
+          {{- range .Site.Data.links.getInvolved }}
           {{- if .url }}
           <a href="{{ .url }}">{{ .name }}</a>
           {{- else }}
           <a href="{{ .localUrl }}">{{ .name }}</a>
           {{- end }}
-          {{- end }} -->
-          {{- range (where .Site.RegularPages "Section" "get-involved").ByWeight }}
-          <a href="{{ .Permalink }}">{{ .Title }}</a>
           {{- end }}
         </div>
       </div>
