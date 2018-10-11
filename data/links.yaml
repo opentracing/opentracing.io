@@ -32,22 +32,18 @@ guides:
     name: Service Mesh
 
 getInvolved:
-  - localUrl: /get-involved/contrib
-    name: Join OT-Contrib
+  - url: //gitter.im/opentracing/public
+    name: Gitter
   - localUrl: /get-involved/working-group
     name: Join a Working Group
   - localUrl: /get-involved/rfc
     name: Create a RFC
   - localUrl: /get-involved/register
     name: Register your Project
-  - localUrl: /get-involved/outreachy
-    name: Outreachy
-
-findUs:
-  - url: //gitter.im/opentracing/public
-    name: Gitter
   - url: //groups.google.com/forum/#!forum/opentracing
     name: Mailing List
+  - localUrl: /get-involved/outreachy
+    name: Outreachy
   - localUrl: /media/
     name: Talks and Videos
 
