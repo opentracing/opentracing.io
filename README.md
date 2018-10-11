@@ -20,9 +20,16 @@ This repository contains the source code for http://opentracing.io website.
 Contributions are always welcome, no matter how large or small. Before contributing,
 please read the [code of conduct](code-of-conduct.md).
 
+See [Contributing](CONTRIBUTING.md).
+
+## License
+
+Copyright (c) 2016-present, The OpenTracing Authors.
+
+Licensed under the [Apache License](LICENSE.md), Version 2.0.
+
 By contributing to opentracing.io, you agree that your contributions will be licensed
 under its [Apache 2.0 License](LICENSE.md).
-
 
 ## Updating the Docs
 If you'd like to work on the website locally, first install Hugo and a fork this repository:
