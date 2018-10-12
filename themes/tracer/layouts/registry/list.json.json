@@ -2,7 +2,7 @@
 {{- with .Site.GetPage "registry" -}}
     {{- if .Pages -}}
         {{- range .Pages.ByWeight -}}
-        {{- $.Scratch.Add "index" (dict "title" .Params.title "tags" .Params.tags "categories" .Params.categories "contents" .Plain "permalink" .Permalink) -}}
+        {{- $.Scratch.Add "index" (dict "title" .Params.title "tags" .Params.tags "categories" .Params.categories "contents" .Plain "permalink" .Permalink "description" .Params.description "repo" .Params.repo "registryType" .Params.registryType) -}}
         {{- end -}}
     {{- end -}}
 {{- end -}}
