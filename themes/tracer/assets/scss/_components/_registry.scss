@@ -1,5 +1,18 @@
 @import '../variables';
 
+.registry {
+    display: block;
+
+    &__main {
+        min-width: 100%;
+        margin: $registry-vertical-margin 0;
+    }
+
+    &__search {
+        min-width: 100%;
+        margin: $registry-vertical-margin 0;
+    }
+}
 .badge-tracer {
     background-color: $dark-blue;
 }
