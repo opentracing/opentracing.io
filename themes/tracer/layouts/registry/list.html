@@ -1,4 +1,5 @@
 {{ define "main" }}
+<div class="registry container">
 <ul>
   <h1>{{ .Section | title }}</h1>
   <a href="/registry/search"><h2>Search the Registry</h2></a>
@@ -17,4 +18,5 @@
   </div>
   {{ .Content }}
 </ul>
+</div>
 {{ end }}
