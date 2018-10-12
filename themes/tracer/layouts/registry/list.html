@@ -1,22 +1,56 @@
 {{ define "main" }}
 <div class="registry container">
-<ul>
-  <h1>{{ .Section | title }}</h1>
-  <a href="/registry/search"><h2>Search the Registry</h2></a>
   <div class="row">
-    <!-- ignore the search page in this section -->
-    {{ range where .Data.Pages "Params.layout" "!=" "search" }}
-    <div class="card col-sm-3">
+    <div class="col">
+        <h1>OpenTracing Registry</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p>This section of the site will allow you to discover tracers, instrumentation libraries, interfaces,
+        and other useful projects.
+      </p>
+      <p>Are you a project maintainer? <a href="/registry/add">Find out how to add your project to the registry here!</a></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <form action="{{ "/registry" | absURL }}">
+        <input id="search-query" name="s" />
+      </form>
+    </div>
+  </div>
+  <div class="row" id="search-results">
+
+  </div>
+  <div class="row" id="default-body">
+      <!-- ignore the search page in this section -->
+      {{ range where .Data.Pages "Params.layout" "!=" "search" }}
+      <div class="card col-md-3 ml-1 mb-1">
+        <div class="card-body">
+          <a href={{ .Permalink }}><h4 class="card-title">{{ .Params.title }}</h4></a> 
+          <a href={{ .Params.repo }}><h5 class="card-subtitle mb-2 text-muted">View Repository</h5></a>
+          <p class="card-text">{{ .Params.description }}</p>
+          <span class="badge badge-{{.Params.registryType}}">{{ .Params.registryType }}</span>
+        </div>
+      </div>
+      {{ end }}
+  </div>
+
+  <!-- this template is sucked in by search.js and appended to the search-results div above. So editing here will adjust style -->
+  <script id="search-result-template" type="text/x-js-template">
+    <div id="summary-${key}" class="card col-md-3 ml-1 mb-1">
       <div class="card-body">
-        <a href={{ .Permalink }}><h4 class="card-title">{{ .Params.title }}</h4></a> 
-        <a href={{ .Params.repo }}><h5 class="card-subtitle mb-2 text-muted">View Repository</h5></a>
-        <p class="card-text">{{ .Params.description }}</p>
-        <span class="badge badge-{{.Params.registryType}}">{{ .Params.registryType }}</span>
+        <a href="${link}"><h4 class="card-title">${title}</h4></a>
+        <a href="${repo}"><h5 class="card-subtitle mb-2 text-muted">View Repository</h5></a>
+        <p class="card-text">${description}</p>
+        <span class="badge badge-${registryType}">${registryType}</span>
       </div>
     </div>
-    {{ end }}
-  </div>
-  {{ .Content }}
-</ul>
+  </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"></script>
+  <script src="{{ "/js/search.js" | absURL }}"></script>
 </div>
 {{ end }}
