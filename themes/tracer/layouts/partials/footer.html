@@ -37,23 +37,14 @@
     </div>
 
     <div class="footer__section">
-      <h4 class="footer__subtitle">Find Us</h4>
+      <h4 class="footer__subtitle">Get Involved</h4>
       <div class="footer__actions">
-        {{- range .Site.Data.links.findUs }}
+        {{- range .Site.Data.links.getInvolved }}
         {{- if .url }}
         <a href="{{ .url }}">{{ .name }}</a>
         {{- else }}
         <a href="{{ .localUrl }}">{{ .name }}</a>
         {{- end }}
-        {{- end }}
-      </div>
-    </div>
-
-    <div class="footer__section">
-      <h4 class="footer__subtitle">Get Involved</h4>
-      <div class="footer__actions">
-        {{- range (where .Site.RegularPages "Section" "get-involved").ByWeight }}
-          <a href="{{ .Permalink }}">{{ .Title }}</a>
         {{- end }}
       </div>
     </div>
