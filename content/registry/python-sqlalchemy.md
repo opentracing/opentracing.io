@@ -1,13 +1,11 @@
 ---
-title: OpenTracing Python SQLAlchemy
+title: python-sqlalchemy
 registryType: instrumentation
 tags:
-  - python
   - opentracing
-  - sqlalchemy
-  - database
+  - Python
 repo: https://github.com/opentracing-contrib/python-sqlalchemy
-license: Apache 2.0
-description: This package enables OpenTracing support for SQLAlchemy.
+license: Apache License 2.0
+description: OpenTracing instrumentation for SQLAlchemy
 authors: OpenTracing Contributors
 ---
