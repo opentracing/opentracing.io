@@ -31,7 +31,7 @@
           <a href={{ .Permalink }}><h4 class="card-title">{{ .Params.title }}</h4></a> 
           <a href={{ .Params.repo }}><h5 class="card-subtitle mb-2 text-muted">View Repository</h5></a>
           <p class="card-text">{{ .Params.description }}</p>
-          <span class="badge badge-{{.Params.registryType}}">{{ .Params.registryType }}</span>
+          <span class="badge badge-{{ .Params.registryType }}">{{ .Params.registryType }}</span>
         </div>
       </div>
       {{ end }}
