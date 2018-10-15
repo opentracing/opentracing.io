@@ -1,13 +1,11 @@
 ---
-title: OpenTracing JDBI Instrumentation
+title: java-jdbi
 registryType: instrumentation
 tags:
-  - java
   - opentracing
-  - jdbi
-  - database
+  - Java
 repo: https://github.com/opentracing-contrib/java-jdbi
-license: Apache 2.0
-description: OpenTracing instrumentation for JDBI
+license: Apache License 2.0
+description: OpenTracing instrumentation for the JDBI database framework
 authors: OpenTracing Contributors
 ---
