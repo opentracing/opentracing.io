@@ -20,3 +20,10 @@
 .badge-instrumentation {
     background-color: $green;
 }
+
+.badge-version {
+    background-color: $light-grey;
+    &:before {
+        content: "OT Version: ";
+    }
+}

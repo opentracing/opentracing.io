@@ -31,7 +31,10 @@
           <a href={{ .Permalink }}><h4 class="card-title">{{ .Params.title }}</h4></a> 
           <a href={{ .Params.repo }}><h5 class="card-subtitle mb-2 text-muted">View Repository</h5></a>
           <p class="card-text">{{ .Params.description }}</p>
-          <span class="align-self-end badge badge-{{ .Params.registryType }}" style="margin-top: auto;">{{ .Params.registryType }}</span>
+          <div class="align-self-end" style="margin-top: auto;">
+              <span class="badge badge-{{ .Params.registryType }}" >{{ .Params.registryType }}</span>
+              <span class="badge badge-version">{{ .Params.otVersion }}</span>
+          </div>
         </div>
       </div>
       {{ end }}
@@ -44,7 +47,10 @@
         <a href="${link}"><h4 class="card-title">${title}</h4></a>
         <a href="${repo}"><h5 class="card-subtitle mb-2 text-muted">View Repository</h5></a>
         <p class="card-text">${description}</p>
-        <span class="align-self-end badge badge-${registryType}" style="margin-top: auto;">${registryType}</span>
+        <div class="align-self-end" style="margin-top: auto;">
+          <span class="badge badge-version">${otVersion}</span>
+          <span class="badge badge-${registryType}">${registryType}</span>
+        </div>
       </div>
     </div>
   </script>
