@@ -1,19 +1,35 @@
 {{ define "main" }}
-<div>
-    <a href="/registry">Go Back</a>
-    <h1>{{ .Params.title }}</h1>
-    <div>
-        <h5>{{ .Params.authors }} | {{ .Params.license }}</h5>
-        <span class="badge badge-{{ .Params.registryType }}">{{ .Params.registryType }}</span>
+<div class="registry container">
+    <div class="row justify-content-left">
+        <div class="col text-left">
+            <a href="/registry">Go Back</a>
+        </div>
     </div>
-    <p>{{ .Params.description }}</p> 
-    <figure>
-        <figcaption>Tags</figcaption>
-        <ul>
-            {{ range .Params.tags }}
-            <li>{{ . }}</li>
-            {{ end }}
-        </ul>
-    </figure>
+    <div class="row justify-content-center" style="margin-top: 1rem;">
+        <div class="col-lg-12 ">
+            <h1>{{ .Params.title }}</h1>
+            <a href={{ .Params.repo }}><h2 class="mb-2 text-muted">View Repository</h2></a>
+        </div>
+        <div class="col">
+            <h5>{{ .Params.authors }} | {{ .Params.license }}</h5>
+            <div class="align-self-end" style="margin-top: auto;">
+                <span class="badge badge-{{ .Params.registryType }}" >{{ .Params.registryType }}</span>
+                <span class="badge badge-version">{{ .Params.otVersion }}</span>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <p>{{ .Params.description }}</p> 
+        </div>
+        <div class="col">
+            <figure>
+                <figcaption>Tags</figcaption>
+                <ul>
+                    {{ range .Params.tags }}
+                    <li>{{ . }}</li>
+                    {{ end }}
+                </ul>
+            </figure>
+        </div>
+    </div>
 </div>
 {{ end }}
