@@ -10,7 +10,32 @@ OpenTracing-Contrib contains several OpenTracing instrumentation projects develo
 
 ## How to contribute?
 
-You can contribute by either instrumenting your own project with OpenTracing or contributing to the existing projects in the repository. You can learn more about OpenTracing contributions via the [opentracing-contrib meta-repository](https://github.com/opentracing-contrib/meta).
+You can contribute by either instrumenting your own project with OpenTracing or contributing to the existing projects in the repository. You can learn more about OpenTracing contributions via the [OpenTracing Registry](/registry).
+
+## How can I add my project to the registry?
+
+Adding a project is as simple as making a Pull Request to the OpenTracing website. Any sort of instrumentation, tracer, tracer client library, or other library/application that could be useful is welcome.
+
+First, create a markdown file in the following format -
+
+```
+---
+title: My Cool Project
+registryType: <instrumentation/tracer>
+tags:
+    - project language
+    - other useful info
+    - maybe the framework it instruments
+    - or the platform it extends
+repo: <repository url>
+license: <license name; MIT, Apache, etc.>
+description: A friendly description for what my project does.
+authors: Tracey McTracerson <tracey@trace.all.the.things>
+otVersion: latest (or the specific version of OpenTracing supported)
+---
+```
+
+Once you've done that, create a new PR on the [opentracing.io](https://github.com/opentracing/opentracing.io) repository against the `master` branch. A maintainer will merge your PR at their earliest opportunity and your contribution will be listed in the registry.
 
 ## New contributions
 
