@@ -2,7 +2,7 @@ summaryInclude = 60;
 var fuseOptions = {
   shouldSort: true,
   includeMatches: true,
-  threshold: 0.0,
+  threshold: 0.1,
   tokenize: true,
   location: 0,
   distance: 100,
@@ -10,7 +10,7 @@ var fuseOptions = {
   minMatchCharLength: 1,
   keys: [
     { name: "title", weight: 0.8 },
-    { name: "contents", weight: 0.5 },
+    { name: "description", weight: 0.5 },
     { name: "tags", weight: 0.3 },
     { name: "categories", weight: 0.3 }
   ]
@@ -48,7 +48,7 @@ function executeSearch(searchQuery) {
 
 function populateResults(result) {
   $.each(result, function(key, value) {
-    var contents = value.item.contents;
+    var contents = value.item.description;
     var snippet = "";
     var snippetHighlights = [];
     var tags = [];
@@ -58,7 +58,7 @@ function populateResults(result) {
       $.each(value.matches, function(matchKey, mvalue) {
         if (mvalue.key == "tags" || mvalue.key == "categories") {
           snippetHighlights.push(mvalue.value);
-        } else if (mvalue.key == "contents") {
+        } else if (mvalue.key == "description") {
           start =
             mvalue.indices[0][0] - summaryInclude > 0
               ? mvalue.indices[0][0] - summaryInclude
@@ -78,7 +78,7 @@ function populateResults(result) {
       });
     }
 
-    if (snippet.length < 1) {
+    if (snippet.length < 1 && contents.length > 0) {
       snippet += contents.substring(0, summaryInclude * 2);
     }
     //pull template from hugo template definition
@@ -93,7 +93,8 @@ function populateResults(result) {
       description: value.item.description,
       repo: value.item.repo,
       registryType: value.item.registryType,
-      snippet: snippet
+      snippet: snippet,
+      otVersion: value.item.otVersion
     });
     $("#search-results").append(output);
 
