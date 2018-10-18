@@ -25,7 +25,6 @@ if (searchQuery) {
   if ($("#default-body").is(":hidden")) {
     $("#default-body").show();
   }
-  $("#search-results").append("<p>Please enter a word or phrase above</p>");
 }
 
 function toggleResultsVisibility() {

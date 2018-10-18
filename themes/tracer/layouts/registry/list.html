@@ -12,21 +12,24 @@
       </p>
       <p>Are you a project maintainer? <a href="/get-involved/register/">Find out how to add your project to the registry here!</a></p>
     </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col text-center">
-      <form action="{{ "/registry" | absURL }}">
-        <input id="search-query" name="s" style="width: 100%;"/>
-      </form>
+  </div>  
+  <form action="{{ "/registry" | absURL }}" id="searchForm">
+    <div class="form-row">
+      <label for="search-query" class="col-sm-1 col-form-label col-form-label-lg">Search</label>
+      <div class="col-sm-11 input-group input-group-lg mb-3">
+        <input id="search-query" class="form-control" name="s" placeholder="Try a language or technology, like 'golang' or 'JDBC' and press enter to search."/>
+        <div class="input-group-append">
+          <button type="button" class="btn btn-outline-secondary" onclick="document.getElementById('search-query').value = ''; document.getElementById('searchForm').submit();">Clear</button>
+        </div>
+      </div>
     </div>
-  </div>
+  </form>
   <div class="row justify-content-center" id="search-results">
-
   </div>
   <div class="row justify-content-center" id="default-body">
       <!-- ignore the search page in this section -->
       {{ range where .Data.Pages "Params.layout" "!=" "search" }}
-      <div class="card col-md-3 ml-1 mb-1">
+      <div class="card col-md-3 d-flex align-items-stretch">
         <div class="card-body d-flex flex-column">
           <a href={{ .Permalink }}><h4 class="card-title">{{ .Params.title }}</h4></a> 
           <a href={{ .Params.repo }}><h5 class="card-subtitle mb-2 text-muted">View Repository</h5></a>
