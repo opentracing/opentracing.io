@@ -2,7 +2,7 @@
 title: LightStep Tracer for C#/F#
 registryType: tracer
 tags:
-  - c#
+  - csharp
   - lightstep
   - .net
   - windows
