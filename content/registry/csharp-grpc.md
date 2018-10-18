@@ -4,7 +4,7 @@ registryType: instrumentation
 tags:
   - opentracing
   
-  - C#
+  - csharp
   
 repo: https://github.com/opentracing-contrib/csharp-grpc
 license: Apache License 2.0
