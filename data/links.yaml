@@ -12,7 +12,7 @@ docs:
     name: Translations
   - localUrl: /docs/faq
     name: FAQ
-  - url: //github.com/opentracing-contrib/meta
+  - localUrl: /registry
     name: Registry
 
 guides:

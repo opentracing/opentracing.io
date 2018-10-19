@@ -1,0 +1,31 @@
+@import '../variables';
+
+.registry {
+    display: block;
+
+    &__main {
+        min-width: 100%;
+        margin: $registry-vertical-margin 0;
+    }
+
+    &__search {
+        min-width: 100%;
+        margin: $registry-vertical-margin 0;
+    }
+}
+.badge-tracer {
+    color: #fff;
+    background-color: $dark-blue;
+}
+
+.badge-instrumentation {
+    color: #fff;
+    background-color: $green;
+}
+
+.badge-version {
+    background-color: $light-grey;
+    &:before {
+        content: "OT Version: ";
+    }
+}
