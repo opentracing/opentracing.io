@@ -43,10 +43,9 @@ git clone https://github.com/YOUR_USERNAME/opentracing.io.git
 cd opentracing.io
 ```
 
-Then checkout the `v2.0` branch and build the website using `make`:
+Build the website using `make`:
 
 ```
-git checkout v2.0
 make
 ```
 
@@ -58,7 +57,7 @@ make serve
 
 Navigate to http://localhost:1313/ to see the site. Any content changes you make will automatically appear.
 
-Thist's it! Most articles can be found in the `/content` directory, and are written in Markdown. For basic changes, use the following flow:
+That's it! Most articles can be found in the `/content` directory, and are written in Markdown. For basic changes, use the following flow:
 * edit the markdown files directly 
 * commit and push to your fork
 * make a pull request
