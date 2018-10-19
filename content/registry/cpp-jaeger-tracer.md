@@ -2,7 +2,7 @@
 title: Jaeger Tracer for C++
 registryType: tracer
 tags:
-  - java
+  - c++
   - jaeger
   - tracer
 repo: https://github.com/jaegertracing/jaeger-client-cpp
