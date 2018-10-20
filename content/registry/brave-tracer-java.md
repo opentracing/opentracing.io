@@ -9,7 +9,6 @@ tags:
 repo: https://github.com/openzipkin/brave-opentracing
 license: Apache
 description: A bridge to Brave that exposes the OpenTracing API
-authors: Adrian Cole <acole@pivotal.io>
 otVersion: 0.31
 ---
 
