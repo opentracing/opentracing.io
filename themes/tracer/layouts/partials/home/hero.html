@@ -16,10 +16,24 @@
         </p>
       </div>
       {{- with $hero.update -}}
-      <div class="update">
-        <a href="{{ .url }}" target="_blank">
-          {{ .title }}
+      <div id="update" class="update">
+        <a href="" target="_blank">
         </a>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript">
+          $(function() {
+              var $content = $('#update');
+              var data = {
+                  rss_url: 'https://medium.com/feed/opentracing'
+              };
+            $.get('https://api.rss2json.com/v1/api.json', data, function(response) {
+                  if (response.status == 'ok') {
+                    var output = '<a href="' + response.items[0].link + '" target="_blank">' + response.items[0].title + '</a>'
+                  $content.html(output);
+                  }
+            });
+          });
+      </script>
       </div>
       {{- end -}}
     </section>
