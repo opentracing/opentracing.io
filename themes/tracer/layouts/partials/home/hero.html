@@ -28,6 +28,9 @@
                 let content = `<a href="${item.link}" target="_blank">${item.title}</a>`;
                 document.getElementById('update').innerHTML = content;
               });
+            }).catch(function() {
+              let content = `<a href="https://medium.com/opentracing" target="_blank">OpenTracing on Medium</a>`
+              document.getElementById('update').innerHTML = content;
             });
       </script>
       </div>
