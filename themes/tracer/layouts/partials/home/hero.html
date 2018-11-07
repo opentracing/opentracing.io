@@ -16,23 +16,19 @@
         </p>
       </div>
       {{- with $hero.update -}}
+      <h4>The latest from our blog:</h4>
       <div id="update" class="update">
         <a href="" target="_blank">
         </a>
-        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <script type="text/javascript">
-          $(function() {
-              var $content = $('#update');
-              var data = {
-                  rss_url: 'https://medium.com/feed/opentracing'
-              };
-            $.get('https://api.rss2json.com/v1/api.json', data, function(response) {
-                  if (response.status == 'ok') {
-                    var output = '<a href="' + response.items[0].link + '" target="_blank">' + response.items[0].title + '</a>'
-                  $content.html(output);
-                  }
+          fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2Fopentracing')
+            .then(function(res) {
+              res.json().then(function(data) {
+                let item = data.items[0];
+                let content = `<a href="${item.link}" target="_blank">${item.title}</a>`;
+                document.getElementById('update').innerHTML = content;
+              });
             });
-          });
       </script>
       </div>
       {{- end -}}
