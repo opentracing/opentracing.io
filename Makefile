@@ -26,8 +26,7 @@ serve: clean
 		--theme $(THEME) \
 		--buildFuture \
 		--buildDrafts \
-		--disableFastRender \
-		--ignoreCache
+		--disableFastRender
 
 .PHONY: get-spec-docs
 get-spec-docs:
