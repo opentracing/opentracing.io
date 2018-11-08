@@ -1,5 +1,8 @@
 {{- $languages := .Site.Data.language.array -}}
 {{- $hero := .Site.Params.hero }}
+{{- $mediumData := getJSON "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2Fopentracing" }}
+{{- $mediumPosts := $mediumData.items }}
+{{- $mostRecentPost := index $mediumPosts 0 }}
 <section class="hero landing-page">
   <div class="hero__content">
 
@@ -17,22 +20,12 @@
       </div>
       {{- with $hero.update -}}
       <h4>The latest from our blog:</h4>
-      <div id="update" class="update">
-        <a href="" target="_blank">
+
+
+      <div class="update">
+        <a href="{{ $mostRecentPost.link }}" target="_blank">
+          {{ $mostRecentPost.title }}
         </a>
-        <script type="text/javascript">
-          fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2Fopentracing')
-            .then(function(res) {
-              res.json().then(function(data) {
-                let item = data.items[0];
-                let content = `<a href="${item.link}" target="_blank">${item.title}</a>`;
-                document.getElementById('update').innerHTML = content;
-              });
-            }).catch(function() {
-              let content = `<a href="https://medium.com/opentracing" target="_blank">OpenTracing on Medium</a>`
-              document.getElementById('update').innerHTML = content;
-            });
-      </script>
       </div>
       {{- end -}}
     </section>
