@@ -22,7 +22,7 @@ params:
       url: https://medium.com/opentracing/february-2018-opentracing-monthly-newsletter-7700560e9b04
     bashWindowText: |
       # Start Jaeger locally
-      $ docker run -d -p 5775:5775/udp -p 16686:16686 jaegertracing/all-in-one:latest
+      $ docker run -d -p 6831:6831/udp -p 16686:16686 jaegertracing/all-in-one:latest
       $ export DOCKER_IP=`docker-machine ip $(docker-machine active)`
       $ cd $GOPATH/src
 
