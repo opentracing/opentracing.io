@@ -1,7 +1,3 @@
-- system: appdash
-  languages:
-  - language: Go
-    repo: https://github.com/sourcegraph/appdash
 - system: CNCF Jaeger
   languages:
   - language: Java
