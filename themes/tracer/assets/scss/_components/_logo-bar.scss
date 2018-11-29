@@ -94,11 +94,6 @@ $logo-bar-scale: 14px;
           height: $logo-bar-scale + 8;
         }
 
-        &[src*="appdash.png"] {
-          margin-left: 15px;
-          max-height: $logo-bar-scale * 1.3;
-        }
-
         &[src*="finagle"] {
           max-height: $logo-bar-scale * 1.1;
         }
@@ -140,10 +135,6 @@ $logo-bar-scale: 14px;
 
           &[src*="instana"] {
             max-height: $logo-bar-scale * 0.6;
-          }
-
-          &[src*="appdash.png"] {
-            max-height: $logo-bar-scale * 1.3;
           }
 
           &[src*="finagle"] {

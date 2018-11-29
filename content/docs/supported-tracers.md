@@ -7,13 +7,6 @@ title: Supported tracers
 [Jaeger \\ˈyā-gər\\](https://jaegertracing.io) is a distributed tracing system, originally open sourced by [Uber Technologies](https://eng.uber.com/distributed-tracing/). It provides distributed context propagation, distributed transaction monitoring, root cause analysis, service dependency analysis, and performance / latency optimization. Built with OpenTracing support from inception, Jaeger includes OpenTracing client libraries in several languages, including [Java](https://github.com/jaegertracing/jaeger-client-java), [Go](https://github.com/jaegertracing/jaeger-client-go), [Python](https://github.com/jaegertracing/jaeger-client-python), [Node.js](https://github.com/jaegertracing/jaeger-client-node), [C++](https://github.com/jaegertracing/cpp-client) and [C#](https://github.com/jaegertracing/jaeger-client-csharp). It is a [Cloud Native Computing Foundation](https://www.cncf.io/) member project.
 
 
-## Appdash
-
-Appdash ([background reading](https://about.sourcegraph.com/blog/appdash-an-open-source-perf-tracing-suite/)) is a lightweight, Golang-based distributed tracing system, originally developed and since open-sourced by [sourcegraph](https://sourcegraph.com/). There is an OpenTracing-compatible `Tracer` implementation that uses Appdash as a backend.
-
-For more details, read [the godocs](https://godoc.org/github.com/sourcegraph/appdash/opentracing).
-
-
 ## LightStep
 
 [LightStep](http://lightstep.com/) operates a SaaS solution with OpenTracing-native tracers in production environments. There are OpenTracing-compatible [LightStep Tracers](https://github.com/lightstep) available for Go, Python, Javascript, Objective-C, Java, PHP, Ruby, and C++.
