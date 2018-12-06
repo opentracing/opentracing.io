@@ -31,7 +31,7 @@ serve: clean
 
 .PHONY: get-spec-docs
 get-spec-docs:
-	git submodule update
+	git submodule update --init
 
 .PHONY: setup
 setup: clean get-spec-docs
