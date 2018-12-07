@@ -7,7 +7,7 @@ publish = "public"
 command = "make build-preview"
 
 [context.production.environment]
-HUGO_VERSION = "0.45"
+HUGO_VERSION = "0.52"
 
 [context.deploy-preview.environment]
-HUGO_VERSION = "0.45"
+HUGO_VERSION = "0.52"
