@@ -44,9 +44,6 @@ params:
   - name: Apple
     url: https://apple.com
     icon: apple.svg
-  - name: Yelp
-    url: https://yelp.com
-    icon: yelp.svg
   - name: Pinterest
     url: https://pinterest.com
     icon: pinterest.png
