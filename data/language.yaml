@@ -11,6 +11,10 @@ array:
   - name: Java
     url: //github.com/opentracing/opentracing-java
     icon: ''
+    
+  - name: Lua
+    url: //github.com/opentracing/opentracing-lua
+    icon: ''
 
   - name: Python
     url: //github.com/opentracing/opentracing-python
