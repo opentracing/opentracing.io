@@ -79,7 +79,7 @@ params:
     url: https://www.instana.com
     icon: instana.svg
   - name: Skywalking
-    url: http://skywalking.org
+    url: http://skywalking.apache.org/
     icon: skywalking.png
   - name: inspectIT
     url: http://www.inspectit.rocks
