@@ -35,3 +35,7 @@ array:
   - name: C#
     url: //github.com/opentracing/opentracing-csharp
     icon: ''
+
+  - name: Lua
+    url: //github.com/opentracing/opentracing-lua
+    icon: ''
