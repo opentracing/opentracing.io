@@ -1,6 +1,6 @@
 ---
 title: OpenTracing-MutableTracer
-registryType: instrumentation/tracer
+registryType: instrumentation
 tags:
   - opentracing
   - csharp
