@@ -129,6 +129,6 @@ def format():
 
 ```
 
-Other implemented examples of inject/extract and details can be found [here](./inject-extract).
+Other implemented examples of inject/extract and details can be found [here](../inject-extract).
 
 ![Trace Propagation](/img/overview:tracers/Extract.png)
