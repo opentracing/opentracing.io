@@ -33,3 +33,9 @@ title: Supported tracers
 
 ## Datadog
 [Datadog APM](https://www.datadoghq.com/apm/) supports OpenTracing, and aims to provide [OpenTracing-compatible tracers](https://www.datadoghq.com/blog/opentracing-datadog-cncf/) for all supported languages.
+
+## Wavefront by VMware
+
+[Wavefront](https://wavefront.com/) is a cloud-native monitoring and analytics platform that provides three dimensional microservices observability with metrics, histograms and OpenTracing-compatible [distributed tracing](https://www.wavefront.com/wavefront-enhances-application-observability-with-distributed-tracing/). With minimal code change, developers can now visualize, monitor and analyze key health performance metrics and distributed traces of [Java](https://github.com/wavefrontHQ/wavefront-opentracing-sdk-java), [Python](https://github.com/wavefrontHQ/wavefront-opentracing-sdk-python) and [.NET](https://github.com/wavefrontHQ/wavefront-opentracing-sdk-csharp) applications built on common frameworks such as Dropwizard and gRPC. Check out the distributed tracing demo [here](https://www.youtube.com/watch?v=mKRuhqJndpw&feature=youtu.be). 
+
+
