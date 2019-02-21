@@ -65,6 +65,9 @@ params:
   - name: Couchbase
     url: https://couchbase.com/
     icon: couchbase.png
+  - name: Elastic
+    url: https://www.elastic.co
+    icon: elastic.png
   tracers:
   - name: Zipkin
     url: http://zipkin.io
@@ -90,6 +93,9 @@ params:
   - name: datadog
     url: https://www.datadoghq.com/
     icon: datadog.png
+  - name: Elastic APM
+    url: https://www.elastic.co/solutions/apm
+    icon: elastic.png
   frameworks:
   - name: gRPC
     url: http://grpc.io
