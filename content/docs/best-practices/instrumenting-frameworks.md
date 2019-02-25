@@ -224,8 +224,10 @@ You can see examples of this approach in [gRPC](https://github.com/grpc-ecosyste
 
 This is where you pass the trace information into the client's request so that the server you send it to can continue the trace. If you're sending an HTTP request, then you'll just use the HTTP headers as your carrier.
 
+```Python
 span = # start span from the current trace state
-`tracer.inject(span, opentracing.Format.HTTP_HEADERS, request.headers)`
+tracer.inject(span, opentracing.Format.HTTP_HEADERS, request.headers)
+```
 
 ### Finish the Span
 
