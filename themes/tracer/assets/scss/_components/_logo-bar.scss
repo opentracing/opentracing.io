@@ -97,6 +97,11 @@ $logo-bar-scale: 14px;
         &[src*="finagle"] {
           max-height: $logo-bar-scale * 1.1;
         }
+
+        &[src*="elastic.png"] {
+          max-height: $logo-bar-scale * 1.5;
+          height: $logo-bar-scale + 8;
+        }
       }
     }
   }
