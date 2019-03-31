@@ -50,7 +50,7 @@ $video-spacing: 15px;
         opacity: 0.75;
         color: #45c1de;
         font-size: 1rem;
-        content: 'Other talks and videos';
+        content: 'Other presentations';
       }
 
        & > div {
@@ -71,7 +71,7 @@ $video-spacing: 15px;
     }
      &--featured {
       &:before {
-        content: 'Featured talks and videos';
+        content: 'Featured presentations';
       }
 
      }

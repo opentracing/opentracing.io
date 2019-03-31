@@ -5,13 +5,14 @@
     <h1 class="videos__header videos__header--small">{{ .Title }}</h1>
     <section class="videos__section">
       <section class="videos__content">
+        {{ if .Params.videoUrl }}
           {{partial "movie.html" .Params.videoUrl }}
+        {{ end }}
         <div class="videos__content__paragraphs videos__content__paragraphs--padding">
           {{ .Content }}
         </div>
       </section>
     </section>
-    
   </section>
 </div>
 {{ end }}
