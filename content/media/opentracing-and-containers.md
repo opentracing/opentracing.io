@@ -3,7 +3,7 @@ title: "OpenTracing and Containers: Depth, Breadth, and the Future of Tracing"
 videoUrl: https://www.youtube.com/embed/n8mUiLIXkto
 thumbnail: https://img.youtube.com/vi/n8mUiLIXkto/maxresdefault.jpg
 layout: video
-featured: big
+featured: true
 date: 2016-11-16
 ---
 

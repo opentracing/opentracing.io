@@ -45,7 +45,7 @@ getInvolved:
   - localUrl: /get-involved/outreachy
     name: Outreachy
   - localUrl: /media/
-    name: Talks and Videos
+    name: Talks, Books, and Videos
 
 # SIDEBAR NAVIGATION
 gettingStarted:
