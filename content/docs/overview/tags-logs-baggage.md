@@ -11,7 +11,7 @@ Span tags should apply to the _whole_ span. There is a list available at [semant
 
 ## Logs
 
-**Logs** are key:value pairs that are useful for capturing _span-specific_ logging messages and other debugging or informational output from the application itself.  Logs may be useful for documenting a specific moment or event within the span (in contrast to tags which should apply to the span as a whole).
+**Logs** are key:value pairs that are useful for capturing _timed_ log messages and other debugging or informational output from the application itself.  Logs may be useful for documenting a specific moment or event within the span (in contrast to tags which should apply to the span regardless of time).
 
 ## Baggage Items
 
