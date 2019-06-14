@@ -15,20 +15,39 @@ These can be adapted to use other OpenTracing-compatible Tracer easily by adjust
 
 ### Java
 
+Add the Jaeger libraries to your dependencies -
+
+```xml
+<dependency>
+  <groupId>io.jaegertracing</groupId>
+  <artifactId>jaeger-client</artifactId>
+  <version>0.32.0</version>
+</dependency>
+```
+
 ```java
-import com.uber.jaeger.Configuration;
+import io.jaegertracing.Configuration;
+import io.jaegertracing.Configuration.ReporterConfiguration;
+import io.jaegertracing.Configuration.SamplerConfiguration;
+import io.jaegertracing.internal.JaegerTracer;
+import io.jaegertracing.internal.samplers.ConstSampler;
 import io.opentracing.Span;
 import io.opentracing.util.GlobalTracer;
 
 ...
 
-GlobalTracer.register(
-    new Configuration(
-        "your_service_name",
-        new Configuration.SamplerConfiguration("const", 1),
-        new Configuration.ReporterConfiguration(
-            false, "localhost", null, 1000, 10000)
-    ).getTracer());
+SamplerConfiguration samplerConfig = SamplerConfiguration.fromEnv()
+  .withType(ConstSampler.TYPE)
+  .withParam(1);
+
+ReporterConfiguration reporterConfig = ReporterConfiguration.fromEnv()
+  .withLogSpans(true);
+
+Configuration config = new Configuration("helloWorld")
+  .withSampler(samplerConfig)
+  .withReporter(reporterConfig);
+
+GlobalTracer.register(config.getTracer());
 
 ...
 
