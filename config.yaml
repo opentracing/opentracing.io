@@ -96,6 +96,9 @@ params:
   - name: Elastic APM
     url: https://www.elastic.co/solutions/apm
     icon: elastic.png
+  - name: Wavefront By VMware
+    url: https://www.wavefront.com/
+    icon: wavefront.png
   frameworks:
   - name: gRPC
     url: http://grpc.io
