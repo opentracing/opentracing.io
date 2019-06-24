@@ -47,12 +47,15 @@ func main() {
     jMetricsFactory := metrics.NullFactory
 
     // Initialize tracer with a logger and a metrics factory
-    tracer, closer, err := cfg.NewTracer(
+    closer, err := cfg.InitGlobalTracer(
+        "serviceName",
         jaegercfg.Logger(jLogger),
         jaegercfg.Metrics(jMetricsFactory),
     )
-    // Set the singleton opentracing.Tracer with the Jaeger tracer.
-    opentracing.SetGlobalTracer(tracer)
+    if err != nil {
+        log.Printf("Could not initialize jaeger tracer: %s", err.Error())
+        return
+    }
     defer closer.Close()
 
     // continue main()
