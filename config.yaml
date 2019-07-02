@@ -41,9 +41,6 @@ params:
   - name: Uber
     url: https://eng.uber.com
     icon: uber.png
-  - name: Apple
-    url: https://apple.com
-    icon: apple.svg
   - name: Pinterest
     url: https://pinterest.com
     icon: pinterest.png
