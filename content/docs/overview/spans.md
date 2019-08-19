@@ -5,9 +5,9 @@ weight: 2
 
 ## What is a Span?
 
-The "**span**" is the primary building block of a distributed trace, representing an individual unit of work done in a distributed system. 
+The "**span**" is the primary building block of a distributed trace, representing an individual unit of work done in a distributed system.
 
-Each component of the distributed system contributes a span - a named, timed operation representing a piece of the workflow. 
+Each component of the distributed system contributes a span - a named, timed operation representing a piece of the workflow.
 
 Spans can (and generally do) contain "References" to other spans, which allows multiple Spans to be assembled into one complete **Trace** - a visualization of the life of a request as it moves through a distributed system.
 
@@ -17,13 +17,13 @@ Each span encapsulates the following state according to the OpenTracing specific
 - A start timestamp and finish timestamp
 - A set of key:value span **Tags**
 - A set of key:value span **Logs**
-- A **SpanContext** 
+- A **SpanContext**
 
 #### Tags
 
-**Tags** are key:value pairs that enable user-defined annotation of spans in order to query, filter, and comprehend trace data. 
+**Tags** are key:value pairs that enable user-defined annotation of spans in order to query, filter, and comprehend trace data.
 
-Span tags should apply to the _whole_ span. There is a list available at [semantic_conventions.md](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) listing conventional span tags for common scenarios. Examples may include tag keys like `db.instance` to identify a databse host, `http.status_code` to represent the HTTP response code, or `error` which can be set to True if the operation represented by the Span fails.
+Span tags should apply to the _whole_ span. There is a list available at [semantic_conventions.md](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) listing conventional span tags for common scenarios. Examples may include tag keys like `db.instance` to identify a database host, `http.status_code` to represent the HTTP response code, or `error` which can be set to True if the operation represented by the Span fails.
 
 #### Logs
 
@@ -31,20 +31,20 @@ Span tags should apply to the _whole_ span. There is a list available at [semant
 
 #### SpanContext
 
-The **SpanContext** carries data across process boundaries. Specifically, it has two major components: 
+The **SpanContext** carries data across process boundaries. Specifically, it has two major components:
 
 - An implementation-dependent state to refer to the distinct span within a trace
-    - i.e., the implementing Tracer's definition of spanID and traceID 
-- Any [**Baggage Items**](/docs/overview/tags-logs-baggage) 
+    - i.e., the implementing Tracer's definition of spanID and traceID
+- Any [**Baggage Items**](/docs/overview/tags-logs-baggage)
     - These are key:value pairs that cross process-boundaries.
     - These may be useful to have some data available for access throughout the trace.
 
 
-#### Example Span: 
+#### Example Span:
 
 
 ```
-    t=0            operation name: db_query               t=x 
+    t=0            operation name: db_query               t=x
 
      +-----------------------------------------------------+
      | · · · · · · · · · ·    Span     · · · · · · · · · · |

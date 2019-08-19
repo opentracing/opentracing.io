@@ -7,7 +7,7 @@ weight: 4
 
 **Tags** are key:value pairs that enable user-defined annotation of spans in order to query, filter, and comprehend trace data.
 
-Span tags should apply to the _whole_ span. There is a list available at [semantic_conventions.md](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) listing conventional span tags for common scenarios. Examples may include tag keys like `db.instance` to identify a databse host, `http.status_code` to represent the HTTP response code, or `error` which can be set to True if the operation represented by the Span fails.
+Span tags should apply to the _whole_ span. There is a list available at [semantic_conventions.md](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) listing conventional span tags for common scenarios. Examples may include tag keys like `db.instance` to identify a database host, `http.status_code` to represent the HTTP response code, or `error` which can be set to True if the operation represented by the Span fails.
 
 ## Logs
 
