@@ -51,8 +51,9 @@ The **SpanContext** carries data across process boundaries. Specifically, it has
      +-----------------------------------------------------+
 
 Tags:
-- db.instance:"jdbc:mysql://127.0.0.1:3306/customers
-- db.statement: "SELECT * FROM mytable WHERE foo='bar';"
+- db.instance:"customers"
+- db.statement:"SELECT * FROM mytable WHERE foo='bar'"
+- peer.address:"mysql://127.0.0.1:3306/customers"
 
 Logs:
 - message:"Can't connect to mysql server on '127.0.0.1'(10061)"
