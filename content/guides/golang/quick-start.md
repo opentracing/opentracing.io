@@ -3,11 +3,11 @@ title: "Quick Start"
 weight: 1
 ---
 
-The examples on this page use [Jaeger](https://github.com/jaegertracing/jaeger-client-go)(an OpenTracing comptible tracer). These examples assume that [Jaeger all-in-one image](https://github.com/jaegertracing/jaeger) is running locally via Docker:
+The examples on this page use [Jaeger](https://github.com/jaegertracing/jaeger-client-go)(an OpenTracing compatible tracer). These examples assume that the [Jaeger all-in-one image](https://github.com/jaegertracing/jaeger) is running locally via Docker:
 
 `$ docker run -d -p 6831:6831/udp -p 16686:16686 jaegertracing/all-in-one:latest`
 
-These can be adapted to use other OpenTracing-compatible Tracer easily by adjusting the initialization code to match the particular implementation.
+These can easily be adapted to use other OpenTracing-compatible Tracers by adjusting the initialization code to match the particular implementation.
 
 ## Setting up your tracer
 
@@ -101,7 +101,7 @@ defer childSpan.finish()
 
 ## Make an HTTP request
 
-To get traces across service boundaries, we propgagte [context](https://golang.org/pkg/context/) by injecting the context into http headers. Once the downstream service recieves the http request, it must extract the context and continue the trace. (The code example doesn't handle errors correctly, please don't do this in production code; this is just an example)
+To get traces across service boundaries, we propogate [context](https://golang.org/pkg/context/) by injecting the context into http headers. Once the downstream service recieves the http request, it must extract the context and continue the trace. (The code example doesn't handle errors correctly, please don't do this in production code; this is just an example)
 
 The upstream(client) service:
 
