@@ -101,7 +101,7 @@ defer childSpan.finish()
 
 ## Make an HTTP request
 
-To get traces across service boundaries, we propogate [context](https://golang.org/pkg/context/) by injecting the context into http headers. Once the downstream service recieves the http request, it must extract the context and continue the trace. (The code example doesn't handle errors correctly, please don't do this in production code; this is just an example)
+To get traces across service boundaries, we propagate [context](https://golang.org/pkg/context/) by injecting the context into http headers. Once the downstream service receives the http request, it must extract the context and continue the trace. (The code example doesn't handle errors correctly, please don't do this in production code; this is just an example)
 
 The upstream(client) service:
 
@@ -169,4 +169,3 @@ If you have Jaeger all-in-one running, you can view your trace at `localhost:166
 
 * [Take OpenTracing for a HotROD Ride](https://medium.com/opentracing/take-opentracing-for-a-hotrod-ride-f6e3141f7941) involves successive optimizations of a Go-based Ride-on-Demand demonstration service, all informed by tracing data.
 * In-depth Self-Guided [Golang Opentracing Tutorial](https://github.com/yurishkuro/opentracing-tutorial/tree/master/go)
-
