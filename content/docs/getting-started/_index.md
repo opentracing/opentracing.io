@@ -50,14 +50,13 @@ Configuration config = new Configuration("helloWorld")
 GlobalTracer.register(config.getTracer());
 
 ...
-
-try (Span parent = GlobalTracer.get()
-            .buildSpan("hello")
-            .start()) {
-    try (Span child = GlobalTracer.get()
-            .buildSpan("world")
-            .asChildOf(parent)
-            .start()) {
+Span parent = GlobalTracer.get().buildSpan("hello").start();
+try (Scope scope = GlobalTracer.get().scopeManager()
+      .activate(parent)) {
+    Span child = GlobalTracer.get().buildSpan("world")
+            .asChildOf(parent).start();
+    try (Scope scope = GlobalTracer.get().scopeManager()
+       .activate(child)) {
     }
 }
 ```
