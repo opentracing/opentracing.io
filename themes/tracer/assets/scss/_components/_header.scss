@@ -14,11 +14,14 @@ $list-padding: 10px;
 }
 
 .otelHeader {
-  padding-top: 10px;
+  padding-top: 20px;
   &__container {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  &__data {
+    font-size: 2.0rem;
   }
 }
 
