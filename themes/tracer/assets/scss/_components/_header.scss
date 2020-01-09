@@ -3,11 +3,30 @@
 $padding: 30px;
 $list-padding: 10px;
 
+.otelHeader:before {
+  content: '';
+  width: 100%;
+  height: 50px;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.otelHeader {
+  padding-top: 10px;
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 .header:before {
   content: '';
   width: 100%;
   height: 80px;
-  top: 0;
+  top: 50;
   left: 0;
   display: block;
   position: absolute;
@@ -19,7 +38,7 @@ $list-padding: 10px;
   content: '';
   width: 100%;
   height: 80px;
-  top: 0;
+  top: 50;
   left: 0;
   display: block;
   position: absolute;

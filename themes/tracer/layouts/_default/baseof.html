@@ -8,6 +8,7 @@
     {{ partial "css.html" . }}
   </head>
   <body>
+    {{ partial "otel.html" . }}
     {{ partial "header.html" . }}
     <main class="page page--{{ $pageClass }}">
       {{ block "main" . }}{{ end }}
