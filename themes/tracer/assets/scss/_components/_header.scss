@@ -14,15 +14,24 @@ $list-padding: 10px;
 }
 
 .otelHeader {
-  padding-top: 20px;
+  padding-top: 15px;
   &__container {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  &__data {
-    font-size: 2.0rem;
-  }
+  background-color: #da3959;
+  width: 100%
+}
+
+.otelHeader__content p {
+  color: #ffffff;
+  font-size: 1.4rem;
+}
+
+.otelHeader__content a {
+  text-decoration: underline;
+  color: #ffffff;
 }
 
 .header:before {
