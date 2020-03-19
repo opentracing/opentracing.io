@@ -14,9 +14,9 @@ You can contribute by either instrumenting your own project with OpenTracing or 
 
 ## How can I add my project to the registry?
 
-Adding a project is as simple as making a Pull Request to the OpenTracing website. Any sort of instrumentation, tracer, tracer client library, or other library/application that could be useful is welcome.
+Adding a project is as simple as making a Pull Request to the [OpenTracing website repository](https://github.com/opentracing/opentracing.io). Any sort of instrumentation, tracer, tracer client library, or other library/application that could be useful is welcome.
 
-First, create a markdown file in the following format -
+First, create a markdown file under `content/registry` in the following format -
 
 ```
 ---
