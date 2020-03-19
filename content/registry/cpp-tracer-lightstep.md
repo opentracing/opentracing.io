@@ -3,6 +3,7 @@ title: LightStep Tracer for C++
 registryType: tracer
 tags:
   - c++
+  - cpp
   - lightstep
   - tracer
 repo: https://github.com/lightstep/lightstep-tracer-cpp
