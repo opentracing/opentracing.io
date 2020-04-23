@@ -96,7 +96,7 @@ childSpan := tracer.StartSpan(
     "child",
     opentracing.ChildOf(parentSpan.Context()),
 )
-defer childSpan.finish()
+defer childSpan.Finish()
 ```
 
 ## Make an HTTP request
