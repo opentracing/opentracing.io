@@ -49,7 +49,7 @@ Another type of relationship is the `FollowsFrom` and is used in special cases w
 
 ### Accessing the Active Span
 
-`Tracer` can be used for enabling access to the `ActiveSpan`. `ActiveSpans` can also be accessed through a `ScopeManager` in some languages. Refer to the specific language guide for more implementation details.
+`Tracer` can be used for enabling access to the `ActiveSpan`. `ActiveSpan`s can also be accessed through a `ScopeManager` in some languages. Refer to the specific language guide for more implementation details.
 
 ### Propagating a Trace with Inject/Extract
 
