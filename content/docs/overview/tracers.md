@@ -36,7 +36,7 @@ Different `Tracer` implementations vary in how and what parameters they receive 
 
 Once a `Tracer` instance is obtained, it can be used to manually create `Span`, or pass it to existing instrumentation for frameworks and libraries.
 
-In order to not force the user to keep around a `Tracer`, the `io.opentracing.util` artifact includes a helper `GlobalTracer` class implementing the `io.opentracing.Tracer` interface, which, as the name implies, acts as as a global instance that can be used from anywhere. It works by forwarding all operations to another underlying `Tracer`, that will get registered at some future point.
+In order to not force the user to keep around a `Tracer`, the `io.opentracing.util` artifact includes a helper `GlobalTracer` class implementing the `io.opentracing.Tracer` interface, which, as the name implies, acts as a global instance that can be used from anywhere. It works by forwarding all operations to another underlying `Tracer`, that will get registered at some future point.
 
 By default, the underlying `Tracer` is a `no-nop` implementation.
 
@@ -49,7 +49,7 @@ Another type of relationship is the `FollowsFrom` and is used in special cases w
 
 ### Accessing the Active Span
 
-`Tracer` can be used for enabling access to the `ActiveSpan`. `ActiveSpans` can also be accessed through a `scopeManager` in some languages. Refer to the specific language guide for more implementation details.
+`Tracer` can be used for enabling access to the `ActiveSpan`. `ActiveSpans` can also be accessed through a `ScopeManager` in some languages. Refer to the specific language guide for more implementation details.
 
 ### Propagating a Trace with Inject/Extract
 
