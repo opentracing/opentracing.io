@@ -95,8 +95,6 @@ def test_join_trace():
    span.set_baggage_item('a', 'b')
    span.log_event('z')
    span.finish()
-
-}
 ```
 Here, `tracer.extract()` is used to extract the `spanContext` from the carrier and start a new `Span` with `operation_name = ‘test’`. The logic is the reverse operation of the `tracer.inject()`.
 
