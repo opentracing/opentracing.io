@@ -6,7 +6,7 @@ tags:
   - bfe
   - go
   
-repo: https://github.com/baidu/bfe/tree/master/bfe_modules/mod_trace
+repo: https://github.com/baidu/bfe/tree/develop/bfe_modules/mod_trace
 license: Apache License 2.0
 description: BFE plugin for OpenTracing
 authors: BFE
