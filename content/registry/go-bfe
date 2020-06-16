@@ -4,7 +4,7 @@ registryType: instrumentation
 tags:
   - opentracing
   - bfe
-  - golang
+  - go
   
 repo: https://github.com/baidu/bfe/tree/master/bfe_modules/mod_trace
 license: Apache License 2.0
