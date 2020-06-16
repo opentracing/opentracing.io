@@ -1,0 +1,14 @@
+---
+title: bfe-opentracing
+registryType: instrumentation
+tags:
+  - opentracing
+  - bfe
+  - go
+  
+repo: https://github.com/baidu/bfe/tree/develop/bfe_modules/mod_trace
+license: Apache License 2.0
+description: BFE plugin for OpenTracing
+authors: BFE
+otVersion: latest
+---
