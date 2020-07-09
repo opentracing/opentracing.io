@@ -6,7 +6,7 @@ tags:
     - redis
     - go-redis
 repo: https://github.com/lyb0307/opentracing-go-redis
-license: WTFPL
+license: MIT
 description: I searched for the redis client of golang with opentracing, they are all out of date. 
              I noticed there was an instrumentation of go-redis (https://github.com/opentracing-contrib/goredis) supports the v6 version of go-redis. 
              While the latest version is v8 and they have changed their "WrapProcess" method to "Hook" interface.
