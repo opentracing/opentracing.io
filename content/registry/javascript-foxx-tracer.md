@@ -1,6 +1,6 @@
 ---
 title: foxx-tracer - An instrumentation library for Foxx Microservices
-registryType: <instrumentation/tracer>
+registryType: tracer
 tags:
     - javascript
     - foxx
