@@ -38,8 +38,6 @@ There are many ways that you can contribute to the OpenTracing project.
 
 * Log issues against the [appropriate repository](https://github.com/opentracing).
 
-* [Join OpenTracing Contrib](/get-involved/contrib).
-
 * Log issues against the [contrib repositories](https://github.com/opentracing-contrib/).
 
 * [Join a Working Group] (/get-involved/working-group).
