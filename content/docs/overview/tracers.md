@@ -38,7 +38,7 @@ Once a `Tracer` instance is obtained, it can be used to manually create `Span`, 
 
 In order to not force the user to keep around a `Tracer`, the `io.opentracing.util` artifact includes a helper `GlobalTracer` class implementing the `io.opentracing.Tracer` interface, which, as the name implies, acts as a global instance that can be used from anywhere. It works by forwarding all operations to another underlying `Tracer`, that will get registered at some future point.
 
-By default, the underlying `Tracer` is a `no-nop` implementation.
+By default, the underlying `Tracer` is a `no-op` implementation.
 
 ### Starting a new Trace
 
