@@ -1,0 +1,14 @@
+---
+title: opentracing-goredisv8
+registryType: instrumentation
+tags:
+    - golang
+    - redis
+    - go-redis
+    - go-redis v8
+repo: https://github.com/imcvampire/opentracing-goredisv8
+license: MIT
+description: A friendly instrumentation for go-redis v8 and later.
+authors: imcvampire
+otVersion: latest 
+---
