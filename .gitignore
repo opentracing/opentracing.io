@@ -2,4 +2,5 @@
 .DS_Store
 
 # Hugo artifacts
-public/
+/public
+/resources
