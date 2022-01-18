@@ -18,7 +18,7 @@ build-preview: setup
 
 .PHONY: clean
 clean:
-	rm -rf public
+	rm -rf public/* resources
 
 .PHONY: serve
 serve: clean
