@@ -1,7 +1,10 @@
 [![Build Status](https://api.travis-ci.org/opentracing/opentracing.io.svg?branch=master)](https://travis-ci.org/opentracing/opentracing.io)
 [![Join gitter channel](https://badges.gitter.im/opentracing/opentracing.io.svg)](https://gitter.im/opentracing/public)
 
-# opentracing.io
+# opentracing.io - ARCHIVED
+
+> The [OpenTracing project is **archived**](https://www.cncf.io/blog/2022/01/31/cncf-archives-the-opentracing-project/).
+> Learn how to [migrate to OpenTelemetry](https://opentelemetry.io/docs/migration/opentracing/).
 
 This repository contains the source code for http://opentracing.io website.
 

@@ -3,5 +3,5 @@
 {{- $jsOpts := (dict "taretPath" "js/app.js") }}
 {{- $mainCss := resources.Get "scss/style.scss" | toCSS $mainCssOpts | minify | fingerprint }}
 {{- $syntaxCss := resources.Get "css/syntax.css" | minify | fingerprint }}
-<link rel="stylesheet" href="{{ $mainCss.Permalink }}" integrity="{{ $mainCss.Data.Integrity }}" media="screen">
-<link rel="stylesheet" href="{{ $syntaxCss.Permalink }}" integrity="{{ $syntaxCss.Data.Integrity }}" media="screen">
+<link rel="stylesheet" href="{{ $mainCss.RelPermalink }}" integrity="{{ $mainCss.Data.Integrity }}" media="screen">
+<link rel="stylesheet" href="{{ $syntaxCss.RelPermalink }}" integrity="{{ $syntaxCss.Data.Integrity }}" media="screen">
