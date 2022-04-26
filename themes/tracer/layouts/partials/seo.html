@@ -8,7 +8,11 @@
   gtag('config', 'UA-128661814-1');
 </script>
 
-{{ $keywords := .Params.keywords }}
+{{ if ne .Kind "home" -}}
+<meta name="robots" content="noindex, nofollow">
+{{- end -}}
+
+{{ $keywords := .Params.keywords -}}
 {{ with $keywords }}<meta property="keywords" content="{{ delimit . ", " }}" />{{ end }}
 
 <!-- OpenGraph -->
