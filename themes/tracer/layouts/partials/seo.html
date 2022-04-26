@@ -8,7 +8,9 @@
   gtag('config', 'UA-128661814-1');
 </script>
 
-{{ $keywords := .Params.keywords }}
+<meta name="robots" content="noindex, nofollow">
+
+{{- $keywords := .Params.keywords -}}
 {{ with $keywords }}<meta property="keywords" content="{{ delimit . ", " }}" />{{ end }}
 
 <!-- OpenGraph -->

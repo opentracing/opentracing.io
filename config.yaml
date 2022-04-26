@@ -1,7 +1,6 @@
 title: The OpenTracing project
 baseURL: /
 languageCode: en-us
-enableRobotsTXT: true
 
 pygmentsUseClasses: true
 pygmentsCodefences: true
